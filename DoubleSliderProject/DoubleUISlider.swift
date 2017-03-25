@@ -280,7 +280,7 @@ class DoubleUISlider: UIView {
             
             let positionForKnob = gestureRecognizer.location(in: self.bar).x
 
-            if positionForKnob >= 0 {
+            if positionForKnob >= 0 && positionForKnob <= (self.bar.frame.width + self.rightKnobPosition.constant) {
                 
                 self.leftKnobPosition.constant = positionForKnob
             }
@@ -291,9 +291,10 @@ class DoubleUISlider: UIView {
         
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
             
-            let positionForKnob = gestureRecognizer.location(in: self.bar).x - self.bar.frame.width
+            let xLocationInBar = gestureRecognizer.location(in: self.bar).x
+            let positionForKnob = xLocationInBar - self.bar.frame.width
             
-            if positionForKnob <= 0 {
+            if positionForKnob <= 0 && xLocationInBar >= self.leftKnobPosition.constant {
                 
                 self.rightKnobPosition.constant = positionForKnob
             }
