@@ -22,10 +22,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4Y-av-gwa" customClass="DoubleUISlider" customModule="DoubleSliderProject" customModuleProvider="target">
-                                <rect key="frame" x="20" y="301" width="335" height="65"/>
+                                <rect key="frame" x="20" y="308.5" width="335" height="50"/>
                                 <color key="backgroundColor" red="0.86325467690000002" green="0.21829825680000001" blue="0.74614689629999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="ReD-5b-aP8"/>
+                                    <constraint firstAttribute="height" constant="50" id="ReD-5b-aP8"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

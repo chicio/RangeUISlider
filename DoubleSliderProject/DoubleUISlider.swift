@@ -21,8 +21,8 @@ class DoubleUISlider: UIView {
     @IBInspectable var corners: CGFloat = 0.0 {
         didSet {
             
-            layer.cornerRadius = corners
-            layer.masksToBounds = corners > 0.0
+            self.layer.cornerRadius = corners
+            self.layer.masksToBounds = corners > 0.0
             setNeedsLayout()
         }
     }
@@ -30,15 +30,19 @@ class DoubleUISlider: UIView {
     // MARK: Instance property.
     
     /// SliderBar component.
-    fileprivate let bar: UIView = UIView()
+    private let bar: UIView = UIView()
     /// Left knob.
-    fileprivate let leftKnob: UIView = UIView()
+    private let leftKnob: UIView = UIView()
     /// Right knob.
-    fileprivate let rightKnob: UIView = UIView()
+    private let rightKnob: UIView = UIView()
     /// Left knob position constraint.
-    fileprivate var leftKnobPosition: NSLayoutConstraint = NSLayoutConstraint()
-    /// UIVIew to draw before the left knob.
-    fileprivate let leftProgressView: UIView = UIView()
+    private var leftKnobPosition: NSLayoutConstraint = NSLayoutConstraint()
+    /// Right knob position constraint.
+    private var rightKnobPosition: NSLayoutConstraint = NSLayoutConstraint()
+    /// UIVIew used as progress bar for left knob.
+    private let leftProgressView: UIView = UIView()
+    /// UIVIew used as progress bar for right knob.
+    private let rightProgressView: UIView = UIView()
     
     required init?(coder aDecoder: NSCoder) {
         
@@ -56,7 +60,9 @@ class DoubleUISlider: UIView {
         
         self.setUpBar()
         self.setupLeftKnob()
-        self.setuProgressView()
+        self.setupRightKnob()
+        self.setupLeftProgressView()
+        self.setupRightProgressView()
     }
     
     private func setUpBar() {
@@ -104,7 +110,7 @@ class DoubleUISlider: UIView {
         self.bar.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
     }
     
-    func setupLeftKnob() {
+    private func setupLeftKnob() {
         
         self.leftKnob.translatesAutoresizingMaskIntoConstraints = false
         self.leftKnob.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
@@ -117,7 +123,7 @@ class DoubleUISlider: UIView {
                                                    toItem: self.bar,
                                                    attribute: .leading,
                                                    multiplier: 1.0,
-                                                   constant: 1.0)
+                                                   constant: 0.0)
         
         NSLayoutConstraint.activate([
             self.leftKnobPosition,
@@ -148,12 +154,55 @@ class DoubleUISlider: UIView {
         self.leftKnob.addGestureRecognizer(gesture)
     }
     
-    func setuProgressView() {
+    private func setupRightKnob() {
+        
+        self.rightKnob.translatesAutoresizingMaskIntoConstraints = false
+        self.rightKnob.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        self.rightKnob.layer.cornerRadius = 15.0
+        self.bar.addSubview(self.rightKnob)
+        
+        self.rightKnobPosition = NSLayoutConstraint(item: self.rightKnob,
+                                                    attribute: .centerX,
+                                                    relatedBy: .equal,
+                                                    toItem: self.bar,
+                                                    attribute: .trailing,
+                                                    multiplier: 1.0,
+                                                    constant: 0.0)
+        
+        NSLayoutConstraint.activate([
+            self.rightKnobPosition,
+            NSLayoutConstraint(item: self.rightKnob,
+                               attribute: .centerY,
+                               relatedBy: .equal,
+                               toItem: self.bar,
+                               attribute: .centerY,
+                               multiplier: 1.0,
+                               constant: 1.0),
+            NSLayoutConstraint(item: self.rightKnob,
+                               attribute: .width,
+                               relatedBy: .equal,
+                               toItem: nil,
+                               attribute: .notAnAttribute,
+                               multiplier: 1.0,
+                               constant: 30),
+            NSLayoutConstraint(item: self.rightKnob,
+                               attribute: .height,
+                               relatedBy: .equal,
+                               toItem: nil,
+                               attribute: .notAnAttribute,
+                               multiplier: 1.0,
+                               constant: 30)
+            ])
+        
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(moveRightKnob))
+        self.rightKnob.addGestureRecognizer(gesture)
+    }
+    
+    private func setupLeftProgressView() {
         
         self.leftProgressView.translatesAutoresizingMaskIntoConstraints = false
         self.leftProgressView.backgroundColor = #colorLiteral(red: 0.9994254708, green: 0.9855895638, blue: 0, alpha: 1)
         self.bar.insertSubview(self.leftProgressView, belowSubview: self.leftKnob)
-        self.bar.bringSubview(toFront: self.leftKnob)
         
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: self.leftProgressView,
@@ -187,18 +236,66 @@ class DoubleUISlider: UIView {
         ])
     }
     
-    static var position = 0
+    private func setupRightProgressView() {
+        
+        self.rightProgressView.translatesAutoresizingMaskIntoConstraints = false
+        self.rightProgressView.backgroundColor = #colorLiteral(red: 0.9994254708, green: 0.9855895638, blue: 0, alpha: 1)
+        self.bar.insertSubview(self.rightProgressView, belowSubview: self.rightKnob)
+        
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint(item: self.rightProgressView,
+                               attribute: .height,
+                               relatedBy: .equal,
+                               toItem: self.bar,
+                               attribute: .height,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.rightProgressView,
+                               attribute: .centerY,
+                               relatedBy: .equal,
+                               toItem: self.bar,
+                               attribute: .centerY,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.rightProgressView,
+                               attribute: .leading,
+                               relatedBy: .equal,
+                               toItem: self.rightKnob,
+                               attribute: .centerX,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.rightProgressView,
+                               attribute: .trailing,
+                               relatedBy: .equal,
+                               toItem: self.bar,
+                               attribute: .trailing,
+                               multiplier: 1.0,
+                               constant: 0.0)
+        ])
+    }
     
-    func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
+    public final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
         
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
             
-            let positionForKnob = gestureRecognizer.location(in: self.bar)
+            let positionForKnob = gestureRecognizer.location(in: self.bar).x
 
-            if positionForKnob.x >= 0 {
+            if positionForKnob >= 0 {
                 
-                self.leftKnobPosition.constant = positionForKnob.x
-                self.leftKnob.layoutIfNeeded()
+                self.leftKnobPosition.constant = positionForKnob
+            }
+        }
+    }
+    
+    public final func moveRightKnob(gestureRecognizer: UIPanGestureRecognizer) {
+        
+        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+            
+            let positionForKnob = gestureRecognizer.location(in: self.bar).x - self.bar.frame.width
+            
+            if positionForKnob <= 0 {
+                
+                self.rightKnobPosition.constant = positionForKnob
             }
         }
     }
