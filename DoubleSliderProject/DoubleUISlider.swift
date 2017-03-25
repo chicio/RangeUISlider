@@ -12,10 +12,6 @@ import UIKit
 @IBDesignable
 class DoubleUISlider: UIView {
     
-    // MARK: Constants.
-    
-    private let offsetSliderBar: CGFloat = 20.0
-    
     // MARK: Inspectable property.
     
     /// Right knob width.
@@ -175,7 +171,7 @@ class DoubleUISlider: UIView {
                                                        toItem: self,
                                                        attribute: .leading,
                                                        multiplier: 1.0,
-                                                       constant: self.offsetSliderBar)
+                                                       constant: self.barLeading)
         
         self.barTrailingConstraint = NSLayoutConstraint(item: self.bar,
                                                         attribute: .trailing,
@@ -183,7 +179,7 @@ class DoubleUISlider: UIView {
                                                         toItem: self,
                                                         attribute: .trailing,
                                                         multiplier: 1.0,
-                                                        constant: -1.0 * self.offsetSliderBar)
+                                                        constant: -1.0 * self.barTrailing)
         
         self.barHeightConstraint = NSLayoutConstraint(item: self.bar,
                                                       attribute: .height,
