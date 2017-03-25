@@ -9,11 +9,20 @@
 import Foundation
 import UIKit
 
+@objc public protocol RangeUISliderDelegate {
+    
+    func rangeChanged(minValue: CGFloat, maxValue: CGFloat)
+}
+
 @IBDesignable
-class DoubleUISlider: UIView {
+@objc public class DoubleUISlider: UIView {
     
     // MARK: Inspectable property.
     
+    /// Scale min value.
+    @IBInspectable var scaleMinValue: CGFloat = 0.0
+    /// Scale max value.
+    @IBInspectable var scaleMaxValue: CGFloat = 1.0
     /// Right knob width.
     @IBInspectable var rightKnobWidth: CGFloat = 30.0 {
         
@@ -22,7 +31,6 @@ class DoubleUISlider: UIView {
             self.rightKnobsWidthConstraint.constant = self.rightKnobWidth
         }
     }
-    
     /// Right knob height.
     @IBInspectable var rightKnobHeight: CGFloat = 30.0 {
         
@@ -31,7 +39,6 @@ class DoubleUISlider: UIView {
             self.rightKnobsHeightConstraint.constant = self.rightKnobHeight
         }
     }
-    
     /// Right knob corners.
     @IBInspectable var rightKnobCornes: CGFloat = 15.0 {
         
@@ -41,7 +48,6 @@ class DoubleUISlider: UIView {
             self.rightKnob.layer.masksToBounds = self.rightKnobCornes > 0.0
         }
     }
-    
     /// Left knob width.
     @IBInspectable var leftKnobWidth: CGFloat = 30.0 {
         
@@ -50,7 +56,6 @@ class DoubleUISlider: UIView {
             self.leftKnobsWidthConstraint.constant = self.leftKnobWidth
         }
     }
-    
     /// Left knob height.
     @IBInspectable var leftKnobHeight: CGFloat = 30.0 {
         
@@ -59,7 +64,6 @@ class DoubleUISlider: UIView {
             self.leftKnobsHeightConstraint.constant = self.leftKnobHeight
         }
     }
-    
     /// Left knob corners.
     @IBInspectable var leftKnobCornes: CGFloat = 15.0 {
         
@@ -69,7 +73,6 @@ class DoubleUISlider: UIView {
             self.leftKnob.layer.masksToBounds = self.leftKnobCornes > 0.0
         }
     }
-    
     /// Bar height.
     @IBInspectable var barHeight: CGFloat = 20.0 {
         
@@ -78,7 +81,6 @@ class DoubleUISlider: UIView {
             self.barHeightConstraint.constant = self.barHeight
         }
     }
-    
     /// Bar leading offset.
     @IBInspectable var barLeading: CGFloat = 20.0 {
         
@@ -87,7 +89,6 @@ class DoubleUISlider: UIView {
             self.barLeadingConstraint.constant = self.barLeading
         }
     }
-    
     /// Bar trailing offset.
     @IBInspectable var barTrailing: CGFloat = 20.0 {
         
@@ -96,7 +97,6 @@ class DoubleUISlider: UIView {
             self.barTrailingConstraint.constant = -self.barTrailing
         }
     }
-    
     /// Container corners.
     @IBInspectable var containerCorners: CGFloat = 0.0 {
         
@@ -119,9 +119,11 @@ class DoubleUISlider: UIView {
     private let leftProgressView: UIView = UIView()
     /// UIVIew used as progress bar for right knob.
     private let rightProgressView: UIView = UIView()
+    /// Slider delegate.
+    public var delegate: RangeUISliderDelegate?
     
     /// Left knob position constraint.
-    private var leftKnobPosition: NSLayoutConstraint = NSLayoutConstraint()
+    private var leftKnobXPositionConstraint: NSLayoutConstraint = NSLayoutConstraint()
     /// Right knob position constraint.
     private var rightKnobXPositionConstraint: NSLayoutConstraint = NSLayoutConstraint()
     /// Bar leading offset constraint.
@@ -139,13 +141,13 @@ class DoubleUISlider: UIView {
     /// Left knob height constraint.
     private var leftKnobsHeightConstraint: NSLayoutConstraint = NSLayoutConstraint()
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
         self.setup()
     }
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         
         super.init(frame: frame)
         self.setup()
@@ -218,32 +220,32 @@ class DoubleUISlider: UIView {
         self.leftKnob.layer.cornerRadius = 15.0
         self.bar.addSubview(self.leftKnob)
         
-        self.leftKnobPosition = NSLayoutConstraint(item: self.leftKnob,
-                                                   attribute: .centerX,
-                                                   relatedBy: .equal,
-                                                   toItem: self.bar,
-                                                   attribute: .leading,
-                                                   multiplier: 1.0,
-                                                   constant: 0.0)
+        self.leftKnobXPositionConstraint = NSLayoutConstraint(item: self.leftKnob,
+                                                              attribute: .centerX,
+                                                              relatedBy: .equal,
+                                                              toItem: self.bar,
+                                                              attribute: .leading,
+                                                              multiplier: 1.0,
+                                                              constant: 0.0)
         
         self.leftKnobsWidthConstraint = NSLayoutConstraint(item: self.leftKnob,
-                                                                      attribute: .width,
-                                                                      relatedBy: .equal,
-                                                                      toItem: nil,
-                                                                      attribute: .notAnAttribute,
-                                                                      multiplier: 1.0,
-                                                                      constant: 30)
+                                                           attribute: .width,
+                                                           relatedBy: .equal,
+                                                           toItem: nil,
+                                                           attribute: .notAnAttribute,
+                                                           multiplier: 1.0,
+                                                           constant: 30)
         
         self.leftKnobsHeightConstraint = NSLayoutConstraint(item: self.leftKnob,
-                                                                        attribute: .height,
-                                                                        relatedBy: .equal,
-                                                                        toItem: nil,
-                                                                        attribute: .notAnAttribute,
-                                                                        multiplier: 1.0,
-                                                                        constant: 30)
+                                                            attribute: .height,
+                                                            relatedBy: .equal,
+                                                            toItem: nil,
+                                                            attribute: .notAnAttribute,
+                                                            multiplier: 1.0,
+                                                            constant: 30)
         
         NSLayoutConstraint.activate([
-            self.leftKnobPosition,
+            self.leftKnobXPositionConstraint,
             NSLayoutConstraint(item: self.leftKnob,
                                attribute: .centerY,
                                relatedBy: .equal,
@@ -253,7 +255,7 @@ class DoubleUISlider: UIView {
                                constant: 1.0),
             self.leftKnobsWidthConstraint,
             self.leftKnobsHeightConstraint
-        ])
+            ])
         
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(moveLeftKnob))
         self.leftKnob.addGestureRecognizer(gesture)
@@ -302,7 +304,7 @@ class DoubleUISlider: UIView {
                                constant: 1.0),
             self.rightKnobsWidthConstraint,
             self.rightKnobsHeightConstraint
-        ])
+            ])
         
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(moveRightKnob))
         self.rightKnob.addGestureRecognizer(gesture)
@@ -392,8 +394,10 @@ class DoubleUISlider: UIView {
             
             if positionForKnob >= 0 && positionForKnob <= (self.bar.frame.width + self.rightKnobXPositionConstraint.constant) {
                 
-                self.leftKnobPosition.constant = positionForKnob
+                self.leftKnobXPositionConstraint.constant = positionForKnob
             }
+            
+            self.calculateChangeRange()
         }
     }
     
@@ -404,10 +408,20 @@ class DoubleUISlider: UIView {
             let xLocationInBar = gestureRecognizer.location(in: self.bar).x
             let positionForKnob = xLocationInBar - self.bar.frame.width
             
-            if positionForKnob <= 0 && xLocationInBar >= self.leftKnobPosition.constant {
+            if positionForKnob <= 0 && xLocationInBar >= self.leftKnobXPositionConstraint.constant {
                 
                 self.rightKnobXPositionConstraint.constant = positionForKnob
             }
+            
+            self.calculateChangeRange()
         }
+    }
+    
+    private func calculateChangeRange() {
+        
+        let minValue = self.leftKnobXPositionConstraint.constant / self.bar.frame.width
+        let maxValue = 1.0  + self.rightKnobXPositionConstraint.constant / self.bar.frame.width
+        
+        self.delegate?.rangeChanged(minValue: minValue, maxValue: maxValue)
     }
 }

@@ -77,6 +77,9 @@
                             <constraint firstItem="u4Y-av-gwa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="uYq-9N-Ttu"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="rangeUISlider" destination="u4Y-av-gwa" id="ExF-c6-RAh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

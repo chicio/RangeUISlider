@@ -8,9 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, RangeUISliderDelegate {
+    
+    @IBOutlet weak var rangeUISlider: DoubleUISlider!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        self.rangeUISlider.delegate = self
+    }
+    
+    func rangeChanged(minValue: CGFloat, maxValue: CGFloat) {
+        
+        print("min: \(minValue) -  max: \(maxValue)")
     }
 }
