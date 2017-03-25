@@ -12,12 +12,11 @@ import UIKit
 @IBDesignable
 class DoubleUISlider: UIView {
     
-    
-    //MARK: Constants.
+    // MARK: Constants.
     
     fileprivate let offsetSliderBar: CGFloat = 20.0
     
-    //MARK: Inspectable property.
+    // MARK: Inspectable property.
     
     @IBInspectable var corners: CGFloat = 0.0 {
         didSet {
@@ -28,16 +27,18 @@ class DoubleUISlider: UIView {
         }
     }
     
-    //MARK: Instance property.
+    // MARK: Instance property.
     
-    ///SliderBar component.
+    /// SliderBar component.
     fileprivate let bar: UIView = UIView()
-    ///Left knob.
+    /// Left knob.
     fileprivate let leftKnob: UIView = UIView()
-    ///Right knob.
+    /// Right knob.
     fileprivate let rightKnob: UIView = UIView()
-    ///Left knob position constraint.
+    /// Left knob position constraint.
     fileprivate var leftKnobPosition: NSLayoutConstraint = NSLayoutConstraint()
+    /// UIVIew to draw before the left knob.
+    fileprivate let leftProgressView: UIView = UIView()
     
     required init?(coder aDecoder: NSCoder) {
         
@@ -53,11 +54,12 @@ class DoubleUISlider: UIView {
     
     private func setup() {
         
-        self.setUpSliderBar()
+        self.setUpBar()
         self.setupLeftKnob()
+        self.setuProgressView()
     }
     
-    private func setUpSliderBar() {
+    private func setUpBar() {
         
         self.bar.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.bar)
@@ -140,10 +142,49 @@ class DoubleUISlider: UIView {
                                attribute: .notAnAttribute,
                                multiplier: 1.0,
                                constant: 30)
-            ])
+        ])
         
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(moveLeftKnob))
         self.leftKnob.addGestureRecognizer(gesture)
+    }
+    
+    func setuProgressView() {
+        
+        self.leftProgressView.translatesAutoresizingMaskIntoConstraints = false
+        self.leftProgressView.backgroundColor = #colorLiteral(red: 0.9994254708, green: 0.9855895638, blue: 0, alpha: 1)
+        self.bar.insertSubview(self.leftProgressView, belowSubview: self.leftKnob)
+        self.bar.bringSubview(toFront: self.leftKnob)
+        
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint(item: self.leftProgressView,
+                               attribute: .height,
+                               relatedBy: .equal,
+                               toItem: self.bar,
+                               attribute: .height,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.leftProgressView,
+                               attribute: .centerY,
+                               relatedBy: .equal,
+                               toItem: self.bar,
+                               attribute: .centerY,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.leftProgressView,
+                               attribute: .leading,
+                               relatedBy: .equal,
+                               toItem: self.bar,
+                               attribute: .leading,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.leftProgressView,
+                               attribute: .trailing,
+                               relatedBy: .equal,
+                               toItem: self.leftKnob,
+                               attribute: .centerX,
+                               multiplier: 1.0,
+                               constant: 0.0)
+        ])
     }
     
     static var position = 0
@@ -153,10 +194,7 @@ class DoubleUISlider: UIView {
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
             
             let positionForKnob = gestureRecognizer.location(in: self.bar)
-            let positionInViewForKnob = gestureRecognizer.translation(in: self.bar)
-            print("gesture position \(positionForKnob.x) \(positionForKnob.y) ")
-            print("gesture position in view \(positionInViewForKnob.x) \(positionInViewForKnob.y) ")
-            
+
             if positionForKnob.x >= 0 {
                 
                 self.leftKnobPosition.constant = positionForKnob.x
@@ -165,4 +203,3 @@ class DoubleUISlider: UIView {
         }
     }
 }
-
