@@ -12,49 +12,77 @@ import UIKit
 @IBDesignable
 class DoubleUISlider: UIView {
     
-    @IBInspectable var cornerRadius: CGFloat = 0 {
+    
+    //MARK: Constants.
+    
+    fileprivate let offsetSliderBar: CGFloat = 20.0
+    
+    //MARK: Inspectable property.
+    
+    @IBInspectable var corners: CGFloat = 0.0 {
         didSet {
-            layer.cornerRadius = cornerRadius
-            layer.masksToBounds = cornerRadius > 0
+            
+            layer.cornerRadius = corners
+            layer.masksToBounds = corners > 0.0
             setNeedsLayout()
         }
     }
     
-    fileprivate let bar: SliderBar
+    //MARK: Instance property.
+    
+    ///SliderBar component.
+    fileprivate let bar: UIView = UIView()
+    ///Left knob.
+    fileprivate let leftKnob: UIView = UIView()
+    ///Right knob.
+    fileprivate let rightKnob: UIView = UIView()
+    ///Left knob position constraint.
+    fileprivate var leftKnobPosition: NSLayoutConstraint = NSLayoutConstraint()
     
     required init?(coder aDecoder: NSCoder) {
         
-        self.bar = SliderBar(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0))
         super.init(coder: aDecoder)
         self.setup()
     }
     
     override init(frame: CGRect) {
         
-        self.bar = SliderBar(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0))
         super.init(frame: frame)
         self.setup()
     }
     
-    func setup() {
+    private func setup() {
+        
+        self.setUpSliderBar()
+        self.setupLeftKnob()
+    }
+    
+    private func setUpSliderBar() {
         
         self.bar.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.bar)
         
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: self.bar,
-                               attribute: .width,
+                               attribute: .leading,
                                relatedBy: .equal,
                                toItem: self,
-                               attribute: .width,
+                               attribute: .leading,
                                multiplier: 1.0,
-                               constant: 0.0),
+                               constant: self.offsetSliderBar),
+            NSLayoutConstraint(item: self.bar,
+                               attribute: .trailing,
+                               relatedBy: .equal,
+                               toItem: self,
+                               attribute: .trailing,
+                               multiplier: 1.0,
+                               constant: -1.0 * self.offsetSliderBar),
             NSLayoutConstraint(item: self.bar,
                                attribute: .height,
                                relatedBy: .equal,
                                toItem: self,
                                attribute: .height,
-                               multiplier: 0.5,
+                               multiplier: 0.3,
                                constant: 0.0),
             NSLayoutConstraint(item: self.bar,
                                attribute: .centerX,
@@ -73,22 +101,68 @@ class DoubleUISlider: UIView {
             ])
         self.bar.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
     }
+    
+    func setupLeftKnob() {
+        
+        self.leftKnob.translatesAutoresizingMaskIntoConstraints = false
+        self.leftKnob.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        self.leftKnob.layer.cornerRadius = 15.0
+        self.bar.addSubview(self.leftKnob)
+        
+        self.leftKnobPosition = NSLayoutConstraint(item: self.leftKnob,
+                                                   attribute: .centerX,
+                                                   relatedBy: .equal,
+                                                   toItem: self.bar,
+                                                   attribute: .leading,
+                                                   multiplier: 1.0,
+                                                   constant: 1.0)
+        
+        NSLayoutConstraint.activate([
+            self.leftKnobPosition,
+            NSLayoutConstraint(item: self.leftKnob,
+                               attribute: .centerY,
+                               relatedBy: .equal,
+                               toItem: self.bar,
+                               attribute: .centerY,
+                               multiplier: 1.0,
+                               constant: 1.0),
+            NSLayoutConstraint(item: self.leftKnob,
+                               attribute: .width,
+                               relatedBy: .equal,
+                               toItem: nil,
+                               attribute: .notAnAttribute,
+                               multiplier: 1.0,
+                               constant: 30),
+            NSLayoutConstraint(item: self.leftKnob,
+                               attribute: .height,
+                               relatedBy: .equal,
+                               toItem: nil,
+                               attribute: .notAnAttribute,
+                               multiplier: 1.0,
+                               constant: 30)
+            ])
+        
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(moveLeftKnob))
+        self.leftKnob.addGestureRecognizer(gesture)
+    }
+    
+    static var position = 0
+    
+    func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
+        
+        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+            
+            let positionForKnob = gestureRecognizer.location(in: self.bar)
+            let positionInViewForKnob = gestureRecognizer.translation(in: self.bar)
+            print("gesture position \(positionForKnob.x) \(positionForKnob.y) ")
+            print("gesture position in view \(positionInViewForKnob.x) \(positionInViewForKnob.y) ")
+            
+            if positionForKnob.x >= 0 {
+                
+                self.leftKnobPosition.constant = positionForKnob.x
+                self.leftKnob.layoutIfNeeded()
+            }
+        }
+    }
 }
 
-@IBDesignable
-fileprivate class SliderBar: UIView {
-    
-    required init?(coder aDecoder: NSCoder) {
-        
-        super.init(coder: aDecoder)
-        self.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
-        self.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    override init(frame: CGRect) {
-        
-        super.init(frame: frame)
-        self.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
-        self.translatesAutoresizingMaskIntoConstraints = false
-    }
-}

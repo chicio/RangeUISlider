@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DoubleSliderProject/DoubleUISlider.swift"
-            timestampString = "512131613.997383"
+            timestampString = "512143275.353861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "init(frame:)"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "setupLeftKnob()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DoubleSliderProject/DoubleUISlider.swift"
+            timestampString = "512143275.353861"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "setupLeftKnob()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
