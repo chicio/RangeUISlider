@@ -87,6 +87,9 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="rightShadowOpacity">
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="identifier">
+                                        <integer key="value" value="1001"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPQ-Vh-eUa" customClass="RangeUISlider" customModule="DoubleSliderProject" customModuleProvider="target">
@@ -122,6 +125,9 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="barCorners">
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="identifier">
+                                        <integer key="value" value="1002"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
@@ -137,6 +143,7 @@
                     </view>
                     <connections>
                         <outlet property="rangeUISlider" destination="u4Y-av-gwa" id="ExF-c6-RAh"/>
+                        <outlet property="rangeUISlider2" destination="jPQ-Vh-eUa" id="4le-NI-hg6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

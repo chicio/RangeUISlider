@@ -11,15 +11,17 @@ import UIKit
 class ViewController: UIViewController, RangeUISliderDelegate {
     
     @IBOutlet weak var rangeUISlider: RangeUISlider!
+    @IBOutlet weak var rangeUISlider2: RangeUISlider!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         self.rangeUISlider.delegate = self
+        self.rangeUISlider2.delegate = self
     }
     
-    func rangeChanged(minValue: CGFloat, maxValue: CGFloat) {
+    func rangeChanged(minValue: CGFloat, maxValue: CGFloat, sliderIdentifier: Int) {
         
-        print("min: \(minValue) -  max: \(maxValue)")
+        print("min: \(minValue) -  max: \(maxValue) - identifier: \(sliderIdentifier)")
     }
 }

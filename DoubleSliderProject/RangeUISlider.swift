@@ -1,7 +1,7 @@
 //
 //  RangeUISlider.swift
 //
-//  Created by Fabrizio Duroni on 15/03/2017.
+//  Created by Fabrizio Duroni on 25/03/2017.
 //  2017 Fabrizio Duroni.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 
 @objc public protocol RangeUISliderDelegate {
     
-    func rangeChanged(minValue: CGFloat, maxValue: CGFloat)
+    func rangeChanged(minValue: CGFloat, maxValue: CGFloat, sliderIdentifier: Int)
 }
 
 @IBDesignable
@@ -18,6 +18,8 @@ import UIKit
     
     // MARK: Inspectable property.
     
+    /// Identifier used to check which slider we are getting values from.
+    @IBInspectable var identifier: Int = 0
     /// Scale min value.
     @IBInspectable var scaleMinValue: CGFloat = 0.0
     /// Scale max value.
@@ -658,7 +660,7 @@ import UIKit
         let scaledMinValue = self.linearMapping(value: minValue)
         let scaledMaxValue = self.linearMapping(value: maxValue)
         
-        self.delegate?.rangeChanged(minValue: scaledMinValue, maxValue: scaledMaxValue)
+        self.delegate?.rangeChanged(minValue: scaledMinValue, maxValue: scaledMaxValue, sliderIdentifier: self.identifier)
     }
     
     private func linearMapping(value: CGFloat) -> CGFloat {
