@@ -63,6 +63,38 @@ import UIKit
             self.rightKnob.backgroundColor = self.rightKnobColor
         }
     }
+    /// Right knob shadow opacity.
+    @IBInspectable var rightShadowOpacity: Float = 0.0 {
+        
+        didSet {
+            
+            self.rightKnob.layer.shadowOpacity = self.rightShadowOpacity
+        }
+    }
+    /// Right knob shadow color.
+    @IBInspectable var rightShadowColor: UIColor = UIColor.clear {
+        
+        didSet {
+            
+            self.rightKnob.layer.shadowColor = self.rightShadowColor.cgColor
+        }
+    }
+    /// Right knob shadow offset.
+    @IBInspectable var rightShadowOffset: CGSize = CGSize() {
+        
+        didSet {
+            
+            self.rightKnob.layer.shadowOffset = self.rightShadowOffset
+        }
+    }
+    /// Right knob shadow radius.
+    @IBInspectable var rightShadowRadius: CGFloat = 0 {
+        
+        didSet {
+            
+            self.rightKnob.layer.shadowRadius = self.rightShadowRadius
+        }
+    }
     /// Left knob width.
     @IBInspectable var leftKnobWidth: CGFloat = 30.0 {
         
@@ -104,6 +136,38 @@ import UIKit
             self.leftKnob.backgroundColor = self.leftKnobColor
         }
     }
+    /// Left knob shadow opacity.
+    @IBInspectable var leftShadowOpacity: Float = 0.0 {
+        
+        didSet {
+            
+            self.leftKnob.layer.shadowOpacity = self.leftShadowOpacity
+        }
+    }
+    /// Left knob shadow color.
+    @IBInspectable var leftShadowColor: UIColor = UIColor.clear {
+        
+        didSet {
+            
+            self.leftKnob.layer.shadowColor = self.leftShadowColor.cgColor
+        }
+    }
+    /// Left knob shadow offset.
+    @IBInspectable var leftShadowOffset: CGSize = CGSize() {
+        
+        didSet {
+            
+            self.leftKnob.layer.shadowOffset = self.leftShadowOffset
+        }
+    }
+    /// Left knob shadow radius.
+    @IBInspectable var leftShadowRadius: CGFloat = 0 {
+        
+        didSet {
+            
+            self.leftKnob.layer.shadowRadius = self.leftShadowRadius
+        }
+    }
     /// Bar height.
     @IBInspectable var barHeight: CGFloat = 20.0 {
         
@@ -128,6 +192,47 @@ import UIKit
             self.barTrailingConstraint.constant = -self.barTrailing
         }
     }
+    /// Bar corners.
+    @IBInspectable var barCornes: CGFloat = 20.0 {
+        
+        didSet {
+            
+            self.leftProgressView.layer.cornerRadius = barCornes
+            self.rightProgressView.layer.cornerRadius = barCornes
+        }
+    }
+    /// Bar shadow opacity.
+    @IBInspectable var barShadowOpacity: Float = 0.0 {
+        
+        didSet {
+            
+            self.bar.layer.shadowOpacity = self.barShadowOpacity
+        }
+    }
+    /// Bar shadow color.
+    @IBInspectable var barShadowColor: UIColor = UIColor.clear {
+        
+        didSet {
+            
+            self.bar.layer.shadowColor = self.barShadowColor.cgColor
+        }
+    }
+    /// Bar shadow offset.
+    @IBInspectable var barShadowOffset: CGSize = CGSize() {
+        
+        didSet {
+            
+            self.bar.layer.shadowOffset = self.barShadowOffset
+        }
+    }
+    /// Bar shadow radius.
+    @IBInspectable var barShadowRadius: CGFloat = 0 {
+        
+        didSet {
+            
+            self.bar.layer.shadowRadius = self.barShadowRadius
+        }
+    }
     /// Container corners.
     @IBInspectable var containerCorners: CGFloat = 0.0 {
         
@@ -146,6 +251,8 @@ import UIKit
     private let leftKnob: UIView = UIView()
     /// Right knob.
     private let rightKnob: UIView = UIView()
+    /// UIView used as marker for selected range progress.
+    private let selectedProgressView: UIView = UIView()
     /// UIVIew used as progress bar for left knob.
     private let leftProgressView: UIView = UIView()
     /// UIVIew used as progress bar for right knob.
@@ -197,6 +304,7 @@ import UIKit
         self.setUpBar()
         self.setupLeftKnob()
         self.setupRightKnob()
+        self.setupSelectedProgressView()
         self.setupLeftProgressView()
         self.setupRightProgressView()
     }
@@ -249,7 +357,6 @@ import UIKit
                                multiplier: 1.0,
                                constant: 0.0)
             ])
-        self.bar.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
     }
     
     // MARK: Knobs.
@@ -392,6 +499,45 @@ import UIKit
     }
     
     // MARK: Progress views.
+    
+    func setupSelectedProgressView() {
+        
+        self.selectedProgressView.translatesAutoresizingMaskIntoConstraints = false
+        self.selectedProgressView.backgroundColor = #colorLiteral(red: 0.9956896552, green: 0, blue: 0, alpha: 1)
+        self.bar.addSubview(self.selectedProgressView)
+        self.bar.sendSubview(toBack: self.selectedProgressView)
+        
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint(item: self.selectedProgressView,
+                               attribute: .height,
+                               relatedBy: .equal,
+                               toItem: self.bar,
+                               attribute: .height,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.selectedProgressView,
+                               attribute: .centerY,
+                               relatedBy: .equal,
+                               toItem: self.bar,
+                               attribute: .centerY,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.selectedProgressView,
+                               attribute: .leading,
+                               relatedBy: .equal,
+                               toItem: self.leftKnob,
+                               attribute: .centerX,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.selectedProgressView,
+                               attribute: .trailing,
+                               relatedBy: .equal,
+                               toItem: self.rightKnob,
+                               attribute: .centerX,
+                               multiplier: 1.0,
+                               constant: 0.0)
+        ])
+    }
     
     private func setupLeftProgressView() {
         
