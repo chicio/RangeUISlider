@@ -41,79 +41,6 @@ import UIKit
             self.rightProgressView.backgroundColor = self.rangeNotSelectedColor
         }
     }
-    /// Right knob width.
-    @IBInspectable var rightKnobWidth: CGFloat = 30.0 {
-        
-        didSet {
-            
-            self.rightKnobsWidthConstraint.constant = self.rightKnobWidth
-        }
-    }
-    /// Right knob height.
-    @IBInspectable var rightKnobHeight: CGFloat = 30.0 {
-        
-        didSet {
-            
-            self.rightKnobsHeightConstraint.constant = self.rightKnobHeight
-        }
-    }
-    /// Right knob corners.
-    @IBInspectable var rightKnobCornes: CGFloat = 15.0 {
-        
-        didSet {
-            
-            self.rightKnob.layer.cornerRadius = self.rightKnobCornes
-            self.rightKnob.layer.masksToBounds = self.rightKnobCornes > 0.0
-        }
-    }
-    /// Right knob image.
-    @IBInspectable var rightKnobImage: UIImage? {
-        
-        didSet {
-            
-            self.setup(image: self.rightKnobImage, forKnob: self.rightKnob)
-        }
-    }
-    /// Right knob color.
-    @IBInspectable var rightKnobColor: UIColor = UIColor.gray {
-        
-        didSet {
-            
-            self.rightKnob.backgroundColor = self.rightKnobColor
-        }
-    }
-    /// Right knob shadow opacity.
-    @IBInspectable var rightShadowOpacity: Float = 0.0 {
-        
-        didSet {
-            
-            self.rightKnob.layer.shadowOpacity = self.rightShadowOpacity
-        }
-    }
-    /// Right knob shadow color.
-    @IBInspectable var rightShadowColor: UIColor = UIColor.clear {
-        
-        didSet {
-            
-            self.rightKnob.layer.shadowColor = self.rightShadowColor.cgColor
-        }
-    }
-    /// Right knob shadow offset.
-    @IBInspectable var rightShadowOffset: CGSize = CGSize() {
-        
-        didSet {
-            
-            self.rightKnob.layer.shadowOffset = self.rightShadowOffset
-        }
-    }
-    /// Right knob shadow radius.
-    @IBInspectable var rightShadowRadius: CGFloat = 0 {
-        
-        didSet {
-            
-            self.rightKnob.layer.shadowRadius = self.rightShadowRadius
-        }
-    }
     /// Left knob width.
     @IBInspectable var leftKnobWidth: CGFloat = 30.0 {
         
@@ -187,6 +114,79 @@ import UIKit
             self.leftKnob.layer.shadowRadius = self.leftShadowRadius
         }
     }
+    /// Right knob width.
+    @IBInspectable var rightKnobWidth: CGFloat = 30.0 {
+        
+        didSet {
+            
+            self.rightKnobsWidthConstraint.constant = self.rightKnobWidth
+        }
+    }
+    /// Right knob height.
+    @IBInspectable var rightKnobHeight: CGFloat = 30.0 {
+        
+        didSet {
+            
+            self.rightKnobsHeightConstraint.constant = self.rightKnobHeight
+        }
+    }
+    /// Right knob corners.
+    @IBInspectable var rightKnobCornes: CGFloat = 15.0 {
+        
+        didSet {
+            
+            self.rightKnob.layer.cornerRadius = self.rightKnobCornes
+            self.rightKnob.layer.masksToBounds = self.rightKnobCornes > 0.0
+        }
+    }
+    /// Right knob image.
+    @IBInspectable var rightKnobImage: UIImage? {
+        
+        didSet {
+            
+            self.setup(image: self.rightKnobImage, forKnob: self.rightKnob)
+        }
+    }
+    /// Right knob color.
+    @IBInspectable var rightKnobColor: UIColor = UIColor.gray {
+        
+        didSet {
+            
+            self.rightKnob.backgroundColor = self.rightKnobColor
+        }
+    }
+    /// Right knob shadow opacity.
+    @IBInspectable var rightShadowOpacity: Float = 0.0 {
+        
+        didSet {
+            
+            self.rightKnob.layer.shadowOpacity = self.rightShadowOpacity
+        }
+    }
+    /// Right knob shadow color.
+    @IBInspectable var rightShadowColor: UIColor = UIColor.clear {
+        
+        didSet {
+            
+            self.rightKnob.layer.shadowColor = self.rightShadowColor.cgColor
+        }
+    }
+    /// Right knob shadow offset.
+    @IBInspectable var rightShadowOffset: CGSize = CGSize() {
+        
+        didSet {
+            
+            self.rightKnob.layer.shadowOffset = self.rightShadowOffset
+        }
+    }
+    /// Right knob shadow radius.
+    @IBInspectable var rightShadowRadius: CGFloat = 0 {
+        
+        didSet {
+            
+            self.rightKnob.layer.shadowRadius = self.rightShadowRadius
+        }
+    }    
     /// Bar height.
     @IBInspectable var barHeight: CGFloat = 20.0 {
         
@@ -420,7 +420,7 @@ import UIKit
                                constant: 1.0),
             self.leftKnobsWidthConstraint,
             self.leftKnobsHeightConstraint
-            ])
+        ])
         
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(moveLeftKnob))
         self.leftKnob.addGestureRecognizer(gesture)
