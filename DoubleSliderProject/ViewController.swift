@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, RangeUISliderDelegate {
     
-    @IBOutlet weak var rangeUISlider: DoubleUISlider!
+    @IBOutlet weak var rangeUISlider: RangeUISlider!
     
     override func viewDidLoad() {
         

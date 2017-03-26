@@ -1,6 +1,5 @@
 //
-//  DoubleUISlider.swift
-//  DoubleSliderProject
+//  RangeUISlider.swift
 //
 //  Created by Fabrizio Duroni on 15/03/2017.
 //  2017 Fabrizio Duroni.
@@ -15,7 +14,7 @@ import UIKit
 }
 
 @IBDesignable
-@objc public class DoubleUISlider: UIView {
+@objc public class RangeUISlider: UIView {
     
     // MARK: Inspectable property.
     
@@ -183,6 +182,14 @@ import UIKit
         
         super.init(frame: frame)
         self.setup()
+    }
+    
+    public override func prepareForInterfaceBuilder() {
+        
+        //Fake values for interface builder.
+        //Used to make visible the progress views.
+        self.leftKnobXPositionConstraint.constant = 40
+        self.rightKnobXPositionConstraint.constant = -40
     }
     
     private func setup() {
