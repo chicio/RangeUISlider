@@ -90,10 +90,13 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="identifier">
                                         <integer key="value" value="1001"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobCornes">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPQ-Vh-eUa" customClass="RangeUISlider" customModule="DoubleSliderProject" customModuleProvider="target">
-                                <rect key="frame" x="20" y="308" width="335" height="50"/>
+                                <rect key="frame" x="20" y="308.5" width="335" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="NpT-2b-hwo"/>

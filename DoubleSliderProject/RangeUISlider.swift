@@ -383,7 +383,6 @@ import UIKit
     private func setupLeftKnob() {
         
         self.leftKnob.translatesAutoresizingMaskIntoConstraints = false
-        self.leftKnob.layer.cornerRadius = 15.0
         self.bar.addSubview(self.leftKnob)
         
         self.leftKnobXPositionConstraint = NSLayoutConstraint(item: self.leftKnob,
@@ -430,8 +429,6 @@ import UIKit
     private func setupRightKnob() {
         
         self.rightKnob.translatesAutoresizingMaskIntoConstraints = false
-        self.rightKnob.layer.cornerRadius = self.rightKnobCornes
-        self.rightKnob.layer.masksToBounds = self.rightKnobCornes > 0.0
         self.bar.addSubview(self.rightKnob)
         
         self.rightKnobXPositionConstraint = NSLayoutConstraint(item: self.rightKnob,
