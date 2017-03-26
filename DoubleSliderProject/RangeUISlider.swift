@@ -62,8 +62,8 @@ import UIKit
         
         didSet {
             
-            self.leftKnob.layer.cornerRadius = self.leftKnobCornes
-            self.leftKnob.layer.masksToBounds = self.leftKnobCornes > 0.0
+            self.leftBackgroundView.layer.cornerRadius = self.leftKnobCornes
+            self.leftBackgroundView.layer.masksToBounds = self.leftKnobCornes > 0.0
         }
     }
     /// Left knob image.
@@ -71,7 +71,7 @@ import UIKit
         
         didSet {
             
-            self.setup(image: self.leftKnobImage, forKnob: self.leftKnob)
+            self.setup(image: self.leftKnobImage, forKnob: self.leftBackgroundView)
         }
     }
     /// Left knob color.
@@ -79,7 +79,7 @@ import UIKit
         
         didSet {
             
-            self.leftKnob.backgroundColor = self.leftKnobColor
+            self.leftBackgroundView.backgroundColor = self.leftKnobColor
         }
     }
     /// Left knob shadow opacity.
@@ -135,8 +135,8 @@ import UIKit
         
         didSet {
             
-            self.rightKnob.layer.cornerRadius = self.rightKnobCornes
-            self.rightKnob.layer.masksToBounds = self.rightKnobCornes > 0.0
+            self.rightBackgroundView.layer.cornerRadius = self.rightKnobCornes
+            self.rightBackgroundView.layer.masksToBounds = self.rightKnobCornes > 0.0
         }
     }
     /// Right knob image.
@@ -144,7 +144,7 @@ import UIKit
         
         didSet {
             
-            self.setup(image: self.rightKnobImage, forKnob: self.rightKnob)
+            self.setup(image: self.rightKnobImage, forKnob: self.rightBackgroundView)
         }
     }
     /// Right knob color.
@@ -152,7 +152,7 @@ import UIKit
         
         didSet {
             
-            self.rightKnob.backgroundColor = self.rightKnobColor
+            self.rightBackgroundView.backgroundColor = self.rightKnobColor
         }
     }
     /// Right knob shadow opacity.
@@ -186,7 +186,7 @@ import UIKit
             
             self.rightKnob.layer.shadowRadius = self.rightShadowRadius
         }
-    }    
+    }
     /// Bar height.
     @IBInspectable var barHeight: CGFloat = 20.0 {
         
@@ -268,8 +268,12 @@ import UIKit
     private let bar: UIView = UIView()
     /// Left knob.
     private let leftKnob: UIView = UIView()
+    /// Left knob background view.
+    private let leftBackgroundView: UIView = UIView()
     /// Right knob.
     private let rightKnob: UIView = UIView()
+    /// Right knob background view.
+    private let rightBackgroundView: UIView = UIView()
     /// UIView used as marker for selected range progress.
     private let selectedProgressView: UIView = UIView()
     /// UIVIew used as progress bar for left knob.
@@ -385,6 +389,41 @@ import UIKit
         self.leftKnob.translatesAutoresizingMaskIntoConstraints = false
         self.bar.addSubview(self.leftKnob)
         
+        self.leftBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        self.leftKnob.addSubview(self.leftBackgroundView)
+        
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint(item: self.leftBackgroundView,
+                               attribute: .leading,
+                               relatedBy: .equal,
+                               toItem: self.leftKnob,
+                               attribute: .leading,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.leftBackgroundView,
+                               attribute: .trailing,
+                               relatedBy: .equal,
+                               toItem: self.leftKnob,
+                               attribute: .trailing,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.leftBackgroundView,
+                               attribute: .top,
+                               relatedBy: .equal,
+                               toItem: self.leftKnob,
+                               attribute: .top,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.leftBackgroundView,
+                               attribute: .bottom,
+                               relatedBy: .equal,
+                               toItem: self.leftKnob,
+                               attribute: .bottom,
+                               multiplier: 1.0,
+                               constant: 0.0)
+        ])
+        
+        
         self.leftKnobXPositionConstraint = NSLayoutConstraint(item: self.leftKnob,
                                                               attribute: .centerX,
                                                               relatedBy: .equal,
@@ -430,6 +469,40 @@ import UIKit
         
         self.rightKnob.translatesAutoresizingMaskIntoConstraints = false
         self.bar.addSubview(self.rightKnob)
+        
+        self.rightBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        self.rightKnob.addSubview(self.rightBackgroundView)
+        
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint(item: self.rightBackgroundView,
+                               attribute: .leading,
+                               relatedBy: .equal,
+                               toItem: self.rightKnob,
+                               attribute: .leading,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.rightBackgroundView,
+                               attribute: .trailing,
+                               relatedBy: .equal,
+                               toItem: self.rightKnob,
+                               attribute: .trailing,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.rightBackgroundView,
+                               attribute: .top,
+                               relatedBy: .equal,
+                               toItem: self.rightKnob,
+                               attribute: .top,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.rightBackgroundView,
+                               attribute: .bottom,
+                               relatedBy: .equal,
+                               toItem: self.rightKnob,
+                               attribute: .bottom,
+                               multiplier: 1.0,
+                               constant: 0.0)
+        ])
         
         self.rightKnobXPositionConstraint = NSLayoutConstraint(item: self.rightKnob,
                                                                attribute: .centerX,
