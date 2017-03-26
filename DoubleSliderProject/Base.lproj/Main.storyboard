@@ -130,15 +130,46 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMX-j7-KAB" customClass="RangeUISlider" customModule="DoubleSliderProject" customModuleProvider="target">
+                                <rect key="frame" x="20" y="470.5" width="335" height="60"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Ogc-vF-Jv3"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightKnobColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftKnobColor">
+                                        <color key="value" red="0.28101084180000002" green="0.21829825680000001" blue="0.74614689629999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barHeight">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barCornes">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeSelectedColor">
+                                        <color key="value" red="1" green="1" blue="0.035501700679999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeNotSelectedColor">
+                                        <color key="value" red="0.47450980539999998" green="0.8392156959" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="bMX-j7-KAB" secondAttribute="trailing" constant="4" id="Cvv-YD-FTs"/>
                             <constraint firstItem="jPQ-Vh-eUa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Jcn-HX-PNO"/>
                             <constraint firstItem="u4Y-av-gwa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.5" id="Lkx-XR-xZC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jPQ-Vh-eUa" secondAttribute="trailing" constant="4" id="VTt-tC-2dn"/>
                             <constraint firstItem="jPQ-Vh-eUa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="VrP-y2-uvU"/>
+                            <constraint firstItem="bMX-j7-KAB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aWi-rU-WA5"/>
+                            <constraint firstItem="bMX-j7-KAB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.5" id="eXi-Ni-JqI"/>
                             <constraint firstAttribute="trailing" secondItem="u4Y-av-gwa" secondAttribute="trailing" constant="20" id="l5O-Fe-axO"/>
                             <constraint firstItem="u4Y-av-gwa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="uYq-9N-Ttu"/>
+                            <constraint firstItem="bMX-j7-KAB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="wjD-T7-8sI"/>
                         </constraints>
                     </view>
                     <connections>

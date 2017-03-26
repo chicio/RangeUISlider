@@ -24,6 +24,23 @@ import UIKit
     @IBInspectable var scaleMinValue: CGFloat = 0.0
     /// Scale max value.
     @IBInspectable var scaleMaxValue: CGFloat = 1.0
+    ///Selected range background color.
+    @IBInspectable var rangeSelectedColor: UIColor = UIColor.blue {
+        
+        didSet {
+            
+            self.selectedProgressView.backgroundColor = self.rangeSelectedColor
+        }
+    }
+    ///Not selected range background color.
+    @IBInspectable var rangeNotSelectedColor: UIColor = UIColor.lightGray {
+        
+        didSet {
+            
+            self.leftProgressView.backgroundColor = self.rangeNotSelectedColor
+            self.rightProgressView.backgroundColor = self.rangeNotSelectedColor
+        }
+    }
     /// Right knob width.
     @IBInspectable var rightKnobWidth: CGFloat = 30.0 {
         
@@ -505,7 +522,7 @@ import UIKit
     func setupSelectedProgressView() {
         
         self.selectedProgressView.translatesAutoresizingMaskIntoConstraints = false
-        self.selectedProgressView.backgroundColor = #colorLiteral(red: 0.9956896552, green: 0, blue: 0, alpha: 1)
+        self.selectedProgressView.backgroundColor = self.rangeSelectedColor
         self.bar.addSubview(self.selectedProgressView)
         self.bar.sendSubview(toBack: self.selectedProgressView)
         
@@ -544,7 +561,7 @@ import UIKit
     private func setupLeftProgressView() {
         
         self.leftProgressView.translatesAutoresizingMaskIntoConstraints = false
-        self.leftProgressView.backgroundColor = #colorLiteral(red: 0.9994254708, green: 0.9855895638, blue: 0, alpha: 1)
+        self.leftProgressView.backgroundColor = self.rangeNotSelectedColor
         self.bar.insertSubview(self.leftProgressView, belowSubview: self.leftKnob)
         
         NSLayoutConstraint.activate([
@@ -582,7 +599,7 @@ import UIKit
     private func setupRightProgressView() {
         
         self.rightProgressView.translatesAutoresizingMaskIntoConstraints = false
-        self.rightProgressView.backgroundColor = #colorLiteral(red: 0.9994254708, green: 0.9855895638, blue: 0, alpha: 1)
+        self.rightProgressView.backgroundColor = self.rangeNotSelectedColor
         self.bar.insertSubview(self.rightProgressView, belowSubview: self.rightKnob)
         
         NSLayoutConstraint.activate([
