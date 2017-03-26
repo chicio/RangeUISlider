@@ -48,6 +48,22 @@ import UIKit
             self.rightKnob.layer.masksToBounds = self.rightKnobCornes > 0.0
         }
     }
+    /// Right knob image.
+    @IBInspectable var rightKnobImage: UIImage? {
+        
+        didSet {
+            
+            self.setup(image: self.rightKnobImage, forKnob: self.rightKnob)
+        }
+    }
+    /// Right knob color.
+    @IBInspectable var rightKnobColor: UIColor = UIColor.gray {
+        
+        didSet {
+            
+            self.rightKnob.backgroundColor = self.rightKnobColor
+        }
+    }
     /// Left knob width.
     @IBInspectable var leftKnobWidth: CGFloat = 30.0 {
         
@@ -71,6 +87,22 @@ import UIKit
             
             self.leftKnob.layer.cornerRadius = self.leftKnobCornes
             self.leftKnob.layer.masksToBounds = self.leftKnobCornes > 0.0
+        }
+    }
+    /// Left knob image.
+    @IBInspectable var leftKnobImage: UIImage? {
+        
+        didSet {
+            
+            self.setup(image: self.leftKnobImage, forKnob: self.leftKnob)
+        }
+    }
+    /// Left knob color.
+    @IBInspectable var leftKnobColor: UIColor = UIColor.gray {
+        
+        didSet {
+            
+            self.leftKnob.backgroundColor = self.leftKnobColor
         }
     }
     /// Bar height.
@@ -213,10 +245,11 @@ import UIKit
         self.bar.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
     }
     
+    // MARK: Knobs.
+    
     private func setupLeftKnob() {
         
         self.leftKnob.translatesAutoresizingMaskIntoConstraints = false
-        self.leftKnob.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         self.leftKnob.layer.cornerRadius = 15.0
         self.bar.addSubview(self.leftKnob)
         
@@ -264,7 +297,6 @@ import UIKit
     private func setupRightKnob() {
         
         self.rightKnob.translatesAutoresizingMaskIntoConstraints = false
-        self.rightKnob.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         self.rightKnob.layer.cornerRadius = self.rightKnobCornes
         self.rightKnob.layer.masksToBounds = self.rightKnobCornes > 0.0
         self.bar.addSubview(self.rightKnob)
@@ -304,11 +336,55 @@ import UIKit
                                constant: 1.0),
             self.rightKnobsWidthConstraint,
             self.rightKnobsHeightConstraint
-            ])
+        ])
         
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(moveRightKnob))
         self.rightKnob.addGestureRecognizer(gesture)
     }
+    
+    func setup(image anImage: UIImage?, forKnob knob: UIView) {
+        
+        if let image = anImage {
+            
+            let knobImageView = UIImageView(image: image)
+            knobImageView.translatesAutoresizingMaskIntoConstraints = false
+            knobImageView.contentMode = .scaleToFill
+            knob.addSubview(knobImageView)
+            
+            NSLayoutConstraint.activate([
+                NSLayoutConstraint(item: knobImageView,
+                                   attribute: .centerX,
+                                   relatedBy: .equal,
+                                   toItem: knob,
+                                   attribute: .centerX,
+                                   multiplier: 1.0,
+                                   constant: 0.0),
+                NSLayoutConstraint(item: knobImageView,
+                                   attribute: .centerY,
+                                   relatedBy: .equal,
+                                   toItem: knob,
+                                   attribute: .centerY,
+                                   multiplier: 1.0,
+                                   constant: 0.0),
+                NSLayoutConstraint(item: knobImageView,
+                                   attribute: .width,
+                                   relatedBy: .equal,
+                                   toItem: knob,
+                                   attribute: .width,
+                                   multiplier: 1.0,
+                                   constant: 0.0),
+                NSLayoutConstraint(item: knobImageView,
+                                   attribute: .height,
+                                   relatedBy: .equal,
+                                   toItem: knob,
+                                   attribute: .height,
+                                   multiplier: 1.0,
+                                   constant: 0.0)
+            ])
+        }
+    }
+    
+    // MARK: Progress views.
     
     private func setupLeftProgressView() {
         
@@ -386,13 +462,16 @@ import UIKit
             ])
     }
     
+    // MARK: Gesture recognizer methods (knobs movements).
+    
     public final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
         
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
             
             let positionForKnob = gestureRecognizer.location(in: self.bar).x
+            let positionRightKnob = self.bar.frame.width + self.rightKnobXPositionConstraint.constant
             
-            if positionForKnob >= 0 && positionForKnob <= (self.bar.frame.width + self.rightKnobXPositionConstraint.constant) {
+            if positionForKnob >= 0 && positionForKnob <= positionRightKnob {
                 
                 self.leftKnobXPositionConstraint.constant = positionForKnob
             }
@@ -417,11 +496,20 @@ import UIKit
         }
     }
     
+    // MARK: Range selected calculation.
+    
     private func calculateChangeRange() {
         
         let minValue = self.leftKnobXPositionConstraint.constant / self.bar.frame.width
         let maxValue = 1.0  + self.rightKnobXPositionConstraint.constant / self.bar.frame.width
+        let scaledMinValue = self.linearMapping(value: minValue)
+        let scaledMaxValue = self.linearMapping(value: maxValue)
         
-        self.delegate?.rangeChanged(minValue: minValue, maxValue: maxValue)
+        self.delegate?.rangeChanged(minValue: scaledMinValue, maxValue: scaledMaxValue)
+    }
+    
+    private func linearMapping(value: CGFloat) -> CGFloat {
+        
+        return value * (self.scaleMaxValue - self.scaleMinValue) + self.scaleMinValue
     }
 }
