@@ -440,6 +440,25 @@ import UIKit
                                   constant: 1.0)
     }
     
+    func prepareDimensionConstraints(forKnob knob: UIView, width: CGFloat, height: CGFloat) -> (width: NSLayoutConstraint, height: NSLayoutConstraint) {
+        
+        return (width: NSLayoutConstraint(item: knob,
+                                          attribute: .width,
+                                          relatedBy: .equal,
+                                          toItem: nil,
+                                          attribute: .notAnAttribute,
+                                          multiplier: 1.0,
+                                          constant: width),
+                height: NSLayoutConstraint(item: knob,
+                                           attribute: .height,
+                                           relatedBy: .equal,
+                                           toItem: nil,
+                                           attribute: .notAnAttribute,
+                                           multiplier: 1.0,
+                                           constant: height))
+        
+    }
+    
     private func setupLeftKnob() -> [NSLayoutConstraint] {
         
         let knobBackgroundConstraints: [NSLayoutConstraint] = self.prepare(knob: self.leftKnob,
@@ -453,23 +472,13 @@ import UIKit
                                                               multiplier: 1.0,
                                                               constant: 0.0)
         
-        self.leftKnobsWidthConstraint = NSLayoutConstraint(item: self.leftKnob,
-                                                           attribute: .width,
-                                                           relatedBy: .equal,
-                                                           toItem: nil,
-                                                           attribute: .notAnAttribute,
-                                                           multiplier: 1.0,
-                                                           constant: 30)
+        let knobDimensionConstraints = self.prepareDimensionConstraints(forKnob: self.leftKnob,
+                                                                        width: self.leftKnobWidth,
+                                                                        height: self.leftKnobHeight)
+        self.leftKnobsWidthConstraint = knobDimensionConstraints.width
+        self.leftKnobsHeightConstraint = knobDimensionConstraints.height
         
-        self.leftKnobsHeightConstraint = NSLayoutConstraint(item: self.leftKnob,
-                                                            attribute: .height,
-                                                            relatedBy: .equal,
-                                                            toItem: nil,
-                                                            attribute: .notAnAttribute,
-                                                            multiplier: 1.0,
-                                                            constant: 30)
-        
-        let knobPositionConstraints: [NSLayoutConstraint] = [
+        let knobConstraints: [NSLayoutConstraint] = [
             self.leftKnobXPositionConstraint,
             self.center(knob: self.leftKnob),
             self.leftKnobsWidthConstraint,
@@ -479,7 +488,7 @@ import UIKit
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(moveLeftKnob))
         self.leftKnob.addGestureRecognizer(gesture)
         
-        return knobPositionConstraints + knobBackgroundConstraints
+        return knobConstraints + knobBackgroundConstraints
     }
     
     private func setupRightKnob() -> [NSLayoutConstraint] {
@@ -495,24 +504,13 @@ import UIKit
                                                                multiplier: 1.0,
                                                                constant: 0.0)
         
-        self.rightKnobsWidthConstraint = NSLayoutConstraint(item: self.rightKnob,
-                                                            attribute: .width,
-                                                            relatedBy: .equal,
-                                                            toItem: nil,
-                                                            attribute: .notAnAttribute,
-                                                            multiplier: 1.0,
-                                                            constant: self.rightKnobWidth)
+        let knobDimensionConstraints = self.prepareDimensionConstraints(forKnob: self.rightKnob,
+                                                                        width: self.rightKnobWidth,
+                                                                        height: self.rightKnobHeight)
+        self.rightKnobsWidthConstraint = knobDimensionConstraints.width
+        self.rightKnobsHeightConstraint = knobDimensionConstraints.height
         
-        self.rightKnobsHeightConstraint = NSLayoutConstraint(item: self.rightKnob,
-                                                             attribute: .height,
-                                                             relatedBy: .equal,
-                                                             toItem: nil,
-                                                             attribute: .notAnAttribute,
-                                                             multiplier: 1.0,
-                                                             constant: 30)
-        
-        
-        let knobPositionConstraints: [NSLayoutConstraint] = [
+        let knobConstraints: [NSLayoutConstraint] = [
             self.rightKnobXPositionConstraint,
             self.center(knob: self.rightKnob),
             self.rightKnobsWidthConstraint,
@@ -522,7 +520,7 @@ import UIKit
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(moveRightKnob))
         self.rightKnob.addGestureRecognizer(gesture)
         
-        return knobPositionConstraints + knobBackgroundConstraints
+        return knobConstraints + knobBackgroundConstraints
     }
     
     func setup(image anImage: UIImage?, forKnob knob: UIView) {
