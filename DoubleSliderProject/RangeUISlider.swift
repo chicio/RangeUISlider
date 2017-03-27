@@ -8,23 +8,36 @@
 import Foundation
 import UIKit
 
+/**
+ Protocol used delegate the read of the RangeUISlider data.
+ Multiple RangeUISlider could be delegated the same classes and
+ identified by the instance returned in the protocol methods.
+ */
 @objc public protocol RangeUISliderDelegate {
     
-    func rangeChanged(minValue: CGFloat, maxValue: CGFloat, sliderIdentifier: Int)
+    /**
+     Calls the delegate when the user change the range by moving the knobs.
+     
+     - parameter minValueSelected: the minimum value selected.
+     - parameter maxValueSelected: the maximum value selected.
+     - parameter slider: the slider on which the range has been modified.
+     */
+    func rangeChanged(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
 }
 
+/// A custom slider with double knob that allow the user to select a range.
 @IBDesignable
 @objc public class RangeUISlider: UIView {
     
     // MARK: Inspectable property.
     
-    /// Identifier used to check which slider we are getting values from.
+    /// Slider identifier.
     @IBInspectable var identifier: Int = 0
-    /// Scale min value.
+    /// Scale minimum value.
     @IBInspectable var scaleMinValue: CGFloat = 0.0
-    /// Scale max value.
+    /// Scale maximum value.
     @IBInspectable var scaleMaxValue: CGFloat = 1.0
-    /// Selected range background color.
+    /// Selected range color.
     @IBInspectable var rangeSelectedColor: UIColor = UIColor.blue {
         
         didSet {
@@ -32,7 +45,7 @@ import UIKit
             self.selectedProgressView.backgroundColor = self.rangeSelectedColor
         }
     }
-    /// Not selected range background color.
+    /// Not selected range color.
     @IBInspectable var rangeNotSelectedColor: UIColor = UIColor.lightGray {
         
         didSet {
@@ -280,26 +293,35 @@ import UIKit
     /// Slider delegate.
     public var delegate: RangeUISliderDelegate?
     
+    /**
+     Standard init using coder.
+     
+     - parameter aDecoder: the decoder used to init the sliders.
+     */
     required public init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
         self.setup()
     }
     
+    /**
+     Standard init using a CGRect.
+     
+     - parameter frame: the frame used to init the slider.
+     */
     override public init(frame: CGRect) {
         
         super.init(frame: frame)
         self.setup()
     }
     
-    public override func prepareForInterfaceBuilder() {
-        
-        //Fake values for interface builder.
-        //Used to make visible the progress views.
-        self.leftKnob.xPositionConstraint.constant = 40
-        self.rightKnob.xPositionConstraint.constant = -40
-    }
-    
+    /**
+     Method used to setup all the range slider components.
+     All its subviews and the related constraints are added in this method.
+     All the compoents returns arrays of constrains that are activated in a
+     single call to NSLayoutConstraint.activate(constraints) (to improve 
+     preformance).
+     */
     private func setup() {
         
         self.addSubview(self.bar)
@@ -344,6 +366,11 @@ import UIKit
     
     // MARK: Gesture recognizer methods (knobs movements).
     
+    /**
+     Method used to respond to the gesture recognizer attached on the left knob.
+     
+     - parameter gestureRecognizer: the gesture recognizer that uses this method as selector.
+     */
     public final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
         
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
@@ -360,6 +387,11 @@ import UIKit
         }
     }
     
+    /**
+     Method used to respond to the gesture recognizer attached on the right knob.
+     
+     - parameter gestureRecognizer: the gesture recognizer that uses this method as selector.
+     */
     public final func moveRightKnob(gestureRecognizer: UIPanGestureRecognizer) {
         
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
@@ -378,6 +410,10 @@ import UIKit
     
     // MARK: Range selected calculation.
     
+    /**
+     Method used to calculate the range selected.
+     The selection is adapted to the custom scale eventually setted.
+     */
     private func calculateChangeRange() {
         
         let minValue = self.leftKnob.xPositionConstraint.constant / self.bar.frame.width
@@ -385,11 +421,20 @@ import UIKit
         let scaledMinValue = self.linearMapping(value: minValue)
         let scaledMaxValue = self.linearMapping(value: maxValue)
         
-        self.delegate?.rangeChanged(minValue: scaledMinValue,
-                                    maxValue: scaledMaxValue,
-                                    sliderIdentifier: self.identifier)
+        self.delegate?.rangeChanged(minValueSelected: scaledMinValue,
+                                    maxValueSelected: scaledMaxValue,
+                                    slider: self)
     }
     
+    /**
+     Execute a linear mapping of the values.
+     A simple equation of a straight line, no need for more complex interpolation here
+     (good old times, when I was studying interpolation in Perlin noise..I miss you... :D).
+     
+     - parameter value: value to be mapped.
+     
+     - returns: the mapped value.
+     */
     private func linearMapping(value: CGFloat) -> CGFloat {
         
         return value * (self.scaleMaxValue - self.scaleMinValue) + self.scaleMinValue
@@ -408,6 +453,16 @@ class Bar: UIView {
     /// Bar height constraint.
     private(set) var heightConstraint: NSLayoutConstraint = NSLayoutConstraint()
     
+    /**
+     Method used to setup a bar.
+     This methods returns all the constraints to be activated.
+     
+     - parameter leading: the leading constant value to be used when creating the leading constraint.
+     - parameter trailing: the trailing constant value to be used when creating the trailing constraint.
+     - parameter height: the height constant vallue to be used when creating the height constraint.
+     
+     - returns: an arrays of constraints to be activated.
+     */
     fileprivate func setup(leading: CGFloat, trailing: CGFloat, height: CGFloat) -> [NSLayoutConstraint] {
         
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -462,6 +517,7 @@ class Bar: UIView {
 
 // MARK: Knob
 
+/// Enum used to identify the knob position.
 fileprivate enum KnobPosition {
     case left
     case right
@@ -483,6 +539,17 @@ fileprivate class Knob: UIView {
     /// Gesture recognizer target.
     private(set) var gestureRecognizerTarget: Any?
     
+    /**
+     Method used to setup a knob.
+     
+     - parameter position: the knob position.
+     - parameter width: the knob width.
+     - parameter height: the knob height.
+     - parameter target: the knob gesture target.
+     - parameter selector: the knob gesture selector.
+     
+     - returns: an arrays of knob constraints to be activated.
+     */
     fileprivate func setup(position: KnobPosition,
                            width: CGFloat,
                            height: CGFloat,
@@ -506,6 +573,11 @@ fileprivate class Knob: UIView {
         return knobConstraints + knobBackgroundConstraints
     }
     
+    /**
+     Method used to setup a knob background.
+     
+     - returns: an arrays of knob background constraints to be activated.
+     */
     private func setupBackground() -> [NSLayoutConstraint] {
         
         self.backgroundView.translatesAutoresizingMaskIntoConstraints = false
@@ -682,36 +754,3 @@ class ProgressView: UIView {
         return progressViewConstraints
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
