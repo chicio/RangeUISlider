@@ -24,7 +24,7 @@ import UIKit
     @IBInspectable var scaleMinValue: CGFloat = 0.0
     /// Scale max value.
     @IBInspectable var scaleMaxValue: CGFloat = 1.0
-    ///Selected range background color.
+    /// Selected range background color.
     @IBInspectable var rangeSelectedColor: UIColor = UIColor.blue {
         
         didSet {
@@ -32,7 +32,7 @@ import UIKit
             self.selectedProgressView.backgroundColor = self.rangeSelectedColor
         }
     }
-    ///Not selected range background color.
+    /// Not selected range background color.
     @IBInspectable var rangeNotSelectedColor: UIColor = UIColor.lightGray {
         
         didSet {
@@ -61,7 +61,7 @@ import UIKit
     @IBInspectable var leftKnobCornes: CGFloat = 15.0 {
         
         didSet {
-            
+
             self.leftKnob.backgroundView.layer.cornerRadius = self.leftKnobCornes
             self.leftKnob.backgroundView.layer.masksToBounds = self.leftKnobCornes > 0.0
         }
@@ -78,8 +78,8 @@ import UIKit
     @IBInspectable var leftKnobColor: UIColor = UIColor.gray {
         
         didSet {
-
-            self.leftKnob.backgroundColor = self.leftKnobColor
+            
+            self.leftKnob.backgroundView.backgroundColor = self.leftKnobColor
         }
     }
     /// Left knob shadow opacity.
@@ -103,6 +103,7 @@ import UIKit
         
         didSet {
             
+
             self.leftKnob.layer.shadowOffset = self.leftShadowOffset
         }
     }
@@ -192,7 +193,7 @@ import UIKit
         
         didSet {
             
-            self.barHeightConstraint.constant = self.barHeight
+            self.bar.heightConstraint.constant = self.barHeight
         }
     }
     /// Bar leading offset.
@@ -200,7 +201,7 @@ import UIKit
         
         didSet {
             
-            self.barLeadingConstraint.constant = self.barLeading
+            self.bar.leadingConstraint.constant = self.barLeading
         }
     }
     /// Bar trailing offset.
@@ -208,7 +209,7 @@ import UIKit
         
         didSet {
             
-            self.barTrailingConstraint.constant = -self.barTrailing
+            self.bar.trailingConstraint.constant = -self.barTrailing
         }
     }
     /// Bar corners.
@@ -265,25 +266,19 @@ import UIKit
     // MARK: Instance property.
     
     /// SliderBar component.
-    private let bar: UIView = UIView()
+    private let bar: Bar = Bar()
     /// Left knob.
     private let leftKnob: Knob = Knob()
     /// Right knob.
     private let rightKnob: Knob = Knob()
     /// UIView used as marker for selected range progress.
-    private let selectedProgressView: UIView = UIView()
+    private let selectedProgressView: ProgressView = ProgressView()
     /// UIVIew used as progress bar for left knob.
-    private let leftProgressView: UIView = UIView()
+    private let leftProgressView: ProgressView = ProgressView()
     /// UIVIew used as progress bar for right knob.
-    private let rightProgressView: UIView = UIView()
+    private let rightProgressView: ProgressView = ProgressView()
     /// Slider delegate.
     public var delegate: RangeUISliderDelegate?
-    /// Bar leading offset constraint.
-    private var barLeadingConstraint: NSLayoutConstraint = NSLayoutConstraint()
-    /// Bar trailing offset constraint.
-    private var barTrailingConstraint: NSLayoutConstraint = NSLayoutConstraint()
-    /// Bar height constraint.
-    private var barHeightConstraint: NSLayoutConstraint = NSLayoutConstraint()
     
     required public init?(coder aDecoder: NSCoder) {
         
@@ -307,11 +302,17 @@ import UIKit
     
     private func setup() {
         
+        self.addSubview(self.bar)
+        self.bar.addSubview(self.selectedProgressView)
+        self.bar.addSubview(self.leftProgressView)
+        self.bar.addSubview(self.rightProgressView)
         self.bar.addSubview(self.leftKnob)
         self.bar.addSubview(self.rightKnob)
         
         var constraints: [NSLayoutConstraint] = []
-        constraints.append(contentsOf: self.setUpBar())
+        constraints.append(contentsOf: self.bar.setup(leading: self.barLeading,
+                                                      trailing: self.barTrailing,
+                                                      height: self.barHeight))
         constraints.append(contentsOf: self.leftKnob.setup(position: .left,
                                                            width: self.leftKnobWidth,
                                                            height: self.leftKnobHeight,
@@ -322,179 +323,23 @@ import UIKit
                                                             height: self.rightKnobHeight,
                                                             target: self,
                                                             selector: #selector(moveRightKnob)))
-        self.setupSelectedProgressView()
-        self.setupLeftProgressView()
-        self.setupRightProgressView()
+        constraints.append(contentsOf: self.selectedProgressView.setup(leftAnchorView: self.leftKnob,
+                                                                       leftAnchorConstraintAttribute: .centerX,
+                                                                       rightAnchorView: self.rightKnob,
+                                                                       rightAnchorConstraintAttribute:  .centerX,
+                                                                       color: self.rangeSelectedColor))
+        constraints.append(contentsOf: self.leftProgressView.setup(leftAnchorView: self.bar,
+                                                                   leftAnchorConstraintAttribute: .leading,
+                                                                   rightAnchorView: self.leftKnob,
+                                                                   rightAnchorConstraintAttribute: .centerX,
+                                                                   color: self.rangeNotSelectedColor))
+        constraints.append(contentsOf: self.rightProgressView.setup(leftAnchorView: self.rightKnob,
+                                                                    leftAnchorConstraintAttribute: .centerX,
+                                                                    rightAnchorView: self.bar,
+                                                                    rightAnchorConstraintAttribute: .trailing,
+                                                                    color: self.rangeNotSelectedColor))
         
         NSLayoutConstraint.activate(constraints)
-    }
-    
-    private func setUpBar() -> [NSLayoutConstraint] {
-        
-        self.bar.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.bar)
-        
-        self.barLeadingConstraint = NSLayoutConstraint(item: self.bar,
-                                                       attribute: .leading,
-                                                       relatedBy: .equal,
-                                                       toItem: self,
-                                                       attribute: .leading,
-                                                       multiplier: 1.0,
-                                                       constant: self.barLeading)
-        
-        self.barTrailingConstraint = NSLayoutConstraint(item: self.bar,
-                                                        attribute: .trailing,
-                                                        relatedBy: .equal,
-                                                        toItem: self,
-                                                        attribute: .trailing,
-                                                        multiplier: 1.0,
-                                                        constant: -1.0 * self.barTrailing)
-        
-        self.barHeightConstraint = NSLayoutConstraint(item: self.bar,
-                                                      attribute: .height,
-                                                      relatedBy: .equal,
-                                                      toItem: nil,
-                                                      attribute: .notAnAttribute,
-                                                      multiplier: 1.0,
-                                                      constant: self.barHeight)
-        let barConstraints: [NSLayoutConstraint] = [
-            self.barLeadingConstraint,
-            self.barTrailingConstraint,
-            self.barHeightConstraint,
-            NSLayoutConstraint(item: self.bar,
-                               attribute: .centerX,
-                               relatedBy: .equal,
-                               toItem: self,
-                               attribute: .centerX,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: self.bar,
-                               attribute: .centerY,
-                               relatedBy: .equal,
-                               toItem: self,
-                               attribute: .centerY,
-                               multiplier: 1.0,
-                               constant: 0.0)
-        ]
-        
-        return barConstraints
-    }
-    
-    // MARK: Progress views.
-    
-    func setupSelectedProgressView() {
-        
-        self.selectedProgressView.translatesAutoresizingMaskIntoConstraints = false
-        self.selectedProgressView.backgroundColor = self.rangeSelectedColor
-        self.bar.addSubview(self.selectedProgressView)
-        self.bar.sendSubview(toBack: self.selectedProgressView)
-        
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: self.selectedProgressView,
-                               attribute: .height,
-                               relatedBy: .equal,
-                               toItem: self.bar,
-                               attribute: .height,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: self.selectedProgressView,
-                               attribute: .centerY,
-                               relatedBy: .equal,
-                               toItem: self.bar,
-                               attribute: .centerY,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: self.selectedProgressView,
-                               attribute: .leading,
-                               relatedBy: .equal,
-                               toItem: self.leftKnob,
-                               attribute: .centerX,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: self.selectedProgressView,
-                               attribute: .trailing,
-                               relatedBy: .equal,
-                               toItem: self.rightKnob,
-                               attribute: .centerX,
-                               multiplier: 1.0,
-                               constant: 0.0)
-            ])
-    }
-    
-    private func setupLeftProgressView() {
-        
-        self.leftProgressView.translatesAutoresizingMaskIntoConstraints = false
-        self.leftProgressView.backgroundColor = self.rangeNotSelectedColor
-        self.bar.insertSubview(self.leftProgressView, belowSubview: self.leftKnob)
-        
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: self.leftProgressView,
-                               attribute: .height,
-                               relatedBy: .equal,
-                               toItem: self.bar,
-                               attribute: .height,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: self.leftProgressView,
-                               attribute: .centerY,
-                               relatedBy: .equal,
-                               toItem: self.bar,
-                               attribute: .centerY,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: self.leftProgressView,
-                               attribute: .leading,
-                               relatedBy: .equal,
-                               toItem: self.bar,
-                               attribute: .leading,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: self.leftProgressView,
-                               attribute: .trailing,
-                               relatedBy: .equal,
-                               toItem: self.leftKnob,
-                               attribute: .centerX,
-                               multiplier: 1.0,
-                               constant: 0.0)
-            ])
-    }
-    
-    private func setupRightProgressView() {
-        
-        self.rightProgressView.translatesAutoresizingMaskIntoConstraints = false
-        self.rightProgressView.backgroundColor = self.rangeNotSelectedColor
-        self.bar.insertSubview(self.rightProgressView, belowSubview: self.rightKnob)
-        
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: self.rightProgressView,
-                               attribute: .height,
-                               relatedBy: .equal,
-                               toItem: self.bar,
-                               attribute: .height,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: self.rightProgressView,
-                               attribute: .centerY,
-                               relatedBy: .equal,
-                               toItem: self.bar,
-                               attribute: .centerY,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: self.rightProgressView,
-                               attribute: .leading,
-                               relatedBy: .equal,
-                               toItem: self.rightKnob,
-                               attribute: .centerX,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: self.rightProgressView,
-                               attribute: .trailing,
-                               relatedBy: .equal,
-                               toItem: self.bar,
-                               attribute: .trailing,
-                               multiplier: 1.0,
-                               constant: 0.0)
-            ])
     }
     
     // MARK: Gesture recognizer methods (knobs movements).
@@ -551,6 +396,70 @@ import UIKit
     }
 }
 
+// MARK: Bar
+
+/// Class used to describe the bar of the slider.
+class Bar: UIView {
+    
+    /// Bar leading offset constraint.
+    private(set) var leadingConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    /// Bar trailing offset constraint.
+    private(set) var trailingConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    /// Bar height constraint.
+    private(set) var heightConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    
+    fileprivate func setup(leading: CGFloat, trailing: CGFloat, height: CGFloat) -> [NSLayoutConstraint] {
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.leadingConstraint = NSLayoutConstraint(item: self,
+                                                    attribute: .leading,
+                                                    relatedBy: .equal,
+                                                    toItem: self.superview,
+                                                    attribute: .leading,
+                                                    multiplier: 1.0,
+                                                    constant: leading)
+        
+        self.trailingConstraint = NSLayoutConstraint(item: self,
+                                                     attribute: .trailing,
+                                                     relatedBy: .equal,
+                                                     toItem: self.superview,
+                                                     attribute: .trailing,
+                                                     multiplier: 1.0,
+                                                     constant: -1.0 * trailing)
+        
+        self.heightConstraint = NSLayoutConstraint(item: self,
+                                                   attribute: .height,
+                                                   relatedBy: .equal,
+                                                   toItem: nil,
+                                                   attribute: .notAnAttribute,
+                                                   multiplier: 1.0,
+                                                   constant: height)
+        
+        let barConstraints: [NSLayoutConstraint] = [
+            self.leadingConstraint,
+            self.trailingConstraint,
+            self.heightConstraint,
+            NSLayoutConstraint(item: self,
+                               attribute: .centerX,
+                               relatedBy: .equal,
+                               toItem: self.superview,
+                               attribute: .centerX,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self,
+                               attribute: .centerY,
+                               relatedBy: .equal,
+                               toItem: self.superview,
+                               attribute: .centerY,
+                               multiplier: 1.0,
+                               constant: 0.0)
+        ]
+        
+        return barConstraints
+    }
+}
+
 // MARK: Knob
 
 fileprivate enum KnobPosition {
@@ -558,6 +467,7 @@ fileprivate enum KnobPosition {
     case right
 }
 
+/// Class used to describe the knobs of the slider.
 fileprivate class Knob: UIView {
     
     /// Knob background view.
@@ -571,7 +481,7 @@ fileprivate class Knob: UIView {
     /// Knob position.
     private(set) var position: KnobPosition = .left
     /// Gesture recognizer target.
-    private(set) var gestureRecognizerTarget:Any?
+    private(set) var gestureRecognizerTarget: Any?
     
     fileprivate func setup(position: KnobPosition,
                            width: CGFloat,
@@ -636,7 +546,7 @@ fileprivate class Knob: UIView {
     }
     
     private func setXPositionConstraint() {
-    
+        
         self.xPositionConstraint =  NSLayoutConstraint(item: self,
                                                        attribute: .centerX,
                                                        relatedBy: .equal,
@@ -655,6 +565,7 @@ fileprivate class Knob: UIView {
                                                   attribute: .notAnAttribute,
                                                   multiplier: 1.0,
                                                   constant: width)
+        
         self.heightConstraint = NSLayoutConstraint(item: self,
                                                    attribute: .height,
                                                    relatedBy: .equal,
@@ -681,7 +592,7 @@ fileprivate class Knob: UIView {
         self.addGestureRecognizer(gesture)
     }
     
-    func setup(image anImage: UIImage?) {
+    fileprivate func setup(image anImage: UIImage?) {
         
         if let image = anImage {
             
@@ -719,10 +630,83 @@ fileprivate class Knob: UIView {
                                    attribute: .height,
                                    multiplier: 1.0,
                                    constant: 0.0)
-            ])
+                ])
         }
     }
 }
+
+// MARK: Progress 
+
+class ProgressView: UIView {
+    
+    fileprivate func setup(leftAnchorView: UIView,
+                           leftAnchorConstraintAttribute: NSLayoutAttribute,
+                           rightAnchorView: UIView,
+                           rightAnchorConstraintAttribute: NSLayoutAttribute,
+                           color: UIColor) -> [NSLayoutConstraint] {
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.backgroundColor = color
+        
+        let progressViewConstraints: [NSLayoutConstraint] = [
+            NSLayoutConstraint(item: self,
+                               attribute: .height,
+                               relatedBy: .equal,
+                               toItem: self.superview,
+                               attribute: .height,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self,
+                               attribute: .centerY,
+                               relatedBy: .equal,
+                               toItem: self.superview,
+                               attribute: .centerY,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self,
+                               attribute: .leading,
+                               relatedBy: .equal,
+                               toItem: leftAnchorView,
+                               attribute: leftAnchorConstraintAttribute,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self,
+                               attribute: .trailing,
+                               relatedBy: .equal,
+                               toItem: rightAnchorView,
+                               attribute: rightAnchorConstraintAttribute,
+                               multiplier: 1.0,
+                               constant: 0.0)
+        ]
+        
+        return progressViewConstraints
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

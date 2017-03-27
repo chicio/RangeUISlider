@@ -34,10 +34,10 @@
                                         <real key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="barLeading">
-                                        <real key="value" value="40"/>
+                                        <real key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="barTrailing">
-                                        <real key="value" value="40"/>
+                                        <real key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="containerCorners">
                                         <real key="value" value="10"/>
@@ -91,7 +91,7 @@
                                         <integer key="value" value="1001"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rightKnobCornes">
-                                        <real key="value" value="0.0"/>
+                                        <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
