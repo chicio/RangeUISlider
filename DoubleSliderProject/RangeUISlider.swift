@@ -459,19 +459,23 @@ import UIKit
         
     }
     
+    func prepareXPositionConstraint(forKnob knob: UIView, usingAttribute attribute: NSLayoutAttribute) -> NSLayoutConstraint {
+        
+        return NSLayoutConstraint(item: knob,
+                                  attribute: .centerX,
+                                  relatedBy: .equal,
+                                  toItem: self.bar,
+                                  attribute: attribute,
+                                  multiplier: 1.0,
+                                  constant: 0.0)
+    }
+    
     private func setupLeftKnob() -> [NSLayoutConstraint] {
         
         let knobBackgroundConstraints: [NSLayoutConstraint] = self.prepare(knob: self.leftKnob,
                                                                            withBackgroundView: self.leftBackgroundView)
         
-        self.leftKnobXPositionConstraint = NSLayoutConstraint(item: self.leftKnob,
-                                                              attribute: .centerX,
-                                                              relatedBy: .equal,
-                                                              toItem: self.bar,
-                                                              attribute: .leading,
-                                                              multiplier: 1.0,
-                                                              constant: 0.0)
-        
+        self.leftKnobXPositionConstraint = self.prepareXPositionConstraint(forKnob: self.leftKnob, usingAttribute: .leading)
         let knobDimensionConstraints = self.prepareDimensionConstraints(forKnob: self.leftKnob,
                                                                         width: self.leftKnobWidth,
                                                                         height: self.leftKnobHeight)
@@ -496,14 +500,7 @@ import UIKit
         let knobBackgroundConstraints: [NSLayoutConstraint] = self.prepare(knob: self.rightKnob,
                                                                            withBackgroundView: self.rightBackgroundView)
         
-        self.rightKnobXPositionConstraint = NSLayoutConstraint(item: self.rightKnob,
-                                                               attribute: .centerX,
-                                                               relatedBy: .equal,
-                                                               toItem: self.bar,
-                                                               attribute: .trailing,
-                                                               multiplier: 1.0,
-                                                               constant: 0.0)
-        
+        self.rightKnobXPositionConstraint = self.prepareXPositionConstraint(forKnob: self.rightKnob, usingAttribute: .trailing)
         let knobDimensionConstraints = self.prepareDimensionConstraints(forKnob: self.rightKnob,
                                                                         width: self.rightKnobWidth,
                                                                         height: self.rightKnobHeight)
