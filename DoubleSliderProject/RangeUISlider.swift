@@ -46,7 +46,7 @@ import UIKit
         
         didSet {
             
-            self.leftKnobsWidthConstraint.constant = self.leftKnobWidth
+            self.leftKnob.widthConstraint.constant = self.leftKnobWidth
         }
     }
     /// Left knob height.
@@ -54,7 +54,7 @@ import UIKit
         
         didSet {
             
-            self.leftKnobsHeightConstraint.constant = self.leftKnobHeight
+            self.leftKnob.heightConstraint.constant = self.leftKnobHeight
         }
     }
     /// Left knob corners.
@@ -62,8 +62,8 @@ import UIKit
         
         didSet {
             
-            self.leftBackgroundView.layer.cornerRadius = self.leftKnobCornes
-            self.leftBackgroundView.layer.masksToBounds = self.leftKnobCornes > 0.0
+            self.leftKnob.backgroundView.layer.cornerRadius = self.leftKnobCornes
+            self.leftKnob.backgroundView.layer.masksToBounds = self.leftKnobCornes > 0.0
         }
     }
     /// Left knob image.
@@ -71,15 +71,15 @@ import UIKit
         
         didSet {
             
-            self.setup(image: self.leftKnobImage, forKnob: self.leftBackgroundView)
+            self.leftKnob.setup(image: self.leftKnobImage)
         }
     }
     /// Left knob color.
     @IBInspectable var leftKnobColor: UIColor = UIColor.gray {
         
         didSet {
-            
-            self.leftBackgroundView.backgroundColor = self.leftKnobColor
+
+            self.leftKnob.backgroundColor = self.leftKnobColor
         }
     }
     /// Left knob shadow opacity.
@@ -119,7 +119,7 @@ import UIKit
         
         didSet {
             
-            self.rightKnobsWidthConstraint.constant = self.rightKnobWidth
+            self.rightKnob.widthConstraint.constant = self.rightKnobWidth
         }
     }
     /// Right knob height.
@@ -127,7 +127,7 @@ import UIKit
         
         didSet {
             
-            self.rightKnobsHeightConstraint.constant = self.rightKnobHeight
+            self.rightKnob.heightConstraint.constant = self.rightKnobHeight
         }
     }
     /// Right knob corners.
@@ -135,8 +135,8 @@ import UIKit
         
         didSet {
             
-            self.rightBackgroundView.layer.cornerRadius = self.rightKnobCornes
-            self.rightBackgroundView.layer.masksToBounds = self.rightKnobCornes > 0.0
+            self.rightKnob.backgroundView.layer.cornerRadius = self.rightKnobCornes
+            self.rightKnob.backgroundView.layer.masksToBounds = self.rightKnobCornes > 0.0
         }
     }
     /// Right knob image.
@@ -144,7 +144,7 @@ import UIKit
         
         didSet {
             
-            self.setup(image: self.rightKnobImage, forKnob: self.rightBackgroundView)
+            self.rightKnob.setup(image: self.rightKnobImage)
         }
     }
     /// Right knob color.
@@ -152,7 +152,7 @@ import UIKit
         
         didSet {
             
-            self.rightBackgroundView.backgroundColor = self.rightKnobColor
+            self.rightKnob.backgroundView.backgroundColor = self.rightKnobColor
         }
     }
     /// Right knob shadow opacity.
@@ -267,13 +267,9 @@ import UIKit
     /// SliderBar component.
     private let bar: UIView = UIView()
     /// Left knob.
-    private let leftKnob: UIView = UIView()
-    /// Left knob background view.
-    private let leftBackgroundView: UIView = UIView()
+    private let leftKnob: Knob = Knob()
     /// Right knob.
-    private let rightKnob: UIView = UIView()
-    /// Right knob background view.
-    private let rightBackgroundView: UIView = UIView()
+    private let rightKnob: Knob = Knob()
     /// UIView used as marker for selected range progress.
     private let selectedProgressView: UIView = UIView()
     /// UIVIew used as progress bar for left knob.
@@ -282,25 +278,12 @@ import UIKit
     private let rightProgressView: UIView = UIView()
     /// Slider delegate.
     public var delegate: RangeUISliderDelegate?
-    
-    /// Left knob position constraint.
-    private var leftKnobXPositionConstraint: NSLayoutConstraint = NSLayoutConstraint()
-    /// Right knob position constraint.
-    private var rightKnobXPositionConstraint: NSLayoutConstraint = NSLayoutConstraint()
     /// Bar leading offset constraint.
     private var barLeadingConstraint: NSLayoutConstraint = NSLayoutConstraint()
     /// Bar trailing offset constraint.
     private var barTrailingConstraint: NSLayoutConstraint = NSLayoutConstraint()
     /// Bar height constraint.
     private var barHeightConstraint: NSLayoutConstraint = NSLayoutConstraint()
-    /// Right knobs width constraint.
-    private var rightKnobsWidthConstraint: NSLayoutConstraint = NSLayoutConstraint()
-    /// Right knobs height constraint.
-    private var rightKnobsHeightConstraint: NSLayoutConstraint = NSLayoutConstraint()
-    /// Left knob width constraint.
-    private var leftKnobsWidthConstraint: NSLayoutConstraint = NSLayoutConstraint()
-    /// Left knob height constraint.
-    private var leftKnobsHeightConstraint: NSLayoutConstraint = NSLayoutConstraint()
     
     required public init?(coder aDecoder: NSCoder) {
         
@@ -318,16 +301,27 @@ import UIKit
         
         //Fake values for interface builder.
         //Used to make visible the progress views.
-        self.leftKnobXPositionConstraint.constant = 40
-        self.rightKnobXPositionConstraint.constant = -40
+        self.leftKnob.xPositionConstraint.constant = 40
+        self.rightKnob.xPositionConstraint.constant = -40
     }
     
     private func setup() {
         
+        self.bar.addSubview(self.leftKnob)
+        self.bar.addSubview(self.rightKnob)
+        
         var constraints: [NSLayoutConstraint] = []
         constraints.append(contentsOf: self.setUpBar())
-        constraints.append(contentsOf: self.setupLeftKnob())
-        constraints.append(contentsOf: self.setupRightKnob())
+        constraints.append(contentsOf: self.leftKnob.setup(position: .left,
+                                                           width: self.leftKnobWidth,
+                                                           height: self.leftKnobHeight,
+                                                           target: self,
+                                                           selector: #selector(moveLeftKnob)))
+        constraints.append(contentsOf: self.rightKnob.setup(position: .right,
+                                                            width: self.rightKnobWidth,
+                                                            height: self.rightKnobHeight,
+                                                            target: self,
+                                                            selector: #selector(moveRightKnob)))
         self.setupSelectedProgressView()
         self.setupLeftProgressView()
         self.setupRightProgressView()
@@ -384,182 +378,6 @@ import UIKit
         ]
         
         return barConstraints
-    }
-    
-    // MARK: Knobs.
-    
-    private func prepare(knob: UIView, withBackgroundView knobBackgroundView: UIView) -> [NSLayoutConstraint] {
-        
-        knob.translatesAutoresizingMaskIntoConstraints = false
-        knobBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        knob.addSubview(knobBackgroundView)
-        self.bar.addSubview(knob)
-        
-        let knobBackgroundViewConstraints: [NSLayoutConstraint] = [
-            NSLayoutConstraint(item: knobBackgroundView,
-                               attribute: .leading,
-                               relatedBy: .equal,
-                               toItem: knob,
-                               attribute: .leading,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: knobBackgroundView,
-                               attribute: .trailing,
-                               relatedBy: .equal,
-                               toItem: knob,
-                               attribute: .trailing,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: knobBackgroundView,
-                               attribute: .top,
-                               relatedBy: .equal,
-                               toItem: knob,
-                               attribute: .top,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: knobBackgroundView,
-                               attribute: .bottom,
-                               relatedBy: .equal,
-                               toItem: knob,
-                               attribute: .bottom,
-                               multiplier: 1.0,
-                               constant: 0.0)
-        ]
-        
-        return knobBackgroundViewConstraints
-    }
-    
-    func center(knob: UIView) -> NSLayoutConstraint {
-        
-        return NSLayoutConstraint(item: knob,
-                                  attribute: .centerY,
-                                  relatedBy: .equal,
-                                  toItem: self.bar,
-                                  attribute: .centerY,
-                                  multiplier: 1.0,
-                                  constant: 1.0)
-    }
-    
-    func getDimensionConstraints(forKnob knob: UIView, width: CGFloat, height: CGFloat) -> (width: NSLayoutConstraint, height: NSLayoutConstraint) {
-        
-        return (width: NSLayoutConstraint(item: knob,
-                                          attribute: .width,
-                                          relatedBy: .equal,
-                                          toItem: nil,
-                                          attribute: .notAnAttribute,
-                                          multiplier: 1.0,
-                                          constant: width),
-                height: NSLayoutConstraint(item: knob,
-                                           attribute: .height,
-                                           relatedBy: .equal,
-                                           toItem: nil,
-                                           attribute: .notAnAttribute,
-                                           multiplier: 1.0,
-                                           constant: height))
-        
-    }
-    
-    func getXPositionConstraint(forKnob knob: UIView, usingAttribute attribute: NSLayoutAttribute) -> NSLayoutConstraint {
-        
-        return NSLayoutConstraint(item: knob,
-                                  attribute: .centerX,
-                                  relatedBy: .equal,
-                                  toItem: self.bar,
-                                  attribute: attribute,
-                                  multiplier: 1.0,
-                                  constant: 0.0)
-    }
-    
-    private func setupLeftKnob() -> [NSLayoutConstraint] {
-        
-        let knobBackgroundConstraints: [NSLayoutConstraint] = self.prepare(knob: self.leftKnob,
-                                                                           withBackgroundView: self.leftBackgroundView)
-        
-        self.leftKnobXPositionConstraint = self.getXPositionConstraint(forKnob: self.leftKnob, usingAttribute: .leading)
-        let knobDimensionConstraints = self.getDimensionConstraints(forKnob: self.leftKnob,
-                                                                    width: self.leftKnobWidth,
-                                                                    height: self.leftKnobHeight)
-        self.leftKnobsWidthConstraint = knobDimensionConstraints.width
-        self.leftKnobsHeightConstraint = knobDimensionConstraints.height
-        
-        let knobConstraints: [NSLayoutConstraint] = [
-            self.leftKnobXPositionConstraint,
-            self.center(knob: self.leftKnob),
-            self.leftKnobsWidthConstraint,
-            self.leftKnobsHeightConstraint
-        ]
-        
-        let gesture = UIPanGestureRecognizer(target: self, action: #selector(moveLeftKnob))
-        self.leftKnob.addGestureRecognizer(gesture)
-        
-        return knobConstraints + knobBackgroundConstraints
-    }
-    
-    private func setupRightKnob() -> [NSLayoutConstraint] {
-        
-        let knobBackgroundConstraints: [NSLayoutConstraint] = self.prepare(knob: self.rightKnob,
-                                                                           withBackgroundView: self.rightBackgroundView)
-        
-        self.rightKnobXPositionConstraint = self.getXPositionConstraint(forKnob: self.rightKnob, usingAttribute: .trailing)
-        let knobDimensionConstraints = self.getDimensionConstraints(forKnob: self.rightKnob,
-                                                                    width: self.rightKnobWidth,
-                                                                    height: self.rightKnobHeight)
-        self.rightKnobsWidthConstraint = knobDimensionConstraints.width
-        self.rightKnobsHeightConstraint = knobDimensionConstraints.height
-        
-        let knobConstraints: [NSLayoutConstraint] = [
-            self.rightKnobXPositionConstraint,
-            self.center(knob: self.rightKnob),
-            self.rightKnobsWidthConstraint,
-            self.rightKnobsHeightConstraint
-        ]
-        
-        let gesture = UIPanGestureRecognizer(target: self, action: #selector(moveRightKnob))
-        self.rightKnob.addGestureRecognizer(gesture)
-        
-        return knobConstraints + knobBackgroundConstraints
-    }
-    
-    func setup(image anImage: UIImage?, forKnob knob: UIView) {
-        
-        if let image = anImage {
-            
-            let knobImageView = UIImageView(image: image)
-            knobImageView.translatesAutoresizingMaskIntoConstraints = false
-            knobImageView.contentMode = .scaleToFill
-            knob.addSubview(knobImageView)
-            
-            NSLayoutConstraint.activate([
-                NSLayoutConstraint(item: knobImageView,
-                                   attribute: .centerX,
-                                   relatedBy: .equal,
-                                   toItem: knob,
-                                   attribute: .centerX,
-                                   multiplier: 1.0,
-                                   constant: 0.0),
-                NSLayoutConstraint(item: knobImageView,
-                                   attribute: .centerY,
-                                   relatedBy: .equal,
-                                   toItem: knob,
-                                   attribute: .centerY,
-                                   multiplier: 1.0,
-                                   constant: 0.0),
-                NSLayoutConstraint(item: knobImageView,
-                                   attribute: .width,
-                                   relatedBy: .equal,
-                                   toItem: knob,
-                                   attribute: .width,
-                                   multiplier: 1.0,
-                                   constant: 0.0),
-                NSLayoutConstraint(item: knobImageView,
-                                   attribute: .height,
-                                   relatedBy: .equal,
-                                   toItem: knob,
-                                   attribute: .height,
-                                   multiplier: 1.0,
-                                   constant: 0.0)
-                ])
-        }
     }
     
     // MARK: Progress views.
@@ -686,11 +504,11 @@ import UIKit
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
             
             let positionForKnob = gestureRecognizer.location(in: self.bar).x
-            let positionRightKnob = self.bar.frame.width + self.rightKnobXPositionConstraint.constant
+            let positionRightKnob = self.bar.frame.width + self.rightKnob.xPositionConstraint.constant
             
             if positionForKnob >= 0 && positionForKnob <= positionRightKnob {
                 
-                self.leftKnobXPositionConstraint.constant = positionForKnob
+                self.leftKnob.xPositionConstraint.constant = positionForKnob
             }
             
             self.calculateChangeRange()
@@ -704,9 +522,9 @@ import UIKit
             let xLocationInBar = gestureRecognizer.location(in: self.bar).x
             let positionForKnob = xLocationInBar - self.bar.frame.width
             
-            if positionForKnob <= 0 && xLocationInBar >= self.leftKnobXPositionConstraint.constant {
+            if positionForKnob <= 0 && xLocationInBar >= self.leftKnob.xPositionConstraint.constant {
                 
-                self.rightKnobXPositionConstraint.constant = positionForKnob
+                self.rightKnob.xPositionConstraint.constant = positionForKnob
             }
             
             self.calculateChangeRange()
@@ -717,12 +535,14 @@ import UIKit
     
     private func calculateChangeRange() {
         
-        let minValue = self.leftKnobXPositionConstraint.constant / self.bar.frame.width
-        let maxValue = 1.0  + self.rightKnobXPositionConstraint.constant / self.bar.frame.width
+        let minValue = self.leftKnob.xPositionConstraint.constant / self.bar.frame.width
+        let maxValue = 1.0  + self.rightKnob.xPositionConstraint.constant / self.bar.frame.width
         let scaledMinValue = self.linearMapping(value: minValue)
         let scaledMaxValue = self.linearMapping(value: maxValue)
         
-        self.delegate?.rangeChanged(minValue: scaledMinValue, maxValue: scaledMaxValue, sliderIdentifier: self.identifier)
+        self.delegate?.rangeChanged(minValue: scaledMinValue,
+                                    maxValue: scaledMaxValue,
+                                    sliderIdentifier: self.identifier)
     }
     
     private func linearMapping(value: CGFloat) -> CGFloat {
@@ -730,3 +550,184 @@ import UIKit
         return value * (self.scaleMaxValue - self.scaleMinValue) + self.scaleMinValue
     }
 }
+
+// MARK: Knob
+
+fileprivate enum KnobPosition {
+    case left
+    case right
+}
+
+fileprivate class Knob: UIView {
+    
+    /// Knob background view.
+    private(set) var backgroundView: UIView = UIView()
+    /// Knob x position constraint.
+    private(set) var xPositionConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    /// Knob width constraint.
+    private(set) var widthConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    /// Knob height constraint.
+    private(set) var heightConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    /// Knob position.
+    private(set) var position: KnobPosition = .left
+    /// Gesture recognizer target.
+    private(set) var gestureRecognizerTarget:Any?
+    
+    fileprivate func setup(position: KnobPosition,
+                           width: CGFloat,
+                           height: CGFloat,
+                           target: Any?,
+                           selector: Selector) -> [NSLayoutConstraint] {
+        
+        self.position = position
+        self.translatesAutoresizingMaskIntoConstraints = false
+        let knobBackgroundConstraints: [NSLayoutConstraint] = self.setupBackground()
+        self.setXPositionConstraint()
+        self.setDimensionConstraints(usingWidth: width, andHeight: height)
+        self.setGestureRecognizer(withTarget: target, usingSelector: selector)
+        
+        let knobConstraints: [NSLayoutConstraint] = [
+            self.xPositionConstraint,
+            self.centerConstraint(),
+            self.widthConstraint,
+            self.heightConstraint
+        ]
+        
+        return knobConstraints + knobBackgroundConstraints
+    }
+    
+    private func setupBackground() -> [NSLayoutConstraint] {
+        
+        self.backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(self.backgroundView)
+        
+        let knobBackgroundViewConstraints: [NSLayoutConstraint] = [
+            NSLayoutConstraint(item: self.backgroundView,
+                               attribute: .leading,
+                               relatedBy: .equal,
+                               toItem: self,
+                               attribute: .leading,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.backgroundView,
+                               attribute: .trailing,
+                               relatedBy: .equal,
+                               toItem: self,
+                               attribute: .trailing,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.backgroundView,
+                               attribute: .top,
+                               relatedBy: .equal,
+                               toItem: self,
+                               attribute: .top,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: self.backgroundView,
+                               attribute: .bottom,
+                               relatedBy: .equal,
+                               toItem: self,
+                               attribute: .bottom,
+                               multiplier: 1.0,
+                               constant: 0.0)
+        ]
+        
+        return knobBackgroundViewConstraints
+    }
+    
+    private func setXPositionConstraint() {
+    
+        self.xPositionConstraint =  NSLayoutConstraint(item: self,
+                                                       attribute: .centerX,
+                                                       relatedBy: .equal,
+                                                       toItem: self.superview,
+                                                       attribute: self.position == .left ? .leading : .trailing,
+                                                       multiplier: 1.0,
+                                                       constant: 0.0)
+    }
+    
+    private func setDimensionConstraints(usingWidth width: CGFloat, andHeight height: CGFloat) {
+        
+        self.widthConstraint = NSLayoutConstraint(item: self,
+                                                  attribute: .width,
+                                                  relatedBy: .equal,
+                                                  toItem: nil,
+                                                  attribute: .notAnAttribute,
+                                                  multiplier: 1.0,
+                                                  constant: width)
+        self.heightConstraint = NSLayoutConstraint(item: self,
+                                                   attribute: .height,
+                                                   relatedBy: .equal,
+                                                   toItem: nil,
+                                                   attribute: .notAnAttribute,
+                                                   multiplier: 1.0,
+                                                   constant: height)
+    }
+    
+    private func centerConstraint() -> NSLayoutConstraint {
+        
+        return NSLayoutConstraint(item: self,
+                                  attribute: .centerY,
+                                  relatedBy: .equal,
+                                  toItem: self.superview,
+                                  attribute: .centerY,
+                                  multiplier: 1.0,
+                                  constant: 1.0)
+    }
+    
+    private func setGestureRecognizer(withTarget target: Any?, usingSelector selector: Selector) {
+        
+        let gesture = UIPanGestureRecognizer(target: target, action: selector)
+        self.addGestureRecognizer(gesture)
+    }
+    
+    func setup(image anImage: UIImage?) {
+        
+        if let image = anImage {
+            
+            let knobImageView = UIImageView(image: image)
+            knobImageView.translatesAutoresizingMaskIntoConstraints = false
+            knobImageView.contentMode = .scaleToFill
+            self.addSubview(knobImageView)
+            
+            NSLayoutConstraint.activate([
+                NSLayoutConstraint(item: knobImageView,
+                                   attribute: .centerX,
+                                   relatedBy: .equal,
+                                   toItem: self,
+                                   attribute: .centerX,
+                                   multiplier: 1.0,
+                                   constant: 0.0),
+                NSLayoutConstraint(item: knobImageView,
+                                   attribute: .centerY,
+                                   relatedBy: .equal,
+                                   toItem: self,
+                                   attribute: .centerY,
+                                   multiplier: 1.0,
+                                   constant: 0.0),
+                NSLayoutConstraint(item: knobImageView,
+                                   attribute: .width,
+                                   relatedBy: .equal,
+                                   toItem: self,
+                                   attribute: .width,
+                                   multiplier: 1.0,
+                                   constant: 0.0),
+                NSLayoutConstraint(item: knobImageView,
+                                   attribute: .height,
+                                   relatedBy: .equal,
+                                   toItem: self,
+                                   attribute: .height,
+                                   multiplier: 1.0,
+                                   constant: 0.0)
+            ])
+        }
+    }
+}
+
+
+
+
+
+
+
+
