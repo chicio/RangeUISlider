@@ -25,7 +25,7 @@ import UIKit
     func rangeChanged(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
 }
 
-/// A custom slider with double knob that allow the user to select a range. 
+/// A custom slider with double knob that allow the user to select a range.
 /// Created using autolayout and IBDesignabled/IBInspectable.
 @IBDesignable
 @objc public class RangeUISlider: UIView {
@@ -55,11 +55,36 @@ import UIKit
             self.rightProgressView.backgroundColor = self.rangeNotSelectedColor
         }
     }
+    /// Gradient color 1 for range not selected.
     @IBInspectable var rangeNotSelectedGradientColor1: UIColor? {
         
         didSet {
             
-            self.leftProgressView.g
+            self.addGradientToNotSelectedRangeProgressView()
+        }
+    }
+    /// Gradient color 2 for range not selected.
+    @IBInspectable var rangeNotSelectedGradientColor2: UIColor? {
+        
+        didSet {
+
+            self.addGradientToNotSelectedRangeProgressView()
+        }
+    }
+    /// Gradient start point for not selected range.
+    @IBInspectable var rangeNotSelectedGradientStartPoint: CGPoint = CGPoint() {
+
+        didSet {
+
+            self.addGradientToNotSelectedRangeProgressView()
+        }
+    }
+    /// Gradient end point for not selected range.
+    @IBInspectable var rangeNotSelectedGradientEndPoint: CGPoint = CGPoint() {
+        
+        didSet {
+            
+            self.addGradientToNotSelectedRangeProgressView()
         }
     }
     /// Left knob width.
@@ -82,7 +107,7 @@ import UIKit
     @IBInspectable var leftKnobCornes: CGFloat = 15.0 {
         
         didSet {
-
+            
             self.leftKnob.backgroundView.layer.cornerRadius = self.leftKnobCornes
             self.leftKnob.backgroundView.layer.masksToBounds = self.leftKnobCornes > 0.0
         }
@@ -124,7 +149,7 @@ import UIKit
         
         didSet {
             
-
+            
             self.leftKnob.layer.shadowOffset = self.leftShadowOffset
         }
     }
@@ -338,7 +363,7 @@ import UIKit
      Method used to setup all the range slider components.
      All its subviews and the related constraints are added in this method.
      All the compoents returns arrays of constrains that are activated in a
-     single call to NSLayoutConstraint.activate(constraints) (to improve 
+     single call to NSLayoutConstraint.activate(constraints) (to improve
      preformance).
      */
     private func setup() {
@@ -381,6 +406,19 @@ import UIKit
                                                                     color: self.rangeNotSelectedColor))
         
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    func addGradientToNotSelectedRangeProgressView() {
+        
+        self.leftProgressView.addGradient(firstColor: self.rangeNotSelectedGradientColor1,
+                                          secondColor: self.rangeNotSelectedGradientColor2,
+                                          startPoint: self.rangeNotSelectedGradientStartPoint,
+                                          endPoint: self.rangeNotSelectedGradientEndPoint)
+        
+        self.rightProgressView.addGradient(firstColor: self.rangeNotSelectedGradientColor1,
+                                           secondColor: self.rangeNotSelectedGradientColor2,
+                                           startPoint: self.rangeNotSelectedGradientStartPoint,
+                                           endPoint: self.rangeNotSelectedGradientEndPoint)
     }
     
     // MARK: Gesture recognizer methods (knobs movements)
@@ -651,7 +689,7 @@ fileprivate class Knob: UIView {
     }
     
     /**
-     Method used to create the constraints used to manage the width and height 
+     Method used to create the constraints used to manage the width and height
      of the knob.
      
      - parameter width: the width of the knob.
@@ -752,10 +790,10 @@ fileprivate class Knob: UIView {
     }
 }
 
-// MARK: Progress 
+// MARK: Progress
 
 /// Class used to describe the progress view inside the bar of the range slider.
-class ProgressView: UIView {
+fileprivate class ProgressView: UIView {
     
     /// An additional layer to manage gradient effects.
     private(set) var gradient: CAGradientLayer = CAGradientLayer()
@@ -769,13 +807,21 @@ class ProgressView: UIView {
         CATransaction.setDisableActions(false)
     }
     
-    func addGradient(firstColor: UIColor, secondColor: UIColor, startPoint: CGPoint, endPoint: CGPoint) {
+    fileprivate func addGradient(firstColor: UIColor?,
+                                 secondColor: UIColor?,
+                                 startPoint: CGPoint?,
+                                 endPoint: CGPoint?) {
         
-        self.gradient.colors = [firstColor.cgColor, secondColor.cgColor]
-        self.gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
-        self.gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
+        let color1 = firstColor ?? UIColor(red: 140.0/255.0, green: 140.0/255.0, blue: 140.0/255.0, alpha: 1.0)
+        let color2 = secondColor ?? UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
+        let begin = startPoint ?? CGPoint(x: 0.0, y: 0.5)
+        let end = endPoint ?? CGPoint(x: 0.0, y: 1.0)
+        
+        self.gradient.colors = [color1.cgColor, color2.cgColor]
+        self.gradient.startPoint = begin
+        self.gradient.endPoint = end
         self.gradient.cornerRadius = 7
-
+        
         self.layer.addSublayer(self.gradient)
     }
     
@@ -798,10 +844,6 @@ class ProgressView: UIView {
         
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = color
-        self.addGradient(firstColor: UIColor(red: 21.0/255.0, green: 126.0/255.0, blue: 252.0/255.0, alpha: 1.0),
-                         secondColor: UIColor(red: 0.0/255.0, green: 56.0/255.0, blue: 182.0/255.0, alpha: 1.0),
-                         startPoint: CGPoint(x: 0.0, y: 0.5),
-                         endPoint: CGPoint(x: 0.0, y: 1.0))
         
         let progressViewConstraints: [NSLayoutConstraint] = [
             NSLayoutConstraint(item: self,
