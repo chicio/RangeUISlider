@@ -114,15 +114,15 @@ import UIKit
     @IBInspectable var rangeNotSelectedGradientColor2: UIColor? {
         
         didSet {
-
+            
             self.addGradientToNotSelectedRangeProgressView()
         }
     }
     /// Gradient start point for not selected range.
     @IBInspectable var rangeNotSelectedGradientStartPoint: CGPoint = CGPoint() {
-
+        
         didSet {
-
+            
             self.addGradientToNotSelectedRangeProgressView()
         }
     }
@@ -208,6 +208,54 @@ import UIKit
             self.leftKnob.layer.shadowRadius = self.leftShadowRadius
         }
     }
+    /// Gradient color 1 for range not selected.
+    @IBInspectable var leftKnobGradientColor1: UIColor? {
+        
+        didSet {
+            
+            self.leftKnob.addGradient(firstColor: self.leftKnobGradientColor1,
+                                      secondColor: self.leftKnobGradientColor2,
+                                      startPoint: self.leftKnobGradientStartPoint,
+                                      endPoint: self.leftKnobGradientEndPoint,
+                                      cornerRadius: self.leftKnobCornes)
+        }
+    }
+    /// Gradient color 2 for range not selected.
+    @IBInspectable var leftKnobGradientColor2: UIColor? {
+        
+        didSet {
+            
+            self.leftKnob.addGradient(firstColor: self.leftKnobGradientColor1,
+                                      secondColor: self.leftKnobGradientColor2,
+                                      startPoint: self.leftKnobGradientStartPoint,
+                                      endPoint: self.leftKnobGradientEndPoint,
+                                      cornerRadius: self.leftKnobCornes)
+        }
+    }
+    /// Gradient start point for not selected range.
+    @IBInspectable var leftKnobGradientStartPoint: CGPoint = CGPoint() {
+        
+        didSet {
+            
+            self.leftKnob.addGradient(firstColor: self.leftKnobGradientColor1,
+                                      secondColor: self.leftKnobGradientColor2,
+                                      startPoint: self.leftKnobGradientStartPoint,
+                                      endPoint: self.leftKnobGradientEndPoint,
+                                      cornerRadius: self.leftKnobCornes)
+        }
+    }
+    /// Gradient end point for not selected range.
+    @IBInspectable var leftKnobGradientEndPoint: CGPoint = CGPoint() {
+        
+        didSet {
+            
+            self.leftKnob.addGradient(firstColor: self.leftKnobGradientColor1,
+                                      secondColor: self.leftKnobGradientColor2,
+                                      startPoint: self.leftKnobGradientStartPoint,
+                                      endPoint: self.leftKnobGradientEndPoint,
+                                      cornerRadius: self.leftKnobCornes)
+        }
+    }
     /// Right knob width.
     @IBInspectable var rightKnobWidth: CGFloat = 30.0 {
         
@@ -279,6 +327,54 @@ import UIKit
         didSet {
             
             self.rightKnob.layer.shadowRadius = self.rightShadowRadius
+        }
+    }
+    /// Gradient color 1 for range not selected.
+    @IBInspectable var rightKnobGradientColor1: UIColor? {
+        
+        didSet {
+            
+            self.rightKnob.addGradient(firstColor: self.rightKnobGradientColor1,
+                                       secondColor: self.rightKnobGradientColor2,
+                                       startPoint: self.rightKnobGradientStartPoint,
+                                       endPoint: self.rightKnobGradientEndPoint,
+                                       cornerRadius: self.rightKnobCornes)
+        }
+    }
+    /// Gradient color 2 for range not selected.
+    @IBInspectable var rightKnobGradientColor2: UIColor? {
+        
+        didSet {
+            
+            self.rightKnob.addGradient(firstColor: self.rightKnobGradientColor1,
+                                       secondColor: self.rightKnobGradientColor2,
+                                       startPoint: self.rightKnobGradientStartPoint,
+                                       endPoint: self.rightKnobGradientEndPoint,
+                                       cornerRadius: self.rightKnobCornes)
+        }
+    }
+    /// Gradient start point for not selected range.
+    @IBInspectable var rightKnobGradientStartPoint: CGPoint = CGPoint() {
+        
+        didSet {
+            
+            self.rightKnob.addGradient(firstColor: self.rightKnobGradientColor1,
+                                       secondColor: self.rightKnobGradientColor2,
+                                       startPoint: self.rightKnobGradientStartPoint,
+                                       endPoint: self.rightKnobGradientEndPoint,
+                                       cornerRadius: self.rightKnobCornes)
+        }
+    }
+    /// Gradient end point for not selected range.
+    @IBInspectable var rightKnobGradientEndPoint: CGPoint = CGPoint() {
+        
+        didSet {
+            
+            self.rightKnob.addGradient(firstColor: self.rightKnobGradientColor1,
+                                       secondColor: self.rightKnobGradientColor2,
+                                       startPoint: self.rightKnobGradientStartPoint,
+                                       endPoint: self.rightKnobGradientEndPoint,
+                                       cornerRadius: self.rightKnobCornes)
         }
     }
     /// Bar height.
@@ -621,6 +717,57 @@ class Bar: UIView {
     }
 }
 
+// MARK: Gradient
+
+fileprivate class GradientView: UIView {
+    
+    /// An additional layer to manage gradient effects.
+    private(set) var gradient: CAGradientLayer = CAGradientLayer()
+    
+    /**
+     Layout subviews. In this case we need to layout the added gradient 
+     layer to get the size of the container. Disable also the CA default
+     animation.
+     */
+    override func layoutSubviews() {
+        
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        self.gradient.frame = self.bounds
+        CATransaction.commit()
+        CATransaction.setDisableActions(false)
+    }
+    
+    /**
+     Add a gradient to the view. This method execute the setup of the
+     gradientLayer property, using data received.
+     
+     - parameter firstColor: the first color of the gradient.
+     - parameter secondColor: the second color of the gradient.
+     - parameter startPoint: the starting point of the gradient.
+     - parameter endPoint: the end point of the gradient.
+     - parameter cornerRadius: the corner radius inherited from the container. Default 0.0.
+     */
+    fileprivate func addGradient(firstColor: UIColor?,
+                                 secondColor: UIColor?,
+                                 startPoint: CGPoint?,
+                                 endPoint: CGPoint?,
+                                 cornerRadius: CGFloat = 0.0) {
+        
+        let color1 = firstColor ?? UIColor(red: 140.0/255.0, green: 140.0/255.0, blue: 140.0/255.0, alpha: 1.0)
+        let color2 = secondColor ?? UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
+        let begin = startPoint ?? CGPoint(x: 0.0, y: 0.5)
+        let end = endPoint ?? CGPoint(x: 0.0, y: 1.0)
+        
+        self.gradient.colors = [color1.cgColor, color2.cgColor]
+        self.gradient.startPoint = begin
+        self.gradient.endPoint = end
+        self.gradient.cornerRadius = cornerRadius
+        
+        self.layer.addSublayer(self.gradient)
+    }
+}
+
 // MARK: Knob
 
 /// Enum used to identify the knob position.
@@ -630,7 +777,7 @@ fileprivate enum KnobPosition {
 }
 
 /// Class used to describe the knobs of the slider.
-fileprivate class Knob: UIView {
+fileprivate class Knob: GradientView {
     
     /// Knob background view.
     private(set) var backgroundView: UIView = UIView()
@@ -842,38 +989,7 @@ fileprivate class Knob: UIView {
 // MARK: Progress
 
 /// Class used to describe the progress view inside the bar of the range slider.
-fileprivate class ProgressView: UIView {
-    
-    /// An additional layer to manage gradient effects.
-    private(set) var gradient: CAGradientLayer = CAGradientLayer()
-    
-    override func layoutSubviews() {
-        
-        CATransaction.begin()
-        CATransaction.setDisableActions(true)
-        self.gradient.frame = self.bounds
-        CATransaction.commit()
-        CATransaction.setDisableActions(false)
-    }
-    
-    fileprivate func addGradient(firstColor: UIColor?,
-                                 secondColor: UIColor?,
-                                 startPoint: CGPoint?,
-                                 endPoint: CGPoint?,
-                                 cornerRadius: CGFloat = 0) {
-        
-        let color1 = firstColor ?? UIColor(red: 140.0/255.0, green: 140.0/255.0, blue: 140.0/255.0, alpha: 1.0)
-        let color2 = secondColor ?? UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
-        let begin = startPoint ?? CGPoint(x: 0.0, y: 0.5)
-        let end = endPoint ?? CGPoint(x: 0.0, y: 1.0)
-        
-        self.gradient.colors = [color1.cgColor, color2.cgColor]
-        self.gradient.startPoint = begin
-        self.gradient.endPoint = end
-        self.gradient.cornerRadius = cornerRadius
-        
-        self.layer.addSublayer(self.gradient)
-    }
+fileprivate class ProgressView: GradientView {
     
     /**
      Method used to setup the progress view.
