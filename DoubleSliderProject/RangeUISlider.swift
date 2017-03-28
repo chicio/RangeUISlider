@@ -43,7 +43,54 @@ import UIKit
         
         didSet {
             
-            self.selectedProgressView.backgroundColor = self.rangeSelectedColor
+            self.selectedProgressView.addGradient(firstColor: self.rangeSelectedGradientColor1,
+                                                  secondColor: self.rangeSelectedGradientColor2,
+                                                  startPoint: self.rangeSelectedGradientStartPoint,
+                                                  endPoint: self.rangeSelectedGradientEndPoint)
+        }
+    }
+    /// Gradient color 1 for range not selected.
+    @IBInspectable var rangeSelectedGradientColor1: UIColor? {
+        
+        didSet {
+            
+            self.selectedProgressView.addGradient(firstColor: self.rangeSelectedGradientColor1,
+                                                  secondColor: self.rangeSelectedGradientColor2,
+                                                  startPoint: self.rangeSelectedGradientStartPoint,
+                                                  endPoint: self.rangeSelectedGradientEndPoint)
+        }
+    }
+    /// Gradient color 2 for range not selected.
+    @IBInspectable var rangeSelectedGradientColor2: UIColor? {
+        
+        didSet {
+            
+            self.selectedProgressView.addGradient(firstColor: self.rangeSelectedGradientColor1,
+                                                  secondColor: self.rangeSelectedGradientColor2,
+                                                  startPoint: self.rangeSelectedGradientStartPoint,
+                                                  endPoint: self.rangeSelectedGradientEndPoint)
+        }
+    }
+    /// Gradient start point for not selected range.
+    @IBInspectable var rangeSelectedGradientStartPoint: CGPoint = CGPoint() {
+        
+        didSet {
+            
+            self.selectedProgressView.addGradient(firstColor: self.rangeSelectedGradientColor1,
+                                                  secondColor: self.rangeSelectedGradientColor2,
+                                                  startPoint: self.rangeSelectedGradientStartPoint,
+                                                  endPoint: self.rangeSelectedGradientEndPoint)
+        }
+    }
+    /// Gradient end point for not selected range.
+    @IBInspectable var rangeSelectedGradientEndPoint: CGPoint = CGPoint() {
+        
+        didSet {
+            
+            self.selectedProgressView.addGradient(firstColor: self.rangeSelectedGradientColor1,
+                                                  secondColor: self.rangeSelectedGradientColor2,
+                                                  startPoint: self.rangeSelectedGradientStartPoint,
+                                                  endPoint: self.rangeSelectedGradientEndPoint)
         }
     }
     /// Not selected range color.
@@ -413,12 +460,14 @@ import UIKit
         self.leftProgressView.addGradient(firstColor: self.rangeNotSelectedGradientColor1,
                                           secondColor: self.rangeNotSelectedGradientColor2,
                                           startPoint: self.rangeNotSelectedGradientStartPoint,
-                                          endPoint: self.rangeNotSelectedGradientEndPoint)
+                                          endPoint: self.rangeNotSelectedGradientEndPoint,
+                                          cornerRadius: self.barCornes)
         
         self.rightProgressView.addGradient(firstColor: self.rangeNotSelectedGradientColor1,
                                            secondColor: self.rangeNotSelectedGradientColor2,
                                            startPoint: self.rangeNotSelectedGradientStartPoint,
-                                           endPoint: self.rangeNotSelectedGradientEndPoint)
+                                           endPoint: self.rangeNotSelectedGradientEndPoint,
+                                           cornerRadius: self.barCornes)
     }
     
     // MARK: Gesture recognizer methods (knobs movements)
@@ -810,7 +859,8 @@ fileprivate class ProgressView: UIView {
     fileprivate func addGradient(firstColor: UIColor?,
                                  secondColor: UIColor?,
                                  startPoint: CGPoint?,
-                                 endPoint: CGPoint?) {
+                                 endPoint: CGPoint?,
+                                 cornerRadius: CGFloat = 0) {
         
         let color1 = firstColor ?? UIColor(red: 140.0/255.0, green: 140.0/255.0, blue: 140.0/255.0, alpha: 1.0)
         let color2 = secondColor ?? UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
@@ -820,7 +870,7 @@ fileprivate class ProgressView: UIView {
         self.gradient.colors = [color1.cgColor, color2.cgColor]
         self.gradient.startPoint = begin
         self.gradient.endPoint = end
-        self.gradient.cornerRadius = 7
+        self.gradient.cornerRadius = cornerRadius
         
         self.layer.addSublayer(self.gradient)
     }
