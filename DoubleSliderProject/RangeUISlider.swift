@@ -84,7 +84,7 @@ import UIKit
         
         didSet {
             
-            self.leftKnob.setup(image: self.leftKnobImage)
+            self.leftKnob.add(image: self.leftKnobImage)
         }
     }
     /// Left knob color.
@@ -158,7 +158,7 @@ import UIKit
         
         didSet {
             
-            self.rightKnob.setup(image: self.rightKnobImage)
+            self.rightKnob.add(image: self.rightKnobImage)
         }
     }
     /// Right knob color.
@@ -540,7 +540,7 @@ fileprivate class Knob: UIView {
     private(set) var gestureRecognizerTarget: Any?
     
     /**
-     Method used to setup a knob.
+     Method used to setup the knob.
      
      - parameter position: the knob position.
      - parameter width: the knob width.
@@ -565,7 +565,7 @@ fileprivate class Knob: UIView {
         
         let knobConstraints: [NSLayoutConstraint] = [
             self.xPositionConstraint,
-            self.centerConstraint(),
+            self.centerVerticallyConstraint(),
             self.widthConstraint,
             self.heightConstraint
         ]
@@ -617,6 +617,9 @@ fileprivate class Knob: UIView {
         return knobBackgroundViewConstraints
     }
     
+    /**
+     Method used to create a constraint to manage the x position of the knob.
+     */
     private func setXPositionConstraint() {
         
         self.xPositionConstraint =  NSLayoutConstraint(item: self,
@@ -628,6 +631,13 @@ fileprivate class Knob: UIView {
                                                        constant: 0.0)
     }
     
+    /**
+     Method used to create the constraints used to manage the width and height 
+     of the knob.
+     
+     - parameter width: the width of the knob.
+     - parameter height: the height of the knob.
+     */
     private func setDimensionConstraints(usingWidth width: CGFloat, andHeight height: CGFloat) {
         
         self.widthConstraint = NSLayoutConstraint(item: self,
@@ -647,7 +657,12 @@ fileprivate class Knob: UIView {
                                                    constant: height)
     }
     
-    private func centerConstraint() -> NSLayoutConstraint {
+    /**
+     Method used to create the constraint used to manage the Y position of the knob.
+     
+     - returns: an NSLayoutConstraint used to manage the y position of the knob.
+     */
+    private func centerVerticallyConstraint() -> NSLayoutConstraint {
         
         return NSLayoutConstraint(item: self,
                                   attribute: .centerY,
@@ -658,13 +673,24 @@ fileprivate class Knob: UIView {
                                   constant: 1.0)
     }
     
+    /**
+     Method used to create and attach a gesture recognizer to the knob.
+     
+     - parameter target: the target for the gesture recognizer selector action.
+     - parameter selector: the selector used by the target to manage the action.
+     */
     private func setGestureRecognizer(withTarget target: Any?, usingSelector selector: Selector) {
         
         let gesture = UIPanGestureRecognizer(target: target, action: selector)
         self.addGestureRecognizer(gesture)
     }
     
-    fileprivate func setup(image anImage: UIImage?) {
+    /**
+     Method used to add an image on the knob (to use as background).
+     
+     - parameter anImage: the image to be used as background of the knob.
+     */
+    fileprivate func add(image anImage: UIImage?) {
         
         if let image = anImage {
             
@@ -709,8 +735,20 @@ fileprivate class Knob: UIView {
 
 // MARK: Progress 
 
+/// Class used to describe the progress view inside the bar of the range slider.
 class ProgressView: UIView {
     
+    /**
+     Method used to setup the progress view.
+     
+     - parameter leftAnchorView: the view used as left reference for the progress view constraints.
+     - parameter leftAnchorConstraintAttribute: the attribute to be used for constraint used to manage the left margin.
+     - parameter rightAnchorView: the view used as rightreference for the progress view constraints.
+     - parameter rightAnchorConstraintAttribute: the attribute to be used for constraint used to manage the right margin.
+     - parameter color: the background color of the progress view.
+     
+     - returns: an array of progress view constraints.
+     */
     fileprivate func setup(leftAnchorView: UIView,
                            leftAnchorConstraintAttribute: NSLayoutAttribute,
                            rightAnchorView: UIView,
