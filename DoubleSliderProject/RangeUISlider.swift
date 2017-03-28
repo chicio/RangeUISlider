@@ -25,11 +25,12 @@ import UIKit
     func rangeChanged(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
 }
 
-/// A custom slider with double knob that allow the user to select a range.
+/// A custom slider with double knob that allow the user to select a range. 
+/// Created using autolayout and IBDesignabled/IBInspectable.
 @IBDesignable
 @objc public class RangeUISlider: UIView {
     
-    // MARK: Inspectable property.
+    // MARK: Inspectable property
     
     /// Slider identifier.
     @IBInspectable var identifier: Int = 0
@@ -276,7 +277,7 @@ import UIKit
         }
     }
     
-    // MARK: Instance property.
+    // MARK: Instance property
     
     /// SliderBar component.
     private let bar: Bar = Bar()
@@ -364,7 +365,7 @@ import UIKit
         NSLayoutConstraint.activate(constraints)
     }
     
-    // MARK: Gesture recognizer methods (knobs movements).
+    // MARK: Gesture recognizer methods (knobs movements)
     
     /**
      Method used to respond to the gesture recognizer attached on the left knob.
