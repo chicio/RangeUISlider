@@ -55,6 +55,13 @@ import UIKit
             self.rightProgressView.backgroundColor = self.rangeNotSelectedColor
         }
     }
+    @IBInspectable var rangeNotSelectedGradientColor1: UIColor? {
+        
+        didSet {
+            
+            self.leftProgressView.g
+        }
+    }
     /// Left knob width.
     @IBInspectable var leftKnobWidth: CGFloat = 30.0 {
         
@@ -314,6 +321,17 @@ import UIKit
         
         super.init(frame: frame)
         self.setup()
+    }
+    
+    /**
+     Method used to prepare fake values for interface builder preview.
+     */
+    public override func prepareForInterfaceBuilder() {
+        
+        //Fake values for interface builder.
+        //Used to make visible the progress views.
+        self.leftKnob.xPositionConstraint.constant = 40
+        self.rightKnob.xPositionConstraint.constant = -40
     }
     
     /**
@@ -739,6 +757,28 @@ fileprivate class Knob: UIView {
 /// Class used to describe the progress view inside the bar of the range slider.
 class ProgressView: UIView {
     
+    /// An additional layer to manage gradient effects.
+    private(set) var gradient: CAGradientLayer = CAGradientLayer()
+    
+    override func layoutSubviews() {
+        
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        self.gradient.frame = self.bounds
+        CATransaction.commit()
+        CATransaction.setDisableActions(false)
+    }
+    
+    func addGradient(firstColor: UIColor, secondColor: UIColor, startPoint: CGPoint, endPoint: CGPoint) {
+        
+        self.gradient.colors = [firstColor.cgColor, secondColor.cgColor]
+        self.gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
+        self.gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
+        self.gradient.cornerRadius = 7
+
+        self.layer.addSublayer(self.gradient)
+    }
+    
     /**
      Method used to setup the progress view.
      
@@ -758,6 +798,10 @@ class ProgressView: UIView {
         
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = color
+        self.addGradient(firstColor: UIColor(red: 21.0/255.0, green: 126.0/255.0, blue: 252.0/255.0, alpha: 1.0),
+                         secondColor: UIColor(red: 0.0/255.0, green: 56.0/255.0, blue: 182.0/255.0, alpha: 1.0),
+                         startPoint: CGPoint(x: 0.0, y: 0.5),
+                         endPoint: CGPoint(x: 0.0, y: 1.0))
         
         let progressViewConstraints: [NSLayoutConstraint] = [
             NSLayoutConstraint(item: self,
