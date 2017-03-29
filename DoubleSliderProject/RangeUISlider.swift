@@ -661,7 +661,12 @@ import UIKit
                                          bottom: self.rangeNotSelectedBackgroundEdgeInsetBottom,
                                          right: self.rangeNotSelectedBackgroundEdgeInsetRight)
             
-            self.selectedProgressView.addBackground(usingImage: backgroundImage, andEdgeInset: edgeInset)
+            self.leftProgressView.addBackground(usingImage: backgroundImage,
+                                                andEdgeInset: edgeInset,
+                                                andCorners: self.barCornes)
+            self.rightProgressView.addBackground(usingImage: backgroundImage,
+                                                 andEdgeInset: edgeInset,
+                                                 andCorners: self.barCornes)
         }
     }
     
@@ -677,7 +682,9 @@ import UIKit
                                      bottom: self.rangeSelectedBackgroundEdgeInsetBottom,
                                      right: self.rangeSelectedBackgroundEdgeInsetRight)
         
-            self.selectedProgressView.addBackground(usingImage: backgroundImage, andEdgeInset: edgeInset)
+            self.selectedProgressView.addBackground(usingImage: backgroundImage,
+                                                    andEdgeInset: edgeInset,
+                                                    andCorners: self.barCornes)
         }
     }
     
@@ -1113,12 +1120,15 @@ fileprivate class ProgressView: GradientView {
      
      - parameter image: the image to be used as background.
      - parameter edgeInset: the edge inset to be used for image stretching.
+     - parameter corners: corner radius ihnerited from the bar (container of the progress views).
      */
-    func addBackground(usingImage image: UIImage, andEdgeInset edgeInset: UIEdgeInsets) {
+    func addBackground(usingImage image: UIImage, andEdgeInset edgeInset: UIEdgeInsets, andCorners corners: CGFloat) {
         
         let backgroundResizableImage = image.resizableImage(withCapInsets: edgeInset)
         let backgroundImageView = UIImageView(image: backgroundResizableImage)
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImageView.layer.masksToBounds = corners > 0
+        backgroundImageView.layer.cornerRadius = corners
         self.addSubview(backgroundImageView)
         
         NSLayoutConstraint.activate([
