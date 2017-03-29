@@ -16,13 +16,22 @@ import UIKit
 @objc public protocol RangeUISliderDelegate {
     
     /**
-     Calls the delegate when the user change the range by moving the knobs.
+     Calls the delegate when the user is changing the range by moving the knobs.
      
      - parameter minValueSelected: the minimum value selected.
      - parameter maxValueSelected: the maximum value selected.
      - parameter slider: the slider on which the range has been modified.
      */
-    func rangeChanged(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
+    @objc optional func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
+    
+    /**
+     Calls the delegate when the user has finished the change of the range.
+     
+     - parameter minValueSelected: the minimum value selected.
+     - parameter maxValueSelected: the maximum value selected.
+     - parameter slider: the slider on which the range has been modified.
+     */
+    func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
 }
 
 /// A custom slider with double knob that allow the user to select a range.
@@ -708,7 +717,12 @@ import UIKit
                 self.leftKnob.xPositionConstraint.constant = positionForKnob
             }
             
-            self.calculateChangeRange()
+            self.rangeUpdate()
+        }
+        
+        if gestureRecognizer.state == .ended {
+            
+            self.rangeSelected()
         }
     }
     
@@ -729,26 +743,56 @@ import UIKit
                 self.rightKnob.xPositionConstraint.constant = positionForKnob
             }
             
-            self.calculateChangeRange()
+            self.rangeUpdate()
+        }
+        
+        if gestureRecognizer.state == .ended {
+            
+            self.rangeSelected()
         }
     }
     
     // MARK: Range selected calculation.
     
     /**
-     Method used to calculate the range selected.
+     Method used to calculate the range selected during updates (moving knobs).
      The selection is adapted to the custom scale eventually setted.
      */
-    private func calculateChangeRange() {
+    private func rangeUpdate() {
+        
+        let rangeValues = self.calculateRangeSelected()
+        
+        self.delegate?.rangeIsChanging?(minValueSelected: rangeValues.minValue,
+                                        maxValueSelected: rangeValues.maxValue,
+                                        slider: self)
+    }
+    
+    /**
+     Method used to calculate the range selected after updates (moving knobs).
+     The selection is adapted to the custom scale eventually setted.
+     */
+    func rangeSelected() {
+        
+        let rangeValues = self.calculateRangeSelected()
+        
+        self.delegate?.rangeChangeFinished(minValueSelected: rangeValues.minValue,
+                                           maxValueSelected: rangeValues.maxValue,
+                                           slider: self)
+    }
+    
+    /**
+     Calculate range selected based on knob position and scale.
+     
+     - returns: min and max values selected.
+     */
+    private func calculateRangeSelected() -> (minValue: CGFloat, maxValue: CGFloat) {
         
         let minValue = self.leftKnob.xPositionConstraint.constant / self.bar.frame.width
         let maxValue = 1.0  + self.rightKnob.xPositionConstraint.constant / self.bar.frame.width
         let scaledMinValue = self.linearMapping(value: minValue)
         let scaledMaxValue = self.linearMapping(value: maxValue)
         
-        self.delegate?.rangeChanged(minValueSelected: scaledMinValue,
-                                    maxValueSelected: scaledMaxValue,
-                                    slider: self)
+        return (minValue: scaledMinValue, maxValue: scaledMaxValue)
     }
     
     /**
