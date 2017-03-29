@@ -200,6 +200,11 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="barTrailing">
                                         <real key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="rangeSelectedBackgroundImage" value="rangeSelected"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barCornes">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="rangeNotSelectedBackgroundImage" value="rangeNotSelected"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMX-j7-KAB" customClass="RangeUISlider" customModule="DoubleSliderProject" customModuleProvider="target">
@@ -297,5 +302,7 @@
     <resources>
         <image name="knob" width="87" height="87"/>
         <image name="knobMetallic" width="197" height="197"/>
+        <image name="rangeNotSelected" width="6" height="21"/>
+        <image name="rangeSelected" width="6" height="21"/>
     </resources>
 </document>

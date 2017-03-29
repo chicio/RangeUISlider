@@ -49,6 +49,46 @@ import UIKit
                                                   endPoint: self.rangeSelectedGradientEndPoint)
         }
     }
+    /// Background range selected strechable image.
+    @IBInspectable var rangeSelectedBackgroundImage: UIImage? {
+        
+        didSet {
+            
+            self.addBackgroundToRangeSelected()
+        }
+    }
+    /// Background range selected top edge insect for background image.
+    @IBInspectable var rangeSelectedBackgroundEdgeInsetTop: CGFloat = 0.0 {
+        
+        didSet {
+            
+            self.addBackgroundToRangeSelected()
+        }
+    }
+    /// Background range selected left edge insect for background image.
+    @IBInspectable var rangeSelectedBackgroundEdgeInsetLeft: CGFloat = 5.0 {
+        
+        didSet {
+
+            self.addBackgroundToRangeSelected()
+        }
+    }
+    /// Background range selected bottom edge insect for background image.
+    @IBInspectable var rangeSelectedBackgroundEdgeInsetBottom: CGFloat = 0.0 {
+        
+        didSet {
+            
+            self.addBackgroundToRangeSelected()
+        }
+    }
+    /// Background range selected right edge insect for background image.
+    @IBInspectable var rangeSelectedBackgroundEdgeInsetRight: CGFloat = 5.0 {
+        
+        didSet {
+            
+            self.addBackgroundToRangeSelected()
+        }
+    }
     /// Gradient color 1 for range not selected.
     @IBInspectable var rangeSelectedGradientColor1: UIColor? {
         
@@ -102,12 +142,52 @@ import UIKit
             self.rightProgressView.backgroundColor = self.rangeNotSelectedColor
         }
     }
+    /// Background range selected strechable image.
+    @IBInspectable var rangeNotSelectedBackgroundImage: UIImage? {
+        
+        didSet {
+
+            self.addBackgroundToRangeNotSelected()
+        }
+    }
+    /// Background range selected top edge insect for background image.
+    @IBInspectable var rangeNotSelectedBackgroundEdgeInsetTop: CGFloat = 0.0 {
+        
+        didSet {
+            
+            self.addBackgroundToRangeNotSelected()
+        }
+    }
+    /// Background range selected left edge insect for background image.
+    @IBInspectable var rangeNotSelectedBackgroundEdgeInsetLeft: CGFloat = 5.0 {
+        
+        didSet {
+            
+            self.addBackgroundToRangeNotSelected()
+        }
+    }
+    /// Background range selected bottom edge insect for background image.
+    @IBInspectable var rangeNotSelectedBackgroundEdgeInsetBottom: CGFloat = 0.0 {
+        
+        didSet {
+            
+            self.addBackgroundToRangeNotSelected()
+        }
+    }
+    /// Background range selected right edge insect for background image.
+    @IBInspectable var rangeNotSelectedBackgroundEdgeInsetRight: CGFloat = 5.0 {
+        
+        didSet {
+            
+            self.addBackgroundToRangeNotSelected()
+        }
+    }
     /// Gradient color 1 for range not selected.
     @IBInspectable var rangeNotSelectedGradientColor1: UIColor? {
         
         didSet {
             
-            self.addGradientToNotSelectedRangeProgressView()
+            self.addGradientToNotSelectedRange()
         }
     }
     /// Gradient color 2 for range not selected.
@@ -115,7 +195,7 @@ import UIKit
         
         didSet {
             
-            self.addGradientToNotSelectedRangeProgressView()
+            self.addGradientToNotSelectedRange()
         }
     }
     /// Gradient start point for not selected range.
@@ -123,7 +203,7 @@ import UIKit
         
         didSet {
             
-            self.addGradientToNotSelectedRangeProgressView()
+            self.addGradientToNotSelectedRange()
         }
     }
     /// Gradient end point for not selected range.
@@ -131,7 +211,7 @@ import UIKit
         
         didSet {
             
-            self.addGradientToNotSelectedRangeProgressView()
+            self.addGradientToNotSelectedRange()
         }
     }
     /// Left knob width.
@@ -551,7 +631,10 @@ import UIKit
         NSLayoutConstraint.activate(constraints)
     }
     
-    func addGradientToNotSelectedRangeProgressView() {
+    /**
+     Add a gradient layer to the not selected range views.
+     */
+    private func addGradientToNotSelectedRange() {
         
         self.leftProgressView.addGradient(firstColor: self.rangeNotSelectedGradientColor1,
                                           secondColor: self.rangeNotSelectedGradientColor2,
@@ -565,6 +648,39 @@ import UIKit
                                            endPoint: self.rangeNotSelectedGradientEndPoint,
                                            cornerRadius: self.barCornes)
     }
+    
+    /**
+     Add a background image to the range not selected views.
+     */
+    func addBackgroundToRangeNotSelected() {
+        
+        if let backgroundImage = self.rangeNotSelectedBackgroundImage {
+            
+            let edgeInset = UIEdgeInsets(top: self.rangeNotSelectedBackgroundEdgeInsetTop,
+                                         left: self.rangeNotSelectedBackgroundEdgeInsetLeft,
+                                         bottom: self.rangeNotSelectedBackgroundEdgeInsetBottom,
+                                         right: self.rangeNotSelectedBackgroundEdgeInsetRight)
+            
+            self.selectedProgressView.addBackground(usingImage: backgroundImage, andEdgeInset: edgeInset)
+        }
+    }
+    
+    /**
+     Add a background image to the range selected views.
+     */
+    private func addBackgroundToRangeSelected() {
+        
+        if let backgroundImage = self.rangeSelectedBackgroundImage {
+
+            let edgeInset = UIEdgeInsets(top: self.rangeSelectedBackgroundEdgeInsetTop,
+                                     left: self.rangeSelectedBackgroundEdgeInsetLeft,
+                                     bottom: self.rangeSelectedBackgroundEdgeInsetBottom,
+                                     right: self.rangeSelectedBackgroundEdgeInsetRight)
+        
+            self.selectedProgressView.addBackground(usingImage: backgroundImage, andEdgeInset: edgeInset)
+        }
+    }
+    
     
     // MARK: Gesture recognizer methods (knobs movements)
     
@@ -722,10 +838,10 @@ class Bar: UIView {
 fileprivate class GradientView: UIView {
     
     /// An additional layer to manage gradient effects.
-    private(set) var gradient: CAGradientLayer = CAGradientLayer()
+    lazy private(set) var gradient: CAGradientLayer = CAGradientLayer()
     
     /**
-     Layout subviews. In this case we need to layout the added gradient 
+     Layout subviews. In this case we need to layout the added gradient
      layer to get the size of the container. Disable also the CA default
      animation.
      */
@@ -782,13 +898,13 @@ fileprivate class Knob: GradientView {
     /// Knob background view.
     private(set) var backgroundView: UIView = UIView()
     /// Knob x position constraint.
-    private(set) var xPositionConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    private(set) var xPositionConstraint: NSLayoutConstraint!
     /// Knob width constraint.
-    private(set) var widthConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    private(set) var widthConstraint: NSLayoutConstraint!
     /// Knob height constraint.
-    private(set) var heightConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    private(set) var heightConstraint: NSLayoutConstraint!
     /// Knob position.
-    private(set) var position: KnobPosition = .left
+    private(set) var position: KnobPosition!
     /// Gesture recognizer target.
     private(set) var gestureRecognizerTarget: Any?
     
@@ -990,6 +1106,52 @@ fileprivate class Knob: GradientView {
 
 /// Class used to describe the progress view inside the bar of the range slider.
 fileprivate class ProgressView: GradientView {
+    
+    /**
+     Method used to setup the background of the progress view using an image.
+     The image is streched using the resizable with cap api.
+     
+     - parameter image: the image to be used as background.
+     - parameter edgeInset: the edge inset to be used for image stretching.
+     */
+    func addBackground(usingImage image: UIImage, andEdgeInset edgeInset: UIEdgeInsets) {
+        
+        let backgroundResizableImage = image.resizableImage(withCapInsets: edgeInset)
+        let backgroundImageView = UIImageView(image: backgroundResizableImage)
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(backgroundImageView)
+        
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint(item: backgroundImageView,
+                               attribute: .leading,
+                               relatedBy: .equal,
+                               toItem: self,
+                               attribute: .leading,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: backgroundImageView,
+                               attribute: .trailing,
+                               relatedBy: .equal,
+                               toItem: self,
+                               attribute: .trailing,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: backgroundImageView,
+                               attribute: .top,
+                               relatedBy: .equal,
+                               toItem: self,
+                               attribute: .top,
+                               multiplier: 1.0,
+                               constant: 0.0),
+            NSLayoutConstraint(item: backgroundImageView,
+                               attribute: .bottom,
+                               relatedBy: .equal,
+                               toItem: self,
+                               attribute: .bottom,
+                               multiplier: 1.0,
+                               constant: 0.0)
+        ])
+    }
     
     /**
      Method used to setup the progress view.
