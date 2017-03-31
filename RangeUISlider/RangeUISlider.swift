@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 /**
- Protocol used delegate the read of the RangeUISlider data.
- Multiple RangeUISlider could be delegated the same classes and
- identified by the instance returned in the protocol methods.
+ Protocol used delegate the read of the RangeUISlider data. Multiple RangeUISlider instance could use the same delegate.
+ The current slider (on which the user is tapping) is returned in all the methods (so that could be identified on the
+ delegate class).
  */
 @objc public protocol RangeUISliderDelegate {
     
@@ -34,8 +34,10 @@ import UIKit
     @objc func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
 }
 
-/// A custom slider with double knob that allow the user to select a range.
-/// Created using autolayout and IBDesignabled/IBInspectable.
+/**
+ A custom slider with double knob that allow the user to select a range.
+ Created using autolayout and IBDesignabled/IBInspectable.
+ */
 @IBDesignable
 @objc public class RangeUISlider: UIView {
     
@@ -78,7 +80,7 @@ import UIKit
     @IBInspectable var rangeSelectedBackgroundEdgeInsetLeft: CGFloat = 5.0 {
         
         didSet {
-
+            
             self.addBackgroundToRangeSelected()
         }
     }
@@ -155,7 +157,7 @@ import UIKit
     @IBInspectable var rangeNotSelectedBackgroundImage: UIImage? {
         
         didSet {
-
+            
             self.addBackgroundToRangeNotSelected()
         }
     }
@@ -592,11 +594,9 @@ import UIKit
     }
     
     /**
-     Method used to setup all the range slider components.
-     All its subviews and the related constraints are added in this method.
-     All the compoents returns arrays of constrains that are activated in a
-     single call to NSLayoutConstraint.activate(constraints) (to improve
-     preformance).
+     Method used to setup all the range slider components. All its subviews and the related constraints are added in
+     this method. All the compoents returns arrays of constrains that are activated in a single call to
+     NSLayoutConstraint.activate(constraints) (to improve preformance).
      */
     private func setup() {
         
@@ -608,29 +608,35 @@ import UIKit
         self.bar.addSubview(self.rightKnob)
         
         var constraints: [NSLayoutConstraint] = []
+        
         constraints.append(contentsOf: self.bar.setup(leading: self.barLeading,
                                                       trailing: self.barTrailing,
                                                       height: self.barHeight))
+        
         constraints.append(contentsOf: self.leftKnob.setup(position: .left,
                                                            width: self.leftKnobWidth,
                                                            height: self.leftKnobHeight,
                                                            target: self,
                                                            selector: #selector(moveLeftKnob)))
+        
         constraints.append(contentsOf: self.rightKnob.setup(position: .right,
                                                             width: self.rightKnobWidth,
                                                             height: self.rightKnobHeight,
                                                             target: self,
                                                             selector: #selector(moveRightKnob)))
+        
         constraints.append(contentsOf: self.selectedProgressView.setup(leftAnchorView: self.leftKnob,
                                                                        leftAnchorConstraintAttribute: .centerX,
                                                                        rightAnchorView: self.rightKnob,
                                                                        rightAnchorConstraintAttribute:  .centerX,
                                                                        color: self.rangeSelectedColor))
+        
         constraints.append(contentsOf: self.leftProgressView.setup(leftAnchorView: self.bar,
                                                                    leftAnchorConstraintAttribute: .leading,
                                                                    rightAnchorView: self.leftKnob,
                                                                    rightAnchorConstraintAttribute: .centerX,
                                                                    color: self.rangeNotSelectedColor))
+        
         constraints.append(contentsOf: self.rightProgressView.setup(leftAnchorView: self.rightKnob,
                                                                     leftAnchorConstraintAttribute: .centerX,
                                                                     rightAnchorView: self.bar,
@@ -673,6 +679,7 @@ import UIKit
             self.leftProgressView.addBackground(usingImage: backgroundImage,
                                                 andEdgeInset: edgeInset,
                                                 andCorners: self.barCornes)
+            
             self.rightProgressView.addBackground(usingImage: backgroundImage,
                                                  andEdgeInset: edgeInset,
                                                  andCorners: self.barCornes)
@@ -685,12 +692,12 @@ import UIKit
     private func addBackgroundToRangeSelected() {
         
         if let backgroundImage = self.rangeSelectedBackgroundImage {
-
+            
             let edgeInset = UIEdgeInsets(top: self.rangeSelectedBackgroundEdgeInsetTop,
-                                     left: self.rangeSelectedBackgroundEdgeInsetLeft,
-                                     bottom: self.rangeSelectedBackgroundEdgeInsetBottom,
-                                     right: self.rangeSelectedBackgroundEdgeInsetRight)
-        
+                                         left: self.rangeSelectedBackgroundEdgeInsetLeft,
+                                         bottom: self.rangeSelectedBackgroundEdgeInsetBottom,
+                                         right: self.rangeSelectedBackgroundEdgeInsetRight)
+            
             self.selectedProgressView.addBackground(usingImage: backgroundImage,
                                                     andEdgeInset: edgeInset,
                                                     andCorners: self.barCornes)
@@ -796,9 +803,8 @@ import UIKit
     }
     
     /**
-     Execute a linear mapping of the values.
-     A simple equation of a straight line, no need for more complex interpolation here
-     (good old times, when I was studying interpolation in Perlin noise..I miss you... :D).
+     Linear mapping of a values. A simple equation of a straight line. "Nothing to see", no need for more complex
+     interpolation here (good old times, when I was studying interpolation in Perlin noise..I miss you... :D).
      
      - parameter value: value to be mapped.
      
@@ -823,8 +829,7 @@ class Bar: UIView {
     private(set) var heightConstraint: NSLayoutConstraint = NSLayoutConstraint()
     
     /**
-     Method used to setup a bar.
-     This methods returns all the constraints to be activated.
+     Method used to setup a bar. This methods returns all the constraints to be activated.
      
      - parameter leading: the leading constant value to be used when creating the leading constraint.
      - parameter trailing: the trailing constant value to be used when creating the trailing constraint.
@@ -892,9 +897,8 @@ fileprivate class GradientView: UIView {
     lazy private(set) var gradient: CAGradientLayer = CAGradientLayer()
     
     /**
-     Layout subviews. In this case we need to layout the added gradient
-     layer to get the size of the container. Disable also the CA default
-     animation.
+     Layout subviews. In this case we need to layout the added gradient layer to get the size of the container.
+     Disable also the CA default animation.
      */
     override func layoutSubviews() {
         
@@ -906,8 +910,7 @@ fileprivate class GradientView: UIView {
     }
     
     /**
-     Add a gradient to the view. This method execute the setup of the
-     gradientLayer property, using data received.
+     Add a gradient to the view. This method execute the setup of the gradientLayer property, using data received.
      
      - parameter firstColor: the first color of the gradient.
      - parameter secondColor: the second color of the gradient.
@@ -1042,18 +1045,17 @@ fileprivate class Knob: GradientView {
      */
     private func setXPositionConstraint() {
         
-        self.xPositionConstraint =  NSLayoutConstraint(item: self,
-                                                       attribute: .centerX,
-                                                       relatedBy: .equal,
-                                                       toItem: self.superview,
-                                                       attribute: self.position == .left ? .leading : .trailing,
-                                                       multiplier: 1.0,
-                                                       constant: 0.0)
+        self.xPositionConstraint = NSLayoutConstraint(item: self,
+                                                      attribute: .centerX,
+                                                      relatedBy: .equal,
+                                                      toItem: self.superview,
+                                                      attribute: self.position == .left ? .leading : .trailing,
+                                                      multiplier: 1.0,
+                                                      constant: 0.0)
     }
     
     /**
-     Method used to create the constraints used to manage the width and height
-     of the knob.
+     Method used to create the constraints used to manage the width and height of the knob.
      
      - parameter width: the width of the knob.
      - parameter height: the height of the knob.
@@ -1166,7 +1168,9 @@ fileprivate class ProgressView: GradientView {
      - parameter edgeInset: the edge inset to be used for image stretching.
      - parameter corners: corner radius ihnerited from the bar (container of the progress views).
      */
-    func addBackground(usingImage image: UIImage, andEdgeInset edgeInset: UIEdgeInsets, andCorners corners: CGFloat) {
+    fileprivate func addBackground(usingImage image: UIImage,
+                                   andEdgeInset edgeInset: UIEdgeInsets,
+                                   andCorners corners: CGFloat) {
         
         let backgroundResizableImage = image.resizableImage(withCapInsets: edgeInset)
         let backgroundImageView = UIImageView(image: backgroundResizableImage)
@@ -1204,16 +1208,16 @@ fileprivate class ProgressView: GradientView {
                                attribute: .bottom,
                                multiplier: 1.0,
                                constant: 0.0)
-        ])
+            ])
     }
     
     /**
      Method used to setup the progress view.
      
      - parameter leftAnchorView: the view used as left reference for the progress view constraints.
-     - parameter leftAnchorConstraintAttribute: the attribute to be used for constraint used to manage the left margin.
+     - parameter leftAnchorConstraintAttribute: the attribute to be used for left margin constraint.
      - parameter rightAnchorView: the view used as rightreference for the progress view constraints.
-     - parameter rightAnchorConstraintAttribute: the attribute to be used for constraint used to manage the right margin.
+     - parameter rightAnchorConstraintAttribute: the attribute to be used for right margin constraint.
      - parameter color: the background color of the progress view.
      
      - returns: an array of progress view constraints.
