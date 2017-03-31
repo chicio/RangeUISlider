@@ -14,7 +14,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DoubleSliderProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4Y-av-gwa" customClass="RangeUISlider" customModule="DoubleSliderProject" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4Y-av-gwa" customClass="RangeUISlider" customModule="RangeUISlider">
                                 <rect key="frame" x="20" y="142" width="335" height="50"/>
                                 <color key="backgroundColor" red="0.86325467690000002" green="0.21829825680000001" blue="0.74614689629999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -158,7 +158,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPQ-Vh-eUa" customClass="RangeUISlider" customModule="DoubleSliderProject" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPQ-Vh-eUa" customClass="RangeUISlider" customModule="RangeUISlider">
                                 <rect key="frame" x="20" y="308.5" width="335" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -237,7 +237,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMX-j7-KAB" customClass="RangeUISlider" customModule="DoubleSliderProject" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMX-j7-KAB" customClass="RangeUISlider" customModule="RangeUISlider">
                                 <rect key="frame" x="20" y="470.5" width="335" height="60"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -320,8 +320,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="rangeUISlider" destination="u4Y-av-gwa" id="ExF-c6-RAh"/>
-                        <outlet property="rangeUISlider2" destination="jPQ-Vh-eUa" id="4le-NI-hg6"/>
+                        <outlet property="rangeUISlider" destination="u4Y-av-gwa" id="fyF-5J-fhM"/>
+                        <outlet property="rangeUISlider2" destination="jPQ-Vh-eUa" id="NcE-lV-pKV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
