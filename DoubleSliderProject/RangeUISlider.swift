@@ -31,7 +31,7 @@ import UIKit
      - parameter maxValueSelected: the maximum value selected.
      - parameter slider: the slider on which the range has been modified.
      */
-    func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
+    @objc func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
 }
 
 /// A custom slider with double knob that allow the user to select a range.
