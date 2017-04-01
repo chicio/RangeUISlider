@@ -54,10 +54,7 @@ import UIKit
         
         didSet {
             
-            self.selectedProgressView.addGradient(firstColor: self.rangeSelectedGradientColor1,
-                                                  secondColor: self.rangeSelectedGradientColor2,
-                                                  startPoint: self.rangeSelectedGradientStartPoint,
-                                                  endPoint: self.rangeSelectedGradientEndPoint)
+            self.selectedProgressView.backgroundColor = self.rangeSelectedColor
         }
     }
     /// Background range selected strechable image.
@@ -158,7 +155,7 @@ import UIKit
         
         didSet {
             
-            self.addBackgroundToRangeNotSelected()
+            self.addBackgroundToRangeNotSelectedIfNeeded()
         }
     }
     /// Background range selected top edge insect for background image.
@@ -166,7 +163,7 @@ import UIKit
         
         didSet {
             
-            self.addBackgroundToRangeNotSelected()
+            self.addBackgroundToRangeNotSelectedIfNeeded()
         }
     }
     /// Background range selected left edge insect for background image.
@@ -174,7 +171,7 @@ import UIKit
         
         didSet {
             
-            self.addBackgroundToRangeNotSelected()
+            self.addBackgroundToRangeNotSelectedIfNeeded()
         }
     }
     /// Background range selected bottom edge insect for background image.
@@ -182,7 +179,7 @@ import UIKit
         
         didSet {
             
-            self.addBackgroundToRangeNotSelected()
+            self.addBackgroundToRangeNotSelectedIfNeeded()
         }
     }
     /// Background range selected right edge insect for background image.
@@ -190,7 +187,7 @@ import UIKit
         
         didSet {
             
-            self.addBackgroundToRangeNotSelected()
+            self.addBackgroundToRangeNotSelectedIfNeeded()
         }
     }
     /// Gradient color 1 for range not selected.
@@ -198,7 +195,7 @@ import UIKit
         
         didSet {
             
-            self.addGradientToNotSelectedRange()
+            self.addGradientToNotSelectedRangeIfNeeded()
         }
     }
     /// Gradient color 2 for range not selected.
@@ -206,7 +203,7 @@ import UIKit
         
         didSet {
             
-            self.addGradientToNotSelectedRange()
+            self.addGradientToNotSelectedRangeIfNeeded()
         }
     }
     /// Gradient start point for not selected range.
@@ -214,7 +211,7 @@ import UIKit
         
         didSet {
             
-            self.addGradientToNotSelectedRange()
+            self.addGradientToNotSelectedRangeIfNeeded()
         }
     }
     /// Gradient end point for not selected range.
@@ -222,7 +219,7 @@ import UIKit
         
         didSet {
             
-            self.addGradientToNotSelectedRange()
+            self.addGradientToNotSelectedRangeIfNeeded()
         }
     }
     /// Left knob width.
@@ -469,7 +466,7 @@ import UIKit
         }
     }
     /// Bar height.
-    @IBInspectable var barHeight: CGFloat = 20.0 {
+    @IBInspectable var barHeight: CGFloat = 15.0 {
         
         didSet {
             
@@ -493,12 +490,14 @@ import UIKit
         }
     }
     /// Bar corners.
-    @IBInspectable var barCornes: CGFloat = 20.0 {
+    @IBInspectable var barCornes: CGFloat = 0.0 {
         
         didSet {
             
             self.leftProgressView.layer.cornerRadius = barCornes
             self.rightProgressView.layer.cornerRadius = barCornes
+            self.addGradientToNotSelectedRangeIfNeeded()
+            self.addBackgroundToRangeNotSelectedIfNeeded()
         }
     }
     /// Bar shadow opacity.
@@ -649,7 +648,7 @@ import UIKit
     /**
      Add a gradient layer to the not selected range views.
      */
-    private func addGradientToNotSelectedRange() {
+    private func addGradientToNotSelectedRangeIfNeeded() {
         
         self.leftProgressView.addGradient(firstColor: self.rangeNotSelectedGradientColor1,
                                           secondColor: self.rangeNotSelectedGradientColor2,
@@ -667,7 +666,7 @@ import UIKit
     /**
      Add a background image to the range not selected views.
      */
-    func addBackgroundToRangeNotSelected() {
+    func addBackgroundToRangeNotSelectedIfNeeded() {
         
         if let backgroundImage = self.rangeNotSelectedBackgroundImage {
             
@@ -923,6 +922,11 @@ fileprivate class GradientView: UIView {
                                  startPoint: CGPoint?,
                                  endPoint: CGPoint?,
                                  cornerRadius: CGFloat = 0.0) {
+        
+        guard firstColor != nil && secondColor != nil else {
+            
+            return
+        }
         
         let color1 = firstColor ?? UIColor(red: 140.0/255.0, green: 140.0/255.0, blue: 140.0/255.0, alpha: 1.0)
         let color2 = secondColor ?? UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
