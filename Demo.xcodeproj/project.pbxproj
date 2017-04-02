@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5F42D28F1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F42D28E1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift */; };
+		5F9045671E913EE000607428 /* RangeUISlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F42D28B1E8FB2F9008F15CE /* RangeUISlider.framework */; };
+		5F9045681E913EE000607428 /* RangeUISlider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F42D28B1E8FB2F9008F15CE /* RangeUISlider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5FCE8A301E79D1A400F888BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCE8A2F1E79D1A400F888BC /* AppDelegate.swift */; };
 		5FCE8A321E79D1A400F888BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCE8A311E79D1A400F888BC /* ViewController.swift */; };
 		5FCE8A351E79D1A400F888BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FCE8A331E79D1A400F888BC /* Main.storyboard */; };
@@ -23,13 +25,6 @@
 			remoteGlobalIDString = 45E215241E8E812E00F0B8B9;
 			remoteInfo = RangeUISlider;
 		};
-		5F9045651E91230100607428 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45E215441E8F064600F0B8B9 /* RangeUISlider.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 45E215231E8E812E00F0B8B9;
-			remoteInfo = RangeUISlider;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +34,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				5F9045681E913EE000607428 /* RangeUISlider.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F9045671E913EE000607428 /* RangeUISlider.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +119,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				5F9045661E91230100607428 /* PBXTargetDependency */,
 			);
 			name = Demo;
 			productName = DoubleSliderProject;
@@ -205,14 +201,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5F9045661E91230100607428 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = RangeUISlider;
-			targetProxy = 5F9045651E91230100607428 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5FCE8A331E79D1A400F888BC /* Main.storyboard */ = {
