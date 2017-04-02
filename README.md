@@ -4,15 +4,17 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/chicio/RangeUISlider/master/LICENSE.md)
 [![Supported platform](https://img.shields.io/badge/platforms-iOS-orange.svg)](https://img.shields.io/badge/platforms-iOS-orange.svg)
 
-An iOS range selection slider, developed using autolayout and completely customizable using IBDesignabled and IBInspectable.
+A highly customizable iOS range selection slider, developed using autolayout and completely customizable using IBDesignabled and IBInspectable.
 
 ***
 
 ### Installation
 
+There are two ways to install RangeUISlider in your project: manual installation of as a framework.
+
 **Manual installation**
 
-To manually install RangeUISlider simply drag and drop the RangeUISlider.swift file inside your project.
+To manually install RangeUISlider simply drag and drop the <a href="https://github.com/chicio/RangeUISlider/blob/master/RangeUISlider/RangeUISlider.swift">RangeUISlider.swift</a> file inside your project.
 
 **Framework**
 
@@ -24,9 +26,9 @@ project. See the demo project for a complete example of the setup of the framewo
 
 The step needed to use RangeUISlider are:
 
-	- drag a UIView into you storyboard
-	- set RangeUISlider as custom class of that view
-	- start editing using interface builder
+ - drag a UIView into you storyboard
+ - set RangeUISlider as custom class of that view
+ - start editing using interface builder
 	
 <p align="center">
 <img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/tutorial.gif">
@@ -34,27 +36,27 @@ The step needed to use RangeUISlider are:
 
 
 To get the current values from the slider, set its delegate property.
-The delegate of the RangeUISLider must implement the RangeUISliderDelegate protocol, that has two methods:
+The delegate of the RangeUISLider must implement the ```swift RangeUISliderDelegate``` protocol, that has two methods:
 
 ```swift
 
-    /**
-     Calls the delegate when the user is changing the range by moving the knobs.
+/**
+ Calls the delegate when the user is changing the range by moving the knobs.
      
-     - parameter minValueSelected: the minimum value selected.
-     - parameter maxValueSelected: the maximum value selected.
-     - parameter slider: the slider on which the range has been modified.
-     */
-    @objc optional func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
+ - parameter minValueSelected: the minimum value selected.
+ - parameter maxValueSelected: the maximum value selected.
+ - parameter slider: the slider on which the range has been modified.
+ */
+ @objc optional func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
     
-    /**
-     Calls the delegate when the user has finished the change of the range.
-     
-     - parameter minValueSelected: the minimum value selected.
-     - parameter maxValueSelected: the maximum value selected.
-     - parameter slider: the slider on which the range has been modified.
-     */
-    @objc func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
+/**
+ Calls the delegate when the user has finished the change of the range.
+    
+ - parameter minValueSelected: the minimum value selected.
+ - parameter maxValueSelected: the maximum value selected.
+ - parameter slider: the slider on which the range has been modified.
+ */
+ @objc func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
 
 ```
 
