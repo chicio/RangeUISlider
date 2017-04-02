@@ -22,6 +22,8 @@ RangeUISlider is available also as a custom framework. To install follow the sta
 (simply drag the RangeUISlider.xcodeproj inside your project and add it to the Embedded Binaries/Linked Frameworks and Libraries section of your 
 project. See the demo project for a complete example of the setup of the framework.
 
+***
+
 ### Usage
 
 The step needed to use RangeUISlider are:
@@ -60,6 +62,7 @@ The delegate of the RangeUISlider must implement the ```RangeUISliderDelegate```
  @objc func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
 
 ```
+***
 
 ### Customizable property
 
@@ -114,6 +117,8 @@ This is the list of the current customizable property of the RangeUISlider direc
  - bar shadow offset
  - bar shadow radius
  - container corners
+
+***
 
 ### Examples
 
