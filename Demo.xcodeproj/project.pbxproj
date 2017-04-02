@@ -23,6 +23,13 @@
 			remoteGlobalIDString = 45E215241E8E812E00F0B8B9;
 			remoteInfo = RangeUISlider;
 		};
+		5F9045651E91230100607428 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45E215441E8F064600F0B8B9 /* RangeUISlider.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 45E215231E8E812E00F0B8B9;
+			remoteInfo = RangeUISlider;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -115,6 +122,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				5F9045661E91230100607428 /* PBXTargetDependency */,
 			);
 			name = Demo;
 			productName = DoubleSliderProject;
@@ -197,6 +205,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5F9045661E91230100607428 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RangeUISlider;
+			targetProxy = 5F9045651E91230100607428 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5FCE8A331E79D1A400F888BC /* Main.storyboard */ = {
