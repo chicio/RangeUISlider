@@ -36,7 +36,7 @@ The step needed to use RangeUISlider are:
 
 
 To get the current values from the slider, set its delegate property.
-The delegate of the RangeUISLider must implement the ```swift RangeUISliderDelegate``` protocol, that has two methods:
+The delegate of the RangeUISLider must implement the ```RangeUISliderDelegate``` protocol, that has two methods:
 
 ```swift
 
@@ -123,7 +123,7 @@ In the following screenshot you can find some examples of the level of customiza
 Various range slider examples created using simple UIColors, images, gradients using CALayers, shadows.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.png">
+<img width="216" height="351" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.png">
 </p>
 
 **Only colors**
@@ -131,7 +131,7 @@ Various range slider examples created using simple UIColors, images, gradients u
 A range slider example created using only UIColors.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/02-only-colors.png">
+<img width="216" height="351" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/02-only-colors.png">
 </p>
 
 **Only images**
@@ -139,11 +139,11 @@ A range slider example created using only UIColors.
 A range slider example created using only images.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/03-only-images.png">
+<img width="216" height="351" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/03-only-images.png">
 </p>
 
 **Only gradients**
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/04-only-gradients.png">
+<img width="216" height="351" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/04-only-gradients.png">
 </p>
