@@ -119,20 +119,11 @@ This is the list of the current customizable property of the RangeUISlider direc
 
 In the following screenshot you can find some examples of the level of customization that it is possible to reach. You can find this example in the demo project.
 
-**Mixed examples**
-
-Various range slider examples created using simple UIColors, images, gradients using CALayers, shadows.
-
 <p align="center">
-<img width="286" height="431" hspace="50" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.gif">
-<img width="286" height="431" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/02-only-colors.gif">
+<img hspace="50" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.gif">
+<img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/02-only-colors.gif">
 </p>
-
-**Only images**
-
-A range slider example created using only images.
-
 <p align="center">
-<img width="286" height="431" hspace="50"src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/03-only-images.gif">
-<img width="286" height="431" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/04-only-gradients.gif">
+<img hspace="50"src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/03-only-images.gif">
+<img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/04-only-gradients.gif">
 </p>
