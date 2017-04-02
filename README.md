@@ -31,9 +31,8 @@ The step needed to use RangeUISlider are:
  - start editing using interface builder
 	
 <p align="center">
-<img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/tutorial.gif">
+<a href="https://www.youtube.com/watch?v=Lorvozz-1HU"><img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/tutorial.png"></a>
 </p>
-
 
 To get the current values from the slider, set its delegate property.
 The delegate of the RangeUISLider must implement the ```RangeUISliderDelegate``` protocol, that has two methods:
@@ -123,7 +122,7 @@ In the following screenshot you can find some examples of the level of customiza
 Various range slider examples created using simple UIColors, images, gradients using CALayers, shadows.
 
 <p align="center">
-<img width="216" height="351" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.png">
+<img width="286" height="431" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.png">
 </p>
 
 **Only colors**
