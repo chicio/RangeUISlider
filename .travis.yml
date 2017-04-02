@@ -1,0 +1,6 @@
+language: objective-c
+osx_image: xcode8.1
+script:
+ - xcodebuild -project RangeUISlider.xcodeproj -scheme RangeUISlider clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -destination 'platform=iOS Simulator,name=iPhone 7,OS=latest'
+ - xcodebuild -project Demo.xcodeproj -scheme Demo-Debug    clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -destination 'platform=iOS Simulator,name=iPhone 7,OS=latest'
+ - xcodebuild -project Demo.xcodeproj -scheme Demo-Release  clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
