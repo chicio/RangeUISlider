@@ -30,10 +30,10 @@ The step needed to use RangeUISlider are:
  - set RangeUISlider as custom class of that view
  - start editing using interface builder
 	
-<a href="https://www.youtube.com/watch?v=Lorvozz-1HU" target="blank">Here</a> you can find a video tutorial.	
+<a href="https://www.youtube.com/watch?v=Lorvozz-1HU" target="_blank">Here</a> you can find a video tutorial.	
 	
 <p align="center">
-<a href="https://www.youtube.com/watch?v=Lorvozz-1HU" target="blank"><img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/tutorial.png"></a>
+<a href="https://www.youtube.com/watch?v=Lorvozz-1HU" target="_blank"><img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/tutorial.png"></a>
 </p>
 
 To get the current values from the slider, set its delegate property.
