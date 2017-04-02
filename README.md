@@ -37,7 +37,7 @@ The step needed to use RangeUISlider are:
 </p>
 
 To get the current values from the slider, set its delegate property.
-The delegate of the RangeUISLider must implement the ```RangeUISliderDelegate``` protocol, that has two methods:
+The delegate of the RangeUISlider must implement the ```RangeUISliderDelegate``` protocol, that has two methods:
 
 ```swift
 
