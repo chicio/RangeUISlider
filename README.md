@@ -19,7 +19,7 @@ To manually install RangeUISlider simply drag and drop the <a href="https://gith
 **Framework**
 
 RangeUISlider is available also as a custom framework. To install follow the standard procedure used to install a custom cocoa touch framework 
-(simply drag the RangeUISlider.xcodeproj inside you project and add it to the Embedded Binaries/Linked Frameworks and Libraries section of your 
+(simply drag the RangeUISlider.xcodeproj inside your project and add it to the Embedded Binaries/Linked Frameworks and Libraries section of your 
 project. See the demo project for a complete example of the setup of the framework.
 
 ### Usage
@@ -124,15 +124,8 @@ In the following screenshot you can find some examples of the level of customiza
 Various range slider examples created using simple UIColors, images, gradients using CALayers, shadows.
 
 <p align="center">
-<img width="286" height="431" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.png">
-</p>
-
-**Only colors**
-
-A range slider example created using only UIColors.
-
-<p align="center">
-<img width="286" height="431" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/02-only-colors.png">
+<img width="286" height="431" hspace="50" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.gif">
+<img width="286" height="431" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/02-only-colors.gif">
 </p>
 
 **Only images**
@@ -140,13 +133,6 @@ A range slider example created using only UIColors.
 A range slider example created using only images.
 
 <p align="center">
-<img width="286" height="431" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/03-only-images.png">
-</p>
-
-**Only gradients**
-
-A range slider example created using only gradients.
-
-<p align="center">
-<img width="286" height="431" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/04-only-gradients.png">
+<img width="286" height="431" hspace="50"src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/03-only-images.gif">
+<img width="286" height="431" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/04-only-gradients.gif">
 </p>
