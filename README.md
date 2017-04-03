@@ -131,7 +131,7 @@ This is the list of the current customizable property of the RangeUISlider direc
 In the following screenshot you can find some examples of the level of customization that it is possible to reach. You can find this example in the demo project.
 
 <p align="center">
-<img hspace="50" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.gif">
+<img width="318" height="588" hspace="50" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.gif">
 <img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/02-only-colors.gif">
 </p>
 <p align="center">
