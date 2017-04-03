@@ -24,6 +24,19 @@ RangeUISlider is available also as a custom framework. To install follow the sta
 (simply drag the RangeUISlider.xcodeproj inside your project and add it to the Embedded Binaries/Linked Frameworks and Libraries section of your 
 project. See the demo project for a complete example of the setup of the framework.
 
+**CocoaPods**
+
+RangeUISlider is also available as a pod on <a href="https://cocoapods.org/pods/RangeUISlider">CocoaPods</a>.
+Add the dependency to your Podfile similar to the following:
+
+```
+target 'MyApp' do
+pod 'RangeUISlider', '~> 1.0'
+end
+```
+
+and then run pod install (or pod update).
+
 ***
 
 ### Usage
@@ -32,6 +45,7 @@ The step needed to use RangeUISlider are:
 
  - drag a UIView into you storyboard
  - set RangeUISlider as custom class of that view
+   - **IMPORANT: set also the Module to RangeUISlider if you use cocoapods or installed the framework version**
  - start editing using interface builder
 	
 <a href="https://www.youtube.com/watch?v=Lorvozz-1HU" target="_blank">Here</a> you can find a video tutorial.	
