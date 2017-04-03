@@ -525,11 +525,31 @@ import UIKit
         }
     }
     /// Bar shadow radius.
-    @IBInspectable var barShadowRadius: CGFloat = 0 {
+    @IBInspectable var barShadowRadius: CGFloat = 0.0 {
         
         didSet {
             
             self.bar.layer.shadowRadius = self.barShadowRadius
+        }
+    }
+    /// Bar border color.
+    @IBInspectable var barBorderWidth: CGFloat = 0.0 {
+        
+        didSet {
+            
+            self.leftProgressView.layer.borderWidth = self.barBorderWidth
+            self.rightProgressView.layer.borderWidth = self.barBorderWidth
+            self.selectedProgressView.layer.borderWidth = self.barBorderWidth
+        }
+    }
+    /// Bar border color.
+    @IBInspectable var barBorderColor: UIColor = UIColor.clear {
+        
+        didSet {
+            
+            self.leftProgressView.layer.borderColor = self.barBorderColor.cgColor
+            self.rightProgressView.layer.borderColor = self.barBorderColor.cgColor
+            self.selectedProgressView.layer.borderColor = self.barBorderColor.cgColor
         }
     }
     /// Container corners.
