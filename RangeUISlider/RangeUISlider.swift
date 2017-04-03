@@ -1220,28 +1220,38 @@ fileprivate class Knob: GradientView {
         }
     }
     
+    /**
+     Add borders to the knob.
+     
+     - parameter color: the border UIColor.
+     - parameter width: the border width.
+     - parameter corners: the current corner radius of the knob.
+     */
     fileprivate func addBorders(usingColor color: UIColor, andWidth width: CGFloat, andCorners corners: CGFloat) {
         
         if self.imageView.image != nil {
             
-            self.addBorders(toView: self.imageView, usingColor: color, andWidth: width, andCorners: corners)
+            self.addBorders(toView: self.imageView, usingColor: color, andWidth: width)
+            self.imageView.layer.cornerRadius = corners
         } else {
             
-            self.backgroundView.layer.borderWidth = width
-            self.backgroundView.layer.borderColor = color.cgColor
-            
-            //self.addBorders(toView: self.backgroundView, usingColor: color, andWidth: width, andCorners: corners)
+            self.addBorders(toView: self.backgroundView, usingColor: color, andWidth: width)
         }
     }
     
-    private func addBorders(toView view:UIView,
+    /**
+     Add borders to a specific view.
+     
+     - parameter view: the view on which the border will be added.
+     - parameter color: the border UIColor.
+     - parameter width: the border width.
+     */
+    private func addBorders(toView view: UIView,
                             usingColor color: UIColor,
-                            andWidth width: CGFloat,
-                            andCorners corners: CGFloat) {
+                            andWidth width: CGFloat) {
         
         view.layer.borderWidth = width
         view.layer.borderColor = color.cgColor
-        view.layer.cornerRadius = corners
     }
 }
 
