@@ -344,6 +344,26 @@ import UIKit
                                       cornerRadius: self.leftKnobCornes)
         }
     }
+    /// Left knob border width.
+    @IBInspectable var leftKnobBorderWidth: CGFloat = 0.0 {
+        
+        didSet {
+            
+            self.leftKnob.addBorders(usingColor: self.leftKnobBorderColor,
+                                     andWidth: self.leftKnobBorderWidth,
+                                     andCorners: self.leftKnobCornes)
+        }
+    }
+    /// Left knob border color.
+    @IBInspectable var leftKnobBorderColor: UIColor = UIColor.clear {
+        
+        didSet {
+            
+            self.leftKnob.addBorders(usingColor: self.leftKnobBorderColor,
+                                     andWidth: self.leftKnobBorderWidth,
+                                     andCorners: self.leftKnobCornes)
+        }
+    }
     /// Right knob width.
     @IBInspectable var rightKnobWidth: CGFloat = 30.0 {
         
@@ -463,6 +483,26 @@ import UIKit
                                        startPoint: self.rightKnobGradientStartPoint,
                                        endPoint: self.rightKnobGradientEndPoint,
                                        cornerRadius: self.rightKnobCornes)
+        }
+    }
+    /// Right knob border width.
+    @IBInspectable var rightKnobBorderWidth: CGFloat = 0.0 {
+        
+        didSet {
+            
+            self.rightKnob.addBorders(usingColor: self.rightKnobBorderColor,
+                                      andWidth: self.rightKnobBorderWidth,
+                                      andCorners: self.rightKnobCornes)
+        }
+    }
+    /// Right knob border color.
+    @IBInspectable var rightKnobBorderColor: UIColor = UIColor.clear {
+        
+        didSet {
+            
+            self.rightKnob.addBorders(usingColor: self.rightKnobBorderColor,
+                                      andWidth: self.rightKnobBorderWidth,
+                                      andCorners: self.rightKnobCornes)
         }
     }
     /// Bar height.
@@ -975,6 +1015,8 @@ fileprivate class Knob: GradientView {
     
     /// Knob background view.
     private(set) var backgroundView: UIView = UIView()
+    /// ImageView used as background view when an image is choosed for knob.
+    lazy private(set) var imageView: UIImageView = UIImageView()
     /// Knob x position constraint.
     private(set) var xPositionConstraint: NSLayoutConstraint!
     /// Knob width constraint.
@@ -1140,34 +1182,34 @@ fileprivate class Knob: GradientView {
         
         if let image = anImage {
             
-            let knobImageView = UIImageView(image: image)
-            knobImageView.translatesAutoresizingMaskIntoConstraints = false
-            knobImageView.contentMode = .scaleToFill
-            self.addSubview(knobImageView)
+            self.imageView.image = image
+            self.imageView.translatesAutoresizingMaskIntoConstraints = false
+            self.imageView.contentMode = .scaleToFill
+            self.addSubview(self.imageView)
             
             NSLayoutConstraint.activate([
-                NSLayoutConstraint(item: knobImageView,
+                NSLayoutConstraint(item: self.imageView,
                                    attribute: .centerX,
                                    relatedBy: .equal,
                                    toItem: self,
                                    attribute: .centerX,
                                    multiplier: 1.0,
                                    constant: 0.0),
-                NSLayoutConstraint(item: knobImageView,
+                NSLayoutConstraint(item: self.imageView,
                                    attribute: .centerY,
                                    relatedBy: .equal,
                                    toItem: self,
                                    attribute: .centerY,
                                    multiplier: 1.0,
                                    constant: 0.0),
-                NSLayoutConstraint(item: knobImageView,
+                NSLayoutConstraint(item: self.imageView,
                                    attribute: .width,
                                    relatedBy: .equal,
                                    toItem: self,
                                    attribute: .width,
                                    multiplier: 1.0,
                                    constant: 0.0),
-                NSLayoutConstraint(item: knobImageView,
+                NSLayoutConstraint(item: self.imageView,
                                    attribute: .height,
                                    relatedBy: .equal,
                                    toItem: self,
@@ -1176,6 +1218,30 @@ fileprivate class Knob: GradientView {
                                    constant: 0.0)
                 ])
         }
+    }
+    
+    fileprivate func addBorders(usingColor color: UIColor, andWidth width: CGFloat, andCorners corners: CGFloat) {
+        
+        if self.imageView.image != nil {
+            
+            self.addBorders(toView: self.imageView, usingColor: color, andWidth: width, andCorners: corners)
+        } else {
+            
+            self.backgroundView.layer.borderWidth = width
+            self.backgroundView.layer.borderColor = color.cgColor
+            
+            //self.addBorders(toView: self.backgroundView, usingColor: color, andWidth: width, andCorners: corners)
+        }
+    }
+    
+    private func addBorders(toView view:UIView,
+                            usingColor color: UIColor,
+                            andWidth width: CGFloat,
+                            andCorners corners: CGFloat) {
+        
+        view.layer.borderWidth = width
+        view.layer.borderColor = color.cgColor
+        view.layer.cornerRadius = corners
     }
 }
 
