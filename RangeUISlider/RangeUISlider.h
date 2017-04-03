@@ -13,4 +13,3 @@ FOUNDATION_EXPORT double RangeUISliderVersionNumber;
 
 //! Project version string for RangeUISlider.
 FOUNDATION_EXPORT const unsigned char RangeUISliderVersionString[];
-
