@@ -95,6 +95,8 @@ This is the list of the current customizable property of the RangeUISlider direc
  - left knob gradient color 2 (override left knob color and image)
  - left knob gradient start point (used only if left knob gradients color has been choosed)
  - left knob gradient end point (used only if left knob gradients color has been choosed)
+ - left knob border width
+ - left knob border color
  - right knob width
  - right knob height
  - right knob corners radius 
@@ -108,6 +110,8 @@ This is the list of the current customizable property of the RangeUISlider direc
  - right knob gradient color 2 (override right knob color and image)
  - right knob gradient start point (used only if right knob gradients color has been choosed)
  - right knob gradient end point (used only if right knob gradients color has been choosed) 
+ - right knob border width
+ - right knob border color
  - bar height 
  - bar leading distance from container view
  - bar trailing distance from container view
