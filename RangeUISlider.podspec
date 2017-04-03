@@ -53,7 +53,7 @@ A highly customizable iOS range selection slider, developed using autolayout and
   #
 
   s.author             = { "chicio" => "fabrizio.duroni@gmail.com" }
-  s.social_media_url   = "https://www.linkedin.com/in/fabrizio-duroni-947a9b35/"
+  s.social_media_url   = "https://github.com/chicio"
 
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -71,7 +71,7 @@ A highly customizable iOS range selection slider, developed using autolayout and
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/chicio/RangeUISlider", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/chicio/RangeUISlider.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
