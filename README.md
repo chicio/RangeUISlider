@@ -45,7 +45,7 @@ The step needed to use RangeUISlider are:
 
  - drag a UIView into you storyboard
  - set RangeUISlider as custom class of that view
-   - **IMPORANT: set also the Module to RangeUISlider if you use cocoapods or installed the framework version**
+   - **IMPORANT: set also the Module to RangeUISlider if you used cocoapods or the framework version during installation**
  - start editing using interface builder
 	
 <a href="https://www.youtube.com/watch?v=Lorvozz-1HU" target="_blank">Here</a> you can find a video tutorial.	
