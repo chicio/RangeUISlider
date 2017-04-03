@@ -31,7 +31,7 @@ Add the dependency to your Podfile similar to the following:
 
 ```
 target 'MyApp' do
-pod 'RangeUISlider', '~> 1.0'
+    pod 'RangeUISlider', '~> 1.0'
 end
 ```
 
