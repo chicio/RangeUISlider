@@ -120,6 +120,8 @@ This is the list of the current customizable property of the RangeUISlider direc
  - bar shadow color
  - bar shadow offset
  - bar shadow radius
+ - bar border width
+ - bar border color
  - container corners
 
 ***
