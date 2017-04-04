@@ -14,7 +14,7 @@ A highly customizable iOS range selection slider, developed using autolayout and
   s.social_media_url   = "https://github.com/chicio"
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/chicio/RangeUISlider.git", :tag => "#{s.version}" }
-  s.source_files  = "RangeUISlider", "RangeUISlider/**/*.{h,m}"
-  s.exclude_files = "RangeUISlider/Exclude"
+  s.source_files  = "Source", "Source/**/*.{h,m}"
+  s.exclude_files = "Source/Exclude"
 
 end
