@@ -17,7 +17,7 @@ There are two ways to install RangeUISlider in your project: manual installation
 
 **Manual installation**
 
-To manually install RangeUISlider simply drag and drop the <a href="https://github.com/chicio/RangeUISlider/blob/master/RangeUISlider/RangeUISlider.swift">RangeUISlider.swift</a> file inside your project.
+To manually install RangeUISlider simply drag and drop the <a href="https://github.com/chicio/RangeUISlider/blob/master/Source/RangeUISlider.swift">RangeUISlider.swift</a> file inside your project.
 
 **Framework**
 
