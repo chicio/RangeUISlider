@@ -32,7 +32,7 @@
 		45E2151A1E8E812E00F0B8B9 = {
 			isa = PBXGroup;
 			children = (
-				45E215261E8E812E00F0B8B9 /* RangeUISlider */,
+				45E215261E8E812E00F0B8B9 /* Source */,
 				45E215251E8E812E00F0B8B9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,14 +45,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		45E215261E8E812E00F0B8B9 /* RangeUISlider */ = {
+		45E215261E8E812E00F0B8B9 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				45E215341E8E86BD00F0B8B9 /* RangeUISlider.swift */,
 				45E215271E8E812E00F0B8B9 /* RangeUISlider.h */,
 				45E215281E8E812E00F0B8B9 /* Info.plist */,
 			);
-			path = RangeUISlider;
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,7 +252,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = RangeUISlider/Info.plist;
+				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -273,7 +273,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = RangeUISlider/Info.plist;
+				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
