@@ -888,12 +888,16 @@ class Bar: UIView {
     private(set) var trailingConstraint: NSLayoutConstraint = NSLayoutConstraint()
     /// Bar height constraint.
     private(set) var heightConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    /// Left knob reference. Unforce wrapped because it surely exist from in range slider (refernce in main view).
     private weak var leftKnob: Knob!
+    /// Right knob reference. Unforce wrapped because it surely exist from in range slider (refernce in main view).
     private weak var rightKnob: Knob!
     
     /**
      Method used to setup a bar. This methods returns all the constraints to be activated.
      
+     - parameter leftKnob: the left knob of the bar.
+     - parameter rightKnob: the right knob of the bar.
      - parameter leading: the leading constant value to be used when creating the leading constraint.
      - parameter trailing: the trailing constant value to be used when creating the trailing constraint.
      - parameter height: the height constant vallue to be used when creating the height constraint.
@@ -970,21 +974,39 @@ class Bar: UIView {
      */
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         
-        var pointForTargetView = self.leftKnob.convert(point, from: self)
-        
-        if self.leftKnob.bounds.contains(pointForTargetView) {
+        if let leftKnobHittedView = self.hitTestViewFor(knob: self.leftKnob, contains: point, with: event)  {
             
-            return self.leftKnob.hitTest(pointForTargetView, with:event)
+            return leftKnobHittedView
         }
         
-        pointForTargetView = self.rightKnob.convert(point, from: self)
-        
-        if self.rightKnob.bounds.contains(pointForTargetView) {
+        if let rightKnobHittedView = self.hitTestViewFor(knob: self.rightKnob, contains: point, with: event)  {
             
-            return self.rightKnob.hitTest(pointForTargetView, with:event)
+            return rightKnobHittedView
         }
         
         return self
+    }
+    
+    /**
+     Select the hitTest for a specific knob if it contains the point of touch.
+     
+     - seealso: https://developer.apple.com/library/content/qa/qa2013/qa1812.html.
+     
+     - parameter point: the hit point inside the bar.
+     - parameter event: the event that caused the hit.
+     
+     - returns: the view that must manage the touch.
+     */
+    fileprivate func hitTestViewFor(knob: Knob, contains point: CGPoint, with event: UIEvent?) -> UIView? {
+        
+        let pointForTargetView = knob.convert(point, from: self)
+        
+        if knob.bounds.contains(pointForTargetView) {
+            
+            return knob.hitTest(pointForTargetView, with: event)
+        }
+        
+        return nil
     }
 }
 
