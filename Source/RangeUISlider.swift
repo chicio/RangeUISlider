@@ -668,7 +668,9 @@ import UIKit
         
         var constraints: [NSLayoutConstraint] = []
         
-        constraints.append(contentsOf: self.bar.setup(leading: self.barLeading,
+        constraints.append(contentsOf: self.bar.setup(leftKnob: self.leftKnob,
+                                                      rightKnob: self.rightKnob,
+                                                      leading: self.barLeading,
                                                       trailing: self.barTrailing,
                                                       height: self.barHeight))
         
@@ -886,6 +888,8 @@ class Bar: UIView {
     private(set) var trailingConstraint: NSLayoutConstraint = NSLayoutConstraint()
     /// Bar height constraint.
     private(set) var heightConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    private weak var leftKnob: Knob!
+    private weak var rightKnob: Knob!
     
     /**
      Method used to setup a bar. This methods returns all the constraints to be activated.
@@ -896,7 +900,14 @@ class Bar: UIView {
      
      - returns: an arrays of constraints to be activated.
      */
-    fileprivate func setup(leading: CGFloat, trailing: CGFloat, height: CGFloat) -> [NSLayoutConstraint] {
+    fileprivate func setup(leftKnob: Knob,
+                           rightKnob: Knob,
+                           leading: CGFloat,
+                           trailing: CGFloat,
+                           height: CGFloat) -> [NSLayoutConstraint] {
+        
+        self.leftKnob = leftKnob
+        self.rightKnob = rightKnob
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
@@ -945,6 +956,35 @@ class Bar: UIView {
         ]
         
         return barConstraints
+    }
+    
+    /**
+     Overridden hitTest method to support out of bounds view.
+     In this case we have to manage the fact that the knobs must be
+     draggable also outside of the bar bounds.
+     
+     - parameter point: the hit point inside the bar.
+     - parameter event: the event that caused the hit.
+     
+     - returns the view that must manage the touch.
+     */
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        
+        var pointForTargetView = self.leftKnob.convert(point, from: self)
+        
+        if self.leftKnob.bounds.contains(pointForTargetView) {
+            
+            return self.leftKnob.hitTest(pointForTargetView, with:event)
+        }
+        
+        pointForTargetView = self.rightKnob.convert(point, from: self)
+        
+        if self.rightKnob.bounds.contains(pointForTargetView) {
+            
+            return self.rightKnob.hitTest(pointForTargetView, with:event)
+        }
+        
+        return self
     }
 }
 
