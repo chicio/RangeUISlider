@@ -13,7 +13,7 @@ A highly customizable iOS range selection slider, developed using autolayout and
 
 ### Installation
 
-There are two ways to install RangeUISlider in your project: manual installation of as a framework.
+There are three ways to install RangeUISlider in your project: manual installation of as a framework.
 
 **Manual installation**
 
