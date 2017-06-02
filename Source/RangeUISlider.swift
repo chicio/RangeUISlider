@@ -49,6 +49,10 @@ import UIKit
     @IBInspectable var scaleMinValue: CGFloat = 0.0
     /// Scale maximum value.
     @IBInspectable var scaleMaxValue: CGFloat = 1.0
+    /// Default left knob starting value.
+    @IBInspectable var defaultValueLeftKnob: CGFloat = 0.0
+    /// Default right knob starting value.
+    @IBInspectable var defaultValueRightKnob: CGFloat = 1.0
     /// Selected range color.
     @IBInspectable var rangeSelectedColor: UIColor = UIColor.blue {
         
@@ -651,6 +655,22 @@ import UIKit
         self.leftKnob.xPositionConstraint.constant = 40
         self.rightKnob.xPositionConstraint.constant = -40
     }
+  
+    /**
+     Method used to layout precisely the subview.
+     Used here to set the starting values of the knob.
+     */
+    public override func layoutSubviews() {
+        
+        super.layoutSubviews()
+      
+        let totalRange = self.scaleMaxValue - self.scaleMinValue
+        let minValue = (self.defaultValueLeftKnob - self.scaleMinValue) / totalRange
+        let maxValue = (self.defaultValueRightKnob - self.scaleMinValue) / totalRange
+        
+        self.leftKnob.xPositionConstraint.constant = self.bar.frame.width * minValue
+        self.rightKnob.xPositionConstraint.constant = (self.bar.frame.width * maxValue) - self.bar.frame.width
+    }
     
     /**
      Method used to setup all the range slider components. All its subviews and the related constraints are added in
@@ -1073,7 +1093,7 @@ fileprivate enum KnobPosition {
 }
 
 /// Class used to describe the knobs of the slider.
-fileprivate class Knob: GradientView {
+fileprivate class Knob: GradientView, UIGestureRecognizerDelegate {
     
     /// Knob background view.
     private(set) var backgroundView: UIView = UIView()
@@ -1232,9 +1252,28 @@ fileprivate class Knob: GradientView {
     private func setGestureRecognizer(withTarget target: Any?, usingSelector selector: Selector) {
         
         let gesture = UIPanGestureRecognizer(target: target, action: selector)
+        gesture.delegate = self
+        gesture.delaysTouchesBegan = true
+        gesture.delaysTouchesEnded = true
         self.addGestureRecognizer(gesture)
     }
     
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        
+        return true
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+
+        return true
+    }
+
     /**
      Method used to add an image on the knob (to use as background).
      

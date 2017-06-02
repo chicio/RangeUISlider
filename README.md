@@ -32,7 +32,7 @@ Add the dependency to your Podfile similar to the following:
 
 ```
 target 'MyApp' do
-    pod 'RangeUISlider', '~> 1.0'
+    pod 'RangeUISlider', '~> 1.1'
 end
 ```
 
@@ -85,6 +85,10 @@ The delegate of the RangeUISlider must implement the ```RangeUISliderDelegate```
 
 This is the list of the current customizable property of the RangeUISlider directly from Interface Builder using IBDesignable/IBInspectable:
 
+ - range minimum value (CGFloat only)
+ - range maximum value (CGFloat only)
+ - default starting value left knob
+ - default starting value right knob
  - range selected color
  - range selected image (override range selected color property)
  - range selected edge inset top, left, bottom, right (used only if range selected image has been setted)

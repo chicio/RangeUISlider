@@ -1,6 +1,12 @@
 # Change Log
 All changes to RangeUISlider will be documented in this file.
 
+## [1.1.0](https://github.com/chicio/RangeUISlider/releases/tag/1.1.0)
+Release date: 2017-06-02.
+
+#### Added
+- Default starting value for left and right knob.
+
 ## [1.0.2](https://github.com/chicio/RangeUISlider/releases/tag/1.0.2)
 Release date: 2017-04-05.
 
