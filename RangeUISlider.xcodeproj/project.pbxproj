@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		45E215291E8E812E00F0B8B9 /* RangeUISlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E215271E8E812E00F0B8B9 /* RangeUISlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45E215351E8E86BD00F0B8B9 /* RangeUISlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E215341E8E86BD00F0B8B9 /* RangeUISlider.swift */; };
+		5F7B1B731F7EEE7E00D19E23 /* RangeUISliderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B1B721F7EEE7E00D19E23 /* RangeUISliderDelegate.swift */; };
+		5F7B1B751F7EEEFD00D19E23 /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B1B741F7EEEFD00D19E23 /* Bar.swift */; };
+		5F7B1B771F7EEF8800D19E23 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B1B761F7EEF8800D19E23 /* GradientView.swift */; };
+		5F7B1B791F7EF0A600D19E23 /* Knob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B1B781F7EF0A600D19E23 /* Knob.swift */; };
+		5F7B1B7B1F7EF14A00D19E23 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7B1B7A1F7EF14A00D19E23 /* ProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +21,11 @@
 		45E215271E8E812E00F0B8B9 /* RangeUISlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RangeUISlider.h; sourceTree = "<group>"; };
 		45E215281E8E812E00F0B8B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45E215341E8E86BD00F0B8B9 /* RangeUISlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeUISlider.swift; sourceTree = "<group>"; };
+		5F7B1B721F7EEE7E00D19E23 /* RangeUISliderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeUISliderDelegate.swift; sourceTree = "<group>"; };
+		5F7B1B741F7EEEFD00D19E23 /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
+		5F7B1B761F7EEF8800D19E23 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		5F7B1B781F7EF0A600D19E23 /* Knob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knob.swift; sourceTree = "<group>"; };
+		5F7B1B7A1F7EF14A00D19E23 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +58,11 @@
 		45E215261E8E812E00F0B8B9 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				5F7B1B741F7EEEFD00D19E23 /* Bar.swift */,
+				5F7B1B761F7EEF8800D19E23 /* GradientView.swift */,
+				5F7B1B781F7EF0A600D19E23 /* Knob.swift */,
+				5F7B1B7A1F7EF14A00D19E23 /* ProgressView.swift */,
+				5F7B1B721F7EEE7E00D19E23 /* RangeUISliderDelegate.swift */,
 				45E215341E8E86BD00F0B8B9 /* RangeUISlider.swift */,
 				45E215271E8E812E00F0B8B9 /* RangeUISlider.h */,
 				45E215281E8E812E00F0B8B9 /* Info.plist */,
@@ -136,6 +151,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				45E215351E8E86BD00F0B8B9 /* RangeUISlider.swift in Sources */,
+				5F7B1B751F7EEEFD00D19E23 /* Bar.swift in Sources */,
+				5F7B1B791F7EF0A600D19E23 /* Knob.swift in Sources */,
+				5F7B1B771F7EEF8800D19E23 /* GradientView.swift in Sources */,
+				5F7B1B731F7EEE7E00D19E23 /* RangeUISliderDelegate.swift in Sources */,
+				5F7B1B7B1F7EF14A00D19E23 /* ProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
