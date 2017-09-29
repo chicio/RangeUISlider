@@ -10,24 +10,20 @@ import UIKit
 import RangeUISlider
 
 class ViewController: UIViewController, RangeUISliderDelegate {
-
     @IBOutlet weak var rangeUISlider: RangeUISlider!
     @IBOutlet weak var rangeUISlider2: RangeUISlider!
 
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         self.rangeUISlider.delegate = self
         self.rangeUISlider2.delegate = self
     }
     
     func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
-        
         print("FINISH min: \(minValueSelected) -  max: \(maxValueSelected) - identifier: \(slider.identifier)")
     }
     
     func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
-        
         print("min: \(minValueSelected) -  max: \(maxValueSelected) - identifier: \(slider.identifier)")
     }
 }
