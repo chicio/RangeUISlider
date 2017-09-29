@@ -793,7 +793,7 @@ import UIKit
      
      - parameter gestureRecognizer: the gesture recognizer that uses this method as selector.
      */
-    public final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
+    @objc public final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
         
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
             
@@ -819,7 +819,7 @@ import UIKit
      
      - parameter gestureRecognizer: the gesture recognizer that uses this method as selector.
      */
-    public final func moveRightKnob(gestureRecognizer: UIPanGestureRecognizer) {
+    @objc public final func moveRightKnob(gestureRecognizer: UIPanGestureRecognizer) {
         
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
             
