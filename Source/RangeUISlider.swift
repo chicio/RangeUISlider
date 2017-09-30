@@ -536,12 +536,7 @@ import UIKit
                                                       leading: self.barLeading,
                                                       trailing: self.barTrailing,
                                                       height: self.barHeight))
-        
-        constraints.append(contentsOf: self.leftKnob.setup(position: .left,
-                                                           width: self.leftKnobWidth,
-                                                           height: self.leftKnobHeight,
-                                                           target: self,
-                                                           selector: #selector(moveLeftKnob)))
+
         
         constraints.append(contentsOf: self.rightKnob.setup(position: .right,
                                                             width: self.rightKnobWidth,
@@ -549,6 +544,12 @@ import UIKit
                                                             target: self,
                                                             selector: #selector(moveRightKnob)))
         
+        constraints.append(contentsOf: self.leftKnob.setup(position: .left,
+                                                           width: self.leftKnobWidth,
+                                                           height: self.leftKnobHeight,
+                                                           target: self,
+                                                           selector: #selector(moveLeftKnob)))
+
         constraints.append(contentsOf: self.selectedProgressView.setup(leftAnchorView: self.leftKnob,
                                                                        leftAnchorConstraintAttribute: .centerX,
                                                                        rightAnchorView: self.rightKnob,

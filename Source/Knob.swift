@@ -161,8 +161,6 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
     private func setGestureRecognizer(withTarget target: Any?, usingSelector selector: Selector) {
         let gesture = UIPanGestureRecognizer(target: target, action: selector)
         gesture.delegate = self
-        gesture.delaysTouchesBegan = true
-        gesture.delaysTouchesEnded = true
         self.addGestureRecognizer(gesture)
     }
     

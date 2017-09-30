@@ -19,7 +19,11 @@ class Bar: UIView {
     private weak var leftKnob: Knob!
     /// Right knob reference. Unforce wrapped because it surely exist from in range slider (refernce in main view).
     private weak var rightKnob: Knob!
-    
+    /// Flag that indicates that the left knob has been hitted.
+    private var leftKnobHitted: Bool = false
+    /// Flag that indicates that the right knob has been hitted.
+    private var rightKnobHitted: Bool = false
+
     /**
      Method used to setup a bar. This methods returns all the constraints to be activated.
      
@@ -94,30 +98,77 @@ class Bar: UIView {
      - returns the view that must manage the touch.
      */
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        if let leftKnobHittedView = self.hitTestViewFor(knob: self.leftKnob, contains: point, with: event)  {
-            return leftKnobHittedView
+        leftKnobHitted = hitTestFor(view: self.leftKnob, contains: point, with: event)
+        rightKnobHitted = hitTestFor(view: self.rightKnob, contains: point, with: event)
+        if let knobChoosed = getKnobIfTheyHaveBeenBothHadBeenHitted()  {
+            return knobChoosed
         }
-        if let rightKnobHittedView = self.hitTestViewFor(knob: self.rightKnob, contains: point, with: event)  {
-            return rightKnobHittedView
+        if rightKnobHitted {
+            return rightKnob
+        }
+        if leftKnobHitted {
+            return leftKnob
         }
         return self
     }
     
+    private func getKnobIfTheyHaveBeenBothHadBeenHitted() -> Knob? {
+        if bothKnobHaveBeenHitted() {
+            if leftKnobIsAtTheLeftMarginOfTheBar() {
+                return rightKnob
+            }
+            if rightKnobIsAtTheRightMarginOfTheBar() {
+                return leftKnob
+            }
+        }
+        return nil
+    }
+    
+    private func bothKnobHaveBeenHitted() -> Bool {
+        return leftKnobHitted && rightKnobHitted
+    }
+    
+    private func leftKnobIsAtTheLeftMarginOfTheBar() -> Bool {
+        return leftKnob.xPositionConstraint.constant < leftKnob.widthConstraint.constant
+    }
+    
+    private func rightKnobIsAtTheRightMarginOfTheBar() -> Bool {
+        return rightKnob.xPositionConstraint.constant * -1 <= rightKnob.widthConstraint.constant
+    }
+    
     /**
-     Select the hitTest for a specific knob if it contains the point of touch.
+     Hit test for a specific view if it contains the point of touch.
      
      - seealso: https://developer.apple.com/library/content/qa/qa2013/qa1812.html.
      
+     - parameter view: the view to be tested for hit/not hit.
      - parameter point: the hit point inside the bar.
      - parameter event: the event that caused the hit.
      
-     - returns: the view that must manage the touch.
+     - returns: true if the view has been hitted.
      */
-    private func hitTestViewFor(knob: Knob, contains point: CGPoint, with event: UIEvent?) -> UIView? {
-        let pointForTargetView = knob.convert(point, from: self)
-        if knob.bounds.contains(pointForTargetView) {
-            return knob.hitTest(pointForTargetView, with: event)
+    private func hitTestFor(view: UIView, contains point: CGPoint, with event: UIEvent?) -> Bool {
+        let pointInViewCoordinateSpace = view.convert(point, from: self)
+        return hasBeenHitted(view: view, in: pointInViewCoordinateSpace, with: event)
+    }
+    
+    /**
+     Check if a view or one of its descendant has been hitted.
+     
+     - parameter view: the view under test for hit.
+     - parameter point: the point toi be checked for test on view.
+     - parameter event: the event that fired the touch.
+     
+     - returns: true if the point is in the view, else false.
+     */
+    private func hasBeenHitted(view: UIView, in point: CGPoint, with event: UIEvent?) -> Bool {
+        if wasHitTestSuccessfulFor(view: view, in: point, with: event) {
+            return true
         }
-        return nil
+        return false
+    }
+    
+    private func wasHitTestSuccessfulFor(view: UIView, in point: CGPoint, with event: UIEvent?) -> Bool {
+        return view.hitTest(point, with: event) != nil
     }
 }
