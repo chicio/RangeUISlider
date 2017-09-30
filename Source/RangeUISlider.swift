@@ -68,7 +68,8 @@ import UIKit
             selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
                                                   secondColor: rangeSelectedGradientColor2,
                                                   startPoint: rangeSelectedGradientStartPoint,
-                                                  endPoint: rangeSelectedGradientEndPoint)
+                                                  endPoint: rangeSelectedGradientEndPoint,
+                                                  cornerRadius: 0.0)
         }
     }
     /// Gradient color 2 for range not selected.
@@ -77,7 +78,8 @@ import UIKit
             selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
                                                   secondColor: rangeSelectedGradientColor2,
                                                   startPoint: rangeSelectedGradientStartPoint,
-                                                  endPoint: rangeSelectedGradientEndPoint)
+                                                  endPoint: rangeSelectedGradientEndPoint,
+                                                  cornerRadius: 0.0)
         }
     }
     /// Gradient start point for not selected range.
@@ -86,7 +88,8 @@ import UIKit
             selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
                                                   secondColor: rangeSelectedGradientColor2,
                                                   startPoint: rangeSelectedGradientStartPoint,
-                                                  endPoint: rangeSelectedGradientEndPoint)
+                                                  endPoint: rangeSelectedGradientEndPoint,
+                                                  cornerRadius: 0.0)
         }
     }
     /// Gradient end point for not selected range.
@@ -95,7 +98,8 @@ import UIKit
             selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
                                                   secondColor: rangeSelectedGradientColor2,
                                                   startPoint: rangeSelectedGradientStartPoint,
-                                                  endPoint: rangeSelectedGradientEndPoint)
+                                                  endPoint: rangeSelectedGradientEndPoint,
+                                                  cornerRadius: 0.0)
         }
     }
     /// Not selected range color.

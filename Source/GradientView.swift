@@ -23,7 +23,7 @@ class GradientView: UIView {
                      secondColor: UIColor?,
                      startPoint: CGPoint?,
                      endPoint: CGPoint?,
-                     cornerRadius: CGFloat = 0.0) {
+                     cornerRadius: CGFloat) {
         let color1 = firstColor ?? UIColor(red: 140.0/255.0, green: 140.0/255.0, blue: 140.0/255.0, alpha: 1.0)
         let color2 = secondColor ?? UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
         let begin = startPoint ?? CGPoint(x: 0.0, y: 0.5)
