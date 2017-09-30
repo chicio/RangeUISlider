@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GradientView: UIView {
+class Gradient: UIView {
     lazy private(set) var gradient: CAGradientLayer = CAGradientLayer()
     
     override func layoutSubviews() {

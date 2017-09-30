@@ -469,11 +469,11 @@ import UIKit
     /// Right knob.
     private let rightKnob: Knob = Knob()
     /// UIView used as marker for selected range progress.
-    private let selectedProgressView: ProgressView = ProgressView()
+    private let selectedProgressView: Progress = Progress()
     /// UIVIew used as progress bar for left knob.
-    private let leftProgressView: ProgressView = ProgressView()
+    private let leftProgressView: Progress = Progress()
     /// UIVIew used as progress bar for right knob.
-    private let rightProgressView: ProgressView = ProgressView()
+    private let rightProgressView: Progress = Progress()
     /// Slider delegate.
     public weak var delegate: RangeUISliderDelegate?
     

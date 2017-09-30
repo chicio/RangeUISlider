@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ProgressView: GradientView {
+class Progress: Gradient {
     func addBackground(usingImage image: UIImage,
                        andEdgeInset edgeInset: UIEdgeInsets,
                        andCorners corners: CGFloat) {

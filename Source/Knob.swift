@@ -13,7 +13,7 @@ enum KnobPosition {
     case right
 }
 
-class Knob: GradientView, UIGestureRecognizerDelegate {
+class Knob: Gradient, UIGestureRecognizerDelegate {
     private(set) var backgroundView: UIView = UIView()
     lazy private(set) var imageView: UIImageView = UIImageView()
     private(set) var xPositionConstraint: NSLayoutConstraint!
