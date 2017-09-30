@@ -24,13 +24,11 @@ class GradientView: UIView {
                      startPoint: CGPoint?,
                      endPoint: CGPoint?,
                      cornerRadius: CGFloat) {
-        let color1 = firstColor ?? UIColor(red: 140.0/255.0, green: 140.0/255.0, blue: 140.0/255.0, alpha: 1.0)
-        let color2 = secondColor ?? UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
-        let begin = startPoint ?? CGPoint(x: 0.0, y: 0.5)
-        let end = endPoint ?? CGPoint(x: 0.0, y: 1.0)
-        gradient.colors = [color1.cgColor, color2.cgColor]
-        gradient.startPoint = begin
-        gradient.endPoint = end
+        gradient.colors = [
+            (firstColor ?? UIColor(red: 140.0/255.0, green: 140.0/255.0, blue: 140.0/255.0, alpha: 1.0)).cgColor,
+            (secondColor ?? UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)).cgColor]
+        gradient.startPoint = startPoint ?? CGPoint(x: 0.0, y: 0.5)
+        gradient.endPoint = endPoint ?? CGPoint(x: 0.0, y: 1.0)
         gradient.cornerRadius = cornerRadius
         layer.addSublayer(gradient)
     }
