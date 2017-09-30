@@ -100,7 +100,7 @@
                                         <point key="value" x="0.0" y="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="rangeSelectedGradientColor1">
-                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.033274707846338236" green="1" blue="0.85773568435868974" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="rangeSelectedGradientColor2">
                                         <color key="value" red="0.0" green="0.29295443329999998" blue="0.61750000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
