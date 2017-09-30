@@ -74,9 +74,21 @@ class Bar: UIView {
     }
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        leftKnobHitted = hitTestFor(view: leftKnob, contains: point, with: event)
-        rightKnobHitted = hitTestFor(view: rightKnob, contains: point, with: event)
-        if let knobChoosed = getKnobIfTheyHaveBeenBothHadBeenHitted()  {
+        leftKnobHitted = hitTestInBarCoordinateSpaceFor(view: leftKnob, contains: point, with: event)
+        rightKnobHitted = hitTestInBarCoordinateSpaceFor(view: rightKnob, contains: point, with: event)
+        if let knobHitted = aKnobHasBeenHitted() {
+            return knobHitted
+        }
+        return self
+    }
+    
+    private func hitTestInBarCoordinateSpaceFor(view: UIView, contains point: CGPoint, with event: UIEvent?) -> Bool {
+        let pointInViewCoordinateSpace = view.convert(point, from: self)
+        return hasBeenHitted(view: view, in: pointInViewCoordinateSpace, with: event)
+    }
+    
+    func aKnobHasBeenHitted() -> Knob? {
+        if let knobChoosed = getKnobIfNecessaryWhenTheyHaveBeenBothHitted()  {
             return knobChoosed
         }
         if rightKnobHitted {
@@ -85,17 +97,12 @@ class Bar: UIView {
         if leftKnobHitted {
             return leftKnob
         }
-        return self
+        return nil
     }
     
-    private func getKnobIfTheyHaveBeenBothHadBeenHitted() -> Knob? {
-        if bothKnobHaveBeenHitted() {
-            if leftKnobIsAtTheLeftMarginOfTheBar() {
-                return rightKnob
-            }
-            if rightKnobIsAtTheRightMarginOfTheBar() {
-                return leftKnob
-            }
+    private func getKnobIfNecessaryWhenTheyHaveBeenBothHitted() -> Knob? {
+        if bothKnobHaveBeenHitted(), let knobChoosenToBeReturned = chooseIfKnobHaveToBeReturnedIfBothHaveBeenHitted() {
+            return knobChoosenToBeReturned
         }
         return nil
     }
@@ -104,17 +111,22 @@ class Bar: UIView {
         return leftKnobHitted && rightKnobHitted
     }
     
+    private func chooseIfKnobHaveToBeReturnedIfBothHaveBeenHitted() -> Knob? {
+        if leftKnobIsAtTheLeftMarginOfTheBar() {
+            return rightKnob
+        }
+        if rightKnobIsAtTheRightMarginOfTheBar() {
+            return leftKnob
+        }
+        return nil
+    }
+    
     private func leftKnobIsAtTheLeftMarginOfTheBar() -> Bool {
         return leftKnob.xPositionConstraint.constant < leftKnob.widthConstraint.constant
     }
     
     private func rightKnobIsAtTheRightMarginOfTheBar() -> Bool {
         return rightKnob.xPositionConstraint.constant * -1 <= rightKnob.widthConstraint.constant
-    }
-    
-    private func hitTestFor(view: UIView, contains point: CGPoint, with event: UIEvent?) -> Bool {
-        let pointInViewCoordinateSpace = view.convert(point, from: self)
-        return hasBeenHitted(view: view, in: pointInViewCoordinateSpace, with: event)
     }
     
     private func hasBeenHitted(view: UIView, in point: CGPoint, with event: UIEvent?) -> Bool {
