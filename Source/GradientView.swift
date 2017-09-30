@@ -19,7 +19,7 @@ class GradientView: UIView {
     override func layoutSubviews() {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        self.gradient.frame = self.bounds
+        gradient.frame = bounds
         CATransaction.commit()
         CATransaction.setDisableActions(false)
     }
@@ -45,10 +45,10 @@ class GradientView: UIView {
         let color2 = secondColor ?? UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
         let begin = startPoint ?? CGPoint(x: 0.0, y: 0.5)
         let end = endPoint ?? CGPoint(x: 0.0, y: 1.0)
-        self.gradient.colors = [color1.cgColor, color2.cgColor]
-        self.gradient.startPoint = begin
-        self.gradient.endPoint = end
-        self.gradient.cornerRadius = cornerRadius
-        self.layer.addSublayer(self.gradient)
+        gradient.colors = [color1.cgColor, color2.cgColor]
+        gradient.startPoint = begin
+        gradient.endPoint = end
+        gradient.cornerRadius = cornerRadius
+        layer.addSublayer(gradient)
     }
 }

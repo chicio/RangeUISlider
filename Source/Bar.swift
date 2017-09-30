@@ -35,30 +35,30 @@ class Bar: UIView {
      
      - returns: an arrays of constraints to be activated.
      */
-    func setup(leftKnob: Knob,
-               rightKnob: Knob,
+    func setup(leftKnob aLeftKnob: Knob,
+               rightKnob aRightKnob: Knob,
                leading: CGFloat,
                trailing: CGFloat,
                height: CGFloat) -> [NSLayoutConstraint] {
         
-        self.leftKnob = leftKnob
-        self.rightKnob = rightKnob
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.leadingConstraint = NSLayoutConstraint(item: self,
+        leftKnob = aLeftKnob
+        rightKnob = aRightKnob
+        translatesAutoresizingMaskIntoConstraints = false
+        leadingConstraint = NSLayoutConstraint(item: self,
                                                     attribute: .leading,
                                                     relatedBy: .equal,
-                                                    toItem: self.superview,
+                                                    toItem: superview,
                                                     attribute: .leading,
                                                     multiplier: 1.0,
                                                     constant: leading)
-        self.trailingConstraint = NSLayoutConstraint(item: self,
+        trailingConstraint = NSLayoutConstraint(item: self,
                                                      attribute: .trailing,
                                                      relatedBy: .equal,
-                                                     toItem: self.superview,
+                                                     toItem: superview,
                                                      attribute: .trailing,
                                                      multiplier: 1.0,
                                                      constant: -1.0 * trailing)
-        self.heightConstraint = NSLayoutConstraint(item: self,
+        heightConstraint = NSLayoutConstraint(item: self,
                                                    attribute: .height,
                                                    relatedBy: .equal,
                                                    toItem: nil,
@@ -66,20 +66,20 @@ class Bar: UIView {
                                                    multiplier: 1.0,
                                                    constant: height)
         let barConstraints: [NSLayoutConstraint] = [
-            self.leadingConstraint,
-            self.trailingConstraint,
-            self.heightConstraint,
+            leadingConstraint,
+            trailingConstraint,
+            heightConstraint,
             NSLayoutConstraint(item: self,
                                attribute: .centerX,
                                relatedBy: .equal,
-                               toItem: self.superview,
+                               toItem: superview,
                                attribute: .centerX,
                                multiplier: 1.0,
                                constant: 0.0),
             NSLayoutConstraint(item: self,
                                attribute: .centerY,
                                relatedBy: .equal,
-                               toItem: self.superview,
+                               toItem: superview,
                                attribute: .centerY,
                                multiplier: 1.0,
                                constant: 0.0)
@@ -98,8 +98,8 @@ class Bar: UIView {
      - returns the view that must manage the touch.
      */
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        leftKnobHitted = hitTestFor(view: self.leftKnob, contains: point, with: event)
-        rightKnobHitted = hitTestFor(view: self.rightKnob, contains: point, with: event)
+        leftKnobHitted = hitTestFor(view: leftKnob, contains: point, with: event)
+        rightKnobHitted = hitTestFor(view: rightKnob, contains: point, with: event)
         if let knobChoosed = getKnobIfTheyHaveBeenBothHadBeenHitted()  {
             return knobChoosed
         }

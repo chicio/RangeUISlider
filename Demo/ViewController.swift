@@ -15,8 +15,8 @@ class ViewController: UIViewController, RangeUISliderDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.rangeUISlider.delegate = self
-        self.rangeUISlider2.delegate = self
+        rangeUISlider.delegate = self
+        rangeUISlider2.delegate = self
     }
     
     func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {

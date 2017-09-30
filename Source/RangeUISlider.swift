@@ -29,430 +29,430 @@ import UIKit
     /// Selected range color.
     @IBInspectable var rangeSelectedColor: UIColor = UIColor.blue {
         didSet {
-            self.selectedProgressView.backgroundColor = self.rangeSelectedColor
+            selectedProgressView.backgroundColor = rangeSelectedColor
         }
     }
     /// Background range selected strechable image.
     @IBInspectable var rangeSelectedBackgroundImage: UIImage? {
         didSet {
-            self.addBackgroundToRangeSelected()
+            addBackgroundToRangeSelected()
         }
     }
     /// Background range selected top edge insect for background image.
     @IBInspectable var rangeSelectedBackgroundEdgeInsetTop: CGFloat = 0.0 {
         didSet {
-            self.addBackgroundToRangeSelected()
+            addBackgroundToRangeSelected()
         }
     }
     /// Background range selected left edge insect for background image.
     @IBInspectable var rangeSelectedBackgroundEdgeInsetLeft: CGFloat = 5.0 {
         didSet {
-            self.addBackgroundToRangeSelected()
+            addBackgroundToRangeSelected()
         }
     }
     /// Background range selected bottom edge insect for background image.
     @IBInspectable var rangeSelectedBackgroundEdgeInsetBottom: CGFloat = 0.0 {
         didSet {
-            self.addBackgroundToRangeSelected()
+            addBackgroundToRangeSelected()
         }
     }
     /// Background range selected right edge insect for background image.
     @IBInspectable var rangeSelectedBackgroundEdgeInsetRight: CGFloat = 5.0 {
         didSet {
-            self.addBackgroundToRangeSelected()
+            addBackgroundToRangeSelected()
         }
     }
     /// Gradient color 1 for range not selected.
     @IBInspectable var rangeSelectedGradientColor1: UIColor? {
         didSet {
-            self.selectedProgressView.addGradient(firstColor: self.rangeSelectedGradientColor1,
-                                                  secondColor: self.rangeSelectedGradientColor2,
-                                                  startPoint: self.rangeSelectedGradientStartPoint,
-                                                  endPoint: self.rangeSelectedGradientEndPoint)
+            selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
+                                                  secondColor: rangeSelectedGradientColor2,
+                                                  startPoint: rangeSelectedGradientStartPoint,
+                                                  endPoint: rangeSelectedGradientEndPoint)
         }
     }
     /// Gradient color 2 for range not selected.
     @IBInspectable var rangeSelectedGradientColor2: UIColor? {
         didSet {
-            self.selectedProgressView.addGradient(firstColor: self.rangeSelectedGradientColor1,
-                                                  secondColor: self.rangeSelectedGradientColor2,
-                                                  startPoint: self.rangeSelectedGradientStartPoint,
-                                                  endPoint: self.rangeSelectedGradientEndPoint)
+            selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
+                                                  secondColor: rangeSelectedGradientColor2,
+                                                  startPoint: rangeSelectedGradientStartPoint,
+                                                  endPoint: rangeSelectedGradientEndPoint)
         }
     }
     /// Gradient start point for not selected range.
     @IBInspectable var rangeSelectedGradientStartPoint: CGPoint = CGPoint() {
         didSet {
-            self.selectedProgressView.addGradient(firstColor: self.rangeSelectedGradientColor1,
-                                                  secondColor: self.rangeSelectedGradientColor2,
-                                                  startPoint: self.rangeSelectedGradientStartPoint,
-                                                  endPoint: self.rangeSelectedGradientEndPoint)
+            selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
+                                                  secondColor: rangeSelectedGradientColor2,
+                                                  startPoint: rangeSelectedGradientStartPoint,
+                                                  endPoint: rangeSelectedGradientEndPoint)
         }
     }
     /// Gradient end point for not selected range.
     @IBInspectable var rangeSelectedGradientEndPoint: CGPoint = CGPoint() {
         didSet {
-            self.selectedProgressView.addGradient(firstColor: self.rangeSelectedGradientColor1,
-                                                  secondColor: self.rangeSelectedGradientColor2,
-                                                  startPoint: self.rangeSelectedGradientStartPoint,
-                                                  endPoint: self.rangeSelectedGradientEndPoint)
+            selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
+                                                  secondColor: rangeSelectedGradientColor2,
+                                                  startPoint: rangeSelectedGradientStartPoint,
+                                                  endPoint: rangeSelectedGradientEndPoint)
         }
     }
     /// Not selected range color.
     @IBInspectable var rangeNotSelectedColor: UIColor = UIColor.lightGray {
         didSet {
-            self.leftProgressView.backgroundColor = self.rangeNotSelectedColor
-            self.rightProgressView.backgroundColor = self.rangeNotSelectedColor
+            leftProgressView.backgroundColor = rangeNotSelectedColor
+            rightProgressView.backgroundColor = rangeNotSelectedColor
         }
     }
     /// Background range selected strechable image.
     @IBInspectable var rangeNotSelectedBackgroundImage: UIImage? {
         didSet {
-            self.addBackgroundToRangeNotSelectedIfNeeded()
+            addBackgroundToRangeNotSelectedIfNeeded()
         }
     }
     /// Background range selected top edge insect for background image.
     @IBInspectable var rangeNotSelectedBackgroundEdgeInsetTop: CGFloat = 0.0 {
         didSet {
-            self.addBackgroundToRangeNotSelectedIfNeeded()
+            addBackgroundToRangeNotSelectedIfNeeded()
         }
     }
     /// Background range selected left edge insect for background image.
     @IBInspectable var rangeNotSelectedBackgroundEdgeInsetLeft: CGFloat = 5.0 {
         didSet {
-            self.addBackgroundToRangeNotSelectedIfNeeded()
+            addBackgroundToRangeNotSelectedIfNeeded()
         }
     }
     /// Background range selected bottom edge insect for background image.
     @IBInspectable var rangeNotSelectedBackgroundEdgeInsetBottom: CGFloat = 0.0 {
         didSet {
-            self.addBackgroundToRangeNotSelectedIfNeeded()
+            addBackgroundToRangeNotSelectedIfNeeded()
         }
     }
     /// Background range selected right edge insect for background image.
     @IBInspectable var rangeNotSelectedBackgroundEdgeInsetRight: CGFloat = 5.0 {
         didSet {
-            self.addBackgroundToRangeNotSelectedIfNeeded()
+            addBackgroundToRangeNotSelectedIfNeeded()
         }
     }
     /// Gradient color 1 for range not selected.
     @IBInspectable var rangeNotSelectedGradientColor1: UIColor? {
         didSet {
-            self.addGradientToNotSelectedRangeIfNeeded()
+            addGradientToNotSelectedRangeIfNeeded()
         }
     }
     /// Gradient color 2 for range not selected.
     @IBInspectable var rangeNotSelectedGradientColor2: UIColor? {
         didSet {
-            self.addGradientToNotSelectedRangeIfNeeded()
+            addGradientToNotSelectedRangeIfNeeded()
         }
     }
     /// Gradient start point for not selected range.
     @IBInspectable var rangeNotSelectedGradientStartPoint: CGPoint = CGPoint() {
         didSet {
-            self.addGradientToNotSelectedRangeIfNeeded()
+            addGradientToNotSelectedRangeIfNeeded()
         }
     }
     /// Gradient end point for not selected range.
     @IBInspectable var rangeNotSelectedGradientEndPoint: CGPoint = CGPoint() {
         didSet {
-            self.addGradientToNotSelectedRangeIfNeeded()
+            addGradientToNotSelectedRangeIfNeeded()
         }
     }
     /// Left knob width.
     @IBInspectable var leftKnobWidth: CGFloat = 30.0 {
         didSet {
-            self.leftKnob.widthConstraint.constant = self.leftKnobWidth
+            leftKnob.widthConstraint.constant = leftKnobWidth
         }
     }
     /// Left knob height.
     @IBInspectable var leftKnobHeight: CGFloat = 30.0 {
         didSet {
-            self.leftKnob.heightConstraint.constant = self.leftKnobHeight
+            leftKnob.heightConstraint.constant = leftKnobHeight
         }
     }
     /// Left knob corners.
     @IBInspectable var leftKnobCornes: CGFloat = 15.0 {
         didSet {
-            self.leftKnob.backgroundView.layer.cornerRadius = self.leftKnobCornes
-            self.leftKnob.backgroundView.layer.masksToBounds = self.leftKnobCornes > 0.0
+            leftKnob.backgroundView.layer.cornerRadius = leftKnobCornes
+            leftKnob.backgroundView.layer.masksToBounds = leftKnobCornes > 0.0
         }
     }
     /// Left knob image.
     @IBInspectable var leftKnobImage: UIImage? {
         didSet {
-            self.leftKnob.add(image: self.leftKnobImage)
+            leftKnob.add(image: leftKnobImage)
         }
     }
     /// Left knob color.
     @IBInspectable var leftKnobColor: UIColor = UIColor.gray {
         didSet {
-            self.leftKnob.backgroundView.backgroundColor = self.leftKnobColor
+            leftKnob.backgroundView.backgroundColor = leftKnobColor
         }
     }
     /// Left knob shadow opacity.
     @IBInspectable var leftShadowOpacity: Float = 0.0 {
         didSet {
-            self.leftKnob.layer.shadowOpacity = self.leftShadowOpacity
+            leftKnob.layer.shadowOpacity = leftShadowOpacity
         }
     }
     /// Left knob shadow color.
     @IBInspectable var leftShadowColor: UIColor = UIColor.clear {
         didSet {
-            self.leftKnob.layer.shadowColor = self.leftShadowColor.cgColor
+            leftKnob.layer.shadowColor = leftShadowColor.cgColor
         }
     }
     /// Left knob shadow offset.
     @IBInspectable var leftShadowOffset: CGSize = CGSize() {
         didSet {
-            self.leftKnob.layer.shadowOffset = self.leftShadowOffset
+            leftKnob.layer.shadowOffset = leftShadowOffset
         }
     }
     /// Left knob shadow radius.
     @IBInspectable var leftShadowRadius: CGFloat = 0 {
         didSet {
-            self.leftKnob.layer.shadowRadius = self.leftShadowRadius
+            leftKnob.layer.shadowRadius = leftShadowRadius
         }
     }
     /// Gradient color 1 for range not selected.
     @IBInspectable var leftKnobGradientColor1: UIColor? {
         didSet {
-            self.leftKnob.addGradient(firstColor: self.leftKnobGradientColor1,
-                                      secondColor: self.leftKnobGradientColor2,
-                                      startPoint: self.leftKnobGradientStartPoint,
-                                      endPoint: self.leftKnobGradientEndPoint,
-                                      cornerRadius: self.leftKnobCornes)
+            leftKnob.addGradient(firstColor: leftKnobGradientColor1,
+                                      secondColor: leftKnobGradientColor2,
+                                      startPoint: leftKnobGradientStartPoint,
+                                      endPoint: leftKnobGradientEndPoint,
+                                      cornerRadius: leftKnobCornes)
         }
     }
     /// Gradient color 2 for range not selected.
     @IBInspectable var leftKnobGradientColor2: UIColor? {
         didSet {
-            self.leftKnob.addGradient(firstColor: self.leftKnobGradientColor1,
-                                      secondColor: self.leftKnobGradientColor2,
-                                      startPoint: self.leftKnobGradientStartPoint,
-                                      endPoint: self.leftKnobGradientEndPoint,
-                                      cornerRadius: self.leftKnobCornes)
+            leftKnob.addGradient(firstColor: leftKnobGradientColor1,
+                                      secondColor: leftKnobGradientColor2,
+                                      startPoint: leftKnobGradientStartPoint,
+                                      endPoint: leftKnobGradientEndPoint,
+                                      cornerRadius: leftKnobCornes)
         }
     }
     /// Gradient start point for not selected range.
     @IBInspectable var leftKnobGradientStartPoint: CGPoint = CGPoint() {
         didSet {
-            self.leftKnob.addGradient(firstColor: self.leftKnobGradientColor1,
-                                      secondColor: self.leftKnobGradientColor2,
-                                      startPoint: self.leftKnobGradientStartPoint,
-                                      endPoint: self.leftKnobGradientEndPoint,
-                                      cornerRadius: self.leftKnobCornes)
+            leftKnob.addGradient(firstColor: leftKnobGradientColor1,
+                                      secondColor: leftKnobGradientColor2,
+                                      startPoint: leftKnobGradientStartPoint,
+                                      endPoint: leftKnobGradientEndPoint,
+                                      cornerRadius: leftKnobCornes)
         }
     }
     /// Gradient end point for not selected range.
     @IBInspectable var leftKnobGradientEndPoint: CGPoint = CGPoint() {
         didSet {
-            self.leftKnob.addGradient(firstColor: self.leftKnobGradientColor1,
-                                      secondColor: self.leftKnobGradientColor2,
-                                      startPoint: self.leftKnobGradientStartPoint,
-                                      endPoint: self.leftKnobGradientEndPoint,
-                                      cornerRadius: self.leftKnobCornes)
+            leftKnob.addGradient(firstColor: leftKnobGradientColor1,
+                                      secondColor: leftKnobGradientColor2,
+                                      startPoint: leftKnobGradientStartPoint,
+                                      endPoint: leftKnobGradientEndPoint,
+                                      cornerRadius: leftKnobCornes)
         }
     }
     /// Left knob border width.
     @IBInspectable var leftKnobBorderWidth: CGFloat = 0.0 {
         didSet {
-            self.leftKnob.addBorders(usingColor: self.leftKnobBorderColor,
-                                     andWidth: self.leftKnobBorderWidth,
-                                     andCorners: self.leftKnobCornes)
+            leftKnob.addBorders(usingColor: leftKnobBorderColor,
+                                     andWidth: leftKnobBorderWidth,
+                                     andCorners: leftKnobCornes)
         }
     }
     /// Left knob border color.
     @IBInspectable var leftKnobBorderColor: UIColor = UIColor.clear {
         didSet {
-            self.leftKnob.addBorders(usingColor: self.leftKnobBorderColor,
-                                     andWidth: self.leftKnobBorderWidth,
-                                     andCorners: self.leftKnobCornes)
+            leftKnob.addBorders(usingColor: leftKnobBorderColor,
+                                     andWidth: leftKnobBorderWidth,
+                                     andCorners: leftKnobCornes)
         }
     }
     /// Right knob width.
     @IBInspectable var rightKnobWidth: CGFloat = 30.0 {
         didSet {
-            self.rightKnob.widthConstraint.constant = self.rightKnobWidth
+            rightKnob.widthConstraint.constant = rightKnobWidth
         }
     }
     /// Right knob height.
     @IBInspectable var rightKnobHeight: CGFloat = 30.0 {
         didSet {
-            self.rightKnob.heightConstraint.constant = self.rightKnobHeight
+            rightKnob.heightConstraint.constant = rightKnobHeight
         }
     }
     /// Right knob corners.
     @IBInspectable var rightKnobCornes: CGFloat = 15.0 {
         didSet {
-            self.rightKnob.backgroundView.layer.cornerRadius = self.rightKnobCornes
-            self.rightKnob.backgroundView.layer.masksToBounds = self.rightKnobCornes > 0.0
+            rightKnob.backgroundView.layer.cornerRadius = rightKnobCornes
+            rightKnob.backgroundView.layer.masksToBounds = rightKnobCornes > 0.0
         }
     }
     /// Right knob image.
     @IBInspectable var rightKnobImage: UIImage? {
         didSet {
-            self.rightKnob.add(image: self.rightKnobImage)
+            rightKnob.add(image: rightKnobImage)
         }
     }
     /// Right knob color.
     @IBInspectable var rightKnobColor: UIColor = UIColor.gray {
         didSet {
-            self.rightKnob.backgroundView.backgroundColor = self.rightKnobColor
+            rightKnob.backgroundView.backgroundColor = rightKnobColor
         }
     }
     /// Right knob shadow opacity.
     @IBInspectable var rightShadowOpacity: Float = 0.0 {
         didSet {
-            self.rightKnob.layer.shadowOpacity = self.rightShadowOpacity
+            rightKnob.layer.shadowOpacity = rightShadowOpacity
         }
     }
     /// Right knob shadow color.
     @IBInspectable var rightShadowColor: UIColor = UIColor.clear {
         didSet {
-            self.rightKnob.layer.shadowColor = self.rightShadowColor.cgColor
+            rightKnob.layer.shadowColor = rightShadowColor.cgColor
         }
     }
     /// Right knob shadow offset.
     @IBInspectable var rightShadowOffset: CGSize = CGSize() {
         didSet {
-            self.rightKnob.layer.shadowOffset = self.rightShadowOffset
+            rightKnob.layer.shadowOffset = rightShadowOffset
         }
     }
     /// Right knob shadow radius.
     @IBInspectable var rightShadowRadius: CGFloat = 0 {
         didSet {
-            self.rightKnob.layer.shadowRadius = self.rightShadowRadius
+            rightKnob.layer.shadowRadius = rightShadowRadius
         }
     }
     /// Gradient color 1 for range not selected.
     @IBInspectable var rightKnobGradientColor1: UIColor? {
         didSet {
-            self.rightKnob.addGradient(firstColor: self.rightKnobGradientColor1,
-                                       secondColor: self.rightKnobGradientColor2,
-                                       startPoint: self.rightKnobGradientStartPoint,
-                                       endPoint: self.rightKnobGradientEndPoint,
-                                       cornerRadius: self.rightKnobCornes)
+            rightKnob.addGradient(firstColor: rightKnobGradientColor1,
+                                       secondColor: rightKnobGradientColor2,
+                                       startPoint: rightKnobGradientStartPoint,
+                                       endPoint: rightKnobGradientEndPoint,
+                                       cornerRadius: rightKnobCornes)
         }
     }
     /// Gradient color 2 for range not selected.
     @IBInspectable var rightKnobGradientColor2: UIColor? {
         didSet {
-            self.rightKnob.addGradient(firstColor: self.rightKnobGradientColor1,
-                                       secondColor: self.rightKnobGradientColor2,
-                                       startPoint: self.rightKnobGradientStartPoint,
-                                       endPoint: self.rightKnobGradientEndPoint,
-                                       cornerRadius: self.rightKnobCornes)
+            rightKnob.addGradient(firstColor: rightKnobGradientColor1,
+                                       secondColor: rightKnobGradientColor2,
+                                       startPoint: rightKnobGradientStartPoint,
+                                       endPoint: rightKnobGradientEndPoint,
+                                       cornerRadius: rightKnobCornes)
         }
     }
     /// Gradient start point for not selected range.
     @IBInspectable var rightKnobGradientStartPoint: CGPoint = CGPoint() {
         didSet {
-            self.rightKnob.addGradient(firstColor: self.rightKnobGradientColor1,
-                                       secondColor: self.rightKnobGradientColor2,
-                                       startPoint: self.rightKnobGradientStartPoint,
-                                       endPoint: self.rightKnobGradientEndPoint,
-                                       cornerRadius: self.rightKnobCornes)
+            rightKnob.addGradient(firstColor: rightKnobGradientColor1,
+                                       secondColor: rightKnobGradientColor2,
+                                       startPoint: rightKnobGradientStartPoint,
+                                       endPoint: rightKnobGradientEndPoint,
+                                       cornerRadius: rightKnobCornes)
         }
     }
     /// Gradient end point for not selected range.
     @IBInspectable var rightKnobGradientEndPoint: CGPoint = CGPoint() {
         didSet {
-            self.rightKnob.addGradient(firstColor: self.rightKnobGradientColor1,
-                                       secondColor: self.rightKnobGradientColor2,
-                                       startPoint: self.rightKnobGradientStartPoint,
-                                       endPoint: self.rightKnobGradientEndPoint,
-                                       cornerRadius: self.rightKnobCornes)
+            rightKnob.addGradient(firstColor: rightKnobGradientColor1,
+                                       secondColor: rightKnobGradientColor2,
+                                       startPoint: rightKnobGradientStartPoint,
+                                       endPoint: rightKnobGradientEndPoint,
+                                       cornerRadius: rightKnobCornes)
         }
     }
     /// Right knob border width.
     @IBInspectable var rightKnobBorderWidth: CGFloat = 0.0 {
         didSet {
-            self.rightKnob.addBorders(usingColor: self.rightKnobBorderColor,
-                                      andWidth: self.rightKnobBorderWidth,
-                                      andCorners: self.rightKnobCornes)
+            rightKnob.addBorders(usingColor: rightKnobBorderColor,
+                                      andWidth: rightKnobBorderWidth,
+                                      andCorners: rightKnobCornes)
         }
     }
     /// Right knob border color.
     @IBInspectable var rightKnobBorderColor: UIColor = UIColor.clear {
         didSet {
-            self.rightKnob.addBorders(usingColor: self.rightKnobBorderColor,
-                                      andWidth: self.rightKnobBorderWidth,
-                                      andCorners: self.rightKnobCornes)
+            rightKnob.addBorders(usingColor: rightKnobBorderColor,
+                                      andWidth: rightKnobBorderWidth,
+                                      andCorners: rightKnobCornes)
         }
     }
     /// Bar height.
     @IBInspectable var barHeight: CGFloat = 15.0 {
         didSet {
-            self.bar.heightConstraint.constant = self.barHeight
+            bar.heightConstraint.constant = barHeight
         }
     }
     /// Bar leading offset.
     @IBInspectable var barLeading: CGFloat = 20.0 {
         didSet {
-            self.bar.leadingConstraint.constant = self.barLeading
+            bar.leadingConstraint.constant = barLeading
         }
     }
     /// Bar trailing offset.
     @IBInspectable var barTrailing: CGFloat = 20.0 {
         didSet {
-            self.bar.trailingConstraint.constant = -self.barTrailing
+            bar.trailingConstraint.constant = -barTrailing
         }
     }
     /// Bar corners.
     @IBInspectable var barCornes: CGFloat = 0.0 {
         didSet {
-            self.leftProgressView.layer.cornerRadius = barCornes
-            self.rightProgressView.layer.cornerRadius = barCornes
-            self.addGradientToNotSelectedRangeIfNeeded()
-            self.addBackgroundToRangeNotSelectedIfNeeded()
+            leftProgressView.layer.cornerRadius = barCornes
+            rightProgressView.layer.cornerRadius = barCornes
+            addGradientToNotSelectedRangeIfNeeded()
+            addBackgroundToRangeNotSelectedIfNeeded()
         }
     }
     /// Bar shadow opacity.
     @IBInspectable var barShadowOpacity: Float = 0.0 {
         didSet {
-            self.bar.layer.shadowOpacity = self.barShadowOpacity
+            bar.layer.shadowOpacity = barShadowOpacity
         }
     }
     /// Bar shadow color.
     @IBInspectable var barShadowColor: UIColor = UIColor.clear {
         didSet {
-            self.bar.layer.shadowColor = self.barShadowColor.cgColor
+            bar.layer.shadowColor = barShadowColor.cgColor
         }
     }
     /// Bar shadow offset.
     @IBInspectable var barShadowOffset: CGSize = CGSize() {
         didSet {
-            self.bar.layer.shadowOffset = self.barShadowOffset
+            bar.layer.shadowOffset = barShadowOffset
         }
     }
     /// Bar shadow radius.
     @IBInspectable var barShadowRadius: CGFloat = 0.0 {
         didSet {
-            self.bar.layer.shadowRadius = self.barShadowRadius
+            bar.layer.shadowRadius = barShadowRadius
         }
     }
     /// Bar border color.
     @IBInspectable var barBorderWidth: CGFloat = 0.0 {
         didSet {
-            self.leftProgressView.layer.borderWidth = self.barBorderWidth
-            self.rightProgressView.layer.borderWidth = self.barBorderWidth
-            self.selectedProgressView.layer.borderWidth = self.barBorderWidth
+            leftProgressView.layer.borderWidth = barBorderWidth
+            rightProgressView.layer.borderWidth = barBorderWidth
+            selectedProgressView.layer.borderWidth = barBorderWidth
         }
     }
     /// Bar border color.
     @IBInspectable var barBorderColor: UIColor = UIColor.clear {
         didSet {
-            self.leftProgressView.layer.borderColor = self.barBorderColor.cgColor
-            self.rightProgressView.layer.borderColor = self.barBorderColor.cgColor
-            self.selectedProgressView.layer.borderColor = self.barBorderColor.cgColor
+            leftProgressView.layer.borderColor = barBorderColor.cgColor
+            rightProgressView.layer.borderColor = barBorderColor.cgColor
+            selectedProgressView.layer.borderColor = barBorderColor.cgColor
         }
     }
     /// Container corners.
     @IBInspectable var containerCorners: CGFloat = 0.0 {
         didSet {
-            self.layer.cornerRadius = self.containerCorners
-            self.layer.masksToBounds = self.containerCorners > 0.0
+            layer.cornerRadius = containerCorners
+            layer.masksToBounds = containerCorners > 0.0
         }
     }
     
@@ -480,7 +480,7 @@ import UIKit
      */
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.setup()
+        setup()
     }
     
     /**
@@ -490,7 +490,7 @@ import UIKit
      */
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        self.setup()
+        setup()
     }
     
     /**
@@ -499,8 +499,8 @@ import UIKit
     public override func prepareForInterfaceBuilder() {
         //Fake values for interface builder.
         //Used to make visible the progress views.
-        self.leftKnob.xPositionConstraint.constant = 40
-        self.rightKnob.xPositionConstraint.constant = -40
+        leftKnob.xPositionConstraint.constant = 40
+        rightKnob.xPositionConstraint.constant = -40
     }
     
     /**
@@ -509,11 +509,11 @@ import UIKit
      */
     public override func layoutSubviews() {
         super.layoutSubviews()
-        let totalRange = self.scaleMaxValue - self.scaleMinValue
-        let minValue = (self.defaultValueLeftKnob - self.scaleMinValue) / totalRange
-        let maxValue = (self.defaultValueRightKnob - self.scaleMinValue) / totalRange
-        self.leftKnob.xPositionConstraint.constant = self.bar.frame.width * minValue
-        self.rightKnob.xPositionConstraint.constant = (self.bar.frame.width * maxValue) - self.bar.frame.width
+        let totalRange = scaleMaxValue - scaleMinValue
+        let minValue = (defaultValueLeftKnob - scaleMinValue) / totalRange
+        let maxValue = (defaultValueRightKnob - scaleMinValue) / totalRange
+        leftKnob.xPositionConstraint.constant = bar.frame.width * minValue
+        rightKnob.xPositionConstraint.constant = (bar.frame.width * maxValue) - bar.frame.width
     }
     
     /**
@@ -522,51 +522,51 @@ import UIKit
      NSLayoutConstraint.activate(constraints) (to improve preformance).
      */
     private func setup() {
-        self.addSubview(self.bar)
-        self.bar.addSubview(self.selectedProgressView)
-        self.bar.addSubview(self.leftProgressView)
-        self.bar.addSubview(self.rightProgressView)
-        self.bar.addSubview(self.leftKnob)
-        self.bar.addSubview(self.rightKnob)
+        addSubview(bar)
+        bar.addSubview(selectedProgressView)
+        bar.addSubview(leftProgressView)
+        bar.addSubview(rightProgressView)
+        bar.addSubview(leftKnob)
+        bar.addSubview(rightKnob)
         
         var constraints: [NSLayoutConstraint] = []
         
-        constraints.append(contentsOf: self.bar.setup(leftKnob: self.leftKnob,
-                                                      rightKnob: self.rightKnob,
-                                                      leading: self.barLeading,
-                                                      trailing: self.barTrailing,
-                                                      height: self.barHeight))
+        constraints.append(contentsOf: bar.setup(leftKnob: leftKnob,
+                                                      rightKnob: rightKnob,
+                                                      leading: barLeading,
+                                                      trailing: barTrailing,
+                                                      height: barHeight))
 
         
-        constraints.append(contentsOf: self.rightKnob.setup(position: .right,
-                                                            width: self.rightKnobWidth,
-                                                            height: self.rightKnobHeight,
+        constraints.append(contentsOf: rightKnob.setup(position: .right,
+                                                            width: rightKnobWidth,
+                                                            height: rightKnobHeight,
                                                             target: self,
                                                             selector: #selector(moveRightKnob)))
         
-        constraints.append(contentsOf: self.leftKnob.setup(position: .left,
-                                                           width: self.leftKnobWidth,
-                                                           height: self.leftKnobHeight,
+        constraints.append(contentsOf: leftKnob.setup(position: .left,
+                                                           width: leftKnobWidth,
+                                                           height: leftKnobHeight,
                                                            target: self,
                                                            selector: #selector(moveLeftKnob)))
 
-        constraints.append(contentsOf: self.selectedProgressView.setup(leftAnchorView: self.leftKnob,
+        constraints.append(contentsOf: selectedProgressView.setup(leftAnchorView: leftKnob,
                                                                        leftAnchorConstraintAttribute: .centerX,
-                                                                       rightAnchorView: self.rightKnob,
+                                                                       rightAnchorView: rightKnob,
                                                                        rightAnchorConstraintAttribute:  .centerX,
-                                                                       color: self.rangeSelectedColor))
+                                                                       color: rangeSelectedColor))
         
-        constraints.append(contentsOf: self.leftProgressView.setup(leftAnchorView: self.bar,
+        constraints.append(contentsOf: leftProgressView.setup(leftAnchorView: bar,
                                                                    leftAnchorConstraintAttribute: .leading,
-                                                                   rightAnchorView: self.leftKnob,
+                                                                   rightAnchorView: leftKnob,
                                                                    rightAnchorConstraintAttribute: .centerX,
-                                                                   color: self.rangeNotSelectedColor))
+                                                                   color: rangeNotSelectedColor))
         
-        constraints.append(contentsOf: self.rightProgressView.setup(leftAnchorView: self.rightKnob,
+        constraints.append(contentsOf: rightProgressView.setup(leftAnchorView: rightKnob,
                                                                     leftAnchorConstraintAttribute: .centerX,
-                                                                    rightAnchorView: self.bar,
+                                                                    rightAnchorView: bar,
                                                                     rightAnchorConstraintAttribute: .trailing,
-                                                                    color: self.rangeNotSelectedColor))
+                                                                    color: rangeNotSelectedColor))
         
         NSLayoutConstraint.activate(constraints)
     }
@@ -575,33 +575,33 @@ import UIKit
      Add a gradient layer to the not selected range views.
      */
     private func addGradientToNotSelectedRangeIfNeeded() {
-        self.leftProgressView.addGradient(firstColor: self.rangeNotSelectedGradientColor1,
-                                          secondColor: self.rangeNotSelectedGradientColor2,
-                                          startPoint: self.rangeNotSelectedGradientStartPoint,
-                                          endPoint: self.rangeNotSelectedGradientEndPoint,
-                                          cornerRadius: self.barCornes)
-        self.rightProgressView.addGradient(firstColor: self.rangeNotSelectedGradientColor1,
-                                           secondColor: self.rangeNotSelectedGradientColor2,
-                                           startPoint: self.rangeNotSelectedGradientStartPoint,
-                                           endPoint: self.rangeNotSelectedGradientEndPoint,
-                                           cornerRadius: self.barCornes)
+        leftProgressView.addGradient(firstColor: rangeNotSelectedGradientColor1,
+                                          secondColor: rangeNotSelectedGradientColor2,
+                                          startPoint: rangeNotSelectedGradientStartPoint,
+                                          endPoint: rangeNotSelectedGradientEndPoint,
+                                          cornerRadius: barCornes)
+        rightProgressView.addGradient(firstColor: rangeNotSelectedGradientColor1,
+                                           secondColor: rangeNotSelectedGradientColor2,
+                                           startPoint: rangeNotSelectedGradientStartPoint,
+                                           endPoint: rangeNotSelectedGradientEndPoint,
+                                           cornerRadius: barCornes)
     }
     
     /**
      Add a background image to the range not selected views.
      */
     func addBackgroundToRangeNotSelectedIfNeeded() {
-        if let backgroundImage = self.rangeNotSelectedBackgroundImage {
-            let edgeInset = UIEdgeInsets(top: self.rangeNotSelectedBackgroundEdgeInsetTop,
-                                         left: self.rangeNotSelectedBackgroundEdgeInsetLeft,
-                                         bottom: self.rangeNotSelectedBackgroundEdgeInsetBottom,
-                                         right: self.rangeNotSelectedBackgroundEdgeInsetRight)
-            self.leftProgressView.addBackground(usingImage: backgroundImage,
+        if let backgroundImage = rangeNotSelectedBackgroundImage {
+            let edgeInset = UIEdgeInsets(top: rangeNotSelectedBackgroundEdgeInsetTop,
+                                         left: rangeNotSelectedBackgroundEdgeInsetLeft,
+                                         bottom: rangeNotSelectedBackgroundEdgeInsetBottom,
+                                         right: rangeNotSelectedBackgroundEdgeInsetRight)
+            leftProgressView.addBackground(usingImage: backgroundImage,
                                                 andEdgeInset: edgeInset,
-                                                andCorners: self.barCornes)
-            self.rightProgressView.addBackground(usingImage: backgroundImage,
+                                                andCorners: barCornes)
+            rightProgressView.addBackground(usingImage: backgroundImage,
                                                  andEdgeInset: edgeInset,
-                                                 andCorners: self.barCornes)
+                                                 andCorners: barCornes)
         }
     }
     
@@ -609,14 +609,14 @@ import UIKit
      Add a background image to the range selected views.
      */
     private func addBackgroundToRangeSelected() {
-        if let backgroundImage = self.rangeSelectedBackgroundImage {
-            let edgeInset = UIEdgeInsets(top: self.rangeSelectedBackgroundEdgeInsetTop,
-                                         left: self.rangeSelectedBackgroundEdgeInsetLeft,
-                                         bottom: self.rangeSelectedBackgroundEdgeInsetBottom,
-                                         right: self.rangeSelectedBackgroundEdgeInsetRight)
-            self.selectedProgressView.addBackground(usingImage: backgroundImage,
+        if let backgroundImage = rangeSelectedBackgroundImage {
+            let edgeInset = UIEdgeInsets(top: rangeSelectedBackgroundEdgeInsetTop,
+                                         left: rangeSelectedBackgroundEdgeInsetLeft,
+                                         bottom: rangeSelectedBackgroundEdgeInsetBottom,
+                                         right: rangeSelectedBackgroundEdgeInsetRight)
+            selectedProgressView.addBackground(usingImage: backgroundImage,
                                                     andEdgeInset: edgeInset,
-                                                    andCorners: self.barCornes)
+                                                    andCorners: barCornes)
         }
     }
     
@@ -629,15 +629,15 @@ import UIKit
      */
     @objc public final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
-            let positionForKnob = gestureRecognizer.location(in: self.bar).x
-            let positionRightKnob = self.bar.frame.width + self.rightKnob.xPositionConstraint.constant
+            let positionForKnob = gestureRecognizer.location(in: bar).x
+            let positionRightKnob = bar.frame.width + rightKnob.xPositionConstraint.constant
             if positionForKnob >= 0 && positionForKnob <= positionRightKnob {
-                self.leftKnob.xPositionConstraint.constant = positionForKnob
+                leftKnob.xPositionConstraint.constant = positionForKnob
             }
-            self.rangeUpdate()
+            rangeUpdate()
         }
         if gestureRecognizer.state == .ended {
-            self.rangeSelected()
+            rangeSelected()
         }
     }
     
@@ -648,15 +648,15 @@ import UIKit
      */
     @objc public final func moveRightKnob(gestureRecognizer: UIPanGestureRecognizer) {
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
-            let xLocationInBar = gestureRecognizer.location(in: self.bar).x
-            let positionForKnob = xLocationInBar - self.bar.frame.width
-            if positionForKnob <= 0 && xLocationInBar >= self.leftKnob.xPositionConstraint.constant {
-                self.rightKnob.xPositionConstraint.constant = positionForKnob
+            let xLocationInBar = gestureRecognizer.location(in: bar).x
+            let positionForKnob = xLocationInBar - bar.frame.width
+            if positionForKnob <= 0 && xLocationInBar >= leftKnob.xPositionConstraint.constant {
+                rightKnob.xPositionConstraint.constant = positionForKnob
             }
-            self.rangeUpdate()
+            rangeUpdate()
         }
         if gestureRecognizer.state == .ended {
-            self.rangeSelected()
+            rangeSelected()
         }
     }
     
@@ -667,8 +667,8 @@ import UIKit
      The selection is adapted to the custom scale eventually setted.
      */
     private func rangeUpdate() {
-        let rangeValues = self.calculateRangeSelected()
-        self.delegate?.rangeIsChanging?(minValueSelected: rangeValues.minValue,
+        let rangeValues = calculateRangeSelected()
+        delegate?.rangeIsChanging?(minValueSelected: rangeValues.minValue,
                                         maxValueSelected: rangeValues.maxValue,
                                         slider: self)
     }
@@ -678,8 +678,8 @@ import UIKit
      The selection is adapted to the custom scale eventually setted.
      */
     func rangeSelected() {
-        let rangeValues = self.calculateRangeSelected()
-        self.delegate?.rangeChangeFinished(minValueSelected: rangeValues.minValue,
+        let rangeValues = calculateRangeSelected()
+        delegate?.rangeChangeFinished(minValueSelected: rangeValues.minValue,
                                            maxValueSelected: rangeValues.maxValue,
                                            slider: self)
     }
@@ -690,10 +690,10 @@ import UIKit
      - returns: min and max values selected.
      */
     private func calculateRangeSelected() -> (minValue: CGFloat, maxValue: CGFloat) {
-        let minValue = self.leftKnob.xPositionConstraint.constant / self.bar.frame.width
-        let maxValue = 1.0  + self.rightKnob.xPositionConstraint.constant / self.bar.frame.width
-        let scaledMinValue = self.linearMapping(value: minValue)
-        let scaledMaxValue = self.linearMapping(value: maxValue)
+        let minValue = leftKnob.xPositionConstraint.constant / bar.frame.width
+        let maxValue = 1.0  + rightKnob.xPositionConstraint.constant / bar.frame.width
+        let scaledMinValue = linearMapping(value: minValue)
+        let scaledMaxValue = linearMapping(value: maxValue)
         return (minValue: scaledMinValue, maxValue: scaledMaxValue)
     }
     
@@ -706,6 +706,6 @@ import UIKit
      - returns: the mapped value.
      */
     private func linearMapping(value: CGFloat) -> CGFloat {
-        return value * (self.scaleMaxValue - self.scaleMinValue) + self.scaleMinValue
+        return value * (scaleMaxValue - scaleMinValue) + scaleMinValue
     }
 }

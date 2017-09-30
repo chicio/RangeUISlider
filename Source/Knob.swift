@@ -40,22 +40,22 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
      
      - returns: an arrays of knob constraints to be activated.
      */
-    func setup(position: KnobPosition,
-                           width: CGFloat,
-                           height: CGFloat,
-                           target: Any?,
-                           selector: Selector) -> [NSLayoutConstraint] {
-        self.position = position
-        self.translatesAutoresizingMaskIntoConstraints = false
-        let knobBackgroundConstraints: [NSLayoutConstraint] = self.setupBackground()
-        self.setXPositionConstraint()
-        self.setDimensionConstraints(usingWidth: width, andHeight: height)
-        self.setGestureRecognizer(withTarget: target, usingSelector: selector)
+    func setup(position aPosition: KnobPosition,
+               width: CGFloat,
+               height: CGFloat,
+               target: Any?,
+               selector: Selector) -> [NSLayoutConstraint] {
+        position = aPosition
+        translatesAutoresizingMaskIntoConstraints = false
+        let knobBackgroundConstraints: [NSLayoutConstraint] = setupBackground()
+        setXPositionConstraint()
+        setDimensionConstraints(usingWidth: width, andHeight: height)
+        setGestureRecognizer(withTarget: target, usingSelector: selector)
         let knobConstraints: [NSLayoutConstraint] = [
-            self.xPositionConstraint,
-            self.centerVerticallyConstraint(),
-            self.widthConstraint,
-            self.heightConstraint
+            xPositionConstraint,
+            centerVerticallyConstraint(),
+            widthConstraint,
+            heightConstraint
         ]
         return knobConstraints + knobBackgroundConstraints
     }
@@ -66,31 +66,31 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
      - returns: an arrays of knob background constraints to be activated.
      */
     private func setupBackground() -> [NSLayoutConstraint] {
-        self.backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.backgroundView)
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(backgroundView)
         let knobBackgroundViewConstraints: [NSLayoutConstraint] = [
-            NSLayoutConstraint(item: self.backgroundView,
+            NSLayoutConstraint(item: backgroundView,
                                attribute: .leading,
                                relatedBy: .equal,
                                toItem: self,
                                attribute: .leading,
                                multiplier: 1.0,
                                constant: 0.0),
-            NSLayoutConstraint(item: self.backgroundView,
+            NSLayoutConstraint(item: backgroundView,
                                attribute: .trailing,
                                relatedBy: .equal,
                                toItem: self,
                                attribute: .trailing,
                                multiplier: 1.0,
                                constant: 0.0),
-            NSLayoutConstraint(item: self.backgroundView,
+            NSLayoutConstraint(item: backgroundView,
                                attribute: .top,
                                relatedBy: .equal,
                                toItem: self,
                                attribute: .top,
                                multiplier: 1.0,
                                constant: 0.0),
-            NSLayoutConstraint(item: self.backgroundView,
+            NSLayoutConstraint(item: backgroundView,
                                attribute: .bottom,
                                relatedBy: .equal,
                                toItem: self,
@@ -105,13 +105,13 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
      Method used to create a constraint to manage the x position of the knob.
      */
     private func setXPositionConstraint() {
-        self.xPositionConstraint = NSLayoutConstraint(item: self,
-                                                      attribute: .centerX,
-                                                      relatedBy: .equal,
-                                                      toItem: self.superview,
-                                                      attribute: self.position == .left ? .leading : .trailing,
-                                                      multiplier: 1.0,
-                                                      constant: 0.0)
+        xPositionConstraint = NSLayoutConstraint(item: self,
+                                                 attribute: .centerX,
+                                                 relatedBy: .equal,
+                                                 toItem: superview,
+                                                 attribute: position == .left ? .leading : .trailing,
+                                                 multiplier: 1.0,
+                                                 constant: 0.0)
     }
     
     /**
@@ -121,20 +121,20 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
      - parameter height: the height of the knob.
      */
     private func setDimensionConstraints(usingWidth width: CGFloat, andHeight height: CGFloat) {
-        self.widthConstraint = NSLayoutConstraint(item: self,
-                                                  attribute: .width,
-                                                  relatedBy: .equal,
-                                                  toItem: nil,
-                                                  attribute: .notAnAttribute,
-                                                  multiplier: 1.0,
-                                                  constant: width)
-        self.heightConstraint = NSLayoutConstraint(item: self,
-                                                   attribute: .height,
-                                                   relatedBy: .equal,
-                                                   toItem: nil,
-                                                   attribute: .notAnAttribute,
-                                                   multiplier: 1.0,
-                                                   constant: height)
+        widthConstraint = NSLayoutConstraint(item: self,
+                                             attribute: .width,
+                                             relatedBy: .equal,
+                                             toItem: nil,
+                                             attribute: .notAnAttribute,
+                                             multiplier: 1.0,
+                                             constant: width)
+        heightConstraint = NSLayoutConstraint(item: self,
+                                              attribute: .height,
+                                              relatedBy: .equal,
+                                              toItem: nil,
+                                              attribute: .notAnAttribute,
+                                              multiplier: 1.0,
+                                              constant: height)
     }
     
     /**
@@ -146,7 +146,7 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
         return NSLayoutConstraint(item: self,
                                   attribute: .centerY,
                                   relatedBy: .equal,
-                                  toItem: self.superview,
+                                  toItem: superview,
                                   attribute: .centerY,
                                   multiplier: 1.0,
                                   constant: 1.0)
@@ -161,7 +161,7 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
     private func setGestureRecognizer(withTarget target: Any?, usingSelector selector: Selector) {
         let gesture = UIPanGestureRecognizer(target: target, action: selector)
         gesture.delegate = self
-        self.addGestureRecognizer(gesture)
+        addGestureRecognizer(gesture)
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
@@ -185,33 +185,33 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
      */
     func add(image anImage: UIImage?) {
         if let image = anImage {
-            self.imageView.image = image
-            self.imageView.translatesAutoresizingMaskIntoConstraints = false
-            self.imageView.contentMode = .scaleToFill
-            self.addSubview(self.imageView)
+            imageView.image = image
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.contentMode = .scaleToFill
+            addSubview(imageView)
             NSLayoutConstraint.activate([
-                NSLayoutConstraint(item: self.imageView,
+                NSLayoutConstraint(item: imageView,
                                    attribute: .centerX,
                                    relatedBy: .equal,
                                    toItem: self,
                                    attribute: .centerX,
                                    multiplier: 1.0,
                                    constant: 0.0),
-                NSLayoutConstraint(item: self.imageView,
+                NSLayoutConstraint(item: imageView,
                                    attribute: .centerY,
                                    relatedBy: .equal,
                                    toItem: self,
                                    attribute: .centerY,
                                    multiplier: 1.0,
                                    constant: 0.0),
-                NSLayoutConstraint(item: self.imageView,
+                NSLayoutConstraint(item: imageView,
                                    attribute: .width,
                                    relatedBy: .equal,
                                    toItem: self,
                                    attribute: .width,
                                    multiplier: 1.0,
                                    constant: 0.0),
-                NSLayoutConstraint(item: self.imageView,
+                NSLayoutConstraint(item: imageView,
                                    attribute: .height,
                                    relatedBy: .equal,
                                    toItem: self,
@@ -230,11 +230,11 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
      - parameter corners: the current corner radius of the knob.
      */
     func addBorders(usingColor color: UIColor, andWidth width: CGFloat, andCorners corners: CGFloat) {
-        if self.imageView.image != nil {
-            self.addBorders(toView: self.imageView, usingColor: color, andWidth: width)
-            self.imageView.layer.cornerRadius = corners
+        if imageView.image != nil {
+            addBorders(toView: imageView, usingColor: color, andWidth: width)
+            imageView.layer.cornerRadius = corners
         } else {
-            self.addBorders(toView: self.backgroundView, usingColor: color, andWidth: width)
+            addBorders(toView: backgroundView, usingColor: color, andWidth: width)
         }
     }
     

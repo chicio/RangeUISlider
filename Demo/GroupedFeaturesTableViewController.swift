@@ -12,9 +12,9 @@ struct GroupedFeaturesViewControllerData {
     let description: String
     let segueIdentifier: String
     
-    init(description: String, segueIdentifier: String) {
-        self.description = description
-        self.segueIdentifier = segueIdentifier
+    init(description aDescription: String, segueIdentifier aSegueIdentifier: String) {
+        description = aDescription
+        segueIdentifier = aSegueIdentifier
     }
 }
 
@@ -32,7 +32,7 @@ class GroupedFeaturesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.data.count
+        return data.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,6 +44,6 @@ class GroupedFeaturesTableViewController: UITableViewController {
     // MARK: - GroupedFeatures Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: data[indexPath.row].segueIdentifier, sender: self)
+        performSegue(withIdentifier: data[indexPath.row].segueIdentifier, sender: self)
     }
 }
