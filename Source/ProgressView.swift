@@ -9,14 +9,6 @@
 import Foundation
 
 class ProgressView: GradientView {
-    /**
-     Method used to setup the background of the progress view using an image.
-     The image is streched using the resizable with cap api.
-     
-     - parameter image: the image to be used as background.
-     - parameter edgeInset: the edge inset to be used for image stretching.
-     - parameter corners: corner radius ihnerited from the bar (container of the progress views).
-     */
     func addBackground(usingImage image: UIImage,
                        andEdgeInset edgeInset: UIEdgeInsets,
                        andCorners corners: CGFloat) {
@@ -58,17 +50,6 @@ class ProgressView: GradientView {
             ])
     }
     
-    /**
-     Method used to setup the progress view.
-     
-     - parameter leftAnchorView: the view used as left reference for the progress view constraints.
-     - parameter leftAnchorConstraintAttribute: the attribute to be used for left margin constraint.
-     - parameter rightAnchorView: the view used as rightreference for the progress view constraints.
-     - parameter rightAnchorConstraintAttribute: the attribute to be used for right margin constraint.
-     - parameter color: the background color of the progress view.
-     
-     - returns: an array of progress view constraints.
-     */
     func setup(leftAnchorView: UIView,
                leftAnchorConstraintAttribute: NSLayoutAttribute,
                rightAnchorView: UIView,

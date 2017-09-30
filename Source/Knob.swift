@@ -14,32 +14,14 @@ enum KnobPosition {
 }
 
 class Knob: GradientView, UIGestureRecognizerDelegate {
-    /// Knob background view.
     private(set) var backgroundView: UIView = UIView()
-    /// ImageView used as background view when an image is choosed for knob.
     lazy private(set) var imageView: UIImageView = UIImageView()
-    /// Knob x position constraint.
     private(set) var xPositionConstraint: NSLayoutConstraint!
-    /// Knob width constraint.
     private(set) var widthConstraint: NSLayoutConstraint!
-    /// Knob height constraint.
     private(set) var heightConstraint: NSLayoutConstraint!
-    /// Knob position.
     private(set) var position: KnobPosition!
-    /// Gesture recognizer target.
     private(set) var gestureRecognizerTarget: Any?
     
-    /**
-     Method used to setup the knob.
-     
-     - parameter position: the knob position.
-     - parameter width: the knob width.
-     - parameter height: the knob height.
-     - parameter target: the knob gesture target.
-     - parameter selector: the knob gesture selector.
-     
-     - returns: an arrays of knob constraints to be activated.
-     */
     func setup(position aPosition: KnobPosition,
                width: CGFloat,
                height: CGFloat,
@@ -60,11 +42,6 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
         return knobConstraints + knobBackgroundConstraints
     }
     
-    /**
-     Method used to setup a knob background.
-     
-     - returns: an arrays of knob background constraints to be activated.
-     */
     private func setupBackground() -> [NSLayoutConstraint] {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(backgroundView)
@@ -101,9 +78,6 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
         return knobBackgroundViewConstraints
     }
     
-    /**
-     Method used to create a constraint to manage the x position of the knob.
-     */
     private func setXPositionConstraint() {
         xPositionConstraint = NSLayoutConstraint(item: self,
                                                  attribute: .centerX,
@@ -114,12 +88,6 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
                                                  constant: 0.0)
     }
     
-    /**
-     Method used to create the constraints used to manage the width and height of the knob.
-     
-     - parameter width: the width of the knob.
-     - parameter height: the height of the knob.
-     */
     private func setDimensionConstraints(usingWidth width: CGFloat, andHeight height: CGFloat) {
         widthConstraint = NSLayoutConstraint(item: self,
                                              attribute: .width,
@@ -137,11 +105,6 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
                                               constant: height)
     }
     
-    /**
-     Method used to create the constraint used to manage the Y position of the knob.
-     
-     - returns: an NSLayoutConstraint used to manage the y position of the knob.
-     */
     private func centerVerticallyConstraint() -> NSLayoutConstraint {
         return NSLayoutConstraint(item: self,
                                   attribute: .centerY,
@@ -152,12 +115,6 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
                                   constant: 1.0)
     }
     
-    /**
-     Method used to create and attach a gesture recognizer to the knob.
-     
-     - parameter target: the target for the gesture recognizer selector action.
-     - parameter selector: the selector used by the target to manage the action.
-     */
     private func setGestureRecognizer(withTarget target: Any?, usingSelector selector: Selector) {
         let gesture = UIPanGestureRecognizer(target: target, action: selector)
         gesture.delegate = self
@@ -178,11 +135,6 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
         return true
     }
     
-    /**
-     Method used to add an image on the knob (to use as background).
-     
-     - parameter anImage: the image to be used as background of the knob.
-     */
     func add(image anImage: UIImage?) {
         if let image = anImage {
             imageView.image = image
@@ -222,13 +174,6 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
         }
     }
     
-    /**
-     Add borders to the knob.
-     
-     - parameter color: the border UIColor.
-     - parameter width: the border width.
-     - parameter corners: the current corner radius of the knob.
-     */
     func addBorders(usingColor color: UIColor, andWidth width: CGFloat, andCorners corners: CGFloat) {
         if imageView.image != nil {
             addBorders(toView: imageView, usingColor: color, andWidth: width)
@@ -238,13 +183,6 @@ class Knob: GradientView, UIGestureRecognizerDelegate {
         }
     }
     
-    /**
-     Add borders to a specific view.
-     
-     - parameter view: the view on which the border will be added.
-     - parameter color: the border UIColor.
-     - parameter width: the border width.
-     */
     private func addBorders(toView view: UIView,
                             usingColor color: UIColor,
                             andWidth width: CGFloat) {
