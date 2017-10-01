@@ -1,6 +1,17 @@
 # Change Log
 All changes to RangeUISlider will be documented in this file.
 
+## [1.5.0](https://github.com/chicio/RangeUISlider/releases/tag/1.5.0)
+Release date: 2017-10-01.
+
+#### Updated
+- Upgrade to XCode 9 and Swift 4.
+- Removed unused comments.
+- Improved code style.
+
+#### Fixed
+- Fixed a bug that prevents the user from moving the knobs if both of them were placed at a margin of the bar.
+
 ## [1.1.0](https://github.com/chicio/RangeUISlider/releases/tag/1.1.0)
 Release date: 2017-06-02.
 
