@@ -13,15 +13,15 @@ A highly customizable iOS range selection slider, developed using autolayout and
 
 ### Installation
 
-There are three ways to install RangeUISlider in your project: manual installation of as a framework.
+There are three ways to install RangeUISlider in your project: manual installation, as a stand-alone framework or using cocoapods.
 
 **Manual installation**
 
-To manually install RangeUISlider simply drag and drop the <a href="https://github.com/chicio/RangeUISlider/blob/master/Source/RangeUISlider.swift">RangeUISlider.swift</a> file inside your project.
+To manually install RangeUISlider simply drag and drop all the file contained in the <a href="https://github.com/chicio/RangeUISlider/tree/master/Source">Source</a> folder inside your project.
 
 **Framework**
 
-RangeUISlider is available also as a custom framework. To install follow the standard procedure used to install a custom cocoa touch framework 
+RangeUISlider is available also as a custom framework. To install it follow the standard procedure used to install a custom cocoa touch framework
 (simply drag the RangeUISlider.xcodeproj inside your project and add it to the Embedded Binaries/Linked Frameworks and Libraries section of your 
 project. See the demo project for a complete example of the setup of the framework.
 
@@ -32,7 +32,7 @@ Add the dependency to your Podfile similar to the following:
 
 ```
 target 'MyApp' do
-    pod 'RangeUISlider', '~> 1.1'
+    pod 'RangeUISlider', '~> 1.5'
 end
 ```
 
@@ -152,10 +152,10 @@ This is the list of the current customizable property of the RangeUISlider direc
 In the following screenshot you can find some examples of the level of customization that it is possible to reach. You can find this example in the demo project.
 
 <p align="center">
-<img width="318" height="588" hspace="50" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.gif">
-<img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/02-only-colors.gif">
+<img hspace="50" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.png">
+<img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/02-only-colors.png">
 </p>
 <p align="center">
-<img hspace="50"src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/03-only-images.gif">
-<img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/04-only-gradients.gif">
+<img hspace="50"src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/03-only-images.png">
+<img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/04-only-gradients.png">
 </p>
