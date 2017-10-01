@@ -21,7 +21,7 @@ To manually install RangeUISlider simply drag and drop all the file contained in
 
 **Framework**
 
-RangeUISlider is available also as a custom framework. To install it follow the standard procedure used to install a custom cocoa touch framework
+RangeUISlider is available also as a framework. To install it follow the standard procedure used to install a custom cocoa touch framework
 (simply drag the RangeUISlider.xcodeproj inside your project and add it to the Embedded Binaries/Linked Frameworks and Libraries section of your 
 project. See the demo project for a complete example of the setup of the framework.
 
@@ -149,7 +149,7 @@ This is the list of the current customizable property of the RangeUISlider direc
 
 ### Examples
 
-In the following screenshot you can find some examples of the level of customization that it is possible to reach. You can find this example in the demo project.
+In the following screenshot you can find some examples of the level of customization that it is possible to reach. You can find this examples in the demo project.
 
 <p align="center">
 <img width="320" height="632" hspace="50" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.png">
