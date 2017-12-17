@@ -176,10 +176,10 @@ import UIKit
         }
     }
     /// Left knob corners.
-    @IBInspectable var leftKnobCornes: CGFloat = 15.0 {
+    @IBInspectable var leftKnobCorners: CGFloat = 15.0 {
         didSet {
-            leftKnob.backgroundView.layer.cornerRadius = leftKnobCornes
-            leftKnob.backgroundView.layer.masksToBounds = leftKnobCornes > 0.0
+            leftKnob.backgroundView.layer.cornerRadius = leftKnobCorners
+            leftKnob.backgroundView.layer.masksToBounds = leftKnobCorners > 0.0
         }
     }
     /// Left knob image.
@@ -225,7 +225,7 @@ import UIKit
                                       secondColor: leftKnobGradientColor2,
                                       startPoint: leftKnobGradientStartPoint,
                                       endPoint: leftKnobGradientEndPoint,
-                                      cornerRadius: leftKnobCornes)
+                                      cornerRadius: leftKnobCorners)
         }
     }
     /// Gradient color 2 for range not selected.
@@ -235,7 +235,7 @@ import UIKit
                                       secondColor: leftKnobGradientColor2,
                                       startPoint: leftKnobGradientStartPoint,
                                       endPoint: leftKnobGradientEndPoint,
-                                      cornerRadius: leftKnobCornes)
+                                      cornerRadius: leftKnobCorners)
         }
     }
     /// Gradient start point for not selected range.
@@ -245,7 +245,7 @@ import UIKit
                                       secondColor: leftKnobGradientColor2,
                                       startPoint: leftKnobGradientStartPoint,
                                       endPoint: leftKnobGradientEndPoint,
-                                      cornerRadius: leftKnobCornes)
+                                      cornerRadius: leftKnobCorners)
         }
     }
     /// Gradient end point for not selected range.
@@ -255,7 +255,7 @@ import UIKit
                                       secondColor: leftKnobGradientColor2,
                                       startPoint: leftKnobGradientStartPoint,
                                       endPoint: leftKnobGradientEndPoint,
-                                      cornerRadius: leftKnobCornes)
+                                      cornerRadius: leftKnobCorners)
         }
     }
     /// Left knob border width.
@@ -263,7 +263,7 @@ import UIKit
         didSet {
             leftKnob.addBorders(usingColor: leftKnobBorderColor,
                                      andWidth: leftKnobBorderWidth,
-                                     andCorners: leftKnobCornes)
+                                     andCorners: leftKnobCorners)
         }
     }
     /// Left knob border color.
@@ -271,7 +271,7 @@ import UIKit
         didSet {
             leftKnob.addBorders(usingColor: leftKnobBorderColor,
                                      andWidth: leftKnobBorderWidth,
-                                     andCorners: leftKnobCornes)
+                                     andCorners: leftKnobCorners)
         }
     }
     /// Right knob width.
@@ -287,10 +287,10 @@ import UIKit
         }
     }
     /// Right knob corners.
-    @IBInspectable var rightKnobCornes: CGFloat = 15.0 {
+    @IBInspectable var rightKnobCorners: CGFloat = 15.0 {
         didSet {
-            rightKnob.backgroundView.layer.cornerRadius = rightKnobCornes
-            rightKnob.backgroundView.layer.masksToBounds = rightKnobCornes > 0.0
+            rightKnob.backgroundView.layer.cornerRadius = rightKnobCorners
+            rightKnob.backgroundView.layer.masksToBounds = rightKnobCorners > 0.0
         }
     }
     /// Right knob image.
@@ -336,7 +336,7 @@ import UIKit
                                        secondColor: rightKnobGradientColor2,
                                        startPoint: rightKnobGradientStartPoint,
                                        endPoint: rightKnobGradientEndPoint,
-                                       cornerRadius: rightKnobCornes)
+                                       cornerRadius: rightKnobCorners)
         }
     }
     /// Gradient color 2 for range not selected.
@@ -346,7 +346,7 @@ import UIKit
                                        secondColor: rightKnobGradientColor2,
                                        startPoint: rightKnobGradientStartPoint,
                                        endPoint: rightKnobGradientEndPoint,
-                                       cornerRadius: rightKnobCornes)
+                                       cornerRadius: rightKnobCorners)
         }
     }
     /// Gradient start point for not selected range.
@@ -356,7 +356,7 @@ import UIKit
                                        secondColor: rightKnobGradientColor2,
                                        startPoint: rightKnobGradientStartPoint,
                                        endPoint: rightKnobGradientEndPoint,
-                                       cornerRadius: rightKnobCornes)
+                                       cornerRadius: rightKnobCorners)
         }
     }
     /// Gradient end point for not selected range.
@@ -366,7 +366,7 @@ import UIKit
                                        secondColor: rightKnobGradientColor2,
                                        startPoint: rightKnobGradientStartPoint,
                                        endPoint: rightKnobGradientEndPoint,
-                                       cornerRadius: rightKnobCornes)
+                                       cornerRadius: rightKnobCorners)
         }
     }
     /// Right knob border width.
@@ -374,7 +374,7 @@ import UIKit
         didSet {
             rightKnob.addBorders(usingColor: rightKnobBorderColor,
                                       andWidth: rightKnobBorderWidth,
-                                      andCorners: rightKnobCornes)
+                                      andCorners: rightKnobCorners)
         }
     }
     /// Right knob border color.
@@ -382,7 +382,7 @@ import UIKit
         didSet {
             rightKnob.addBorders(usingColor: rightKnobBorderColor,
                                       andWidth: rightKnobBorderWidth,
-                                      andCorners: rightKnobCornes)
+                                      andCorners: rightKnobCorners)
         }
     }
     /// Bar height.
@@ -404,10 +404,10 @@ import UIKit
         }
     }
     /// Bar corners.
-    @IBInspectable var barCornes: CGFloat = 0.0 {
+    @IBInspectable var barCorners: CGFloat = 0.0 {
         didSet {
-            leftProgressView.layer.cornerRadius = barCornes
-            rightProgressView.layer.cornerRadius = barCornes
+            leftProgressView.layer.cornerRadius = barCorners
+            rightProgressView.layer.cornerRadius = barCorners
             addGradientToNotSelectedRangeIfNeeded()
             addBackgroundToRangeNotSelectedIfNeeded()
         }
@@ -583,12 +583,12 @@ import UIKit
                                           secondColor: rangeNotSelectedGradientColor2,
                                           startPoint: rangeNotSelectedGradientStartPoint,
                                           endPoint: rangeNotSelectedGradientEndPoint,
-                                          cornerRadius: barCornes)
+                                          cornerRadius: barCorners)
         rightProgressView.addGradient(firstColor: rangeNotSelectedGradientColor1,
                                            secondColor: rangeNotSelectedGradientColor2,
                                            startPoint: rangeNotSelectedGradientStartPoint,
                                            endPoint: rangeNotSelectedGradientEndPoint,
-                                           cornerRadius: barCornes)
+                                           cornerRadius: barCorners)
     }
     
     /**
@@ -602,10 +602,10 @@ import UIKit
                                          right: rangeNotSelectedBackgroundEdgeInsetRight)
             leftProgressView.addBackground(usingImage: backgroundImage,
                                                 andEdgeInset: edgeInset,
-                                                andCorners: barCornes)
+                                                andCorners: barCorners)
             rightProgressView.addBackground(usingImage: backgroundImage,
                                                  andEdgeInset: edgeInset,
-                                                 andCorners: barCornes)
+                                                 andCorners: barCorners)
         }
     }
     
@@ -620,7 +620,7 @@ import UIKit
                                          right: rangeSelectedBackgroundEdgeInsetRight)
             selectedProgressView.addBackground(usingImage: backgroundImage,
                                                     andEdgeInset: edgeInset,
-                                                    andCorners: barCornes)
+                                                    andCorners: barCorners)
         }
     }
     

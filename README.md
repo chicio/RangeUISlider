@@ -136,7 +136,7 @@ This is the list of the current customizable property of the RangeUISlider direc
  - bar height 
  - bar leading distance from container view
  - bar trailing distance from container view
- - bar cornes
+ - bar corners
  - bar shadow opacity
  - bar shadow color
  - bar shadow offset
