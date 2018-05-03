@@ -1,6 +1,13 @@
 # Change Log
 All changes to RangeUISlider will be documented in this file.
 
+## [1.6.0](https://github.com/chicio/RangeUISlider/releases/tag/1.6.0)
+Release date: 2018-05-03.
+
+#### Added
+- Now it is possible to set the default starting value for left and right knob programmatically.
+- Now it is possible to set the min and max scale of the range programmatically.
+
 ## [1.5.0](https://github.com/chicio/RangeUISlider/releases/tag/1.5.0)
 Release date: 2017-10-01.
 

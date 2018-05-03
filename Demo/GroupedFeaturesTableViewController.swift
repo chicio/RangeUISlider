@@ -22,7 +22,8 @@ class GroupedFeaturesTableViewController: UITableViewController {
     let data: [GroupedFeaturesViewControllerData] = [
         GroupedFeaturesViewControllerData(description: "Only colors", segueIdentifier: "showOnlyColorsSegue"),
         GroupedFeaturesViewControllerData(description: "Only images", segueIdentifier: "showOnlyImagesSegue"),
-        GroupedFeaturesViewControllerData(description: "Only gradients", segueIdentifier: "showOnlyGradientsSegue")
+        GroupedFeaturesViewControllerData(description: "Only gradients", segueIdentifier: "showOnlyGradientsSegue"),
+        GroupedFeaturesViewControllerData(description: "Programmatic setup", segueIdentifier: "showProgrammaticSetupSegue")
     ]
 
     // MARK: - GroupedFeatures Table view data source

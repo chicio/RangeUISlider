@@ -83,12 +83,12 @@ The delegate of the RangeUISlider must implement the ```RangeUISliderDelegate```
 
 ### Customizable property
 
-This is the list of the current customizable property of the RangeUISlider directly from Interface Builder using IBDesignable/IBInspectable:
-
- - range minimum value (CGFloat only)
- - range maximum value (CGFloat only)
- - default starting value left knob
- - default starting value right knob
+This is the list of the **current customizable property of the RangeUISlider directly from Interface Builder using IBDesignable/IBInspectable**:
+ - identifier of the slider (Int )
+ - range minimum value (CGFloat)
+ - range maximum value (CGFloat)
+ - default starting value left knob (CGFloat)
+ - default starting value right knob (CGFloat)
  - range selected color
  - range selected image (override range selected color property)
  - range selected edge inset top, left, bottom, right (used only if range selected image has been setted)
@@ -144,6 +144,13 @@ This is the list of the current customizable property of the RangeUISlider direc
  - bar border width
  - bar border color
  - container corners
+
+It is also possible to **set programmatically the following properties**:
+- identifier of the slider (Int )
+- range minimum value (CGFloat)
+- range maximum value (CGFloat)
+- default starting value left knob (CGFloat)
+- default starting value right knob (CGFloat)
 
 ***
 

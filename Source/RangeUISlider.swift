@@ -19,13 +19,13 @@ import UIKit
     /// Slider identifier.
     @IBInspectable public var identifier: Int = 0
     /// Scale minimum value.
-    @IBInspectable var scaleMinValue: CGFloat = 0.0
+    @IBInspectable public var scaleMinValue: CGFloat = 0.0
     /// Scale maximum value.
-    @IBInspectable var scaleMaxValue: CGFloat = 1.0
+    @IBInspectable public var scaleMaxValue: CGFloat = 1.0
     /// Default left knob starting value.
-    @IBInspectable var defaultValueLeftKnob: CGFloat = 0.0
+    @IBInspectable public var defaultValueLeftKnob: CGFloat = 0.0
     /// Default right knob starting value.
-    @IBInspectable var defaultValueRightKnob: CGFloat = 1.0
+    @IBInspectable public var defaultValueRightKnob: CGFloat = 1.0
     /// Selected range color.
     @IBInspectable var rangeSelectedColor: UIColor = UIColor.blue {
         didSet {
