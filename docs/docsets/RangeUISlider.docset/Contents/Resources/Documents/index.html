@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RangeUISlider  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="RangeUISlider  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">RangeUISlider Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">RangeUISlider Reference</a>
+        <img id="carat" src="img/carat.png" />
+        RangeUISlider  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/RangeUISlider.html">RangeUISlider</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/RangeUISliderDelegate.html">RangeUISliderDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='rangeuislider' class='heading'>RangeUISlider</h1>
+
+<p><a href="https://travis-ci.org/chicio/RangeUISlider.svg?branch=master"><img src="https://travis-ci.org/chicio/RangeUISlider.svg?branch=master" alt="Build Status"></a>
+<a href="https://raw.githubusercontent.com/chicio/RangeUISlider/master/LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub license"></a>
+<a href="https://img.shields.io/badge/platforms-iOS-orange.svg"><img src="https://img.shields.io/badge/platforms-iOS-orange.svg" alt="Supported platform"></a>
+<a href="https://cocoapods.org/pods/RangeUISlider"><img src="https://img.shields.io/cocoapods/v/RangeUISlider.svg" alt="CocoaPods Version"></a>
+<a href="https://cocoapods.org/pods/RangeUISlider"><img src="https://img.shields.io/cocoapods/metrics/doc-percent/RangeUISlider.svg" alt="CocoaPods Doc Coverage Percentage"></a>
+<a href="https://img.shields.io/cocoapods/dt/RangeUISlider.svg"><img src="https://img.shields.io/cocoapods/dt/RangeUISlider.svg" alt="CocoaPods Download"></a></p>
+
+<p>A highly customizable iOS range selection slider, developed using autolayout and completely customizable using IBDesignabled and IBInspectable.</p>
+
+<hr>
+<h3 id='installation' class='heading'>Installation</h3>
+
+<p>There are three ways to install RangeUISlider in your project: manual installation, as a stand-alone framework or using cocoapods.</p>
+
+<p><strong>Manual installation</strong></p>
+
+<p>To manually install RangeUISlider simply drag and drop all the file contained in the <a href="https://github.com/chicio/RangeUISlider/tree/master/Source">Source</a> folder inside your project.</p>
+
+<p><strong>Framework</strong></p>
+
+<p>RangeUISlider is available also as a framework. To install it follow the standard procedure used to install a custom cocoa touch framework
+(simply drag the RangeUISlider.xcodeproj inside your project and add it to the Embedded Binaries/Linked Frameworks and Libraries section of your 
+project. See the demo project for a complete example of the setup of the framework.</p>
+
+<p><strong>CocoaPods</strong></p>
+
+<p>RangeUISlider is also available as a pod on <a href="https://cocoapods.org/pods/RangeUISlider">CocoaPods</a>.
+Add the dependency to your Podfile similar to the following:</p>
+<pre class="highlight plaintext"><code>target 'MyApp' do
+    pod 'RangeUISlider', '~&gt; 1.5'
+end
+</code></pre>
+
+<p>and then run pod install (or pod update).</p>
+
+<hr>
+<h3 id='usage' class='heading'>Usage</h3>
+
+<p>The step needed to use RangeUISlider are:</p>
+
+<ul>
+<li>drag a UIView into you storyboard</li>
+<li>set RangeUISlider as custom class of that view
+
+<ul>
+<li><strong>IMPORANT: set also the Module to RangeUISlider if you used cocoapods or the framework version during installation</strong></li>
+</ul></li>
+<li>start editing using interface builder</li>
+</ul>
+
+<p><a href="https://www.youtube.com/watch?v=Lorvozz-1HU" target="_blank">Here</a> you can find a video tutorial.   </p>
+
+<p align="center">
+<a href="https://www.youtube.com/watch?v=Lorvozz-1HU" target="_blank"><img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/tutorial.png"></a>
+</p>
+
+<p>To get the current values from the slider, set its delegate property.
+The delegate of the RangeUISlider must implement the <code><a href="Protocols/RangeUISliderDelegate.html">RangeUISliderDelegate</a></code> protocol, that has two methods:</p>
+<pre class="highlight swift"><code>
+<span class="cm">/**
+ Calls the delegate when the user is changing the range by moving the knobs.
+
+ - parameter minValueSelected: the minimum value selected.
+ - parameter maxValueSelected: the maximum value selected.
+ - parameter slider: the slider on which the range has been modified.
+ */</span>
+ <span class="kd">@objc</span> <span class="kd">optional</span> <span class="kd">func</span> <span class="nf">rangeIsChanging</span><span class="p">(</span><span class="nv">minValueSelected</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">maxValueSelected</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">slider</span><span class="p">:</span> <span class="kt">RangeUISlider</span><span class="p">)</span>
+
+<span class="cm">/**
+ Calls the delegate when the user has finished the change of the range.
+
+ - parameter minValueSelected: the minimum value selected.
+ - parameter maxValueSelected: the maximum value selected.
+ - parameter slider: the slider on which the range has been modified.
+ */</span>
+ <span class="kd">@objc</span> <span class="kd">func</span> <span class="nf">rangeChangeFinished</span><span class="p">(</span><span class="nv">minValueSelected</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">maxValueSelected</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">slider</span><span class="p">:</span> <span class="kt">RangeUISlider</span><span class="p">)</span>
+
+</code></pre>
+
+<hr>
+<h3 id='customizable-property' class='heading'>Customizable property</h3>
+
+<p>This is the list of the <strong>current customizable property of the RangeUISlider directly from Interface Builder using IBDesignable/IBInspectable</strong>:</p>
+
+<ul>
+<li>identifier of the slider (Int )</li>
+<li>range minimum value (CGFloat)</li>
+<li>range maximum value (CGFloat)</li>
+<li>default starting value left knob (CGFloat)</li>
+<li>default starting value right knob (CGFloat)</li>
+<li>range selected color</li>
+<li>range selected image (override range selected color property)</li>
+<li>range selected edge inset top, left, bottom, right (used only if range selected image has been setted)</li>
+<li>range selected gradient color 1 (override range selected color and image)</li>
+<li>range selected gradient color 1 (override range selected color and image)</li>
+<li>range selected gradient start point (used only if range selected gradients color has been choosed)</li>
+<li>range selected gradient end point (used only if range selected gradients color has been choosed)</li>
+<li>range not selected color</li>
+<li>range not selected image (override range not selected color property)</li>
+<li>range not selected edge inset top, left, bottom, right (used only if range not selected image has been setted)</li>
+<li>range not selected gradient color 1 (override range not selected color and image)</li>
+<li>range not selected gradient color 1 (override range not selected color and image)</li>
+<li>range not selected gradient start point (used only if range not selected gradients color has been choosed)</li>
+<li>range not selected gradient end point (used only if range not selected gradients color has been choosed)</li>
+<li>left knob width</li>
+<li>left knob height</li>
+<li>left knob corners radius</li>
+<li>left knob color</li>
+<li>left knob image (override color)</li>
+<li>left knob shadow opacity</li>
+<li>left knob shadow color</li>
+<li>left knob shadow offset</li>
+<li>left knob shadow radius</li>
+<li>left knob gradient color 1 (override left knob color and image)</li>
+<li>left knob gradient color 2 (override left knob color and image)</li>
+<li>left knob gradient start point (used only if left knob gradients color has been choosed)</li>
+<li>left knob gradient end point (used only if left knob gradients color has been choosed)</li>
+<li>left knob border width</li>
+<li>left knob border color</li>
+<li>right knob width</li>
+<li>right knob height</li>
+<li>right knob corners radius</li>
+<li>right knob color</li>
+<li>right knob image (override color)</li>
+<li>right knob shadow opacity</li>
+<li>right knob shadow color</li>
+<li>right knob shadow offset</li>
+<li>right knob shadow radius</li>
+<li>right knob gradient color 1 (override right knob color and image)</li>
+<li>right knob gradient color 2 (override right knob color and image)</li>
+<li>right knob gradient start point (used only if right knob gradients color has been choosed)</li>
+<li>right knob gradient end point (used only if right knob gradients color has been choosed)</li>
+<li>right knob border width</li>
+<li>right knob border color</li>
+<li>bar height</li>
+<li>bar leading distance from container view</li>
+<li>bar trailing distance from container view</li>
+<li>bar corners</li>
+<li>bar shadow opacity</li>
+<li>bar shadow color</li>
+<li>bar shadow offset</li>
+<li>bar shadow radius</li>
+<li>bar border width</li>
+<li>bar border color</li>
+<li>container corners</li>
+</ul>
+
+<p>It is also possible to <strong>set programmatically the following properties</strong>:</p>
+
+<ul>
+<li>identifier of the slider (Int )</li>
+<li>range minimum value (CGFloat)</li>
+<li>range maximum value (CGFloat)</li>
+<li>default starting value left knob (CGFloat)</li>
+<li>default starting value right knob (CGFloat)</li>
+</ul>
+
+<hr>
+<h3 id='examples' class='heading'>Examples</h3>
+
+<p>In the following screenshot you can find some examples of the level of customization that it is possible to reach. You can find this examples in the demo project.</p>
+
+<p align="center">
+<img width="320" height="632" hspace="50" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.png">
+<img width="320" height="632" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/02-only-colors.png">
+</p>
+
+<p align="center">
+<img width="320" height="632" hspace="50"src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/03-only-images.png">
+<img width="320" height="632" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/04-only-gradients.png">
+</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/chicio/RangeUISlider" target="_blank" rel="external">chicio</a>. All rights reserved. (Last updated: 2018-08-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

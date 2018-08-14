@@ -1,0 +1,1 @@
+jazzy -o docs -c --module RangeUISlider --xcodebuild-arguments -workspace,RangeUISlider.xcworkspace,-scheme,RangeUISlider
