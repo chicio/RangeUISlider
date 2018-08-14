@@ -153,6 +153,11 @@ It is also possible to **set programmatically the following properties**:
 - default starting value right knob (CGFloat)
 
 ***
+### Documentation
+
+You can find the complete api documentation on [fabrizioduroni.it](https://www.fabrizioduroni.it/RangeUISlider/ "RangeUISlider doc").
+
+***
 
 ### Examples
 
