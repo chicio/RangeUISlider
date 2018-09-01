@@ -1,6 +1,13 @@
 # Change Log
 All changes to RangeUISlider will be documented in this file.
 
+## [1.7.0](https://github.com/chicio/RangeUISlider/releases/tag/1.7.0)
+Release date: 2018-09-01.
+
+#### Added
+- RangeUISlider became a open class
+- RangeUISlider could be set entirely in a programmatic way
+
 ## [1.6.0](https://github.com/chicio/RangeUISlider/releases/tag/1.6.0)
 Release date: 2018-05-03.
 
