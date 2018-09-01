@@ -43,7 +43,7 @@ and then run pod install (or pod update).
 ### Usage
 
 You can use RangeUISlider in two ways: in interface builder (thanks to` @IBDesignable` and `@IBInspectable`) or programmatically.
-You can then use the `RangeUISliderDelegate` protocol to get the values of the slider.
+Then you can use the `RangeUISliderDelegate` protocol to get the values of the slider.
 
 #### Interface builder
  - drag a UIView into you storyboard
