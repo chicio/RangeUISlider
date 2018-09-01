@@ -13,7 +13,7 @@ import UIKit
  Created using autolayout and IBDesignabled/IBInspectable.
  */
 @IBDesignable
-@objc public class RangeUISlider: UIView {
+@objc open class RangeUISlider: UIView {
     // MARK: Inspectable property
     
     /// Slider identifier.
@@ -500,7 +500,7 @@ import UIKit
     /**
      Method used to prepare fake values for interface builder preview.
      */
-    public override func prepareForInterfaceBuilder() {
+    open override func prepareForInterfaceBuilder() {
         //Fake values for interface builder.
         //Used to make visible the progress views.
         leftKnob.xPositionConstraint.constant = 40
@@ -511,7 +511,7 @@ import UIKit
      Method used to layout precisely the subview.
      Used here to set the starting values of the knob.
      */
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         let totalRange = scaleMaxValue - scaleMinValue
         let minValue = (defaultValueLeftKnob - scaleMinValue) / totalRange
