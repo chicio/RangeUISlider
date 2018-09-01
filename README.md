@@ -152,13 +152,6 @@ This is the list of the **current customizable property of the RangeUISlider dir
  - bar border color
  - container corners
 
-It is also possible to **set programmatically the following properties**:
-- identifier of the slider (Int )
-- range minimum value (CGFloat)
-- range maximum value (CGFloat)
-- default starting value left knob (CGFloat)
-- default starting value right knob (CGFloat)
-
 ***
 ### Documentation
 
