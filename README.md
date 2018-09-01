@@ -7,7 +7,7 @@
 [![CocoaPods Doc Coverage Percentage](https://img.shields.io/cocoapods/metrics/doc-percent/RangeUISlider.svg)](https://cocoapods.org/pods/RangeUISlider)
 [![CocoaPods Download](https://img.shields.io/cocoapods/dt/RangeUISlider.svg)](https://img.shields.io/cocoapods/dt/RangeUISlider.svg)
 
-A highly customizable iOS range selection slider, developed using autolayout and completely customizable using IBDesignabled and IBInspectable.
+A highly customizable iOS range selection slider, developed using autolayout and completely customizable using IBDesignabled and IBInspectable or programmatically.
 
 ***
 
@@ -42,21 +42,28 @@ and then run pod install (or pod update).
 
 ### Usage
 
-The step needed to use RangeUISlider are:
+You can use RangeUISlider in two ways: in interface builder (thanks to` @IBDesignable` and `@IBInspectable`) or programmatically.
+You can then use the `RangeUISliderDelegate` protocol to get the values of the slider.
 
+#### Interface builder
  - drag a UIView into you storyboard
  - set RangeUISlider as custom class of that view
    - **IMPORANT: set also the Module to RangeUISlider if you used cocoapods or the framework version during installation**
  - start editing using interface builder
-	
-<a href="https://www.youtube.com/watch?v=Lorvozz-1HU" target="_blank">Here</a> you can find a video tutorial.	
-	
+
+[Here](https://www.youtube.com/watch?v=Lorvozz-1HU) you can find a video tutorial for the setup with interface builder.
+
 <p align="center">
 <a href="https://www.youtube.com/watch?v=Lorvozz-1HU" target="_blank"><img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/tutorial.png"></a>
 </p>
 
+#### Programmatic
+You can also use RangeUISlider as a programmatic UI component by setting al the property you need in your code. Take a look at the [](https://github.com/chicio/RangeUISlider/blob/master/Demo/SetupProgrammaticViewController.swift) to see an example of programmatic setup.
+
+
+#### RangeUISliderDelegate
 To get the current values from the slider, set its delegate property.
-The delegate of the RangeUISlider must implement the ```RangeUISliderDelegate``` protocol, that has two methods:
+The delegate of the RangeUISlider must implement the `RangeUISliderDelegate` protocol, that has two methods:
 
 ```swift
 
@@ -81,7 +88,7 @@ The delegate of the RangeUISlider must implement the ```RangeUISliderDelegate```
 ```
 ***
 
-### Customizable property
+#### Customizable property
 
 This is the list of the **current customizable property of the RangeUISlider directly from Interface Builder using IBDesignable/IBInspectable**:
  - identifier of the slider (Int )
