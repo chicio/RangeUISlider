@@ -58,7 +58,7 @@ Then you can use the `RangeUISliderDelegate` protocol to get the values of the s
 </p>
 
 #### Programmatic
-You can also use RangeUISlider as a programmatic UI component by setting all the property you need in your code. Take a look at the [](https://github.com/chicio/RangeUISlider/blob/master/Demo/SetupProgrammaticViewController.swift) to see an example of programmatic setup.
+You can also use RangeUISlider as a programmatic UI component by setting all the property you need in your code. Take a look at the [example in the SetupProgrammaticViewController contained in the demo project ](https://github.com/chicio/RangeUISlider/blob/master/Demo/SetupProgrammaticViewController.swift) to see an example of programmatic setup.
 
 
 #### RangeUISliderDelegate
