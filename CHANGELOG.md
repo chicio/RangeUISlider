@@ -5,7 +5,7 @@ All changes to RangeUISlider will be documented in this file.
 Release date: 2019-03-20.
 
 #### Added
-- Swift 4.2 compatibility (thanks to sjongejan/RangeUISlider#2)
+- Swift 4.2 compatibility (thanks to [sjongejan](https://github.com/sjongejan))
 
 ## [1.7.0](https://github.com/chicio/RangeUISlider/releases/tag/1.7.0)
 Release date: 2018-09-01.
