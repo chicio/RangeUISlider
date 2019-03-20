@@ -51,9 +51,9 @@ class Progress: Gradient {
     }
     
     func setup(leftAnchorView: UIView,
-               leftAnchorConstraintAttribute: NSLayoutAttribute,
+               leftAnchorConstraintAttribute: NSLayoutConstraint.Attribute,
                rightAnchorView: UIView,
-               rightAnchorConstraintAttribute: NSLayoutAttribute,
+               rightAnchorConstraintAttribute: NSLayoutConstraint.Attribute,
                color: UIColor) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = color
