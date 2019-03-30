@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		451E7846224FA103004C861F /* SliderInsideTableViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E7845224FA103004C861F /* SliderInsideTableViewViewController.swift */; };
 		45BD66C7209B36F100A19D22 /* SetupProgrammaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BD66C6209B36F100A19D22 /* SetupProgrammaticViewController.swift */; };
 		5F42D28F1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F42D28E1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift */; };
 		5F9045671E913EE000607428 /* RangeUISlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F42D28B1E8FB2F9008F15CE /* RangeUISlider.framework */; };
@@ -43,6 +44,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		451E7845224FA103004C861F /* SliderInsideTableViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderInsideTableViewViewController.swift; sourceTree = "<group>"; };
 		45BD66C6209B36F100A19D22 /* SetupProgrammaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProgrammaticViewController.swift; sourceTree = "<group>"; };
 		45E215441E8F064600F0B8B9 /* RangeUISlider.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = RangeUISlider.xcodeproj; sourceTree = "<group>"; };
 		5F42D28E1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedFeaturesTableViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				5FCE8A2F1E79D1A400F888BC /* AppDelegate.swift */,
 				5FCE8A311E79D1A400F888BC /* ViewController.swift */,
 				45BD66C6209B36F100A19D22 /* SetupProgrammaticViewController.swift */,
+				451E7845224FA103004C861F /* SliderInsideTableViewViewController.swift */,
 				5F42D28E1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift */,
 				5FCE8A331E79D1A400F888BC /* Main.storyboard */,
 				5FCE8A361E79D1A400F888BC /* Assets.xcassets */,
@@ -202,6 +205,7 @@
 				5FCE8A321E79D1A400F888BC /* ViewController.swift in Sources */,
 				45BD66C7209B36F100A19D22 /* SetupProgrammaticViewController.swift in Sources */,
 				5FCE8A301E79D1A400F888BC /* AppDelegate.swift in Sources */,
+				451E7846224FA103004C861F /* SliderInsideTableViewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
