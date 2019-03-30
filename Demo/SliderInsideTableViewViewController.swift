@@ -26,8 +26,12 @@ class SliderInsideTableViewViewController: UITableViewController, RangeUISliderD
         return cellWithSlider
     }
     
-    func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
+    func rangeChangeStarted() {
         tableView.isScrollEnabled = false
+    }
+    
+    func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
+        print("values \(minValueSelected) - \(maxValueSelected)")
     }
 
     func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {

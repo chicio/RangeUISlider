@@ -15,6 +15,11 @@ import Foundation
  */
 @objc public protocol RangeUISliderDelegate {
     /**
+     Calls the delegate when the user has started the change of the range.
+     */
+    @objc optional func rangeChangeStarted() 
+    
+    /**
      Calls the delegate when the user is changing the range by moving the knobs.
      
      - parameter minValueSelected: the minimum value selected.
