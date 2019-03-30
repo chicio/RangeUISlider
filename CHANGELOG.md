@@ -1,6 +1,12 @@
 # Change Log
 All changes to RangeUISlider will be documented in this file.
 
+## [1.9.0](https://github.com/chicio/RangeUISlider/releases/tag/1.9.0)
+Release date: XXX.
+
+#### Added
+- Upgrade to Swift 5 
+
 ## [1.8.0](https://github.com/chicio/RangeUISlider/releases/tag/1.8.0)
 Release date: 2019-03-20.
 
