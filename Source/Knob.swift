@@ -39,6 +39,7 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
             widthConstraint,
             heightConstraint
         ]
+        
         return knobConstraints + knobBackgroundConstraints
     }
     
