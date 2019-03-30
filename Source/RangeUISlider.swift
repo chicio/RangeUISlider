@@ -660,7 +660,7 @@ import UIKit
         if gestureRecognizer.state == .began {
             rangeSelectionStartedForRightKnobUsing(gestureRecognizer: gestureRecognizer)
         }
-        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+        if gestureRecognizer.state == .changed {
             updateRightKnobAndRangeUsing(gestureRecognizer: gestureRecognizer)
         }
         if gestureRecognizer.state == .ended {
