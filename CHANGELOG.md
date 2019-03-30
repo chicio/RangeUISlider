@@ -6,6 +6,7 @@ Release date: XXX.
 
 #### Added
 - Upgrade to Swift 5  
+- New method `rangeChangeStarted` in `RangeUISliderDelegate`
 
 ## [1.8.0](https://github.com/chicio/RangeUISlider/releases/tag/1.8.0)
 Release date: 2019-03-20.
