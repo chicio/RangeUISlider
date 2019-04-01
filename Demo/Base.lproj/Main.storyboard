@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j89-zd-GID">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j89-zd-GID">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -426,6 +424,7 @@
                         <segue destination="Oug-xn-pzr" kind="show" identifier="showOnlyImagesSegue" id="MVQ-ph-t6C"/>
                         <segue destination="Tkx-hT-lmn" kind="show" identifier="showOnlyGradientsSegue" id="I2y-s7-KCo"/>
                         <segue destination="dWr-eS-hUn" kind="show" identifier="showProgrammaticSetupSegue" id="3bz-bm-ReS"/>
+                        <segue destination="RLA-sf-Itw" kind="show" identifier="showTableViewSetupSegue" id="T5P-TY-50T"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z9F-n4-isO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -656,6 +655,93 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5U7-Ok-IBA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2553" y="1299"/>
+        </scene>
+        <!--InsideTableView-->
+        <scene sceneID="v5Z-OY-1zw">
+            <objects>
+                <tableViewController title="InsideTableView" id="RLA-sf-Itw" customClass="SliderInsideTableViewViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="I9c-sr-esf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CellWithSlider" id="ewv-mI-oXT" customClass="CellWithSlider" customModule="Demo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ewv-mI-oXT" id="k2a-7i-CaJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgB-Wb-TOH" customClass="RangeUISlider" customModule="RangeUISlider">
+                                            <rect key="frame" x="67" y="0.0" width="240" height="43.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="leftKnobWidth">
+                                                    <real key="value" value="30"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="leftKnobHeight">
+                                                    <real key="value" value="30"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="leftKnobCorners">
+                                                    <real key="value" value="15"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="leftKnobGradientColor1">
+                                                    <color key="value" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="leftKnobGradientColor2">
+                                                    <color key="value" red="0.35549776290000001" green="1" blue="0.64925505490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="point" keyPath="leftKnobGradientStartPoint">
+                                                    <point key="value" x="1" y="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="rightKnobWidth">
+                                                    <real key="value" value="30"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="rightKnobHeight">
+                                                    <real key="value" value="30"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="rightKnobCorners">
+                                                    <real key="value" value="15"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="rightKnobGradientColor1">
+                                                    <color key="value" red="0.35549776290000001" green="1" blue="0.64925505490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="rightKnobGradientColor2">
+                                                    <color key="value" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="point" keyPath="rightKnobGradientStartPoint">
+                                                    <point key="value" x="1" y="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="barHeight">
+                                                    <real key="value" value="16"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="barCorners">
+                                                    <real key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="pgB-Wb-TOH" firstAttribute="centerY" secondItem="k2a-7i-CaJ" secondAttribute="centerY" id="ERx-nM-TIJ"/>
+                                        <constraint firstItem="pgB-Wb-TOH" firstAttribute="leading" secondItem="k2a-7i-CaJ" secondAttribute="leading" constant="67" id="a29-1c-smh"/>
+                                        <constraint firstAttribute="trailing" secondItem="pgB-Wb-TOH" secondAttribute="trailing" constant="68" id="exw-dT-wad"/>
+                                        <constraint firstItem="pgB-Wb-TOH" firstAttribute="height" secondItem="k2a-7i-CaJ" secondAttribute="height" id="kbV-Jk-fpn"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="rangeUISlider" destination="pgB-Wb-TOH" id="0Mv-ia-JyL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RLA-sf-Itw" id="N0j-yv-VZE"/>
+                            <outlet property="delegate" destination="RLA-sf-Itw" id="xUZ-7A-wII"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="agj-e6-6pt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2552.8000000000002" y="2007.346326836582"/>
         </scene>
         <!--Only Colors-->
         <scene sceneID="V20-WS-ZRK">
@@ -891,8 +977,8 @@
     <resources>
         <image name="knob" width="87" height="87"/>
         <image name="knobMetallic" width="197" height="197"/>
-        <image name="rangeNotSelected" width="6" height="21"/>
-        <image name="rangeSelected" width="6" height="21"/>
-        <image name="tabbarIcon" width="17" height="20"/>
+        <image name="rangeNotSelected" width="6" height="21.5"/>
+        <image name="rangeSelected" width="6" height="21.5"/>
+        <image name="tabbarIcon" width="17.5" height="20"/>
     </resources>
 </document>

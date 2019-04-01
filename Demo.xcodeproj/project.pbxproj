@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		451E7846224FA103004C861F /* SliderInsideTableViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E7845224FA103004C861F /* SliderInsideTableViewViewController.swift */; };
+		451E7849224FA979004C861F /* CellWithSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E7848224FA979004C861F /* CellWithSlider.swift */; };
 		45BD66C7209B36F100A19D22 /* SetupProgrammaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BD66C6209B36F100A19D22 /* SetupProgrammaticViewController.swift */; };
 		5F42D28F1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F42D28E1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift */; };
 		5F9045671E913EE000607428 /* RangeUISlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F42D28B1E8FB2F9008F15CE /* RangeUISlider.framework */; };
@@ -43,6 +45,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		451E7845224FA103004C861F /* SliderInsideTableViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderInsideTableViewViewController.swift; sourceTree = "<group>"; };
+		451E7848224FA979004C861F /* CellWithSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithSlider.swift; sourceTree = "<group>"; };
 		45BD66C6209B36F100A19D22 /* SetupProgrammaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProgrammaticViewController.swift; sourceTree = "<group>"; };
 		45E215441E8F064600F0B8B9 /* RangeUISlider.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = RangeUISlider.xcodeproj; sourceTree = "<group>"; };
 		5F42D28E1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedFeaturesTableViewController.swift; sourceTree = "<group>"; };
@@ -98,11 +102,13 @@
 				5FCE8A2F1E79D1A400F888BC /* AppDelegate.swift */,
 				5FCE8A311E79D1A400F888BC /* ViewController.swift */,
 				45BD66C6209B36F100A19D22 /* SetupProgrammaticViewController.swift */,
+				451E7845224FA103004C861F /* SliderInsideTableViewViewController.swift */,
 				5F42D28E1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift */,
 				5FCE8A331E79D1A400F888BC /* Main.storyboard */,
 				5FCE8A361E79D1A400F888BC /* Assets.xcassets */,
 				5FCE8A381E79D1A400F888BC /* LaunchScreen.storyboard */,
 				5FCE8A3B1E79D1A400F888BC /* Info.plist */,
+				451E7848224FA979004C861F /* CellWithSlider.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -135,20 +141,20 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Fabrizio Duroni";
 				TargetAttributes = {
 					5FCE8A2B1E79D1A400F888BC = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = Y682K92RZU;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 5FCE8A271E79D1A400F888BC /* Build configuration list for PBXProject "Demo" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -202,6 +208,8 @@
 				5FCE8A321E79D1A400F888BC /* ViewController.swift in Sources */,
 				45BD66C7209B36F100A19D22 /* SetupProgrammaticViewController.swift in Sources */,
 				5FCE8A301E79D1A400F888BC /* AppDelegate.swift in Sources */,
+				451E7849224FA979004C861F /* CellWithSlider.swift in Sources */,
+				451E7846224FA103004C861F /* SliderInsideTableViewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +239,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -289,6 +298,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -346,7 +356,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = it.chicio.RangeUISlider.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -360,7 +370,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = it.chicio.RangeUISlider.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

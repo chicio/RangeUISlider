@@ -626,73 +626,82 @@ import UIKit
     
     // MARK: Gesture recognizer methods (knobs movements)
     
-    /**
-     Method used to respond to the gesture recognizer attached on the left knob.
-     
-     - parameter gestureRecognizer: the gesture recognizer that uses this method as selector.
-     */
     @objc public final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
-        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
-            let positionForKnob = gestureRecognizer.location(in: bar).x
-            let positionRightKnob = bar.frame.width + rightKnob.xPositionConstraint.constant
-            if positionForKnob >= 0 && positionForKnob <= positionRightKnob {
-                leftKnob.xPositionConstraint.constant = positionForKnob
-            }
-            rangeUpdate()
+        if gestureRecognizer.state == .began {
+            rangeSelectionStartedForLeftKnobUsing(gestureRecognizer: gestureRecognizer)
+        }
+        if gestureRecognizer.state == .changed {
+            updateLeftKnobAndRangeUsing(gestureRecognizer: gestureRecognizer)
         }
         if gestureRecognizer.state == .ended {
-            rangeSelected()
+            rangeSelectionFinished()
         }
     }
     
-    /**
-     Method used to respond to the gesture recognizer attached on the right knob.
-     
-     - parameter gestureRecognizer: the gesture recognizer that uses this method as selector.
-     */
+    private func rangeSelectionStartedForLeftKnobUsing(gestureRecognizer: UIPanGestureRecognizer) {
+        updateLeftKnobPositionUsing(gestureRecognizer: gestureRecognizer)
+        delegate?.rangeChangeStarted?()
+    }
+    
+    private func updateLeftKnobAndRangeUsing(gestureRecognizer: UIPanGestureRecognizer) {
+        updateLeftKnobPositionUsing(gestureRecognizer: gestureRecognizer)
+        rangeSelectionUpdate()
+    }
+    
+    private func updateLeftKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
+        let positionForKnob = gestureRecognizer.location(in: bar).x
+        let positionRightKnob = bar.frame.width + rightKnob.xPositionConstraint.constant
+        if positionForKnob >= 0 && positionForKnob <= positionRightKnob {
+            leftKnob.xPositionConstraint.constant = positionForKnob
+        }
+    }
+    
     @objc public final func moveRightKnob(gestureRecognizer: UIPanGestureRecognizer) {
-        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
-            let xLocationInBar = gestureRecognizer.location(in: bar).x
-            let positionForKnob = xLocationInBar - bar.frame.width
-            if positionForKnob <= 0 && xLocationInBar >= leftKnob.xPositionConstraint.constant {
-                rightKnob.xPositionConstraint.constant = positionForKnob
-            }
-            rangeUpdate()
+        if gestureRecognizer.state == .began {
+            rangeSelectionStartedForRightKnobUsing(gestureRecognizer: gestureRecognizer)
+        }
+        if gestureRecognizer.state == .changed {
+            updateRightKnobAndRangeUsing(gestureRecognizer: gestureRecognizer)
         }
         if gestureRecognizer.state == .ended {
-            rangeSelected()
+            rangeSelectionFinished()
+        }
+    }
+    
+    private func rangeSelectionStartedForRightKnobUsing(gestureRecognizer: UIPanGestureRecognizer) {
+        updateRightKnobPositionUsing(gestureRecognizer: gestureRecognizer)
+        delegate?.rangeChangeStarted?()
+    }
+    
+    private func updateRightKnobAndRangeUsing(gestureRecognizer: UIPanGestureRecognizer) {
+        updateRightKnobPositionUsing(gestureRecognizer: gestureRecognizer)
+        rangeSelectionUpdate()
+    }
+    
+    private func updateRightKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
+        let xLocationInBar = gestureRecognizer.location(in: bar).x
+        let positionForKnob = xLocationInBar - bar.frame.width
+        if positionForKnob <= 0 && xLocationInBar >= leftKnob.xPositionConstraint.constant {
+            rightKnob.xPositionConstraint.constant = positionForKnob
         }
     }
     
     // MARK: Range selected calculation.
     
-    /**
-     Method used to calculate the range selected during updates (moving knobs).
-     The selection is adapted to the custom scale eventually setted.
-     */
-    private func rangeUpdate() {
+    private func rangeSelectionUpdate() {
         let rangeValues = calculateRangeSelected()
         delegate?.rangeIsChanging?(minValueSelected: rangeValues.minValue,
                                    maxValueSelected: rangeValues.maxValue,
                                    slider: self)
     }
     
-    /**
-     Method used to calculate the range selected after updates (moving knobs).
-     The selection is adapted to the custom scale eventually setted.
-     */
-    func rangeSelected() {
+    private func rangeSelectionFinished() {
         let rangeValues = calculateRangeSelected()
         delegate?.rangeChangeFinished(minValueSelected: rangeValues.minValue,
                                       maxValueSelected: rangeValues.maxValue,
                                       slider: self)
     }
     
-    /**
-     Calculate range selected based on knob position and scale.
-     
-     - returns: min and max values selected.
-     */
     private func calculateRangeSelected() -> (minValue: CGFloat, maxValue: CGFloat) {
         let minValue = leftKnob.xPositionConstraint.constant / bar.frame.width
         let maxValue = 1.0  + rightKnob.xPositionConstraint.constant / bar.frame.width
@@ -701,14 +710,6 @@ import UIKit
         return (minValue: scaledMinValue, maxValue: scaledMaxValue)
     }
     
-    /**
-     Linear mapping of a values. A simple equation of a straight line. "Nothing to see", no need for more complex
-     interpolation here (good old times, when I was studying interpolation in Perlin noise..I miss you... :D).
-     
-     - parameter value: value to be mapped.
-     
-     - returns: the mapped value.
-     */
     private func linearMapping(value: CGFloat) -> CGFloat {
         return value * (scaleMaxValue - scaleMinValue) + scaleMinValue
     }
