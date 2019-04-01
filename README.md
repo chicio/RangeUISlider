@@ -5,7 +5,6 @@
 [![Supported platform](https://img.shields.io/badge/platforms-iOS-orange.svg)](https://img.shields.io/badge/platforms-iOS-orange.svg)
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/RangeUISlider.svg)](https://cocoapods.org/pods/RangeUISlider)
 [![CocoaPods Doc Coverage Percentage](https://img.shields.io/cocoapods/metrics/doc-percent/RangeUISlider.svg)](https://cocoapods.org/pods/RangeUISlider)
-[![CocoaPods Download](https://img.shields.io/cocoapods/dt/RangeUISlider.svg)](https://img.shields.io/cocoapods/dt/RangeUISlider.svg)
 
 A highly customizable iOS range selection slider, developed using autolayout and completely customizable using IBDesignabled and IBInspectable or programmatically.
 
