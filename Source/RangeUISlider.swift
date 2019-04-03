@@ -22,6 +22,8 @@ import UIKit
     @IBInspectable public var scaleMinValue: CGFloat = 0.0
     /// Scale maximum value.
     @IBInspectable public var scaleMaxValue: CGFloat = 1.0
+    /// Step increment value. If different from 0 RangeUISlider will let the user drag by increment.
+    @IBInspectable public var stepIncrement: CGFloat = 0.1
     /// Default left knob starting value.
     @IBInspectable public var defaultValueLeftKnob: CGFloat = 0.0
     /// Default right knob starting value.
@@ -649,7 +651,13 @@ import UIKit
     }
     
     private func updateLeftKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        let positionForKnob = gestureRecognizer.location(in: bar).x
+        let numberOfStep = (scaleMaxValue - scaleMinValue) / stepIncrement
+        let widthOfStep = bar.frame.width / numberOfStep
+        
+        let positionForKnob = (gestureRecognizer.location(in: bar).x / widthOfStep).rounded(FloatingPointRoundingRule.down) * widthOfStep
+        
+//        print("\(gestureRecognizer.location(in: bar).x / widthOfStep) \(positionForKnob) - \(widthOfStep) - \(numberOfStep)")
+        
         let positionRightKnob = bar.frame.width + rightKnob.xPositionConstraint.constant
         if positionForKnob >= 0 && positionForKnob <= positionRightKnob {
             leftKnob.xPositionConstraint.constant = positionForKnob
@@ -679,8 +687,12 @@ import UIKit
     }
     
     private func updateRightKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
+        let numberOfStep = (scaleMaxValue - scaleMinValue) / stepIncrement
+        let widthOfStep = bar.frame.width / numberOfStep
+
         let xLocationInBar = gestureRecognizer.location(in: bar).x
-        let positionForKnob = xLocationInBar - bar.frame.width
+        let positionForKnob = ((xLocationInBar - bar.frame.width) / widthOfStep).rounded(FloatingPointRoundingRule.down) * widthOfStep
+        
         if positionForKnob <= 0 && xLocationInBar >= leftKnob.xPositionConstraint.constant {
             rightKnob.xPositionConstraint.constant = positionForKnob
         }
