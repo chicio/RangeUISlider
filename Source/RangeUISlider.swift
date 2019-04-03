@@ -20,14 +20,14 @@ import UIKit
     @IBInspectable public var scaleMinValue: CGFloat = 0.0
     /// Scale maximum value.
     @IBInspectable public var scaleMaxValue: CGFloat = 1.0
-    /// Step increment value. If different from 0 RangeUISlider will let the user drag by increment.
-    @IBInspectable public var stepIncrement: CGFloat = 0.1
+    /// Step increment value. If different from 0 RangeUISlider will let the user drag by step increment.
+    @IBInspectable public var stepIncrement: CGFloat = 0.0
     /// Default left knob starting value.
     @IBInspectable public var defaultValueLeftKnob: CGFloat = 0.0
     /// Default right knob starting value.
     @IBInspectable public var defaultValueRightKnob: CGFloat = 1.0
     /// Selected range color.
-    @IBInspectable var rangeSelectedColor: UIColor = UIColor.blue {
+    @IBInspectable public var rangeSelectedColor: UIColor = UIColor.blue {
         didSet {
             selectedProgressView.backgroundColor = rangeSelectedColor
         }
@@ -462,7 +462,7 @@ import UIKit
     /// Slider delegate.
     public weak var delegate: RangeUISliderDelegate?
     
-    typealias RangeSelected = (minValue: CGFloat, maxValue: CGFloat)
+    private typealias RangeSelected = (minValue: CGFloat, maxValue: CGFloat)
     
     private let bar: Bar = Bar()
     private let leftKnob: Knob = Knob()
@@ -495,6 +495,9 @@ import UIKit
         setup()
     }
     
+    /**
+     Prepare RangeUISlider to be drawn in Interface Builder.
+     */
     open override func prepareForInterfaceBuilder() {
         //Fake values for interface builder.
         //Used to make visible the progress views.
@@ -502,6 +505,9 @@ import UIKit
         rightKnob.xPositionConstraint.constant = -40
     }
     
+    /**
+     Custom layout subviews to set the default values for the know of RangeUISlider
+     */
     open override func layoutSubviews() {
         super.layoutSubviews()
         let minValue = (defaultValueLeftKnob - scaleMinValue) / scale

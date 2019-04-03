@@ -63,13 +63,6 @@ Created using autolayout and IBDesignabled/IBInspectable.</p>
           </section>
           <section class="section task-group-section">
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Inspectable%20property"></a>
-                <a name="//apple_ref/swift/Section/Inspectable property" class="dashAnchor"></a>
-                <a href="#/Inspectable%20property">
-                  <h3 class="section-name">Inspectable property</h3>
-                </a>
-              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -158,6 +151,34 @@ Created using autolayout and IBDesignabled/IBInspectable.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:@M@RangeUISlider@objc(cs)RangeUISlider(py)stepIncrement"></a>
+                    <a name="//apple_ref/swift/Property/stepIncrement" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RangeUISlider@objc(cs)RangeUISlider(py)stepIncrement">stepIncrement</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Step increment value. If different from 0 RangeUISlider will let the user drag by step increment.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBInspectable</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">stepIncrement</span><span class="p">:</span> <span class="kt">CGFloat</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:@M@RangeUISlider@objc(cs)RangeUISlider(py)defaultValueLeftKnob"></a>
                     <a name="//apple_ref/swift/Property/defaultValueLeftKnob" class="dashAnchor"></a>
                     <a class="token" href="#/c:@M@RangeUISlider@objc(cs)RangeUISlider(py)defaultValueLeftKnob">defaultValueLeftKnob</a>
@@ -205,6 +226,34 @@ Created using autolayout and IBDesignabled/IBInspectable.</p>
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@IBInspectable</span>
 <span class="kd">public</span> <span class="k">var</span> <span class="nv">defaultValueRightKnob</span><span class="p">:</span> <span class="kt">CGFloat</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@RangeUISlider@objc(cs)RangeUISlider(py)rangeSelectedColor"></a>
+                    <a name="//apple_ref/swift/Property/rangeSelectedColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RangeUISlider@objc(cs)RangeUISlider(py)rangeSelectedColor">rangeSelectedColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Selected range color.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBInspectable</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">rangeSelectedColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1891,17 +1940,6 @@ Created using autolayout and IBDesignabled/IBInspectable.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Instance%20property"></a>
-                <a name="//apple_ref/swift/Section/Instance property" class="dashAnchor"></a>
-                <a href="#/Instance%20property">
-                  <h3 class="section-name">Instance property</h3>
-                </a>
-              </div>
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2034,7 +2072,7 @@ Created using autolayout and IBDesignabled/IBInspectable.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Method used to prepare fake values for interface builder preview.</p>
+                        <p>Prepare RangeUISlider to be drawn in Interface Builder.</p>
 
                       </div>
                       <div class="declaration">
@@ -2061,8 +2099,7 @@ Created using autolayout and IBDesignabled/IBInspectable.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Method used to layout precisely the subview.
-Used here to set the starting values of the knob.</p>
+                        <p>Custom layout subviews to set the default values for the know of RangeUISlider</p>
 
                       </div>
                       <div class="declaration">
@@ -2076,17 +2113,6 @@ Used here to set the starting values of the knob.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Gesture%20recognizer%20methods%20(knobs%20movements)"></a>
-                <a name="//apple_ref/swift/Section/Gesture recognizer methods (knobs movements)" class="dashAnchor"></a>
-                <a href="#/Gesture%20recognizer%20methods%20(knobs%20movements)">
-                  <h3 class="section-name">Gesture recognizer methods (knobs movements)</h3>
-                </a>
-              </div>
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2148,7 +2174,7 @@ Used here to set the starting values of the knob.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/chicio/RangeUISlider" target="_blank" rel="external">chicio</a>. All rights reserved. (Last updated: 2019-04-01)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/chicio/RangeUISlider" target="_blank" rel="external">chicio</a>. All rights reserved. (Last updated: 2019-04-03)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
