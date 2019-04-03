@@ -6,8 +6,7 @@
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/RangeUISlider.svg)](https://cocoapods.org/pods/RangeUISlider)
 [![CocoaPods Doc Coverage Percentage](https://img.shields.io/cocoapods/metrics/doc-percent/RangeUISlider.svg)](https://cocoapods.org/pods/RangeUISlider)
 
-A highly customizable iOS range selection slider, developed using autolayout and completely customizable using IBDesignabled and IBInspectable or programmatically.
-
+:iphone: :large_blue_circle::heavy_minus_sign::large_blue_circle: A iOS range selection slider, developed using autolayout and highly customizable using IBDesignabled and IBInspectable or programmatically.
 ***
 
 ### Installation
