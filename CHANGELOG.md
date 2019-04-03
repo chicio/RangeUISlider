@@ -1,6 +1,12 @@
 # Change Log
 All changes to RangeUISlider will be documented in this file.
 
+## [1.10.0](https://github.com/chicio/RangeUISlider/releases/tag/1.10.0)
+Release date: XXXX.
+
+#### Added
+- New step increment feature
+
 ## [1.9.0](https://github.com/chicio/RangeUISlider/releases/tag/1.9.0)
 Release date: 2019-04-01.
 
