@@ -2,7 +2,7 @@
 //  RangeUISlider.h
 //  RangeUISlider
 //
-//  Created by Fabrizio Duroni on 31.03.17.
+//  Created by Fabrizio Duroni on 31/03/2017.
 //  2017 Fabrizio Duroni.
 //
 
