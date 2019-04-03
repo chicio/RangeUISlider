@@ -27,8 +27,6 @@ class GroupedFeaturesTableViewController: UITableViewController {
         GroupedFeaturesViewControllerData(description: "Inside UITableView", segueIdentifier: "showTableViewSetupSegue")
     ]
 
-    // MARK: - GroupedFeatures Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -42,8 +40,6 @@ class GroupedFeaturesTableViewController: UITableViewController {
         cell.textLabel?.text = data[indexPath.row].description
         return cell
     }
-
-    // MARK: - GroupedFeatures Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: data[indexPath.row].segueIdentifier, sender: self)
