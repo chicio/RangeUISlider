@@ -67,6 +67,11 @@ The delegate of the RangeUISlider must implement the `RangeUISliderDelegate` pro
 ```swift
 
 /**
+ Calls the delegate when the user has started the change of the range.
+ */
+ @objc optional func rangeChangeStarted() 
+
+/**
  Calls the delegate when the user is changing the range by moving the knobs.
      
  - parameter minValueSelected: the minimum value selected.
