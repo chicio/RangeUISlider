@@ -262,13 +262,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example step Increment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pkx-V7-ynG">
-                                <rect key="frame" x="20" y="277.5" width="185" height="21"/>
+                                <rect key="frame" x="20" y="277.5" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example custom scale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fx-7G-17O">
-                                <rect key="frame" x="20" y="111" width="171" height="21"/>
+                                <rect key="frame" x="20" y="111" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -365,7 +365,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example different knobs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVb-dS-KAc">
-                                <rect key="frame" x="20" y="429.5" width="186" height="21"/>
+                                <rect key="frame" x="20" y="429.5" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -380,8 +380,10 @@
                             <constraint firstItem="u4Y-av-gwa" firstAttribute="top" secondItem="4fx-7G-17O" secondAttribute="bottom" constant="10" id="Ffr-dk-WiA"/>
                             <constraint firstItem="jPQ-Vh-eUa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Jcn-HX-PNO"/>
                             <constraint firstItem="u4Y-av-gwa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.5" id="Lkx-XR-xZC"/>
+                            <constraint firstItem="Pkx-V7-ynG" firstAttribute="trailing" secondItem="jPQ-Vh-eUa" secondAttribute="trailing" id="NAi-h9-XeE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jPQ-Vh-eUa" secondAttribute="trailing" constant="4" id="VTt-tC-2dn"/>
                             <constraint firstItem="jPQ-Vh-eUa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="VrP-y2-uvU"/>
+                            <constraint firstItem="GVb-dS-KAc" firstAttribute="trailing" secondItem="bMX-j7-KAB" secondAttribute="trailing" id="WpR-cv-xk8"/>
                             <constraint firstItem="bMX-j7-KAB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aWi-rU-WA5"/>
                             <constraint firstItem="bMX-j7-KAB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.5" id="eXi-Ni-JqI"/>
                             <constraint firstItem="Pkx-V7-ynG" firstAttribute="leading" secondItem="jPQ-Vh-eUa" secondAttribute="leading" id="jMi-NQ-JVC"/>
@@ -389,6 +391,7 @@
                             <constraint firstItem="bMX-j7-KAB" firstAttribute="top" secondItem="GVb-dS-KAc" secondAttribute="bottom" constant="10" id="sxi-qi-qwv"/>
                             <constraint firstItem="u4Y-av-gwa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="uYq-9N-Ttu"/>
                             <constraint firstItem="bMX-j7-KAB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="wjD-T7-8sI"/>
+                            <constraint firstItem="4fx-7G-17O" firstAttribute="trailing" secondItem="u4Y-av-gwa" secondAttribute="trailing" id="zMf-Lr-rru"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Mixed features" image="tabbarIcon" selectedImage="tabbarIcon" id="wb5-2Z-RSm"/>
