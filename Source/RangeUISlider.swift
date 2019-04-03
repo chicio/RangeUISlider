@@ -462,8 +462,6 @@ import UIKit
     /// Slider delegate.
     public weak var delegate: RangeUISliderDelegate?
     
-    private typealias RangeSelected = (minValue: CGFloat, maxValue: CGFloat)
-    
     private let bar: Bar = Bar()
     private let leftKnob: Knob = Knob()
     private let rightKnob: Knob = Knob()
@@ -474,6 +472,10 @@ import UIKit
     private lazy var scale = scaleMaxValue - scaleMinValue
     private lazy var numberOfSteps: CGFloat = calculateNumberOfSteps()
     private lazy var stepWidth: CGFloat = calculateStepWidth()
+    private lazy var rangeSelectedCalculator: RangeSelectedCalculator = RangeSelectedCalculator(
+        scale: scale,
+        scaleMinValue: scaleMinValue
+    )
     
     /**
      Standard init using coder.
@@ -514,7 +516,11 @@ import UIKit
         let maxValue = (defaultValueRightKnob - scaleMinValue) / scale
         leftKnob.xPositionConstraint.constant = bar.frame.width * minValue
         rightKnob.xPositionConstraint.constant = (bar.frame.width * maxValue) - bar.frame.width
-        previousRangeSelectedValues = calculateRangeSelected()
+        previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
+            leftKnobPosition: leftKnob.xPositionConstraint.constant,
+            rightKnobPosition: rightKnob.xPositionConstraint.constant,
+            barWidth: bar.frame.width
+        )
     }
     
     private func setup() {
@@ -632,24 +638,34 @@ import UIKit
     }
     
     @objc public final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
+       recognize(gestureRecognizer: gestureRecognizer, updateKnob: updateLeftKnobPositionUsing)
+    }
+    
+    @objc public final func moveRightKnob(gestureRecognizer: UIPanGestureRecognizer) {
+        recognize(gestureRecognizer: gestureRecognizer, updateKnob: updateRightKnobPositionUsing)
+    }
+    
+    func recognize(gestureRecognizer: UIPanGestureRecognizer, updateKnob: (UIPanGestureRecognizer) -> ()) {
         if gestureRecognizer.state == .began {
-            rangeSelectionStartedForLeftKnobUsing(gestureRecognizer: gestureRecognizer)
+            rangeSelectionStartedForKnobUsing(gestureRecognizer: gestureRecognizer, updateKnob: updateKnob)
         }
         if gestureRecognizer.state == .changed {
-            updateLeftKnobAndRangeUsing(gestureRecognizer: gestureRecognizer)
+            updateKnobAndRangeUsing(gestureRecognizer: gestureRecognizer, updateKnob: updateKnob)
         }
         if gestureRecognizer.state == .ended {
             rangeSelectionFinished()
         }
     }
     
-    private func rangeSelectionStartedForLeftKnobUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        updateLeftKnobPositionUsing(gestureRecognizer: gestureRecognizer)
+    private func rangeSelectionStartedForKnobUsing(gestureRecognizer: UIPanGestureRecognizer,
+                                                   updateKnob:(UIPanGestureRecognizer) -> ()) {
+        updateKnob(gestureRecognizer)
         delegate?.rangeChangeStarted?()
     }
     
-    private func updateLeftKnobAndRangeUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        updateLeftKnobPositionUsing(gestureRecognizer: gestureRecognizer)
+    private func updateKnobAndRangeUsing(gestureRecognizer: UIPanGestureRecognizer,
+                                         updateKnob:(UIPanGestureRecognizer) -> ()) {
+        updateKnob(gestureRecognizer)
         rangeSelectionUpdate()
     }
     
@@ -662,28 +678,6 @@ import UIKit
         }
     }
     
-    @objc public final func moveRightKnob(gestureRecognizer: UIPanGestureRecognizer) {
-        if gestureRecognizer.state == .began {
-            rangeSelectionStartedForRightKnobUsing(gestureRecognizer: gestureRecognizer)
-        }
-        if gestureRecognizer.state == .changed {
-            updateRightKnobAndRangeUsing(gestureRecognizer: gestureRecognizer)
-        }
-        if gestureRecognizer.state == .ended {
-            rangeSelectionFinished()
-        }
-    }
-    
-    private func rangeSelectionStartedForRightKnobUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        updateRightKnobPositionUsing(gestureRecognizer: gestureRecognizer)
-        delegate?.rangeChangeStarted?()
-    }
-    
-    private func updateRightKnobAndRangeUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        updateRightKnobPositionUsing(gestureRecognizer: gestureRecognizer)
-        rangeSelectionUpdate()
-    }
-    
     private func updateRightKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
         let xLocationInBar = gestureRecognizer.location(in: bar).x
         let positionForKnob = ((xLocationInBar - bar.frame.width) / stepWidth).rounded(FloatingPointRoundingRule.down) * stepWidth
@@ -694,7 +688,11 @@ import UIKit
     }
     
     private func rangeSelectionUpdate() {
-        let rangeSelected = calculateRangeSelected()
+        let rangeSelected = rangeSelectedCalculator.calculateRangeSelected(
+            leftKnobPosition: leftKnob.xPositionConstraint.constant,
+            rightKnobPosition: rightKnob.xPositionConstraint.constant,
+            barWidth: bar.frame.width
+        )
         if isDifferentFromPreviousRangeSelected(rangeSelected: rangeSelected) {
             delegate?.rangeIsChanging?(minValueSelected: rangeSelected.minValue,
                                        maxValueSelected: rangeSelected.maxValue,
@@ -708,21 +706,13 @@ import UIKit
     }
     
     private func rangeSelectionFinished() {
-        let rangeSelected = calculateRangeSelected()
+        let rangeSelected = rangeSelectedCalculator.calculateRangeSelected(
+            leftKnobPosition: leftKnob.xPositionConstraint.constant,
+            rightKnobPosition: rightKnob.xPositionConstraint.constant,
+            barWidth: bar.frame.width
+        )
         delegate?.rangeChangeFinished(minValueSelected: rangeSelected.minValue,
                                       maxValueSelected: rangeSelected.maxValue,
                                       slider: self)
-    }
-    
-    private func calculateRangeSelected() -> RangeSelected {
-        let minValue = leftKnob.xPositionConstraint.constant / bar.frame.width
-        let maxValue = 1.0  + rightKnob.xPositionConstraint.constant / bar.frame.width
-        let scaledMinValue = linearMapping(value: minValue)
-        let scaledMaxValue = linearMapping(value: maxValue)
-        return (minValue: scaledMinValue, maxValue: scaledMaxValue)
-    }
-    
-    private func linearMapping(value: CGFloat) -> CGFloat {
-        return value * scale + scaleMinValue
     }
 }
