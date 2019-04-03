@@ -645,7 +645,7 @@ import UIKit
         recognize(gestureRecognizer: gestureRecognizer, updateKnob: updateRightKnobPositionUsing)
     }
     
-    func recognize(gestureRecognizer: UIPanGestureRecognizer, updateKnob: (UIPanGestureRecognizer) -> ()) {
+    private func recognize(gestureRecognizer: UIPanGestureRecognizer, updateKnob: (UIPanGestureRecognizer) -> ()) {
         if gestureRecognizer.state == .began {
             rangeSelectionStartedForKnobUsing(gestureRecognizer: gestureRecognizer, updateKnob: updateKnob)
         }
@@ -670,8 +670,7 @@ import UIKit
     }
     
     private func updateLeftKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        let positionForKnob = (gestureRecognizer.location(in: bar).x / stepWidth).rounded(FloatingPointRoundingRule.down) * stepWidth
-        
+        let positionForKnob = positionForKnobGiven(xLocationInBar: gestureRecognizer.location(in: bar).x)
         let positionRightKnob = bar.frame.width + rightKnob.xPositionConstraint.constant
         if positionForKnob >= 0 && positionForKnob <= positionRightKnob {
             leftKnob.xPositionConstraint.constant = positionForKnob
@@ -680,11 +679,14 @@ import UIKit
     
     private func updateRightKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
         let xLocationInBar = gestureRecognizer.location(in: bar).x
-        let positionForKnob = ((xLocationInBar - bar.frame.width) / stepWidth).rounded(FloatingPointRoundingRule.down) * stepWidth
-        
+        let positionForKnob = positionForKnobGiven(xLocationInBar: xLocationInBar - bar.frame.width)
         if positionForKnob <= 0 && xLocationInBar >= leftKnob.xPositionConstraint.constant {
             rightKnob.xPositionConstraint.constant = positionForKnob
         }
+    }
+    
+    private func positionForKnobGiven(xLocationInBar: CGFloat) -> CGFloat {
+        return (xLocationInBar / stepWidth).rounded(FloatingPointRoundingRule.down) * stepWidth
     }
     
     private func rangeSelectionUpdate() {
