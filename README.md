@@ -62,7 +62,7 @@ You can also use RangeUISlider as a programmatic UI component by setting all the
 
 #### RangeUISliderDelegate
 To get the current values from the slider, set its delegate property.
-The delegate of the RangeUISlider must implement the `RangeUISliderDelegate` protocol, that has two methods:
+The delegate of the RangeUISlider must implement the `RangeUISliderDelegate` protocol, that has three methods:
 
 ```swift
 
