@@ -6,8 +6,7 @@
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/RangeUISlider.svg)](https://cocoapods.org/pods/RangeUISlider)
 [![CocoaPods Doc Coverage Percentage](https://img.shields.io/cocoapods/metrics/doc-percent/RangeUISlider.svg)](https://cocoapods.org/pods/RangeUISlider)
 
-A highly customizable iOS range selection slider, developed using autolayout and completely customizable using IBDesignabled and IBInspectable or programmatically.
-
+A iOS range selection slider, developed using autolayout and highly customizable using IBDesignabled and IBInspectable or programmatically.
 ***
 
 ### Installation
@@ -62,9 +61,14 @@ You can also use RangeUISlider as a programmatic UI component by setting all the
 
 #### RangeUISliderDelegate
 To get the current values from the slider, set its delegate property.
-The delegate of the RangeUISlider must implement the `RangeUISliderDelegate` protocol, that has two methods:
+The delegate of the RangeUISlider must implement the `RangeUISliderDelegate` protocol, that has three methods:
 
 ```swift
+
+/**
+ Calls the delegate when the user has started the change of the range.
+ */
+ @objc optional func rangeChangeStarted() 
 
 /**
  Calls the delegate when the user is changing the range by moving the knobs.
@@ -93,6 +97,7 @@ This is the list of the **current customizable property of the RangeUISlider dir
  - identifier of the slider (Int )
  - range minimum value (CGFloat)
  - range maximum value (CGFloat)
+ - step increment value (CGFloat)
  - default starting value left knob (CGFloat)
  - default starting value right knob (CGFloat)
  - range selected color

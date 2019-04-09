@@ -13,21 +13,21 @@ import UIKit
  Created using autolayout and IBDesignabled/IBInspectable.
  */
 @IBDesignable
-@objc open class RangeUISlider: UIView {
-    // MARK: Inspectable property
-    
+@objc open class RangeUISlider: UIView {    
     /// Slider identifier.
     @IBInspectable public var identifier: Int = 0
     /// Scale minimum value.
     @IBInspectable public var scaleMinValue: CGFloat = 0.0
     /// Scale maximum value.
     @IBInspectable public var scaleMaxValue: CGFloat = 1.0
+    /// Step increment value. If different from 0 RangeUISlider will let the user drag by step increment.
+    @IBInspectable public var stepIncrement: CGFloat = 0.0
     /// Default left knob starting value.
     @IBInspectable public var defaultValueLeftKnob: CGFloat = 0.0
     /// Default right knob starting value.
     @IBInspectable public var defaultValueRightKnob: CGFloat = 1.0
     /// Selected range color.
-    @IBInspectable var rangeSelectedColor: UIColor = UIColor.blue {
+    @IBInspectable public var rangeSelectedColor: UIColor = UIColor.blue {
         didSet {
             selectedProgressView.backgroundColor = rangeSelectedColor
         }
@@ -459,23 +459,23 @@ import UIKit
             layer.masksToBounds = containerCorners > 0.0
         }
     }
-    
-    // MARK: Instance property
-    
-    /// SliderBar component.
-    private let bar: Bar = Bar()
-    /// Left knob.
-    private let leftKnob: Knob = Knob()
-    /// Right knob.
-    private let rightKnob: Knob = Knob()
-    /// UIView used as marker for selected range progress.
-    private let selectedProgressView: Progress = Progress()
-    /// UIVIew used as progress bar for left knob.
-    private let leftProgressView: Progress = Progress()
-    /// UIVIew used as progress bar for right knob.
-    private let rightProgressView: Progress = Progress()
     /// Slider delegate.
     public weak var delegate: RangeUISliderDelegate?
+    
+    private let bar: Bar = Bar()
+    private let leftKnob: Knob = Knob()
+    private let rightKnob: Knob = Knob()
+    private let selectedProgressView: Progress = Progress()
+    private let leftProgressView: Progress = Progress()
+    private let rightProgressView: Progress = Progress()
+    private var previousRangeSelectedValues: RangeSelected = (0, 0)
+    private lazy var scale = scaleMaxValue - scaleMinValue
+    private lazy var numberOfSteps: CGFloat = calculateNumberOfSteps()
+    private lazy var stepWidth: CGFloat = calculateStepWidth()
+    private lazy var rangeSelectedCalculator: RangeSelectedCalculator = RangeSelectedCalculator(
+        scale: scale,
+        scaleMinValue: scaleMinValue
+    )
     
     /**
      Standard init using coder.
@@ -498,7 +498,7 @@ import UIKit
     }
     
     /**
-     Method used to prepare fake values for interface builder preview.
+     Prepare RangeUISlider to be drawn in Interface Builder.
      */
     open override func prepareForInterfaceBuilder() {
         //Fake values for interface builder.
@@ -508,23 +508,21 @@ import UIKit
     }
     
     /**
-     Method used to layout precisely the subview.
-     Used here to set the starting values of the knob.
+     Custom layout subviews to set the default values for the know of RangeUISlider
      */
     open override func layoutSubviews() {
         super.layoutSubviews()
-        let totalRange = scaleMaxValue - scaleMinValue
-        let minValue = (defaultValueLeftKnob - scaleMinValue) / totalRange
-        let maxValue = (defaultValueRightKnob - scaleMinValue) / totalRange
+        let minValue = (defaultValueLeftKnob - scaleMinValue) / scale
+        let maxValue = (defaultValueRightKnob - scaleMinValue) / scale
         leftKnob.xPositionConstraint.constant = bar.frame.width * minValue
         rightKnob.xPositionConstraint.constant = (bar.frame.width * maxValue) - bar.frame.width
+        previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
+            leftKnobPosition: leftKnob.xPositionConstraint.constant,
+            rightKnobPosition: rightKnob.xPositionConstraint.constant,
+            barWidth: bar.frame.width
+        )
     }
     
-    /**
-     Method used to setup all the range slider components. All its subviews and the related constraints are added in
-     this method. All the compoents returns arrays of constrains that are activated in a single call to
-     NSLayoutConstraint.activate(constraints) (to improve preformance).
-     */
     private func setup() {
         addSubview(bar)
         bar.addSubview(selectedProgressView)
@@ -575,9 +573,30 @@ import UIKit
         NSLayoutConstraint.activate(constraints)
     }
     
-    /**
-     Add a gradient layer to the not selected range views.
-     */
+    private func calculateNumberOfSteps() -> CGFloat {
+        var numberOfStepsCalculated: CGFloat = 0
+        if isAValidStepIncrement() {
+            numberOfStepsCalculated = scale / stepIncrement
+        }
+        return numberOfStepsCalculated
+    }
+    
+    private func isAValidStepIncrement() -> Bool {
+        return stepIncrement > 0 && stepIncrement <= scale
+    }
+    
+    private func calculateStepWidth() -> CGFloat {
+        var stepWidthCalculated: CGFloat = 1.0
+        if(stepIncrementIsNeeded()) {
+            stepWidthCalculated = bar.frame.width / numberOfSteps
+        }
+        return stepWidthCalculated
+    }
+    
+    private func stepIncrementIsNeeded() -> Bool {
+        return numberOfSteps > 0
+    }
+    
     private func addGradientToNotSelectedRangeIfNeeded() {
         leftProgressView.addGradient(firstColor: rangeNotSelectedGradientColor1,
                                      secondColor: rangeNotSelectedGradientColor2,
@@ -591,10 +610,7 @@ import UIKit
                                       cornerRadius: barCorners)
     }
     
-    /**
-     Add a background image to the range not selected views.
-     */
-    func addBackgroundToRangeNotSelectedIfNeeded() {
+    private func addBackgroundToRangeNotSelectedIfNeeded() {
         if let backgroundImage = rangeNotSelectedBackgroundImage {
             let edgeInset = UIEdgeInsets(top: rangeNotSelectedBackgroundEdgeInsetTop,
                                          left: rangeNotSelectedBackgroundEdgeInsetLeft,
@@ -609,9 +625,6 @@ import UIKit
         }
     }
     
-    /**
-     Add a background image to the range selected views.
-     */
     private func addBackgroundToRangeSelected() {
         if let backgroundImage = rangeSelectedBackgroundImage {
             let edgeInset = UIEdgeInsets(top: rangeSelectedBackgroundEdgeInsetTop,
@@ -624,93 +637,84 @@ import UIKit
         }
     }
     
-    // MARK: Gesture recognizer methods (knobs movements)
-    
     @objc public final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
+       recognize(gestureRecognizer: gestureRecognizer, updateKnob: updateLeftKnobPositionUsing)
+    }
+    
+    @objc public final func moveRightKnob(gestureRecognizer: UIPanGestureRecognizer) {
+        recognize(gestureRecognizer: gestureRecognizer, updateKnob: updateRightKnobPositionUsing)
+    }
+    
+    private func recognize(gestureRecognizer: UIPanGestureRecognizer, updateKnob: (UIPanGestureRecognizer) -> ()) {
         if gestureRecognizer.state == .began {
-            rangeSelectionStartedForLeftKnobUsing(gestureRecognizer: gestureRecognizer)
+            rangeSelectionStartedForKnobUsing(gestureRecognizer: gestureRecognizer, updateKnob: updateKnob)
         }
         if gestureRecognizer.state == .changed {
-            updateLeftKnobAndRangeUsing(gestureRecognizer: gestureRecognizer)
+            updateKnobAndRangeUsing(gestureRecognizer: gestureRecognizer, updateKnob: updateKnob)
         }
         if gestureRecognizer.state == .ended {
             rangeSelectionFinished()
         }
     }
     
-    private func rangeSelectionStartedForLeftKnobUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        updateLeftKnobPositionUsing(gestureRecognizer: gestureRecognizer)
+    private func rangeSelectionStartedForKnobUsing(gestureRecognizer: UIPanGestureRecognizer,
+                                                   updateKnob:(UIPanGestureRecognizer) -> ()) {
+        updateKnob(gestureRecognizer)
         delegate?.rangeChangeStarted?()
     }
     
-    private func updateLeftKnobAndRangeUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        updateLeftKnobPositionUsing(gestureRecognizer: gestureRecognizer)
+    private func updateKnobAndRangeUsing(gestureRecognizer: UIPanGestureRecognizer,
+                                         updateKnob:(UIPanGestureRecognizer) -> ()) {
+        updateKnob(gestureRecognizer)
         rangeSelectionUpdate()
     }
     
     private func updateLeftKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        let positionForKnob = gestureRecognizer.location(in: bar).x
+        let positionForKnob = positionForKnobGiven(xLocationInBar: gestureRecognizer.location(in: bar).x)
         let positionRightKnob = bar.frame.width + rightKnob.xPositionConstraint.constant
         if positionForKnob >= 0 && positionForKnob <= positionRightKnob {
             leftKnob.xPositionConstraint.constant = positionForKnob
         }
     }
     
-    @objc public final func moveRightKnob(gestureRecognizer: UIPanGestureRecognizer) {
-        if gestureRecognizer.state == .began {
-            rangeSelectionStartedForRightKnobUsing(gestureRecognizer: gestureRecognizer)
-        }
-        if gestureRecognizer.state == .changed {
-            updateRightKnobAndRangeUsing(gestureRecognizer: gestureRecognizer)
-        }
-        if gestureRecognizer.state == .ended {
-            rangeSelectionFinished()
-        }
-    }
-    
-    private func rangeSelectionStartedForRightKnobUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        updateRightKnobPositionUsing(gestureRecognizer: gestureRecognizer)
-        delegate?.rangeChangeStarted?()
-    }
-    
-    private func updateRightKnobAndRangeUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        updateRightKnobPositionUsing(gestureRecognizer: gestureRecognizer)
-        rangeSelectionUpdate()
-    }
-    
     private func updateRightKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
         let xLocationInBar = gestureRecognizer.location(in: bar).x
-        let positionForKnob = xLocationInBar - bar.frame.width
+        let positionForKnob = positionForKnobGiven(xLocationInBar: xLocationInBar - bar.frame.width)
         if positionForKnob <= 0 && xLocationInBar >= leftKnob.xPositionConstraint.constant {
             rightKnob.xPositionConstraint.constant = positionForKnob
         }
     }
     
-    // MARK: Range selected calculation.
+    private func positionForKnobGiven(xLocationInBar: CGFloat) -> CGFloat {
+        return (xLocationInBar / stepWidth).rounded(FloatingPointRoundingRule.down) * stepWidth
+    }
     
     private func rangeSelectionUpdate() {
-        let rangeValues = calculateRangeSelected()
-        delegate?.rangeIsChanging?(minValueSelected: rangeValues.minValue,
-                                   maxValueSelected: rangeValues.maxValue,
-                                   slider: self)
+        let rangeSelected = rangeSelectedCalculator.calculateRangeSelected(
+            leftKnobPosition: leftKnob.xPositionConstraint.constant,
+            rightKnobPosition: rightKnob.xPositionConstraint.constant,
+            barWidth: bar.frame.width
+        )
+        if isDifferentFromPreviousRangeSelected(rangeSelected: rangeSelected) {
+            delegate?.rangeIsChanging?(minValueSelected: rangeSelected.minValue,
+                                       maxValueSelected: rangeSelected.maxValue,
+                                       slider: self)
+            previousRangeSelectedValues = rangeSelected
+        }
+    }
+    
+    private func isDifferentFromPreviousRangeSelected(rangeSelected: RangeSelected) -> Bool {
+        return rangeSelected != previousRangeSelectedValues
     }
     
     private func rangeSelectionFinished() {
-        let rangeValues = calculateRangeSelected()
-        delegate?.rangeChangeFinished(minValueSelected: rangeValues.minValue,
-                                      maxValueSelected: rangeValues.maxValue,
+        let rangeSelected = rangeSelectedCalculator.calculateRangeSelected(
+            leftKnobPosition: leftKnob.xPositionConstraint.constant,
+            rightKnobPosition: rightKnob.xPositionConstraint.constant,
+            barWidth: bar.frame.width
+        )
+        delegate?.rangeChangeFinished(minValueSelected: rangeSelected.minValue,
+                                      maxValueSelected: rangeSelected.maxValue,
                                       slider: self)
-    }
-    
-    private func calculateRangeSelected() -> (minValue: CGFloat, maxValue: CGFloat) {
-        let minValue = leftKnob.xPositionConstraint.constant / bar.frame.width
-        let maxValue = 1.0  + rightKnob.xPositionConstraint.constant / bar.frame.width
-        let scaledMinValue = linearMapping(value: minValue)
-        let scaledMaxValue = linearMapping(value: maxValue)
-        return (minValue: scaledMinValue, maxValue: scaledMaxValue)
-    }
-    
-    private func linearMapping(value: CGFloat) -> CGFloat {
-        return value * (scaleMaxValue - scaleMinValue) + scaleMinValue
     }
 }

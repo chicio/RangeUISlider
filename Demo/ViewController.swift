@@ -19,6 +19,10 @@ class ViewController: UIViewController, RangeUISliderDelegate {
         rangeUISlider2.delegate = self
     }
     
+    func rangeChangeStarted() {
+        print("range modification start")
+    }
+    
     func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
         print("FINISH min: \(minValueSelected) -  max: \(maxValueSelected) - identifier: \(slider.identifier)")
     }

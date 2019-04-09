@@ -2,8 +2,8 @@
 //  CellWithSlider.swift
 //  Demo
 //
-//  Created by Fabrizio Duroni on 30.03.19.
-//  Copyright © 2019 Fabrizio Duroni. All rights reserved.
+//  Created by Fabrizio Duroni on 30/03/2019.
+//  2019 Fabrizio Duroni.
 //
 
 import Foundation

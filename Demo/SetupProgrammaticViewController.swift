@@ -2,8 +2,8 @@
 //  SetupProgrammaticViewController.swift
 //  Demo
 //
-//  Created by Fabrizio Duroni on 03.05.18.
-//  Copyright © 2018 Fabrizio Duroni. All rights reserved.
+//  Created by Fabrizio Duroni on 03/05/2018.
+//  2018 Fabrizio Duroni.
 //
 
 import UIKit
