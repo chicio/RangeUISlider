@@ -637,11 +637,11 @@ import UIKit
         }
     }
     
-    @objc public final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
+    @objc final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
        recognize(gestureRecognizer: gestureRecognizer, updateKnob: updateLeftKnobPositionUsing)
     }
     
-    @objc public final func moveRightKnob(gestureRecognizer: UIPanGestureRecognizer) {
+    @objc final func moveRightKnob(gestureRecognizer: UIPanGestureRecognizer) {
         recognize(gestureRecognizer: gestureRecognizer, updateKnob: updateRightKnobPositionUsing)
     }
     
