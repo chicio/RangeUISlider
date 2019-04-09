@@ -1,19 +1,6 @@
 {
   "warnings": [
-    {
-      "file": "/Users/fduroni/Work/RangeUISlider/Source/RangeUISlider.swift",
-      "line": 634,
-      "symbol": "RangeUISlider.moveLeftKnob(gestureRecognizer:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/fduroni/Work/RangeUISlider/Source/RangeUISlider.swift",
-      "line": 665,
-      "symbol": "RangeUISlider.moveRightKnob(gestureRecognizer:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    }
+
   ],
   "source_directory": "/Users/fduroni/Work/RangeUISlider"
 }
