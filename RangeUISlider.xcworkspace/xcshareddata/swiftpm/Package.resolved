@@ -3,10 +3,10 @@
     "pins": [
       {
         "package": "RangeUISlider",
-        "repositoryURL": "https://github.com/chicio/RangeUISlider.git",
+        "repositoryURL": "https://github.com/chicio/RangeUISlider",
         "state": {
-          "branch": "swift-spm",
-          "revision": "0ce877bda3209e12b43d0f690ea4e058ff9ffbf0",
+          "branch": "master",
+          "revision": "c3fcfca2585a2e917b127e8cd2ae9fb8ab0a67e1",
           "version": null
         }
       }

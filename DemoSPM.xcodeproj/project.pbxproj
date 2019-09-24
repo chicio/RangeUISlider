@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4581D3EE233A51F200A20379 /* RangeUISlider in Frameworks */ = {isa = PBXBuildFile; productRef = 4581D3ED233A51F200A20379 /* RangeUISlider */; };
 		45E603D6233A4C8100E7465D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E603D5233A4C8100E7465D /* AppDelegate.swift */; };
 		45E603D8233A4C8100E7465D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E603D7233A4C8100E7465D /* SceneDelegate.swift */; };
 		45E603DA233A4C8100E7465D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E603D9233A4C8100E7465D /* ViewController.swift */; };
 		45E603DD233A4C8100E7465D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E603DB233A4C8100E7465D /* Main.storyboard */; };
 		45E603DF233A4C8200E7465D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45E603DE233A4C8200E7465D /* Assets.xcassets */; };
 		45E603E2233A4C8200E7465D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E603E0233A4C8200E7465D /* LaunchScreen.storyboard */; };
-		45E603EB233A4D0600E7465D /* RangeUISlider in Frameworks */ = {isa = PBXBuildFile; productRef = 45E603EA233A4D0600E7465D /* RangeUISlider */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45E603EB233A4D0600E7465D /* RangeUISlider in Frameworks */,
+				4581D3EE233A51F200A20379 /* RangeUISlider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +86,7 @@
 			);
 			name = DemoSPM;
 			packageProductDependencies = (
-				45E603EA233A4D0600E7465D /* RangeUISlider */,
+				4581D3ED233A51F200A20379 /* RangeUISlider */,
 			);
 			productName = DemoSPM;
 			productReference = 45E603D2233A4C8100E7465D /* DemoSPM.app */;
@@ -117,7 +117,7 @@
 			);
 			mainGroup = 45E603C9233A4C8100E7465D;
 			packageReferences = (
-				45E603E9233A4D0600E7465D /* XCRemoteSwiftPackageReference "RangeUISlider" */,
+				4581D3EC233A51F200A20379 /* XCRemoteSwiftPackageReference "RangeUISlider" */,
 			);
 			productRefGroup = 45E603D3233A4C8100E7465D /* Products */;
 			projectDirPath = "";
@@ -348,20 +348,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		45E603E9233A4D0600E7465D /* XCRemoteSwiftPackageReference "RangeUISlider" */ = {
+		4581D3EC233A51F200A20379 /* XCRemoteSwiftPackageReference "RangeUISlider" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/chicio/RangeUISlider.git";
+			repositoryURL = "https://github.com/chicio/RangeUISlider";
 			requirement = {
-				branch = "swift-spm";
+				branch = master;
 				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		45E603EA233A4D0600E7465D /* RangeUISlider */ = {
+		4581D3ED233A51F200A20379 /* RangeUISlider */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 45E603E9233A4D0600E7465D /* XCRemoteSwiftPackageReference "RangeUISlider" */;
+			package = 4581D3EC233A51F200A20379 /* XCRemoteSwiftPackageReference "RangeUISlider" */;
 			productName = RangeUISlider;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -43,6 +43,7 @@ Choose master or a tag. If you choose the tag it must be >= 1.11.0.
 
 ![spm 1](https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/05-spm1.png)
 ![spm 2](https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/06-spm2.png)
+![spm 3](https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/07-spm3.png)
 
 ***
 
