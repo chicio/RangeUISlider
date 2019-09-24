@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Bar: UIView {
     private(set) var leadingConstraint: NSLayoutConstraint = NSLayoutConstraint()

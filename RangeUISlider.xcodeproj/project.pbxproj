@@ -26,6 +26,7 @@
 		45E215271E8E812E00F0B8B9 /* RangeUISlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RangeUISlider.h; sourceTree = "<group>"; };
 		45E215281E8E812E00F0B8B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45E215341E8E86BD00F0B8B9 /* RangeUISlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeUISlider.swift; sourceTree = "<group>"; };
+		45E603C4233A432C00E7465D /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		5F7B1B721F7EEE7E00D19E23 /* RangeUISliderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeUISliderDelegate.swift; sourceTree = "<group>"; };
 		5F7B1B741F7EEEFD00D19E23 /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 		5F7B1B761F7EEF8800D19E23 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
@@ -50,6 +51,7 @@
 				45BD66D2209B60DA00A19D22 /* CHANGELOG.md */,
 				45BD66D3209B60DA00A19D22 /* LICENSE.md */,
 				45BD66D1209B60D900A19D22 /* README.md */,
+				45E603C4233A432C00E7465D /* Package.swift */,
 				45E215261E8E812E00F0B8B9 /* Source */,
 				45E215251E8E812E00F0B8B9 /* Products */,
 			);
