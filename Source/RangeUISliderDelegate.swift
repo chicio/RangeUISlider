@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
  Protocol used delegate the read of the RangeUISlider data. Multiple RangeUISlider instance could use the same delegate.

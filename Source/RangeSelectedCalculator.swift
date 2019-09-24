@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 typealias RangeSelected = (minValue: CGFloat, maxValue: CGFloat)
 

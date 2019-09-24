@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "RangeUISlider",
+        "repositoryURL": "https://github.com/chicio/RangeUISlider.git",
+        "state": {
+          "branch": "swift-spm",
+          "revision": "0ce877bda3209e12b43d0f690ea4e058ff9ffbf0",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

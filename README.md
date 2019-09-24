@@ -36,6 +36,14 @@ end
 
 and then run pod install (or pod update).
 
+**Swift Package Manager (SPM)**
+
+RangeUISlider is also available as a SPM package. Add it from the project configuration using the Github repository url. 
+Choose master or a tag. If you choose the tag it must be >= 1.11.0.
+
+![spm 1](https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/05-spm1)
+![spm 2](https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/06-spm2)
+
 ***
 
 ### Usage

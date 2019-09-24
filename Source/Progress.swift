@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Progress: Gradient {
     func addBackground(usingImage image: UIImage,
