@@ -10,6 +10,7 @@
 		451E7846224FA103004C861F /* SliderInsideTableViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E7845224FA103004C861F /* SliderInsideTableViewViewController.swift */; };
 		451E7849224FA979004C861F /* CellWithSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E7848224FA979004C861F /* CellWithSlider.swift */; };
 		45BD66C7209B36F100A19D22 /* SetupProgrammaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BD66C6209B36F100A19D22 /* SetupProgrammaticViewController.swift */; };
+		45D4884B252DBBDC00FE51E3 /* ChangeProgrammaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D48849252DBBDC00FE51E3 /* ChangeProgrammaticViewController.swift */; };
 		5F42D28F1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F42D28E1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift */; };
 		5F9045671E913EE000607428 /* RangeUISlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F42D28B1E8FB2F9008F15CE /* RangeUISlider.framework */; };
 		5F9045681E913EE000607428 /* RangeUISlider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F42D28B1E8FB2F9008F15CE /* RangeUISlider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -48,6 +49,7 @@
 		451E7845224FA103004C861F /* SliderInsideTableViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderInsideTableViewViewController.swift; sourceTree = "<group>"; };
 		451E7848224FA979004C861F /* CellWithSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithSlider.swift; sourceTree = "<group>"; };
 		45BD66C6209B36F100A19D22 /* SetupProgrammaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProgrammaticViewController.swift; sourceTree = "<group>"; };
+		45D48849252DBBDC00FE51E3 /* ChangeProgrammaticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeProgrammaticViewController.swift; sourceTree = "<group>"; };
 		45E215441E8F064600F0B8B9 /* RangeUISlider.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = RangeUISlider.xcodeproj; sourceTree = "<group>"; };
 		5F42D28E1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedFeaturesTableViewController.swift; sourceTree = "<group>"; };
 		5FCE8A2C1E79D1A400F888BC /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +104,7 @@
 				5FCE8A2F1E79D1A400F888BC /* AppDelegate.swift */,
 				451E7848224FA979004C861F /* CellWithSlider.swift */,
 				5FCE8A311E79D1A400F888BC /* ViewController.swift */,
+				45D48849252DBBDC00FE51E3 /* ChangeProgrammaticViewController.swift */,
 				45BD66C6209B36F100A19D22 /* SetupProgrammaticViewController.swift */,
 				451E7845224FA103004C861F /* SliderInsideTableViewViewController.swift */,
 				5F42D28E1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift */,
@@ -207,6 +210,7 @@
 				5F42D28F1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift in Sources */,
 				5FCE8A321E79D1A400F888BC /* ViewController.swift in Sources */,
 				45BD66C7209B36F100A19D22 /* SetupProgrammaticViewController.swift in Sources */,
+				45D4884B252DBBDC00FE51E3 /* ChangeProgrammaticViewController.swift in Sources */,
 				5FCE8A301E79D1A400F888BC /* AppDelegate.swift in Sources */,
 				451E7849224FA979004C861F /* CellWithSlider.swift in Sources */,
 				451E7846224FA103004C861F /* SliderInsideTableViewViewController.swift in Sources */,

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j89-zd-GID">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j89-zd-GID">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -110,7 +109,7 @@
                                         <point key="value" x="0.0" y="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="leftShadowColor">
-                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="value" systemColor="darkTextColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="leftShadowOpacity">
                                         <real key="value" value="0.40000000000000002"/>
@@ -431,15 +430,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupedFeaturesCell" textLabel="wjV-jt-TfT" style="IBUITableViewCellStyleDefault" id="1N5-sd-erk">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="GroupedFeaturesCell" textLabel="wjV-jt-TfT" style="IBUITableViewCellStyleDefault" id="1N5-sd-erk">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1N5-sd-erk" id="QOo-eX-JJN">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="316" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wjV-jt-TfT">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="292" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -461,6 +460,7 @@
                         <segue destination="Tkx-hT-lmn" kind="show" identifier="showOnlyGradientsSegue" id="I2y-s7-KCo"/>
                         <segue destination="dWr-eS-hUn" kind="show" identifier="showProgrammaticSetupSegue" id="3bz-bm-ReS"/>
                         <segue destination="RLA-sf-Itw" kind="show" identifier="showTableViewSetupSegue" id="T5P-TY-50T"/>
+                        <segue destination="HX8-Hb-IrR" kind="show" identifier="showChangeProgrammaticSegue" id="l5L-tk-hZo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z9F-n4-isO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -674,6 +674,25 @@
             </objects>
             <point key="canvasLocation" x="2553" y="609"/>
         </scene>
+        <!--Change Programmatic View Controller-->
+        <scene sceneID="MR2-3S-4kX">
+            <objects>
+                <viewController id="HX8-Hb-IrR" customClass="ChangeProgrammaticViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Afg-58-x2W"/>
+                        <viewControllerLayoutGuide type="bottom" id="RR1-Z8-gUs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3OV-KR-m6z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="awc-Hc-Hpm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bzk-xa-ERc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2727" y="1344"/>
+        </scene>
         <!--Programmatic setup-->
         <scene sceneID="fkj-fM-Eet">
             <objects>
@@ -690,7 +709,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5U7-Ok-IBA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2553" y="1299"/>
+            <point key="canvasLocation" x="2490" y="2099"/>
         </scene>
         <!--InsideTableView-->
         <scene sceneID="v5Z-OY-1zw">
@@ -702,7 +721,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CellWithSlider" id="ewv-mI-oXT" customClass="CellWithSlider" customModule="Demo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ewv-mI-oXT" id="k2a-7i-CaJ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -777,7 +796,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agj-e6-6pt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2552.8000000000002" y="2007.346326836582"/>
+            <point key="canvasLocation" x="2490" y="2808"/>
         </scene>
         <!--Only Colors-->
         <scene sceneID="V20-WS-ZRK">
@@ -817,7 +836,7 @@
                                         <color key="value" red="0.0" green="0.29295443329999998" blue="0.61750000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="leftShadowColor">
-                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="value" systemColor="darkTextColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="size" keyPath="leftShadowOffset">
                                         <size key="value" width="0.0" height="2"/>
@@ -997,7 +1016,7 @@
                     <tabBarItem key="tabBarItem" title="Grouped features" image="tabbarIcon" selectedImage="tabbarIcon" id="NRU-vO-tMe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JGV-6H-Ukh">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1016,5 +1035,14 @@
         <image name="rangeNotSelected" width="6" height="21.5"/>
         <image name="rangeSelected" width="6" height="21.5"/>
         <image name="tabbarIcon" width="17.5" height="20"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
