@@ -19,7 +19,7 @@ class ChangeProgrammaticViewController: UIViewController, RangeUISliderDelegate 
         rangeSlider.delegate = self
         rangeSlider.scaleMinValue = 0 //If you don't set any value the default is 0
         rangeSlider.scaleMaxValue = 100 //If you don't set any value the default is 1
-        rangeSlider.defaultValueLeftKnob = 25 //If the scale is the default one insert a value between 0 and 1
+        rangeSlider.defaultValueLeftKnob = 5 //If the scale is the default one insert a value between 0 and 1
         rangeSlider.defaultValueRightKnob = 75 //If the scale is the default one insert a value between 0 and 1
         rangeSlider.rangeSelectedGradientColor1 = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         rangeSlider.rangeSelectedGradientColor2 = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
@@ -73,9 +73,14 @@ class ChangeProgrammaticViewController: UIViewController, RangeUISliderDelegate 
                                constant: 50)
         ])
         
+        self.rangeSlider.changeLeftKnobPosition(position: 35.0)
+        self.rangeSlider.changeRightKnobPosition(position: 75.0)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.rangeSlider.changeLeftKnobPosition(position: 45.0)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            self.rangeSlider.changeRightKnobPosition(position: 90.0)
         }
     }
     

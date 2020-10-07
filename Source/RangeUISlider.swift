@@ -510,7 +510,7 @@ import UIKit
     /**
      Custom layout subviews to set the default values for the know of RangeUISlider
      */
-    open override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         let minValue = (defaultValueLeftKnob - scaleMinValue) / scale
         let maxValue = (defaultValueRightKnob - scaleMinValue) / scale
@@ -523,6 +523,26 @@ import UIKit
         )
     }
     
+    public func changeLeftKnobPosition(position: CGFloat) {
+        let minValue = (position - scaleMinValue) / scale
+        leftKnob.xPositionConstraint.constant = bar.frame.width * minValue
+        previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
+            leftKnobPosition: leftKnob.xPositionConstraint.constant,
+            rightKnobPosition: rightKnob.xPositionConstraint.constant,
+            barWidth: bar.frame.width
+        )
+    }
+
+    public func changeRightKnobPosition(position: CGFloat) {
+        let maxValue = (position - scaleMinValue) / scale
+        rightKnob.xPositionConstraint.constant = (bar.frame.width * maxValue) - bar.frame.width
+        previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
+            leftKnobPosition: leftKnob.xPositionConstraint.constant,
+            rightKnobPosition: rightKnob.xPositionConstraint.constant,
+            barWidth: bar.frame.width
+        )
+    }
+
     private func setup() {
         addSubview(bar)
         bar.addSubview(selectedProgressView)
