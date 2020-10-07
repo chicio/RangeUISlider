@@ -97,7 +97,7 @@ class ChangeProgrammaticViewController: UIViewController, RangeUISliderDelegate 
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
-            //set all togheter
+            //set all together
             self.rangeSlider.changeLeftKnob(value: 15.0)
             self.rangeSlider.changeRightKnob(value: 85.0)
         }
