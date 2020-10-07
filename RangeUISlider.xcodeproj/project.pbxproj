@@ -18,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4548B54B252DD68F0068E389 /* build-ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "build-ios.yml"; sourceTree = "<group>"; };
 		45AA09FB225547CE005CE6EE /* RangeSelectedCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSelectedCalculator.swift; sourceTree = "<group>"; };
 		45BD66D1209B60D900A19D22 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		45BD66D2209B60DA00A19D22 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -45,6 +46,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4548B54A252DD6770068E389 /* workflows */ = {
+			isa = PBXGroup;
+			children = (
+				4548B54B252DD68F0068E389 /* build-ios.yml */,
+			);
+			name = workflows;
+			path = .github/workflows;
+			sourceTree = "<group>";
+		};
 		45E2151A1E8E812E00F0B8B9 = {
 			isa = PBXGroup;
 			children = (
@@ -52,6 +62,7 @@
 				45BD66D3209B60DA00A19D22 /* LICENSE.md */,
 				45BD66D1209B60D900A19D22 /* README.md */,
 				45E603C4233A432C00E7465D /* Package.swift */,
+				4548B54A252DD6770068E389 /* workflows */,
 				45E215261E8E812E00F0B8B9 /* Source */,
 				45E215251E8E812E00F0B8B9 /* Products */,
 			);
