@@ -512,10 +512,8 @@ import UIKit
      */
     public override func layoutSubviews() {
         super.layoutSubviews()
-        let minValue = (defaultValueLeftKnob - scaleMinValue) / scale
-        let maxValue = (defaultValueRightKnob - scaleMinValue) / scale
-        leftKnob.xPositionConstraint.constant = bar.frame.width * minValue
-        rightKnob.xPositionConstraint.constant = (bar.frame.width * maxValue) - bar.frame.width
+        leftKnob.xPositionConstraint.constant = bar.frame.width * getMinFrom(value: defaultValueLeftKnob)
+        rightKnob.xPositionConstraint.constant = (bar.frame.width * getMaxFrom(value: defaultValueRightKnob)) - bar.frame.width
         previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
             leftKnobPosition: leftKnob.xPositionConstraint.constant,
             rightKnobPosition: rightKnob.xPositionConstraint.constant,
@@ -530,8 +528,7 @@ import UIKit
      */
     public func changeLeftKnob(value: CGFloat) {
         if (isValidForLeftKnob(value: value)) {
-            let minValue = (value - scaleMinValue) / scale
-            leftKnob.xPositionConstraint.constant = bar.frame.width * minValue
+            leftKnob.xPositionConstraint.constant = bar.frame.width * getMinFrom(value: value)
             previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
                 leftKnobPosition: leftKnob.xPositionConstraint.constant,
                 rightKnobPosition: rightKnob.xPositionConstraint.constant,
@@ -547,14 +544,21 @@ import UIKit
      */
     public func changeRightKnob(value: CGFloat) {
         if (isValidforRightKnob(value: value)) {
-            let maxValue = (value - scaleMinValue) / scale
-            rightKnob.xPositionConstraint.constant = (bar.frame.width * maxValue) - bar.frame.width
+            rightKnob.xPositionConstraint.constant = (bar.frame.width * getMaxFrom(value: value)) - bar.frame.width
             previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
                 leftKnobPosition: leftKnob.xPositionConstraint.constant,
                 rightKnobPosition: rightKnob.xPositionConstraint.constant,
                 barWidth: bar.frame.width
             )
         }
+    }
+    
+    private func getMinFrom(value: CGFloat) -> CGFloat {
+        return (value - scaleMinValue) / scale
+    }
+    
+    private func getMaxFrom(value: CGFloat) -> CGFloat {
+        return (value - scaleMinValue) / scale
     }
     
     private func isValidForLeftKnob(value: CGFloat) -> Bool {
