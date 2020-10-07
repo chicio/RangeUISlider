@@ -1,6 +1,6 @@
 # RangeUISlider
 
-[![Build Status](https://travis-ci.org/chicio/RangeUISlider.svg?branch=master)](https://travis-ci.org/chicio/RangeUISlider.svg?branch=master)
+![Build iOS](https://github.com/chicio/RangeUISlider/workflows/Build%20iOS/badge.svg)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/chicio/RangeUISlider/master/LICENSE.md)
 [![Supported platform](https://img.shields.io/badge/platforms-iOS-orange.svg)](https://img.shields.io/badge/platforms-iOS-orange.svg)
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/RangeUISlider.svg)](https://cocoapods.org/pods/RangeUISlider)
@@ -49,13 +49,13 @@ Choose master or a tag. If you choose the tag it must be >= 1.11.0.
 
 ### Usage
 
-You can use RangeUISlider in two ways: in interface builder (thanks to` @IBDesignable` and `@IBInspectable`) or programmatically.
+You can use RangeUISlider in two ways: in Interface Builder (thanks to` @IBDesignable` and `@IBInspectable`) or programmatically.
 Then you can use the `RangeUISliderDelegate` protocol to get the values of the slider.
 
 #### Interface builder
  - drag a UIView into you storyboard
  - set RangeUISlider as custom class of that view
-   - **IMPORANT: set also the Module to RangeUISlider if you used cocoapods or the framework version during installation**
+   - **IMPORTANT: set also the Module to RangeUISlider if you used cocoapods or the framework version during installation**
  - start editing using interface builder
 
 [Here](https://www.youtube.com/watch?v=Lorvozz-1HU) you can find a video tutorial for the setup with interface builder.
@@ -65,8 +65,7 @@ Then you can use the `RangeUISliderDelegate` protocol to get the values of the s
 </p>
 
 #### Programmatic
-You can also use RangeUISlider as a programmatic UI component by setting all the property you need in your code. Take a look at the [example in the SetupProgrammaticViewController contained in the demo project ](https://github.com/chicio/RangeUISlider/blob/master/Demo/SetupProgrammaticViewController.swift) to see an example of programmatic setup.
-
+You can also use RangeUISlider as a programmatic UI component by setting all the property you need in your code. Take a look at the [example in the SetupProgrammaticViewController contained in the demo project ](https://github.com/chicio/RangeUISlider/blob/master/Demo/SetupProgrammaticViewController.swift) to see an example of programmatic setup.  
 
 #### RangeUISliderDelegate
 To get the current values from the slider, set its delegate property.
@@ -99,6 +98,15 @@ The delegate of the RangeUISlider must implement the `RangeUISliderDelegate` pro
 
 ```
 ***
+
+#### Set knob values programmatically
+
+You can also change the values of the slider knobs by calling this two api
+
+- `func changeLeftKnob(value: CGFloat)` to change programmatically the left knob value
+- `func changeRightKnob(value: CGFloat)` to change programmatically the right knob value
+
+The `value` passed to these methods should be in the slider range values (see the next section od the [documentation](https://www.fabrizioduroni.it/RangeUISlider/ "RangeUISlider doc") to understand how to customize the slider range). Take a look at the [example in the ChangeProgrammaticViewController contained in the demo project ](https://github.com/chicio/RangeUISlider/blob/master/Demo/ChangeProgrammaticViewController.swift) to understand how to use these API.  
 
 #### Customizable property
 
