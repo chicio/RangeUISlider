@@ -523,26 +523,49 @@ import UIKit
         )
     }
     
-    public func changeLeftKnobPosition(position: CGFloat) {
-        let minValue = (position - scaleMinValue) / scale
-        leftKnob.xPositionConstraint.constant = bar.frame.width * minValue
-        previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
-            leftKnobPosition: leftKnob.xPositionConstraint.constant,
-            rightKnobPosition: rightKnob.xPositionConstraint.constant,
-            barWidth: bar.frame.width
-        )
+    /**
+     Change the value of the left know programmatically.
+     
+     - parameter value: the new value to be assigned to the left knob
+     */
+    public func changeLeftKnob(value: CGFloat) {
+        if (isValidForLeftKnob(value: value)) {
+            let minValue = (value - scaleMinValue) / scale
+            leftKnob.xPositionConstraint.constant = bar.frame.width * minValue
+            previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
+                leftKnobPosition: leftKnob.xPositionConstraint.constant,
+                rightKnobPosition: rightKnob.xPositionConstraint.constant,
+                barWidth: bar.frame.width
+            )
+        }
     }
-
-    public func changeRightKnobPosition(position: CGFloat) {
-        let maxValue = (position - scaleMinValue) / scale
-        rightKnob.xPositionConstraint.constant = (bar.frame.width * maxValue) - bar.frame.width
-        previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
-            leftKnobPosition: leftKnob.xPositionConstraint.constant,
-            rightKnobPosition: rightKnob.xPositionConstraint.constant,
-            barWidth: bar.frame.width
-        )
+    
+    /**
+     Change the value of the right know programmatically.
+     
+     - parameter value: the new value to be assigned to the right knob
+     */
+    public func changeRightKnob(value: CGFloat) {
+        if (isValidforRightKnob(value: value)) {
+            let maxValue = (value - scaleMinValue) / scale
+            rightKnob.xPositionConstraint.constant = (bar.frame.width * maxValue) - bar.frame.width
+            previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
+                leftKnobPosition: leftKnob.xPositionConstraint.constant,
+                rightKnobPosition: rightKnob.xPositionConstraint.constant,
+                barWidth: bar.frame.width
+            )
+        }
     }
-
+    
+    private func isValidForLeftKnob(value: CGFloat) -> Bool {
+        return value > scaleMinValue && value < previousRangeSelectedValues.maxValue
+    }
+    
+    
+    private func isValidforRightKnob(value: CGFloat) -> Bool {
+        return value <= scaleMaxValue && value > previousRangeSelectedValues.minValue
+    }
+    
     private func setup() {
         addSubview(bar)
         bar.addSubview(selectedProgressView)
@@ -658,7 +681,7 @@ import UIKit
     }
     
     @objc final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
-       recognize(gestureRecognizer: gestureRecognizer, updateKnob: updateLeftKnobPositionUsing)
+        recognize(gestureRecognizer: gestureRecognizer, updateKnob: updateLeftKnobPositionUsing)
     }
     
     @objc final func moveRightKnob(gestureRecognizer: UIPanGestureRecognizer) {

@@ -1,6 +1,14 @@
 # Change Log
 All changes to RangeUISlider will be documented in this file.
 
+## [1.12.0](https://github.com/chicio/RangeUISlider/releases/tag/1.12.0)
+Release date: 2020-10-09.
+
+#### Added
+- Programmatic api to change the knob values
+- Now Minimum iOS version is 9.0
+- Github Actions as CI
+
 ## [1.11.0](https://github.com/chicio/RangeUISlider/releases/tag/1.11.0)
 Release date: 2019-09-24.
 
