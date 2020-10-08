@@ -101,7 +101,7 @@ The delegate of the RangeUISlider must implement the `RangeUISliderDelegate` pro
 
 #### Set knob values programmatically
 
-You can also change the values of the slider knobs by calling this two api
+You can also change the values of the slider knobs by calling this two API:
 
 - `func changeLeftKnob(value: CGFloat)` to change programmatically the left knob value
 - `func changeRightKnob(value: CGFloat)` to change programmatically the right knob value
