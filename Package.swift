@@ -1,14 +1,15 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.3
 import PackageDescription
 
 let package = Package(
     name: "RangeUISlider",
     platforms: [
-        .iOS(.v8),
+        .iOS(.v9),
     ],
     products: [
         .library(name: "RangeUISlider", targets: ["RangeUISlider"]),
     ],
     dependencies: [],
-    targets: [.target(name: "RangeUISlider", dependencies: [], path: "./Source"),]
+    targets: [.target(name: "RangeUISlider", dependencies: [], path: "./Source"),],
+    swiftLanguageVersions: [.v5]
 )

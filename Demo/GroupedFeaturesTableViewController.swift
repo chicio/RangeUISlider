@@ -24,7 +24,8 @@ class GroupedFeaturesTableViewController: UITableViewController {
         GroupedFeaturesViewControllerData(description: "Only images", segueIdentifier: "showOnlyImagesSegue"),
         GroupedFeaturesViewControllerData(description: "Only gradients", segueIdentifier: "showOnlyGradientsSegue"),
         GroupedFeaturesViewControllerData(description: "Programmatic setup", segueIdentifier: "showProgrammaticSetupSegue"),
-        GroupedFeaturesViewControllerData(description: "Inside UITableView", segueIdentifier: "showTableViewSetupSegue")
+        GroupedFeaturesViewControllerData(description: "Inside UITableView", segueIdentifier: "showTableViewSetupSegue"),
+        GroupedFeaturesViewControllerData(description: "Programmatic change", segueIdentifier: "showChangeProgrammaticSegue")
     ]
 
     override func numberOfSections(in tableView: UITableView) -> Int {

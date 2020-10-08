@@ -1,0 +1,21 @@
+name: Build iOS
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    name: Build iOS
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build iOS framework
+        run: |
+           set -o pipefail && xcodebuild -project RangeUISlider.xcodeproj -scheme RangeUISlider clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -destination 'platform=iOS Simulator,name=iPhone 8,OS=latest' | xcpretty
+      - name: Build iOS Demo
+        run: |
+           set -o pipefail && xcodebuild -project Demo.xcodeproj -scheme Demo-Release  clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -destination 'platform=iOS Simulator,name=iPhone 8,OS=latest' | xcpretty
+
