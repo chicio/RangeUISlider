@@ -31,3 +31,13 @@ xcuserdata/
 .DS_Store
 
 
+# Swift package manager
+.build
+Demo/**/Package.resolved
+Demo/**/.build
+.swiftpm
+
+
+#AppCode
+.idea
+
