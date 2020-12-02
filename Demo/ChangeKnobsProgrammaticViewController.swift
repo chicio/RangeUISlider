@@ -1,5 +1,5 @@
 //
-//  SetupProgrammaticViewController.swift
+//  ChangeKnobsProgrammaticViewController.swift
 //  Demo
 //
 //  Created by Fabrizio Duroni on 03/05/2018.
@@ -9,7 +9,7 @@
 import UIKit
 import RangeUISlider
 
-class ChangeProgrammaticViewController: UIViewController, RangeUISliderDelegate {
+class ChangeKnobsProgrammaticViewController: UIViewController, RangeUISliderDelegate {
     private var rangeSlider: RangeUISlider!
     
     override func viewDidLoad() {

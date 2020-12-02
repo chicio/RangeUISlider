@@ -132,7 +132,7 @@
 		45E2151B1E8E812E00F0B8B9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Fabrizio Duroni";
 				TargetAttributes = {
 					45E215231E8E812E00F0B8B9 = {

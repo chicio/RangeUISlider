@@ -522,7 +522,7 @@ import UIKit
     }
     
     /**
-     Change the value of the left know programmatically.
+     Change the value of the left knob programmatically.
      
      - parameter value: the new value to be assigned to the left knob
      */
@@ -538,7 +538,7 @@ import UIKit
     }
     
     /**
-     Change the value of the right know programmatically.
+     Change the value of the right knob programmatically.
      
      - parameter value: the new value to be assigned to the right knob
      */
