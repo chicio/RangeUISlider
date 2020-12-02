@@ -16,16 +16,24 @@ import UIKit
 @objc open class RangeUISlider: UIView {    
     /// Slider identifier.
     @IBInspectable public var identifier: Int = 0
-    /// Scale minimum value.
-    @IBInspectable public var scaleMinValue: CGFloat = 0.0
-    /// Scale maximum value.
-    @IBInspectable public var scaleMaxValue: CGFloat = 1.0
     /// Step increment value. If different from 0 RangeUISlider will let the user drag by step increment.
     @IBInspectable public var stepIncrement: CGFloat = 0.0
     /// Default left knob starting value.
     @IBInspectable public var defaultValueLeftKnob: CGFloat = 0.0
     /// Default right knob starting value.
     @IBInspectable public var defaultValueRightKnob: CGFloat = 1.0
+    /// Scale minimum value.
+    @IBInspectable public var scaleMinValue: CGFloat = 0.0 {
+        didSet {
+            calculateScale()
+        }
+    }
+    /// Scale maximum value.
+    @IBInspectable public var scaleMaxValue: CGFloat = 1.0 {
+        didSet {
+            calculateScale()
+        }
+    }
     /// Selected range color.
     @IBInspectable public var rangeSelectedColor: UIColor = UIColor.blue {
         didSet {
@@ -690,6 +698,14 @@ import UIKit
                                                andEdgeInset: edgeInset,
                                                andCorners: barCorners)
         }
+    }
+    
+    private func calculateScale() {
+        scale = scaleMaxValue - scaleMinValue
+        rangeSelectedCalculator = RangeSelectedCalculator(
+            scale: scale,
+            scaleMinValue: scaleMinValue
+        )
     }
     
     @objc final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
