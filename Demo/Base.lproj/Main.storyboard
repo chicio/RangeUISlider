@@ -460,7 +460,8 @@
                         <segue destination="Tkx-hT-lmn" kind="show" identifier="showOnlyGradientsSegue" id="I2y-s7-KCo"/>
                         <segue destination="dWr-eS-hUn" kind="show" identifier="showProgrammaticSetupSegue" id="3bz-bm-ReS"/>
                         <segue destination="RLA-sf-Itw" kind="show" identifier="showTableViewSetupSegue" id="T5P-TY-50T"/>
-                        <segue destination="HX8-Hb-IrR" kind="show" identifier="showChangeProgrammaticSegue" id="l5L-tk-hZo"/>
+                        <segue destination="HX8-Hb-IrR" kind="show" identifier="showChangeKnobProgrammaticSegue" id="l5L-tk-hZo"/>
+                        <segue destination="IzU-JN-Igw" kind="show" identifier="showChangeScaleProgrammaticSegue" id="rdG-zv-TLf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z9F-n4-isO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1027,6 +1028,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ArA-CT-HRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="645.60000000000002" y="704.79760119940033"/>
+        </scene>
+        <!--Change Scale Programmatic View Controller-->
+        <scene sceneID="xgV-r8-PBM">
+            <objects>
+                <viewController id="IzU-JN-Igw" customClass="ChangeScaleProgrammaticViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zn7-71-4aA"/>
+                        <viewControllerLayoutGuide type="bottom" id="cb5-Y6-Cum"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cjF-c7-hUB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Xig-pF-h3p"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NTR-oG-1dO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3697" y="1397"/>
         </scene>
     </scenes>
     <resources>
