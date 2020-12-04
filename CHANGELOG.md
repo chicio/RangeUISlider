@@ -1,6 +1,12 @@
 # Change Log
 All changes to RangeUISlider will be documented in this file.
 
+## [1.12.1](https://github.com/chicio/RangeUISlider/releases/tag/1.12.1)
+Release date: 2020-12-04.
+
+#### Fixed
+- scaleMinValue and scaleMaxValue can be set programmatically even after RangeUISlider view is already attached to a view hierarchy
+
 ## [1.12.0](https://github.com/chicio/RangeUISlider/releases/tag/1.12.0)
 Release date: 2020-10-09.
 

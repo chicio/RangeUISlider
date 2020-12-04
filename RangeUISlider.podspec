@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "RangeUISlider"
-  s.version      = "1.12.0"
+  s.version      = "1.12.1"
   s.summary      = "A highly customizable iOS range selection slider"
   s.description  = <<-DESC
 A highly customizable iOS range selection slider, developed using autolayout and completely customizable using IBDesignabled and IBInspectable.

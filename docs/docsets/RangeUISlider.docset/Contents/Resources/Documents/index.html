@@ -16,7 +16,7 @@
     <a title="RangeUISlider  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">RangeUISlider 1.12.0 Docs</a> (100% documented)</p>
+        <p><a href="index.html">RangeUISlider 1.12.1 Docs</a> (100% documented)</p>
         <p class="header-right">
           <form role="search" action="search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -58,7 +58,7 @@
             
             <h1 id='rangeuislider' class='heading'>RangeUISlider</h1>
 
-<p><a href="https://travis-ci.org/chicio/RangeUISlider.svg?branch=master"><img src="https://travis-ci.org/chicio/RangeUISlider.svg?branch=master" alt="Build Status"></a>
+<p><img src="https://github.com/chicio/RangeUISlider/workflows/Build%20iOS/badge.svg" alt="Build iOS">
 <a href="https://raw.githubusercontent.com/chicio/RangeUISlider/master/LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub license"></a>
 <a href="https://img.shields.io/badge/platforms-iOS-orange.svg"><img src="https://img.shields.io/badge/platforms-iOS-orange.svg" alt="Supported platform"></a>
 <a href="https://cocoapods.org/pods/RangeUISlider"><img src="https://img.shields.io/cocoapods/v/RangeUISlider.svg" alt="CocoaPods Version"></a>
@@ -104,7 +104,7 @@ Choose master or a tag. If you choose the tag it must be &gt;= 1.11.0.</p>
 <hr>
 <h3 id='usage' class='heading'>Usage</h3>
 
-<p>You can use RangeUISlider in two ways: in interface builder (thanks to<code>@IBDesignable</code> and <code>@IBInspectable</code>) or programmatically.
+<p>You can use RangeUISlider in two ways: in Interface Builder (thanks to<code>@IBDesignable</code> and <code>@IBInspectable</code>) or programmatically.
 Then you can use the <code><a href="Protocols/RangeUISliderDelegate.html">RangeUISliderDelegate</a></code> protocol to get the values of the slider.</p>
 <h4 id='interface-builder' class='heading'>Interface builder</h4>
 
@@ -113,7 +113,7 @@ Then you can use the <code><a href="Protocols/RangeUISliderDelegate.html">RangeU
 <li>set RangeUISlider as custom class of that view
 
 <ul>
-<li><strong>IMPORANT: set also the Module to RangeUISlider if you used cocoapods or the framework version during installation</strong></li>
+<li><strong>IMPORTANT: set also the Module to RangeUISlider if you used cocoapods or the framework version during installation</strong></li>
 </ul></li>
 <li>start editing using interface builder</li>
 </ul>
@@ -125,7 +125,7 @@ Then you can use the <code><a href="Protocols/RangeUISliderDelegate.html">RangeU
 </p>
 <h4 id='programmatic' class='heading'>Programmatic</h4>
 
-<p>You can also use RangeUISlider as a programmatic UI component by setting all the property you need in your code. Take a look at the <a href="https://github.com/chicio/RangeUISlider/blob/master/Demo/SetupProgrammaticViewController.swift">example in the SetupProgrammaticViewController contained in the demo project </a> to see an example of programmatic setup.</p>
+<p>You can also use RangeUISlider as a programmatic UI component by setting all the property you need in your code. Take a look at the <a href="https://github.com/chicio/RangeUISlider/blob/master/Demo/SetupProgrammaticViewController.swift">example in the SetupProgrammaticViewController contained in the demo project </a> to see an example of programmatic setup.  </p>
 <h4 id='rangeuisliderdelegate' class='heading'>RangeUISliderDelegate</h4>
 
 <p>To get the current values from the slider, set its delegate property.
@@ -157,6 +157,16 @@ The delegate of the RangeUISlider must implement the <code><a href="Protocols/Ra
 </code></pre>
 
 <hr>
+<h4 id='set-knob-values-programmatically' class='heading'>Set knob values programmatically</h4>
+
+<p>You can also change the values of the slider knobs by calling this two API:</p>
+
+<ul>
+<li><code>func changeLeftKnob(value: CGFloat)</code> to change programmatically the left knob value</li>
+<li><code>func changeRightKnob(value: CGFloat)</code> to change programmatically the right knob value</li>
+</ul>
+
+<p>The <code>value</code> passed to these methods should be in the slider range values (see the next section od the <a href="https://www.fabrizioduroni.it/RangeUISlider/" title="RangeUISlider doc">documentation</a> to understand how to customize the slider range). Take a look at the <a href="https://github.com/chicio/RangeUISlider/blob/master/Demo/ChangeProgrammaticViewController.swift">example in the ChangeProgrammaticViewController contained in the demo project </a> to understand how to use these API.  </p>
 <h4 id='customizable-property' class='heading'>Customizable property</h4>
 
 <p>This is the list of the <strong>current customizable property of the RangeUISlider directly from Interface Builder using IBDesignable/IBInspectable</strong>:</p>
@@ -248,7 +258,7 @@ The delegate of the RangeUISlider must implement the <code><a href="Protocols/Ra
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://github.com/chicio/RangeUISlider" target="_blank" rel="external">chicio</a>. All rights reserved. (Last updated: 2020-10-07)</p>
+          <p>&copy; 2020 <a class="link" href="https://github.com/chicio/RangeUISlider" target="_blank" rel="external">chicio</a>. All rights reserved. (Last updated: 2020-12-04)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
