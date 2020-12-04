@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j89-zd-GID">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j89-zd-GID">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -460,7 +460,8 @@
                         <segue destination="Tkx-hT-lmn" kind="show" identifier="showOnlyGradientsSegue" id="I2y-s7-KCo"/>
                         <segue destination="dWr-eS-hUn" kind="show" identifier="showProgrammaticSetupSegue" id="3bz-bm-ReS"/>
                         <segue destination="RLA-sf-Itw" kind="show" identifier="showTableViewSetupSegue" id="T5P-TY-50T"/>
-                        <segue destination="HX8-Hb-IrR" kind="show" identifier="showChangeProgrammaticSegue" id="l5L-tk-hZo"/>
+                        <segue destination="HX8-Hb-IrR" kind="show" identifier="showChangeKnobProgrammaticSegue" id="l5L-tk-hZo"/>
+                        <segue destination="IzU-JN-Igw" kind="show" identifier="showChangeScaleProgrammaticSegue" id="rdG-zv-TLf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z9F-n4-isO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -674,10 +675,10 @@
             </objects>
             <point key="canvasLocation" x="2553" y="609"/>
         </scene>
-        <!--Change Programmatic View Controller-->
+        <!--Change Knobs Programmatic View Controller-->
         <scene sceneID="MR2-3S-4kX">
             <objects>
-                <viewController id="HX8-Hb-IrR" customClass="ChangeProgrammaticViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HX8-Hb-IrR" customClass="ChangeKnobsProgrammaticViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Afg-58-x2W"/>
                         <viewControllerLayoutGuide type="bottom" id="RR1-Z8-gUs"/>
@@ -1027,6 +1028,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ArA-CT-HRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="645.60000000000002" y="704.79760119940033"/>
+        </scene>
+        <!--Change Scale Programmatic View Controller-->
+        <scene sceneID="xgV-r8-PBM">
+            <objects>
+                <viewController id="IzU-JN-Igw" customClass="ChangeScaleProgrammaticViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zn7-71-4aA"/>
+                        <viewControllerLayoutGuide type="bottom" id="cb5-Y6-Cum"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cjF-c7-hUB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Xig-pF-h3p"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NTR-oG-1dO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3697" y="1397"/>
         </scene>
     </scenes>
     <resources>
