@@ -1,5 +1,5 @@
 //
-//  SetupProgrammaticViewController.swift
+//  ChangeScaleProgrammaticViewController.swift
 //  Demo
 //
 //  Created by Fabrizio Duroni on 03/05/2018.
@@ -9,7 +9,7 @@
 import UIKit
 import RangeUISlider
 
-class ChangeProgrammaticViewController: UIViewController, RangeUISliderDelegate {
+class ChangeScaleProgrammaticViewController: UIViewController, RangeUISliderDelegate {
     private var rangeSlider: RangeUISlider!
     
     override func viewDidLoad() {
@@ -72,34 +72,10 @@ class ChangeProgrammaticViewController: UIViewController, RangeUISliderDelegate 
                                multiplier: 1.0,
                                constant: 50)
         ])
-        
-        self.rangeSlider.changeLeftKnob(value: 35.0)
-        self.rangeSlider.changeRightKnob(value: 75.0)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.rangeSlider.changeLeftKnob(value: 45.0)
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            //Invalid left values
-            self.rangeSlider.changeLeftKnob(value: -45.0)
-            self.rangeSlider.changeLeftKnob(value: 78.0)
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-            self.rangeSlider.changeRightKnob(value: 90.0)
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
-            //Invalid right values
-            self.rangeSlider.changeRightKnob(value: 10.0)
-            self.rangeSlider.changeRightKnob(value: 190.0)
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
-            //set all together
-            self.rangeSlider.changeLeftKnob(value: 15.0)
-            self.rangeSlider.changeRightKnob(value: 85.0)
+                        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.rangeSlider.scaleMinValue = 50
+            self.rangeSlider.scaleMaxValue = 200
         }
     }
     

@@ -25,6 +25,7 @@
 		45BD66D1209B60D900A19D22 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		45BD66D2209B60DA00A19D22 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		45BD66D3209B60DA00A19D22 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		45D8822F2577CA0E00BBC241 /* build-ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = "build-ios.yml"; path = ".github/workflows/build-ios.yml"; sourceTree = "<group>"; };
 		45E215241E8E812E00F0B8B9 /* RangeUISlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RangeUISlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E215271E8E812E00F0B8B9 /* RangeUISlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RangeUISlider.h; sourceTree = "<group>"; };
 		45E215281E8E812E00F0B8B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 				45BD66D2209B60DA00A19D22 /* CHANGELOG.md */,
 				45BD66D3209B60DA00A19D22 /* LICENSE.md */,
 				45BD66D1209B60D900A19D22 /* README.md */,
+				45D8822F2577CA0E00BBC241 /* build-ios.yml */,
 				4548B54D252DE5720068E389 /* generate_docs */,
 				458E1B90257A9CC800165AA7 /* RangeUISlider.podspec */,
 				45E603C4233A432C00E7465D /* Package.swift */,
@@ -134,7 +136,7 @@
 		45E2151B1E8E812E00F0B8B9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Fabrizio Duroni";
 				TargetAttributes = {
 					45E215231E8E812E00F0B8B9 = {
