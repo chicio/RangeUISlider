@@ -467,6 +467,11 @@ import UIKit
             layer.masksToBounds = containerCorners > 0.0
         }
     }
+    @IBInspectable public var rightToLeft: Bool = false {
+        didSet {
+            calculateScale()
+        }
+    }
     /// Slider delegate.
     public weak var delegate: RangeUISliderDelegate?
     
@@ -482,7 +487,8 @@ import UIKit
     private lazy var stepWidth: CGFloat = calculateStepWidth()
     private lazy var rangeSelectedCalculator: RangeSelectedCalculator = RangeSelectedCalculator(
         scale: scale,
-        scaleMinValue: scaleMinValue
+        scaleMinValue: scaleMinValue,
+        rightToLeft: rightToLeft
     )
     
     /**
@@ -704,7 +710,8 @@ import UIKit
         scale = scaleMaxValue - scaleMinValue
         rangeSelectedCalculator = RangeSelectedCalculator(
             scale: scale,
-            scaleMinValue: scaleMinValue
+            scaleMinValue: scaleMinValue,
+            rightToLeft: rightToLeft
         )
     }
     
