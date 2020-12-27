@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		451328482598FC2900967A5B /* RightToLeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451328472598FC2900967A5B /* RightToLeftViewController.swift */; };
 		451E7846224FA103004C861F /* SliderInsideTableViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E7845224FA103004C861F /* SliderInsideTableViewViewController.swift */; };
 		451E7849224FA979004C861F /* CellWithSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E7848224FA979004C861F /* CellWithSlider.swift */; };
 		45BD66C7209B36F100A19D22 /* SetupProgrammaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BD66C6209B36F100A19D22 /* SetupProgrammaticViewController.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		451328472598FC2900967A5B /* RightToLeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightToLeftViewController.swift; sourceTree = "<group>"; };
 		451E7845224FA103004C861F /* SliderInsideTableViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderInsideTableViewViewController.swift; sourceTree = "<group>"; };
 		451E7848224FA979004C861F /* CellWithSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithSlider.swift; sourceTree = "<group>"; };
 		45BD66C6209B36F100A19D22 /* SetupProgrammaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProgrammaticViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				45BD66C6209B36F100A19D22 /* SetupProgrammaticViewController.swift */,
 				451E7845224FA103004C861F /* SliderInsideTableViewViewController.swift */,
 				5F42D28E1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift */,
+				451328472598FC2900967A5B /* RightToLeftViewController.swift */,
 				5FCE8A331E79D1A400F888BC /* Main.storyboard */,
 				5FCE8A361E79D1A400F888BC /* Assets.xcassets */,
 				5FCE8A381E79D1A400F888BC /* LaunchScreen.storyboard */,
@@ -213,6 +216,7 @@
 				5F42D28F1E8FDF8F008F15CE /* GroupedFeaturesTableViewController.swift in Sources */,
 				45D8822E2577C74A00BBC241 /* ChangeScaleProgrammaticViewController.swift in Sources */,
 				5FCE8A321E79D1A400F888BC /* ViewController.swift in Sources */,
+				451328482598FC2900967A5B /* RightToLeftViewController.swift in Sources */,
 				45BD66C7209B36F100A19D22 /* SetupProgrammaticViewController.swift in Sources */,
 				45D4884B252DBBDC00FE51E3 /* ChangeKnobsProgrammaticViewController.swift in Sources */,
 				5FCE8A301E79D1A400F888BC /* AppDelegate.swift in Sources */,
@@ -293,7 +297,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -347,7 +351,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -363,6 +367,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y682K92RZU;
 				INFOPLIST_FILE = Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = it.chicio.RangeUISlider.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -377,6 +382,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y682K92RZU;
 				INFOPLIST_FILE = Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = it.chicio.RangeUISlider.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

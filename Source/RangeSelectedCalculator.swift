@@ -27,8 +27,8 @@ class RangeSelectedCalculator {
         var maxValue: CGFloat
         
         if rightToLeft {
-            minValue = rightKnobPosition / barWidth
-            maxValue = 1.0 + leftKnobPosition / barWidth
+            minValue = -rightKnobPosition / barWidth
+            maxValue = 1.0 - leftKnobPosition / barWidth
         } else {
             minValue = leftKnobPosition / barWidth
             maxValue = 1.0 + rightKnobPosition / barWidth

@@ -26,7 +26,8 @@ class GroupedFeaturesTableViewController: UITableViewController {
         GroupedFeaturesViewControllerData(description: "Programmatic setup", segueIdentifier: "showProgrammaticSetupSegue"),
         GroupedFeaturesViewControllerData(description: "Inside UITableView", segueIdentifier: "showTableViewSetupSegue"),
         GroupedFeaturesViewControllerData(description: "Programmatic knob change", segueIdentifier: "showChangeKnobProgrammaticSegue"),
-        GroupedFeaturesViewControllerData(description: "Programmatic scale change", segueIdentifier: "showChangeScaleProgrammaticSegue")
+        GroupedFeaturesViewControllerData(description: "Programmatic scale change", segueIdentifier: "showChangeScaleProgrammaticSegue"),
+        GroupedFeaturesViewControllerData(description: "Right to left", segueIdentifier: "showRightToLeftSegue")
     ]
 
     override func numberOfSections(in tableView: UITableView) -> Int {
