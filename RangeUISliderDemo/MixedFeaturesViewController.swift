@@ -11,8 +11,9 @@ import RangeUISlider
 
 class MixedFeaturesViewController: UIViewController, RangeUISliderDelegate {
     @IBOutlet weak var rangeSliderCustomScale: RangeUISlider!
-    @IBOutlet weak var rangeSliderCustomScaleLabel: UILabel!
-        
+    @IBOutlet weak var minValueSelectedLabel: UILabel!
+    @IBOutlet weak var maxValueSelectedLabel: UILabel!
+    
     override func viewDidLoad() {
         self.rangeSliderCustomScale.delegate = self
     }
@@ -26,10 +27,7 @@ class MixedFeaturesViewController: UIViewController, RangeUISliderDelegate {
     }
     
     func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
-        setMessage(label: rangeSliderCustomScaleLabel, minValueSelected: minValueSelected, maxValueSelected: maxValueSelected)
-    }
-    
-    private func setMessage(label: UILabel, minValueSelected: CGFloat, maxValueSelected: CGFloat) {
-        label.text = "Min value selected: \(floor(minValueSelected)) \nMax value selected: \(floor(maxValueSelected))"
+        minValueSelectedLabel.text = minValueSelected.description
+        maxValueSelectedLabel.text = maxValueSelected.description
     }
 }
