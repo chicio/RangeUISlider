@@ -10,7 +10,7 @@
         <!--Mixed features-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RangeUISliderDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MixedFeaturesViewController" customModule="RangeUISliderDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -22,6 +22,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4Y-av-gwa" customClass="RangeUISlider" customModule="RangeUISlider">
                                 <rect key="frame" x="20" y="142" width="335" height="50"/>
                                 <color key="backgroundColor" red="0.86325467690000002" green="0.21829825680000001" blue="0.74614689629999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="RangeUISliderCustomScale"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ReD-5b-aP8"/>
                                 </constraints>
@@ -368,15 +369,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try to drag the knobs of the slider above" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GyT-fQ-wDm">
+                                <rect key="frame" x="20" y="200" width="335" height="60"/>
+                                <color key="backgroundColor" red="0.91779082695885839" green="1" blue="0.90423119386909978" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <accessibility key="accessibilityConfiguration" identifier="rangeSliderCustomScaleLabel"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="g8i-8s-eBE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jPQ-Vh-eUa" firstAttribute="top" secondItem="Pkx-V7-ynG" secondAttribute="bottom" constant="10" id="0En-5x-ZnT"/>
                             <constraint firstItem="4fx-7G-17O" firstAttribute="leading" secondItem="u4Y-av-gwa" secondAttribute="leading" id="16H-Wq-EiQ"/>
+                            <constraint firstItem="GyT-fQ-wDm" firstAttribute="top" secondItem="u4Y-av-gwa" secondAttribute="bottom" constant="8" symbolic="YES" id="2S8-7c-WZP"/>
                             <constraint firstItem="GVb-dS-KAc" firstAttribute="leading" secondItem="bMX-j7-KAB" secondAttribute="leading" id="6T4-jg-S6U"/>
+                            <constraint firstItem="GyT-fQ-wDm" firstAttribute="trailing" secondItem="u4Y-av-gwa" secondAttribute="trailing" id="6ki-b2-6Tu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bMX-j7-KAB" secondAttribute="trailing" constant="4" id="Cvv-YD-FTs"/>
                             <constraint firstItem="u4Y-av-gwa" firstAttribute="top" secondItem="4fx-7G-17O" secondAttribute="bottom" constant="10" id="Ffr-dk-WiA"/>
                             <constraint firstItem="jPQ-Vh-eUa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Jcn-HX-PNO"/>
+                            <constraint firstItem="GyT-fQ-wDm" firstAttribute="leading" secondItem="u4Y-av-gwa" secondAttribute="leading" id="Jsl-Dn-Ua7"/>
                             <constraint firstItem="u4Y-av-gwa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.5" id="Lkx-XR-xZC"/>
                             <constraint firstItem="Pkx-V7-ynG" firstAttribute="trailing" secondItem="jPQ-Vh-eUa" secondAttribute="trailing" id="NAi-h9-XeE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jPQ-Vh-eUa" secondAttribute="trailing" constant="4" id="VTt-tC-2dn"/>
@@ -394,13 +409,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Mixed features" image="tabbarIcon" selectedImage="tabbarIcon" id="wb5-2Z-RSm"/>
                     <connections>
-                        <outlet property="rangeUISlider" destination="u4Y-av-gwa" id="fyF-5J-fhM"/>
-                        <outlet property="rangeUISlider2" destination="jPQ-Vh-eUa" id="NcE-lV-pKV"/>
+                        <outlet property="rangeSliderCustomScale" destination="u4Y-av-gwa" id="9td-zf-N4p"/>
+                        <outlet property="rangeSliderCustomScaleLabel" destination="GyT-fQ-wDm" id="gyb-49-ocf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="647" y="-15"/>
+            <point key="canvasLocation" x="645.60000000000002" y="-15.742128935532236"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="X78-W2-gER">
