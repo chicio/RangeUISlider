@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j89-zd-GID">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1155,20 +1156,8 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="rightToLeft" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Right to left" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USy-9l-99C">
-                                <rect key="frame" x="54" y="176" width="96" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5vs-hO-BpP">
-                                <rect key="frame" x="286" y="171" width="51" height="31"/>
-                                <connections>
-                                    <action selector="onRightToLeftChange:" destination="Fhx-Fb-TbS" eventType="valueChanged" id="78s-38-E7E"/>
-                                </connections>
-                            </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdN-An-0Mu">
-                                <rect key="frame" x="54" y="236" width="281" height="60"/>
+                                <rect key="frame" x="40" y="163" width="295" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="cXO-do-wYy"/>
                                 </constraints>
@@ -1179,16 +1168,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5vs-hO-BpP" firstAttribute="trailing" secondItem="jbi-dp-hef" secondAttribute="trailing" id="BhQ-3X-GNv"/>
-                            <constraint firstItem="HdN-An-0Mu" firstAttribute="leading" secondItem="USy-9l-99C" secondAttribute="leading" id="Bko-fh-bTM"/>
-                            <constraint firstItem="HdN-An-0Mu" firstAttribute="top" secondItem="USy-9l-99C" secondAttribute="bottom" constant="39" id="I5K-Wu-MVA"/>
+                            <constraint firstItem="HdN-An-0Mu" firstAttribute="trailing" secondItem="jbi-dp-hef" secondAttribute="trailing" id="OBG-t7-7qs"/>
                             <constraint firstItem="jbi-dp-hef" firstAttribute="top" secondItem="soj-sJ-hNT" secondAttribute="bottom" constant="31" id="SYa-3u-8d2"/>
-                            <constraint firstItem="5vs-hO-BpP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="USy-9l-99C" secondAttribute="trailing" constant="8" symbolic="YES" id="Uw3-Xw-yqz"/>
                             <constraint firstItem="jbi-dp-hef" firstAttribute="centerX" secondItem="0j8-lu-CC0" secondAttribute="centerX" id="WXw-9Y-mcy"/>
-                            <constraint firstItem="5vs-hO-BpP" firstAttribute="centerY" secondItem="USy-9l-99C" secondAttribute="centerY" id="Y8U-MT-MWx"/>
-                            <constraint firstItem="USy-9l-99C" firstAttribute="leading" secondItem="0j8-lu-CC0" secondAttribute="leading" constant="54" id="a19-s4-q8G"/>
-                            <constraint firstItem="USy-9l-99C" firstAttribute="top" secondItem="jbi-dp-hef" secondAttribute="bottom" constant="21" id="iij-qR-0Mq"/>
-                            <constraint firstItem="HdN-An-0Mu" firstAttribute="trailing" secondItem="5vs-hO-BpP" secondAttribute="trailing" id="szk-DE-e7t"/>
+                            <constraint firstItem="HdN-An-0Mu" firstAttribute="leading" secondItem="jbi-dp-hef" secondAttribute="leading" id="gVV-oJ-LQ7"/>
+                            <constraint firstItem="HdN-An-0Mu" firstAttribute="top" secondItem="jbi-dp-hef" secondAttribute="bottom" constant="8" symbolic="YES" id="jzc-8M-wfX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gTe-Vm-YRF"/>

@@ -15,14 +15,14 @@ class RightToLeftViewController: UIViewController, RangeUISliderDelegate {
     
     override func viewDidLoad() {
         self.rangeSlider.delegate = self
-        self.selectedValuesLabel.text = "Min value selected: \(self.rangeSlider.scaleMinValue) \nMax value selected: \(self.rangeSlider.scaleMaxValue)"
+        setMessage(minValueSelected: self.rangeSlider.scaleMinValue, maxValueSelected: self.rangeSlider.scaleMaxValue)
     }
-    
-    @IBAction func onRightToLeftChange(_ sender: UISwitch) {
-        self.rangeSlider.rightToLeft = sender.isOn
-    }
-    
+        
     func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
+        setMessage(minValueSelected: minValueSelected, maxValueSelected: maxValueSelected)
+    }
+    
+    private func setMessage(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
         self.selectedValuesLabel.text = "Min value selected: \(floor(minValueSelected)) \nMax value selected: \(floor(maxValueSelected))"
     }
 }

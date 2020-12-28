@@ -467,11 +467,6 @@ import UIKit
             layer.masksToBounds = containerCorners > 0.0
         }
     }
-    @IBInspectable public var rightToLeft: Bool = false {
-        didSet {
-            calculateScale()
-        }
-    }
     /// Slider delegate.
     public weak var delegate: RangeUISliderDelegate?
     
@@ -487,8 +482,7 @@ import UIKit
     private lazy var stepWidth: CGFloat = calculateStepWidth()
     private lazy var rangeSelectedCalculator: RangeSelectedCalculator = RangeSelectedCalculator(
         scale: scale,
-        scaleMinValue: scaleMinValue,
-        rightToLeft: rightToLeft
+        scaleMinValue: scaleMinValue
     )
     
     /**
@@ -710,8 +704,7 @@ import UIKit
         scale = scaleMaxValue - scaleMinValue
         rangeSelectedCalculator = RangeSelectedCalculator(
             scale: scale,
-            scaleMinValue: scaleMinValue,
-            rightToLeft: rightToLeft
+            scaleMinValue: scaleMinValue
         )
     }
     
@@ -748,18 +741,34 @@ import UIKit
     }
     
     private func updateLeftKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        let positionForKnob = positionForKnobGiven(xLocationInBar: gestureRecognizer.location(in: bar).x)
-        let positionRightKnob = bar.frame.width + rightKnob.xPositionConstraint.constant
-        if positionForKnob >= 0 && positionForKnob <= positionRightKnob {
-            leftKnob.xPositionConstraint.constant = positionForKnob
+        if UIView.userInterfaceLayoutDirection(for: self.semanticContentAttribute) == UIUserInterfaceLayoutDirection.rightToLeft {
+            let positionForKnob = bar.frame.width - positionForKnobGiven(xLocationInBar: gestureRecognizer.location(in: bar).x)
+            let positionRightKnob = bar.frame.width + rightKnob.xPositionConstraint.constant
+            if positionForKnob >= 0 && positionForKnob <= positionRightKnob {
+                leftKnob.xPositionConstraint.constant = positionForKnob
+            }
+        } else {
+            let positionForKnob = positionForKnobGiven(xLocationInBar: gestureRecognizer.location(in: bar).x)
+            let positionRightKnob = bar.frame.width + rightKnob.xPositionConstraint.constant
+            if positionForKnob >= 0 && positionForKnob <= positionRightKnob {
+                leftKnob.xPositionConstraint.constant = positionForKnob
+            }
         }
     }
     
     private func updateRightKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        let xLocationInBar = gestureRecognizer.location(in: bar).x
-        let positionForKnob = positionForKnobGiven(xLocationInBar: xLocationInBar - bar.frame.width)
-        if positionForKnob <= 0 && xLocationInBar >= leftKnob.xPositionConstraint.constant {
-            rightKnob.xPositionConstraint.constant = positionForKnob
+        if UIView.userInterfaceLayoutDirection(for: self.semanticContentAttribute) == UIUserInterfaceLayoutDirection.rightToLeft {
+            let xLocationInBar = gestureRecognizer.location(in: bar).x
+            let positionForKnob = -1 * positionForKnobGiven(xLocationInBar: xLocationInBar)
+            if positionForKnob <= 0 {
+                rightKnob.xPositionConstraint.constant = positionForKnob
+            }
+        } else {
+            let xLocationInBar = gestureRecognizer.location(in: bar).x
+            let positionForKnob = positionForKnobGiven(xLocationInBar: xLocationInBar - bar.frame.width)
+            if positionForKnob <= 0 && xLocationInBar >= leftKnob.xPositionConstraint.constant {
+                rightKnob.xPositionConstraint.constant = positionForKnob
+            }
         }
     }
     
