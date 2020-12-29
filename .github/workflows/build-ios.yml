@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Build iOS Demo
+        run: |
+           set -o pipefail && xcodebuild -project RangeUISlider.xcodeproj -scheme RangeUISliderDemo clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -destination 'platform=iOS Simulator,name=iPhone 8,OS=latest' | xcpretty
       - name: Behaviour Test Plan
         run: |
            set -o pipefail && xcodebuild -project RangeUISlider.xcodeproj -scheme RangeUISlider clean test -testPlan BehaviourTestPlan CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -destination 'platform=iOS Simulator,name=iPhone 8,OS=latest' | xcpretty
@@ -21,9 +24,6 @@ jobs:
       - name: Right To Left Test Plan
         run: |
            set -o pipefail && xcodebuild -project RangeUISlider.xcodeproj -scheme RangeUISlider clean test -testPlan RightToLeftTestPlan CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -destination 'platform=iOS Simulator,name=iPhone 8,OS=latest' | xcpretty
-      - name: Build iOS Demo
-        run: |
-           set -o pipefail && xcodebuild -project RangeUISlider.xcodeproj -scheme RangeUISliderDemo clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -destination 'platform=iOS Simulator,name=iPhone 8,OS=latest' | xcpretty
       - name: Build SPM demo
         run: |
            set -o pipefail && xcodebuild -project DemoSPM.xcodeproj -scheme DemoSPM  clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -destination 'platform=iOS Simulator,name=iPhone 8,OS=latest' | xcpretty
