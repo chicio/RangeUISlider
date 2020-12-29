@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1230"
-   version = "1.7">
+   version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "45E215231E8E812E00F0B8B9"
-               BuildableName = "RangeUISlider.framework"
-               BlueprintName = "RangeUISlider"
-               ReferencedContainer = "container:RangeUISlider.xcodeproj">
+               BlueprintIdentifier = "45E603D1233A4C8100E7465D"
+               BuildableName = "DemoSPM.app"
+               BlueprintName = "DemoSPM"
+               ReferencedContainer = "container:DemoSPM.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -27,18 +27,8 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <TestPlans>
-         <TestPlanReference
-            reference = "container:TestPlans/BehaviourTestPlan.xctestplan"
-            default = "YES">
-         </TestPlanReference>
-         <TestPlanReference
-            reference = "container:TestPlans/ProgrammaticChangesTestPlan.xctestplan">
-         </TestPlanReference>
-         <TestPlanReference
-            reference = "container:TestPlans/UnitTestPlan.xctestplan">
-         </TestPlanReference>
-      </TestPlans>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -50,15 +40,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45E215231E8E812E00F0B8B9"
-            BuildableName = "RangeUISlider.framework"
-            BlueprintName = "RangeUISlider"
-            ReferencedContainer = "container:RangeUISlider.xcodeproj">
+            BlueprintIdentifier = "45E603D1233A4C8100E7465D"
+            BuildableName = "DemoSPM.app"
+            BlueprintName = "DemoSPM"
+            ReferencedContainer = "container:DemoSPM.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -66,15 +57,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45E215231E8E812E00F0B8B9"
-            BuildableName = "RangeUISlider.framework"
-            BlueprintName = "RangeUISlider"
-            ReferencedContainer = "container:RangeUISlider.xcodeproj">
+            BlueprintIdentifier = "45E603D1233A4C8100E7465D"
+            BuildableName = "DemoSPM.app"
+            BlueprintName = "DemoSPM"
+            ReferencedContainer = "container:DemoSPM.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
