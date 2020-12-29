@@ -79,7 +79,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4548B54B252DD68F0068E389 /* build-ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "build-ios.yml"; sourceTree = "<group>"; };
 		4548B54D252DE5720068E389 /* generate_docs */ = {isa = PBXFileReference; lastKnownFileType = text; path = generate_docs; sourceTree = "<group>"; };
 		455BF11B259B43170026BE56 /* RightToLeftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightToLeftTests.swift; sourceTree = "<group>"; };
 		455BF121259B43EA0026BE56 /* RightToLeftTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = RightToLeftTestPlan.xctestplan; sourceTree = "<group>"; };
@@ -93,7 +92,7 @@
 		459CBEF4259B79D000FCA5AB /* RangeUISliderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RangeUISliderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		459CBEF6259B79D000FCA5AB /* RangeSelectedCalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSelectedCalculatorTest.swift; sourceTree = "<group>"; };
 		459CBEF8259B79D000FCA5AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		459CBF05259B7A4700FCA5AB /* UnitTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; name = UnitTestPlan.xctestplan; path = TestPlans/UnitTestPlan.xctestplan; sourceTree = SOURCE_ROOT; };
+		459CBF05259B7A4700FCA5AB /* UnitTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = UnitTestPlan.xctestplan; path = TestPlans/UnitTestPlan.xctestplan; sourceTree = SOURCE_ROOT; };
 		459CBF12259B7DDD00FCA5AB /* StepCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCalculator.swift; sourceTree = "<group>"; };
 		459CBF1B259B7FD700FCA5AB /* StepCalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCalculatorTest.swift; sourceTree = "<group>"; };
 		45AA09FB225547CE005CE6EE /* RangeSelectedCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSelectedCalculator.swift; sourceTree = "<group>"; };
@@ -163,15 +162,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4548B54A252DD6770068E389 /* workflows */ = {
-			isa = PBXGroup;
-			children = (
-				4548B54B252DD68F0068E389 /* build-ios.yml */,
-			);
-			name = workflows;
-			path = .github/workflows;
-			sourceTree = "<group>";
-		};
 		455FCF00259B3EFA00FCA71E /* TestPlans */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,7 +203,6 @@
 				45E603C4233A432C00E7465D /* Package.swift */,
 				459CBEC2259B6A6F00FCA5AB /* workflows */,
 				455FCF00259B3EFA00FCA71E /* TestPlans */,
-				4548B54A252DD6770068E389 /* workflows */,
 				45E215261E8E812E00F0B8B9 /* Source */,
 				459CBEF5259B79D000FCA5AB /* RangeUISliderTests */,
 				45F064842599E3CC007B25A7 /* RangeUISliderUITests */,
