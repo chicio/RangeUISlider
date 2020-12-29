@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "236F898C-2329-49D0-BEF8-28BA8454BB19",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:RangeUISlider.xcodeproj",
+        "identifier" : "459CBEF3259B79D000FCA5AB",
+        "name" : "RangeUISliderTests"
+      }
+    }
+  ],
+  "version" : 1
+}
