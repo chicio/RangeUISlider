@@ -67,7 +67,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4548B54B252DD68F0068E389 /* build-ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "build-ios.yml"; sourceTree = "<group>"; };
 		4548B54D252DE5720068E389 /* generate_docs */ = {isa = PBXFileReference; lastKnownFileType = text; path = generate_docs; sourceTree = "<group>"; };
 		455BF124259B44F80026BE56 /* InsideTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideTableViewTests.swift; sourceTree = "<group>"; };
 		455BF12D259B4B2D0026BE56 /* ProgrammaticKnobChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticKnobChangeTests.swift; sourceTree = "<group>"; };
@@ -135,15 +134,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4548B54A252DD6770068E389 /* workflows */ = {
-			isa = PBXGroup;
-			children = (
-				4548B54B252DD68F0068E389 /* build-ios.yml */,
-			);
-			name = workflows;
-			path = .github/workflows;
-			sourceTree = "<group>";
-		};
 		455FCF00259B3EFA00FCA71E /* TestPlans */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,7 +163,6 @@
 				45E603C4233A432C00E7465D /* Package.swift */,
 				459CBEC2259B6A6F00FCA5AB /* workflows */,
 				455FCF00259B3EFA00FCA71E /* TestPlans */,
-				4548B54A252DD6770068E389 /* workflows */,
 				45E215261E8E812E00F0B8B9 /* Source */,
 				45F064842599E3CC007B25A7 /* RangeUISliderUITests */,
 				45F064962599E511007B25A7 /* RangeUISliderDemo */,
