@@ -78,11 +78,11 @@
 		455FCF01259B3F2000FCA71E /* BehaviourTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BehaviourTestPlan.xctestplan; sourceTree = "<group>"; };
 		458E1B90257A9CC800165AA7 /* RangeUISlider.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RangeUISlider.podspec; sourceTree = "<group>"; };
 		459CBEB6259B638200FCA5AB /* ProgrammaticScaleChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticScaleChangeTests.swift; sourceTree = "<group>"; };
+		459CBEC4259B6A6F00FCA5AB /* build-ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "build-ios.yml"; sourceTree = "<group>"; };
 		45AA09FB225547CE005CE6EE /* RangeSelectedCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSelectedCalculator.swift; sourceTree = "<group>"; };
 		45BD66D1209B60D900A19D22 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		45BD66D2209B60DA00A19D22 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		45BD66D3209B60DA00A19D22 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
-		45D8822F2577CA0E00BBC241 /* build-ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = "build-ios.yml"; path = ".github/workflows/build-ios.yml"; sourceTree = "<group>"; };
 		45E215241E8E812E00F0B8B9 /* RangeUISlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RangeUISlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E215271E8E812E00F0B8B9 /* RangeUISlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RangeUISlider.h; sourceTree = "<group>"; };
 		45E215281E8E812E00F0B8B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -157,16 +157,25 @@
 			path = TestPlans;
 			sourceTree = "<group>";
 		};
+		459CBEC2259B6A6F00FCA5AB /* workflows */ = {
+			isa = PBXGroup;
+			children = (
+				459CBEC4259B6A6F00FCA5AB /* build-ios.yml */,
+			);
+			name = workflows;
+			path = .github/workflows;
+			sourceTree = "<group>";
+		};
 		45E2151A1E8E812E00F0B8B9 = {
 			isa = PBXGroup;
 			children = (
 				45BD66D2209B60DA00A19D22 /* CHANGELOG.md */,
 				45BD66D3209B60DA00A19D22 /* LICENSE.md */,
 				45BD66D1209B60D900A19D22 /* README.md */,
-				45D8822F2577CA0E00BBC241 /* build-ios.yml */,
 				4548B54D252DE5720068E389 /* generate_docs */,
 				458E1B90257A9CC800165AA7 /* RangeUISlider.podspec */,
 				45E603C4233A432C00E7465D /* Package.swift */,
+				459CBEC2259B6A6F00FCA5AB /* workflows */,
 				455FCF00259B3EFA00FCA71E /* TestPlans */,
 				4548B54A252DD6770068E389 /* workflows */,
 				45E215261E8E812E00F0B8B9 /* Source */,
