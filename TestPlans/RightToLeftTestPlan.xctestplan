@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "B4DD1C4B-D669-40AD-B3A0-E097162E6AC9",
+      "name" : "Configuration 1",
+      "options" : {
+        "language" : "IDELaunchSchemeLanguageRLO",
+        "region" : "EG"
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "selectedTests" : [
+        "RightToLeftTests\/testRightToLeft()"
+      ],
+      "target" : {
+        "containerPath" : "container:RangeUISlider.xcodeproj",
+        "identifier" : "45F064822599E3CC007B25A7",
+        "name" : "RangeUISliderUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

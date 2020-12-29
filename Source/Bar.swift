@@ -23,9 +23,10 @@ class Bar: UIView {
                leading: CGFloat,
                trailing: CGFloat,
                height: CGFloat) -> [NSLayoutConstraint] {
+        accessibilityIdentifier = "Bar"
+        translatesAutoresizingMaskIntoConstraints = false
         leftKnob = aLeftKnob
         rightKnob = aRightKnob
-        translatesAutoresizingMaskIntoConstraints = false
         let barContraints = createConstraintsUsing(leading: leading, trailing: trailing, height: height)
         return barContraints
     }

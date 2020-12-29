@@ -1,0 +1,32 @@
+{
+  "configurations" : [
+    {
+      "id" : "98496987-D754-4BC9-AB77-01CECC064453",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "selectedTests" : [
+        "ProgrammaticKnobChangeTests\/testPrgrammaticKnobChange()",
+        "ProgrammaticKnobChangeTests\/testPrgrammticKnobChange()",
+        "ProgrammaticKnobChangeTests\/testProgrammaticKnobChange()",
+        "ProgrammaticKnobChangeTests\/testRightToLeft()",
+        "ProgrammaticScaleChangeTests\/testProgrammaticScaleChange()"
+      ],
+      "target" : {
+        "containerPath" : "container:RangeUISlider.xcodeproj",
+        "identifier" : "45F064822599E3CC007B25A7",
+        "name" : "RangeUISliderUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

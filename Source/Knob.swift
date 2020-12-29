@@ -23,13 +23,15 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
     private(set) var position: KnobPosition!
     private(set) var gestureRecognizerTarget: Any?
     
-    func setup(position aPosition: KnobPosition,
+    func setup(accessibilityIdentifier anAccessibilityIdentifier: String,
+               position aPosition: KnobPosition,
                width: CGFloat,
                height: CGFloat,
                target: Any?,
                selector: Selector) -> [NSLayoutConstraint] {
-        position = aPosition
+        accessibilityIdentifier = anAccessibilityIdentifier
         translatesAutoresizingMaskIntoConstraints = false
+        position = aPosition
         let knobBackgroundConstraints: [NSLayoutConstraint] = setupBackground()
         setXPositionConstraint()
         setDimensionConstraints(usingWidth: width, andHeight: height)

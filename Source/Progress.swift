@@ -18,6 +18,7 @@ class Progress: Gradient {
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         backgroundImageView.layer.masksToBounds = corners > 0
         backgroundImageView.layer.cornerRadius = corners
+        backgroundImageView.accessibilityIdentifier = "ProgressBackground"
         addSubview(backgroundImageView)
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: backgroundImageView,
@@ -56,6 +57,7 @@ class Progress: Gradient {
                rightAnchorView: UIView,
                rightAnchorConstraintAttribute: NSLayoutConstraint.Attribute,
                color: UIColor) -> [NSLayoutConstraint] {
+        accessibilityIdentifier = "Progress"
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = color
         let progressViewConstraints: [NSLayoutConstraint] = [

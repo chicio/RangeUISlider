@@ -543,6 +543,7 @@ import UIKit
                 rightKnobPosition: rightKnob.xPositionConstraint.constant,
                 barWidth: bar.frame.width
             )
+            rangeSelectionFinished()
         }
     }
     
@@ -559,6 +560,7 @@ import UIKit
                 rightKnobPosition: rightKnob.xPositionConstraint.constant,
                 barWidth: bar.frame.width
             )
+            rangeSelectionFinished()
         }
     }
     
@@ -604,13 +606,15 @@ import UIKit
                                                  height: barHeight))
         
         
-        constraints.append(contentsOf: rightKnob.setup(position: .right,
+        constraints.append(contentsOf: rightKnob.setup(accessibilityIdentifier: "RightKnob",
+                                                       position: .right,
                                                        width: rightKnobWidth,
                                                        height: rightKnobHeight,
                                                        target: self,
                                                        selector: #selector(moveRightKnob)))
         
-        constraints.append(contentsOf: leftKnob.setup(position: .left,
+        constraints.append(contentsOf: leftKnob.setup(accessibilityIdentifier: "LeftKnob",
+                                                      position: .left,
                                                       width: leftKnobWidth,
                                                       height: leftKnobHeight,
                                                       target: self,
@@ -635,6 +639,7 @@ import UIKit
                                                                color: rangeNotSelectedColor))
         
         NSLayoutConstraint.activate(constraints)
+        
     }
     
     private func calculateNumberOfSteps() -> CGFloat {
@@ -801,8 +806,11 @@ import UIKit
             rightKnobPosition: rightKnob.xPositionConstraint.constant,
             barWidth: bar.frame.width
         )
-        delegate?.rangeChangeFinished(minValueSelected: rangeSelected.minValue,
-                                      maxValueSelected: rangeSelected.maxValue,
-                                      slider: self)
+        
+        if(!rangeSelected.maxValue.isNaN && !rangeSelected.maxValue.isNaN) {
+            delegate?.rangeChangeFinished(minValueSelected: rangeSelected.minValue,
+                                          maxValueSelected: rangeSelected.maxValue,
+                                          slider: self)
+        }
     }
 }

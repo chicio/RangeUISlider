@@ -1,0 +1,1187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j89-zd-GID">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Mixed features-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MixedFeaturesViewController" customModule="RangeUISliderDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Mr-cc-gmO" userLabel="End Marker">
+                                <rect key="frame" x="309" y="20" width="6" height="627"/>
+                                <accessibility key="accessibilityConfiguration" identifier="endMarker"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hrj-qG-B2M" userLabel="Start Marker">
+                                <rect key="frame" x="60" y="20" width="6" height="627"/>
+                                <accessibility key="accessibilityConfiguration" identifier="startMarker"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qlf-kb-ke1" userLabel="Middle Marker">
+                                <rect key="frame" x="184.5" y="24.5" width="6" height="618"/>
+                                <accessibility key="accessibilityConfiguration" identifier="middleMarker"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="6" id="JuD-Jk-Wra"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4Y-av-gwa" customClass="RangeUISlider" customModule="RangeUISlider">
+                                <rect key="frame" x="20" y="142" width="335" height="50"/>
+                                <color key="backgroundColor" red="0.86325467690000002" green="0.21829825680000001" blue="0.74614689629999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="RangeUISliderCustomScale"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ReD-5b-aP8"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barHeight">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barLeading">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barTrailing">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="containerCorners">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobWidth">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobHeight">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobWidth">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobHeight">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobCorners">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="scaleMinValue">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="scaleMaxValue">
+                                        <real key="value" value="200"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightKnobColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftKnobColor">
+                                        <color key="value" red="0.80815972219999999" green="0.80815972219999999" blue="0.80815972219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barShadowOpacity">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barShadowRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="barShadowOffset">
+                                        <size key="value" width="0.0" height="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightShadowOpacity">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="identifier">
+                                        <integer key="value" value="1001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobCorners">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeNotSelectedGradientColor1">
+                                        <color key="value" red="0.80815972219999999" green="0.80815972219999999" blue="0.80815972219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeNotSelectedGradientColor2">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="rangeNotSelectedGradientStartPoint">
+                                        <point key="value" x="0.0" y="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="rangeNotSelectedGradientEndPoint">
+                                        <point key="value" x="0.0" y="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeSelectedGradientColor1">
+                                        <color key="value" red="0.033274707846338236" green="1" blue="0.85773568435868974" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeSelectedGradientColor2">
+                                        <color key="value" red="0.0" green="0.29295443329999998" blue="0.61750000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="rangeSelectedGradientStartPoint">
+                                        <point key="value" x="0.0" y="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="rangeSelectedGradientEndPoint">
+                                        <point key="value" x="0.0" y="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftShadowColor">
+                                        <color key="value" systemColor="darkTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftShadowOpacity">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="leftShadowOffset">
+                                        <size key="value" width="0.0" height="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="rightShadowOffset">
+                                        <size key="value" width="0.0" height="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftKnobGradientColor1">
+                                        <color key="value" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftKnobGradientColor2">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="leftKnobGradientStartPoint">
+                                        <point key="value" x="1" y="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="leftKnobGradientEndPoint">
+                                        <point key="value" x="0.0" y="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightKnobGradientColor1">
+                                        <color key="value" red="0.93725490570000003" green="0.34901961679999999" blue="0.1921568662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightKnobGradientColor2">
+                                        <color key="value" red="0.99568965519999997" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="rightKnobGradientStartPoint">
+                                        <point key="value" x="0.0" y="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="rightKnobGradientEndPoint">
+                                        <point key="value" x="0.0" y="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightShadowColor">
+                                        <color key="value" red="1" green="0.94227303330000001" blue="0.2415095256" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barCorners">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="defaultValueLeftKnob">
+                                        <real key="value" value="110"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="defaultValueRightKnob">
+                                        <real key="value" value="145"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPQ-Vh-eUa" customClass="RangeUISlider" customModule="RangeUISlider">
+                                <rect key="frame" x="20" y="308.5" width="335" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="RangeUISliderStepIncrement"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="NpT-2b-hwo"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barHeight">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="rightKnobImage" value="knob"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="leftKnobImage" value="knob"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobWidth">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobHeight">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobHeight">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobCorners">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobWidth">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobCorners">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="identifier">
+                                        <integer key="value" value="1002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barShadowOpacity">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barLeading">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barTrailing">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rangeNotSelectedBackgroundEdgeInsetTop">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rangeNotSelectedBackgroundEdgeInsetLeft">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rangeNotSelectedBackgroundEdgeInsetBottom">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rangeNotSelectedBackgroundEdgeInsetRight">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rangeSelectedBackgroundEdgeInsetTop">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rangeSelectedBackgroundEdgeInsetLeft">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rangeSelectedBackgroundEdgeInsetBottom">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rangeSelectedBackgroundEdgeInsetRight">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="barShadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeSelectedGradientColor1">
+                                        <color key="value" red="0.47450980539999998" green="0.8392156959" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeSelectedGradientColor2">
+                                        <color key="value" red="0.28101084180000002" green="0.21829825680000001" blue="0.74614689629999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="rangeSelectedGradientStartPoint">
+                                        <point key="value" x="0.0" y="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="rangeSelectedGradientEndPoint">
+                                        <point key="value" x="0.0" y="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barCorners">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="rangeNotSelectedBackgroundImage" value="rangeNotSelected"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="defaultValueLeftKnob">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="defaultValueRightKnob">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="scaleMinValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="scaleMaxValue">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="stepIncrement">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example step Increment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pkx-V7-ynG">
+                                <rect key="frame" x="20" y="277.5" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example custom scale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fx-7G-17O">
+                                <rect key="frame" x="20" y="111" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMX-j7-KAB" customClass="RangeUISlider" customModule="RangeUISlider">
+                                <rect key="frame" x="20" y="460.5" width="335" height="80"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Ogc-vF-Jv3"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightKnobColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftKnobColor">
+                                        <color key="value" red="0.28101084180000002" green="0.21829825680000001" blue="0.74614689629999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barHeight">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barCorners">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeSelectedColor">
+                                        <color key="value" red="1" green="1" blue="0.035501700679999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeNotSelectedColor">
+                                        <color key="value" red="0.47450980539999998" green="0.8392156959" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobWidth">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobHeight">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobCorners">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftShadowOpacity">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="leftShadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftShadowColor">
+                                        <color key="value" red="0.99568965519999997" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barShadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobWidth">
+                                        <real key="value" value="56"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobHeight">
+                                        <real key="value" value="56"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobCorners">
+                                        <real key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightShadowOpacity">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightShadowColor">
+                                        <color key="value" red="0.93725490570000003" green="0.34901961679999999" blue="0.1921568662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="rightShadowOffset">
+                                        <size key="value" width="0.0" height="-4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="rightKnobImage" value="knobMetallic"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barLeading">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barTrailing">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barBorderColor">
+                                        <color key="value" red="0.80784314869999996" green="0.027450980619999999" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barBorderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobBorderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftKnobBorderColor">
+                                        <color key="value" red="0.61746276536315192" green="1" blue="0.62597297018140352" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobBorderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightKnobBorderColor">
+                                        <color key="value" red="0.36402267995179111" green="0.99038617227979275" blue="0.20868902494506827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example different knobs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVb-dS-KAc">
+                                <rect key="frame" x="20" y="429.5" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyz-uQ-FCa">
+                                <rect key="frame" x="24" y="33" width="74" height="21"/>
+                                <color key="backgroundColor" red="0.91779082700000003" green="1" blue="0.90423119389999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="74" id="cuq-OS-ExI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5i-lw-uPj">
+                                <rect key="frame" x="127" y="33" width="95" height="21"/>
+                                <color key="backgroundColor" red="0.91779082700000003" green="1" blue="0.90423119389999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <accessibility key="accessibilityConfiguration" identifier="minValueSelectedLabel"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="95" id="NIZ-PK-JVz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EpL-Zo-8qW">
+                                <rect key="frame" x="127" y="62" width="95" height="21"/>
+                                <color key="backgroundColor" red="0.91779082700000003" green="1" blue="0.90423119389999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <accessibility key="accessibilityConfiguration" identifier="maxValueSelectedLabel"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="95" id="0mR-mr-8ik"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ef1-J9-uze">
+                                <rect key="frame" x="24" y="62" width="78" height="21"/>
+                                <color key="backgroundColor" red="0.91779082700000003" green="1" blue="0.90423119389999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="jPQ-Vh-eUa" firstAttribute="top" secondItem="Pkx-V7-ynG" secondAttribute="bottom" constant="10" id="0En-5x-ZnT"/>
+                            <constraint firstItem="4fx-7G-17O" firstAttribute="leading" secondItem="u4Y-av-gwa" secondAttribute="leading" id="16H-Wq-EiQ"/>
+                            <constraint firstItem="6Mr-cc-gmO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="1jh-nX-gdb"/>
+                            <constraint firstItem="6Mr-cc-gmO" firstAttribute="width" secondItem="Qlf-kb-ke1" secondAttribute="width" id="1k0-z0-OF2"/>
+                            <constraint firstItem="GVb-dS-KAc" firstAttribute="leading" secondItem="bMX-j7-KAB" secondAttribute="leading" id="6T4-jg-S6U"/>
+                            <constraint firstItem="hrj-qG-B2M" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="6bT-2R-roU"/>
+                            <constraint firstItem="z5i-lw-uPj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="33" id="8DD-Oh-u04"/>
+                            <constraint firstItem="z5i-lw-uPj" firstAttribute="leading" secondItem="eyz-uQ-FCa" secondAttribute="trailing" constant="29" id="9gz-7x-XVe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bMX-j7-KAB" secondAttribute="trailing" constant="4" id="Cvv-YD-FTs"/>
+                            <constraint firstItem="eyz-uQ-FCa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="24" id="FCT-Gc-6Xe"/>
+                            <constraint firstItem="u4Y-av-gwa" firstAttribute="top" secondItem="4fx-7G-17O" secondAttribute="bottom" constant="10" id="Ffr-dk-WiA"/>
+                            <constraint firstItem="hrj-qG-B2M" firstAttribute="width" secondItem="Qlf-kb-ke1" secondAttribute="width" id="ItX-FP-rGz"/>
+                            <constraint firstItem="jPQ-Vh-eUa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Jcn-HX-PNO"/>
+                            <constraint firstItem="Qlf-kb-ke1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JyV-EH-Qhw"/>
+                            <constraint firstItem="u4Y-av-gwa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.5" id="Lkx-XR-xZC"/>
+                            <constraint firstItem="EpL-Zo-8qW" firstAttribute="top" secondItem="z5i-lw-uPj" secondAttribute="bottom" constant="8" symbolic="YES" id="Mdq-Ug-RfR"/>
+                            <constraint firstItem="Pkx-V7-ynG" firstAttribute="trailing" secondItem="jPQ-Vh-eUa" secondAttribute="trailing" id="NAi-h9-XeE"/>
+                            <constraint firstItem="6Mr-cc-gmO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="S1d-fa-hhW"/>
+                            <constraint firstAttribute="trailing" secondItem="6Mr-cc-gmO" secondAttribute="trailing" constant="60" id="Tdj-Zz-Pqe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jPQ-Vh-eUa" secondAttribute="trailing" constant="4" id="VTt-tC-2dn"/>
+                            <constraint firstItem="jPQ-Vh-eUa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="VrP-y2-uvU"/>
+                            <constraint firstItem="GVb-dS-KAc" firstAttribute="trailing" secondItem="bMX-j7-KAB" secondAttribute="trailing" id="WpR-cv-xk8"/>
+                            <constraint firstItem="ef1-J9-uze" firstAttribute="top" secondItem="eyz-uQ-FCa" secondAttribute="bottom" constant="8" symbolic="YES" id="ZA8-qg-kyJ"/>
+                            <constraint firstItem="Qlf-kb-ke1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zku-1g-fkt"/>
+                            <constraint firstItem="bMX-j7-KAB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aWi-rU-WA5"/>
+                            <constraint firstItem="EpL-Zo-8qW" firstAttribute="leading" secondItem="ef1-J9-uze" secondAttribute="trailing" constant="25" id="aWw-l5-GvU"/>
+                            <constraint firstItem="hrj-qG-B2M" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="bnC-nV-F3K"/>
+                            <constraint firstItem="Qlf-kb-ke1" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.926537" id="cxn-lC-017"/>
+                            <constraint firstItem="bMX-j7-KAB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.5" id="eXi-Ni-JqI"/>
+                            <constraint firstItem="Pkx-V7-ynG" firstAttribute="leading" secondItem="jPQ-Vh-eUa" secondAttribute="leading" id="jMi-NQ-JVC"/>
+                            <constraint firstAttribute="trailing" secondItem="u4Y-av-gwa" secondAttribute="trailing" constant="20" id="l5O-Fe-axO"/>
+                            <constraint firstItem="eyz-uQ-FCa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="33" id="nrC-y2-Ldu"/>
+                            <constraint firstItem="6Mr-cc-gmO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EpL-Zo-8qW" secondAttribute="trailing" constant="8" symbolic="YES" id="ptS-Sc-pTp"/>
+                            <constraint firstItem="ef1-J9-uze" firstAttribute="leading" secondItem="eyz-uQ-FCa" secondAttribute="leading" id="sb5-TO-z7l"/>
+                            <constraint firstItem="hrj-qG-B2M" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="60" id="svR-cq-v9R"/>
+                            <constraint firstItem="bMX-j7-KAB" firstAttribute="top" secondItem="GVb-dS-KAc" secondAttribute="bottom" constant="10" id="sxi-qi-qwv"/>
+                            <constraint firstItem="u4Y-av-gwa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="uYq-9N-Ttu"/>
+                            <constraint firstItem="bMX-j7-KAB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="wjD-T7-8sI"/>
+                            <constraint firstItem="6Mr-cc-gmO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="z5i-lw-uPj" secondAttribute="trailing" constant="8" symbolic="YES" id="xcr-sz-fTA"/>
+                            <constraint firstItem="4fx-7G-17O" firstAttribute="trailing" secondItem="u4Y-av-gwa" secondAttribute="trailing" id="zMf-Lr-rru"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Mixed features" image="tabbarIcon" selectedImage="tabbarIcon" id="wb5-2Z-RSm"/>
+                    <connections>
+                        <outlet property="maxValueSelectedLabel" destination="EpL-Zo-8qW" id="BAq-Hi-Tf0"/>
+                        <outlet property="minValueSelectedLabel" destination="z5i-lw-uPj" id="0ig-Fh-nwU"/>
+                        <outlet property="rangeSliderCustomScale" destination="u4Y-av-gwa" id="9td-zf-N4p"/>
+                        <outlet property="rangeSliderStepIncrement" destination="jPQ-Vh-eUa" id="Rev-1n-uIp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="645.60000000000002" y="-15.742128935532236"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="X78-W2-gER">
+            <objects>
+                <tabBarController id="j89-zd-GID" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="3hy-dD-txF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="LoW-mo-ca1"/>
+                        <segue destination="J0W-p3-jl5" kind="relationship" relationship="viewControllers" id="VVs-xi-vfs"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yxo-YU-LBZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-266" y="265"/>
+        </scene>
+        <!--Grouped Features Table View Controller-->
+        <scene sceneID="WZW-4A-Yyl">
+            <objects>
+                <tableViewController id="Vf0-bA-VyT" customClass="GroupedFeaturesTableViewController" customModule="RangeUISliderDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2JL-8v-Mka">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="GroupedFeaturesCell" textLabel="wjV-jt-TfT" style="IBUITableViewCellStyleDefault" id="1N5-sd-erk">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1N5-sd-erk" id="QOo-eX-JJN">
+                                    <rect key="frame" x="0.0" y="0.0" width="316" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wjV-jt-TfT">
+                                            <rect key="frame" x="16" y="0.0" width="292" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Vf0-bA-VyT" id="7Lu-cJ-BKS"/>
+                            <outlet property="delegate" destination="Vf0-bA-VyT" id="Omt-PM-UmF"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="mgh-1y-1FP"/>
+                    <connections>
+                        <segue destination="jYc-kW-hsO" kind="show" identifier="showOnlyColorsSegue" id="IRz-Ns-L5T"/>
+                        <segue destination="Oug-xn-pzr" kind="show" identifier="showOnlyImagesSegue" id="MVQ-ph-t6C"/>
+                        <segue destination="Tkx-hT-lmn" kind="show" identifier="showOnlyGradientsSegue" id="I2y-s7-KCo"/>
+                        <segue destination="dWr-eS-hUn" kind="show" identifier="showProgrammaticSetupSegue" id="3bz-bm-ReS"/>
+                        <segue destination="RLA-sf-Itw" kind="show" identifier="showTableViewSetupSegue" id="T5P-TY-50T"/>
+                        <segue destination="HX8-Hb-IrR" kind="show" identifier="showChangeKnobProgrammaticSegue" id="l5L-tk-hZo"/>
+                        <segue destination="IzU-JN-Igw" kind="show" identifier="showChangeScaleProgrammaticSegue" id="rdG-zv-TLf"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z9F-n4-isO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1584.8" y="704.79760119940033"/>
+        </scene>
+        <!--Only Images-->
+        <scene sceneID="T8b-jt-JNU">
+            <objects>
+                <viewController title="Only Images" id="Oug-xn-pzr" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gxh-uV-sRa"/>
+                        <viewControllerLayoutGuide type="bottom" id="UEh-ep-BTk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xrf-EU-jQo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bdg-e1-egM" customClass="RangeUISlider" customModule="RangeUISlider">
+                                <rect key="frame" x="20" y="293.5" width="335" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="9dO-zq-qM1"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barHeight">
+                                        <real key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barLeading">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barTrailing">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barCorners">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rangeSelectedBackgroundEdgeInsetTop">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rangeSelectedBackgroundEdgeInsetLeft">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rangeSelectedBackgroundEdgeInsetBottom">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rangeSelectedBackgroundEdgeInsetRight">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rangeNotSelectedBackgroundEdgeInsetTop">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rangeNotSelectedBackgroundEdgeInsetLeft">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rangeNotSelectedBackgroundEdgeInsetBottom">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rangeNotSelectedBackgroundEdgeInsetRight">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="leftKnobImage" value="knobMetallic"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="rightKnobImage" value="knobMetallic"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobWidth">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobHeight">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobCorners">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobWidth">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobHeight">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barShadowOpacity">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="barShadowOffset">
+                                        <size key="value" width="0.0" height="-5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barShadowColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobCorners">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="rangeSelectedBackgroundImage" value="rangeSelected"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="rangeNotSelectedBackgroundImage" value="rangeNotSelected"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Bdg-e1-egM" firstAttribute="leading" secondItem="Xrf-EU-jQo" secondAttribute="leading" constant="20" id="4Un-JB-PHf"/>
+                            <constraint firstItem="Bdg-e1-egM" firstAttribute="centerY" secondItem="Xrf-EU-jQo" secondAttribute="centerY" id="5se-Fr-Yq9"/>
+                            <constraint firstAttribute="trailing" secondItem="Bdg-e1-egM" secondAttribute="trailing" constant="20" id="N5g-6E-Rvl"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YUh-XS-NR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2553" y="-55"/>
+        </scene>
+        <!--Only Gradients-->
+        <scene sceneID="EdI-aI-KOM">
+            <objects>
+                <viewController title="Only Gradients" id="Tkx-hT-lmn" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XYb-ht-rXY"/>
+                        <viewControllerLayoutGuide type="bottom" id="NDO-Ir-Kgb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nnE-u2-45h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZd-Cd-qUk" customClass="RangeUISlider" customModule="RangeUISlider">
+                                <rect key="frame" x="30" y="273.5" width="315" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="4zz-pf-TQL"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeSelectedGradientColor1">
+                                        <color key="value" red="1" green="1" blue="0.035501700679999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeSelectedGradientColor2">
+                                        <color key="value" red="0.99568965519999997" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="rangeSelectedGradientStartPoint">
+                                        <point key="value" x="0.0" y="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="rangeSelectedGradientEndPoint">
+                                        <point key="value" x="0.0" y="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeNotSelectedGradientColor1">
+                                        <color key="value" red="0.86325467690000002" green="0.21829825680000001" blue="0.74614689629999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeNotSelectedGradientColor2">
+                                        <color key="value" red="0.55686277149999996" green="0.35294118520000001" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="rangeNotSelectedGradientStartPoint">
+                                        <point key="value" x="0.0" y="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="rangeNotSelectedGradientEndPoint">
+                                        <point key="value" x="0.0" y="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobWidth">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobHeight">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobCorners">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftKnobGradientColor1">
+                                        <color key="value" red="0.37205023804567294" green="0.37824569446701811" blue="0.99568965519999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftKnobGradientColor2">
+                                        <color key="value" red="0.93725490570000003" green="0.34901961679999999" blue="0.1921568662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="leftKnobGradientStartPoint">
+                                        <point key="value" x="0.0" y="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="leftKnobGradientEndPoint">
+                                        <point key="value" x="0.0" y="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobWidth">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobHeight">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobCorners">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightKnobGradientColor1">
+                                        <color key="value" red="0.37205023799999998" green="0.37824569450000001" blue="0.99568965519999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightKnobGradientColor2">
+                                        <color key="value" red="0.93725490570000003" green="0.34901961679999999" blue="0.1921568662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="rightKnobGradientStartPoint">
+                                        <point key="value" x="0.0" y="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="rightKnobGradientEndPoint">
+                                        <point key="value" x="0.0" y="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barHeight">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barCorners">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yZd-Cd-qUk" firstAttribute="centerY" secondItem="nnE-u2-45h" secondAttribute="centerY" id="34r-Z1-WAf"/>
+                            <constraint firstAttribute="trailing" secondItem="yZd-Cd-qUk" secondAttribute="trailing" constant="30" id="Lvg-2u-uYp"/>
+                            <constraint firstItem="yZd-Cd-qUk" firstAttribute="leading" secondItem="nnE-u2-45h" secondAttribute="leading" constant="30" id="adq-Wd-uZ0"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RVt-dK-6gV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2553" y="609"/>
+        </scene>
+        <!--Change Knobs Programmatic View Controller-->
+        <scene sceneID="MR2-3S-4kX">
+            <objects>
+                <viewController id="HX8-Hb-IrR" customClass="ChangeKnobsProgrammaticViewController" customModule="RangeUISliderDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Afg-58-x2W"/>
+                        <viewControllerLayoutGuide type="bottom" id="RR1-Z8-gUs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3OV-KR-m6z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="awc-Hc-Hpm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bzk-xa-ERc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2727" y="1344"/>
+        </scene>
+        <!--Programmatic setup-->
+        <scene sceneID="fkj-fM-Eet">
+            <objects>
+                <viewController title="Programmatic setup" id="dWr-eS-hUn" customClass="SetupProgrammaticViewController" customModule="RangeUISliderDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MiD-eI-xQc"/>
+                        <viewControllerLayoutGuide type="bottom" id="HMp-d8-G1l"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DpU-o7-DkA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5U7-Ok-IBA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2490" y="2099"/>
+        </scene>
+        <!--InsideTableView-->
+        <scene sceneID="v5Z-OY-1zw">
+            <objects>
+                <tableViewController title="InsideTableView" id="RLA-sf-Itw" customClass="SliderInsideTableViewViewController" customModule="RangeUISliderDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="I9c-sr-esf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CellWithSlider" id="ewv-mI-oXT" customClass="CellWithSlider" customModule="RangeUISliderDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ewv-mI-oXT" id="k2a-7i-CaJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-LP-sky" userLabel="Middle Marker">
+                                            <rect key="frame" x="184.5" y="-3.5" width="6" height="51"/>
+                                            <color key="backgroundColor" systemColor="systemTealColor"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="middleMarker"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="6" id="vbN-3m-cvl"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgB-Wb-TOH" customClass="RangeUISlider" customModule="RangeUISlider">
+                                            <rect key="frame" x="67" y="0.0" width="240" height="44"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="RangeUISliderInsideTableView"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="leftKnobWidth">
+                                                    <real key="value" value="30"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="leftKnobHeight">
+                                                    <real key="value" value="30"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="leftKnobCorners">
+                                                    <real key="value" value="15"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="leftKnobGradientColor1">
+                                                    <color key="value" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="leftKnobGradientColor2">
+                                                    <color key="value" red="0.35549776290000001" green="1" blue="0.64925505490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="point" keyPath="leftKnobGradientStartPoint">
+                                                    <point key="value" x="1" y="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="rightKnobWidth">
+                                                    <real key="value" value="30"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="rightKnobHeight">
+                                                    <real key="value" value="30"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="rightKnobCorners">
+                                                    <real key="value" value="15"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="rightKnobGradientColor1">
+                                                    <color key="value" red="0.35549776290000001" green="1" blue="0.64925505490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="rightKnobGradientColor2">
+                                                    <color key="value" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="point" keyPath="rightKnobGradientStartPoint">
+                                                    <point key="value" x="1" y="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="barHeight">
+                                                    <real key="value" value="16"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="barCorners">
+                                                    <real key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYs-aK-7r9">
+                                            <rect key="frame" x="323" y="11" width="42" height="21.5"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="minValueSelected"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="42" id="9A6-Rd-Eun"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Zf-Vh-GOf">
+                                            <rect key="frame" x="16" y="11" width="42" height="21"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="maxValueSelected"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="42" id="BMW-EV-2kP"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="4Zf-Vh-GOf" firstAttribute="top" secondItem="k2a-7i-CaJ" secondAttribute="top" constant="11" id="8gu-nd-Cjc"/>
+                                        <constraint firstItem="aHV-LP-sky" firstAttribute="centerY" secondItem="k2a-7i-CaJ" secondAttribute="centerY" id="Cmc-Nw-YGe"/>
+                                        <constraint firstItem="pgB-Wb-TOH" firstAttribute="centerY" secondItem="k2a-7i-CaJ" secondAttribute="centerY" id="ERx-nM-TIJ"/>
+                                        <constraint firstItem="rYs-aK-7r9" firstAttribute="top" secondItem="k2a-7i-CaJ" secondAttribute="top" constant="11" id="K0v-E0-uI4"/>
+                                        <constraint firstItem="4Zf-Vh-GOf" firstAttribute="leading" secondItem="k2a-7i-CaJ" secondAttribute="leading" constant="16" id="L7k-MY-Lhz"/>
+                                        <constraint firstItem="aHV-LP-sky" firstAttribute="height" secondItem="k2a-7i-CaJ" secondAttribute="height" multiplier="1.14943" id="NFs-eb-Dfw"/>
+                                        <constraint firstAttribute="trailing" secondItem="4Zf-Vh-GOf" secondAttribute="trailing" constant="317" id="Uk6-Mj-2fE"/>
+                                        <constraint firstAttribute="bottom" secondItem="4Zf-Vh-GOf" secondAttribute="bottom" constant="12" id="a1W-m5-wIM"/>
+                                        <constraint firstItem="pgB-Wb-TOH" firstAttribute="leading" secondItem="k2a-7i-CaJ" secondAttribute="leading" constant="67" id="a29-1c-smh"/>
+                                        <constraint firstAttribute="trailing" secondItem="pgB-Wb-TOH" secondAttribute="trailing" constant="68" id="exw-dT-wad"/>
+                                        <constraint firstItem="pgB-Wb-TOH" firstAttribute="height" secondItem="k2a-7i-CaJ" secondAttribute="height" id="kbV-Jk-fpn"/>
+                                        <constraint firstItem="aHV-LP-sky" firstAttribute="centerX" secondItem="k2a-7i-CaJ" secondAttribute="centerX" id="liB-cv-8cv"/>
+                                        <constraint firstAttribute="trailing" secondItem="rYs-aK-7r9" secondAttribute="trailing" constant="10" id="q4o-bO-IkC"/>
+                                        <constraint firstAttribute="bottom" secondItem="rYs-aK-7r9" secondAttribute="bottom" constant="11.5" id="uYg-uR-XJX"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="maxValueSelectedLabel" destination="rYs-aK-7r9" id="fJm-ZO-MCk"/>
+                                    <outlet property="minValueSelectedLabel" destination="4Zf-Vh-GOf" id="Ruv-Fk-6jO"/>
+                                    <outlet property="rangeUISlider" destination="pgB-Wb-TOH" id="0Mv-ia-JyL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RLA-sf-Itw" id="N0j-yv-VZE"/>
+                            <outlet property="delegate" destination="RLA-sf-Itw" id="xUZ-7A-wII"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="agj-e6-6pt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2490" y="2808"/>
+        </scene>
+        <!--Only Colors-->
+        <scene sceneID="V20-WS-ZRK">
+            <objects>
+                <viewController title="Only Colors" id="jYc-kW-hsO" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8pt-QD-gLJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="BGP-km-ERb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="19t-oo-ady">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7w-sD-jpx" customClass="RangeUISlider" customModule="RangeUISlider">
+                                <rect key="frame" x="15" y="127" width="345" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="pRf-ax-Ap0"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeSelectedColor">
+                                        <color key="value" red="0.47450980539999998" green="0.8392156959" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeNotSelectedColor">
+                                        <color key="value" red="0.28101084180000002" green="0.21829825680000001" blue="0.74614689629999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobWidth">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobHeight">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobCorners">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftKnobColor">
+                                        <color key="value" red="0.0" green="0.29295443329999998" blue="0.61750000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftShadowColor">
+                                        <color key="value" systemColor="darkTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="leftShadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftShadowRadius">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftShadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightKnobColor">
+                                        <color key="value" red="0.0" green="0.29295443329999998" blue="0.61750000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobWidth">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobHeight">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobCorners">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightShadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="rightShadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightShadowRadius">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barHeight">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barLeading">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barTrailing">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barCorners">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barShadowOpacity">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barShadowColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="barShadowOffset">
+                                        <size key="value" width="0.0" height="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JH2-VG-yNE" customClass="RangeUISlider" customModule="RangeUISlider">
+                                <rect key="frame" x="15" y="293.5" width="345" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="5ak-Pd-T3u"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barHeight">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeSelectedColor">
+                                        <color key="value" red="1" green="0.64756011960000004" blue="0.024876922369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeNotSelectedColor">
+                                        <color key="value" red="0.6474609375" green="0.42061303905770003" blue="0.012292048208219671" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftKnobColor">
+                                        <color key="value" red="0.6474609375" green="0.29729824643566949" blue="0.38843987879908037" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobCorners">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightKnobColor">
+                                        <color key="value" red="0.6474609375" green="0.29729824643566949" blue="0.38843987879908037" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobCorners">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barCorners">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJz-9s-q9J" customClass="RangeUISlider" customModule="RangeUISlider">
+                                <rect key="frame" x="15" y="477" width="345" height="80"/>
+                                <color key="backgroundColor" red="0.74969082850000002" green="0.77230500400000002" blue="0.79139975119999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="oqF-JR-6YZ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="containerCorners">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftKnobColor">
+                                        <color key="value" red="0.80910156249999998" green="0.0078553549757281512" blue="0.0078553549757281512" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightKnobColor">
+                                        <color key="value" red="0.80910156249999998" green="0.0078553549759999997" blue="0.0078553549759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeSelectedColor">
+                                        <color key="value" red="0.55026526969822209" green="0.76759765619999998" blue="0.29333461717321052" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeNotSelectedColor">
+                                        <color key="value" red="0.37173203409517508" green="0.65992184850477686" blue="0.76822840209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barHeight">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barCorners">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobWidth">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobHeight">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobCorners">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobWidth">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobHeight">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobCorners">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barLeading">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barTrailing">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="scaleMinValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="scaleMaxValue">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="defaultValueLeftKnob">
+                                        <real key="value" value="35"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="defaultValueRightKnob">
+                                        <real key="value" value="65"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kJz-9s-q9J" firstAttribute="centerY" secondItem="19t-oo-ady" secondAttribute="centerY" multiplier="1.55" id="2f1-fh-6CL"/>
+                            <constraint firstItem="JH2-VG-yNE" firstAttribute="centerY" secondItem="19t-oo-ady" secondAttribute="centerY" id="3IT-tD-Ng3"/>
+                            <constraint firstAttribute="trailing" secondItem="I7w-sD-jpx" secondAttribute="trailing" constant="15" id="4JX-06-kXM"/>
+                            <constraint firstItem="kJz-9s-q9J" firstAttribute="leading" secondItem="19t-oo-ady" secondAttribute="leading" constant="15" id="8Qq-Gi-1iQ"/>
+                            <constraint firstAttribute="trailing" secondItem="kJz-9s-q9J" secondAttribute="trailing" constant="15" id="Krq-46-eOp"/>
+                            <constraint firstItem="JH2-VG-yNE" firstAttribute="leading" secondItem="19t-oo-ady" secondAttribute="leading" constant="15" id="Xf8-Vg-YfP"/>
+                            <constraint firstItem="I7w-sD-jpx" firstAttribute="leading" secondItem="19t-oo-ady" secondAttribute="leading" constant="15" id="bYc-gQ-9DK"/>
+                            <constraint firstAttribute="trailing" secondItem="JH2-VG-yNE" secondAttribute="trailing" constant="15" id="gFB-pf-kY8"/>
+                            <constraint firstItem="I7w-sD-jpx" firstAttribute="centerY" secondItem="19t-oo-ady" secondAttribute="centerY" multiplier="0.5" id="iWc-MS-gKf"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u5u-ow-qKu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2553" y="-752"/>
+        </scene>
+        <!--Grouped features-->
+        <scene sceneID="HXG-yE-aj3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="J0W-p3-jl5" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Grouped features" image="tabbarIcon" selectedImage="tabbarIcon" id="NRU-vO-tMe"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JGV-6H-Ukh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Vf0-bA-VyT" kind="relationship" relationship="rootViewController" id="WAo-Qj-qZE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ArA-CT-HRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="645.60000000000002" y="704.79760119940033"/>
+        </scene>
+        <!--Change Scale Programmatic View Controller-->
+        <scene sceneID="xgV-r8-PBM">
+            <objects>
+                <viewController id="IzU-JN-Igw" customClass="ChangeScaleProgrammaticViewController" customModule="RangeUISliderDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zn7-71-4aA"/>
+                        <viewControllerLayoutGuide type="bottom" id="cb5-Y6-Cum"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cjF-c7-hUB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Xig-pF-h3p"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NTR-oG-1dO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3697" y="1397"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="knob" width="87" height="87"/>
+        <image name="knobMetallic" width="197" height="197"/>
+        <image name="rangeNotSelected" width="6" height="21.5"/>
+        <image name="rangeSelected" width="6" height="21.5"/>
+        <image name="tabbarIcon" width="17.5" height="20"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
