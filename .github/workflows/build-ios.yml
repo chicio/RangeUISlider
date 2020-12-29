@@ -15,6 +15,7 @@ jobs:
       - name: Build iOS Demo
         run: |
            set -o pipefail && xcodebuild -project RangeUISlider.xcodeproj -scheme RangeUISliderDemo clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -destination 'platform=iOS Simulator,name=iPhone 8,OS=latest' | xcpretty
+      -
       - name: Behaviour Test Plan
         run: |
            set -o pipefail && xcodebuild -project RangeUISlider.xcodeproj -scheme RangeUISlider clean test -testPlan BehaviourTestPlan CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -destination 'platform=iOS Simulator,name=iPhone 8,OS=latest' | xcpretty

@@ -22,6 +22,8 @@ class ProgrammaticKnobChangeTests: XCTestCase {
         _ = app.staticTexts["minValueSelected"].waitForExistence(timeout: 5)
         _ = app.staticTexts["maxValueSelected"].waitForExistence(timeout: 5)
         
+        sleep(5)
+        
         expectation(
             for: NSPredicate(format: "self > 43.0 AND self < 47.0"),
             evaluatedWith: (app.staticTexts["minValueSelected"].label as NSString).floatValue

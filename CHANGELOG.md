@@ -7,6 +7,8 @@ Release date: 2021-XX-XX.
 #### Added
 - New UI Test target to check custom behaviour of RangeUISlider
 - Added UI Test plans to CI
+- New Unit test target to test classes that contains extracted logic from RangeUISlider main class
+- Added unit test target to CI
 
 ## [1.12.1](https://github.com/chicio/RangeUISlider/releases/tag/1.12.1)
 Release date: 2020-12-04.
