@@ -13,6 +13,8 @@
 		459CBEB7259B638300FCA5AB /* ProgrammaticScaleChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBEB6259B638200FCA5AB /* ProgrammaticScaleChangeTests.swift */; };
 		459CBEF7259B79D000FCA5AB /* RangeSelectedCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBEF6259B79D000FCA5AB /* RangeSelectedCalculatorTest.swift */; };
 		459CBEF9259B79D000FCA5AB /* RangeUISlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E215241E8E812E00F0B8B9 /* RangeUISlider.framework */; platformFilter = ios; };
+		459CBF13259B7DDD00FCA5AB /* StepCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBF12259B7DDD00FCA5AB /* StepCalculator.swift */; };
+		459CBF1C259B7FD700FCA5AB /* StepCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBF1B259B7FD700FCA5AB /* StepCalculatorTest.swift */; };
 		45AA09FC225547CE005CE6EE /* RangeSelectedCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA09FB225547CE005CE6EE /* RangeSelectedCalculator.swift */; };
 		45E215291E8E812E00F0B8B9 /* RangeUISlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E215271E8E812E00F0B8B9 /* RangeUISlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45E215351E8E86BD00F0B8B9 /* RangeUISlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E215341E8E86BD00F0B8B9 /* RangeUISlider.swift */; };
@@ -92,6 +94,8 @@
 		459CBEF6259B79D000FCA5AB /* RangeSelectedCalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSelectedCalculatorTest.swift; sourceTree = "<group>"; };
 		459CBEF8259B79D000FCA5AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		459CBF05259B7A4700FCA5AB /* UnitTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; name = UnitTestPlan.xctestplan; path = TestPlans/UnitTestPlan.xctestplan; sourceTree = SOURCE_ROOT; };
+		459CBF12259B7DDD00FCA5AB /* StepCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCalculator.swift; sourceTree = "<group>"; };
+		459CBF1B259B7FD700FCA5AB /* StepCalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCalculatorTest.swift; sourceTree = "<group>"; };
 		45AA09FB225547CE005CE6EE /* RangeSelectedCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSelectedCalculator.swift; sourceTree = "<group>"; };
 		45BD66D1209B60D900A19D22 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		45BD66D2209B60DA00A19D22 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				459CBEF6259B79D000FCA5AB /* RangeSelectedCalculatorTest.swift */,
+				459CBF1B259B7FD700FCA5AB /* StepCalculatorTest.swift */,
 				459CBEF8259B79D000FCA5AB /* Info.plist */,
 			);
 			path = RangeUISliderTests;
@@ -232,11 +237,12 @@
 		45E215261E8E812E00F0B8B9 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				45AA09FB225547CE005CE6EE /* RangeSelectedCalculator.swift */,
+				459CBF12259B7DDD00FCA5AB /* StepCalculator.swift */,
 				5F7B1B741F7EEEFD00D19E23 /* Bar.swift */,
 				5F7B1B761F7EEF8800D19E23 /* Gradient.swift */,
 				5F7B1B781F7EF0A600D19E23 /* Knob.swift */,
 				5F7B1B7A1F7EF14A00D19E23 /* Progress.swift */,
-				45AA09FB225547CE005CE6EE /* RangeSelectedCalculator.swift */,
 				5F7B1B721F7EEE7E00D19E23 /* RangeUISliderDelegate.swift */,
 				45E215341E8E86BD00F0B8B9 /* RangeUISlider.swift */,
 				45E215271E8E812E00F0B8B9 /* RangeUISlider.h */,
@@ -464,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				459CBEF7259B79D000FCA5AB /* RangeSelectedCalculatorTest.swift in Sources */,
+				459CBF1C259B7FD700FCA5AB /* StepCalculatorTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +483,7 @@
 				5F7B1B791F7EF0A600D19E23 /* Knob.swift in Sources */,
 				5F7B1B771F7EEF8800D19E23 /* Gradient.swift in Sources */,
 				5F7B1B731F7EEE7E00D19E23 /* RangeUISliderDelegate.swift in Sources */,
+				459CBF13259B7DDD00FCA5AB /* StepCalculator.swift in Sources */,
 				45AA09FC225547CE005CE6EE /* RangeSelectedCalculator.swift in Sources */,
 				5F7B1B7B1F7EF14A00D19E23 /* Progress.swift in Sources */,
 			);

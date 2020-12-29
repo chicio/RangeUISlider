@@ -478,8 +478,9 @@ import UIKit
     private let rightProgressView: Progress = Progress()
     private var previousRangeSelectedValues: RangeSelected = (0, 0)
     private lazy var scale = scaleMaxValue - scaleMinValue
-    private lazy var numberOfSteps: CGFloat = calculateNumberOfSteps()
-    private lazy var stepWidth: CGFloat = calculateStepWidth()
+    private lazy var stepCalculator = StepCalculator()
+    private lazy var numberOfSteps: CGFloat = stepCalculator.calculateNumberOfSteps(scale: scale, stepIncrement: stepIncrement)
+    private lazy var stepWidth: CGFloat = stepCalculator.calculateStepWidth(barWidth: bar.frame.width, numberOfSteps: numberOfSteps)
     private lazy var rangeSelectedCalculator: RangeSelectedCalculator = RangeSelectedCalculator(
         scale: scale,
         scaleMinValue: scaleMinValue
@@ -639,30 +640,6 @@ import UIKit
         
         NSLayoutConstraint.activate(constraints)
         
-    }
-    
-    private func calculateNumberOfSteps() -> CGFloat {
-        var numberOfStepsCalculated: CGFloat = 0
-        if isAValidStepIncrement() {
-            numberOfStepsCalculated = scale / stepIncrement
-        }
-        return numberOfStepsCalculated
-    }
-    
-    private func isAValidStepIncrement() -> Bool {
-        return stepIncrement > 0 && stepIncrement <= scale
-    }
-    
-    private func calculateStepWidth() -> CGFloat {
-        var stepWidthCalculated: CGFloat = 1.0
-        if(stepIncrementIsNeeded()) {
-            stepWidthCalculated = bar.frame.width / numberOfSteps
-        }
-        return stepWidthCalculated
-    }
-    
-    private func stepIncrementIsNeeded() -> Bool {
-        return numberOfSteps > 0
     }
     
     private func addGradientToNotSelectedRangeIfNeeded() {
