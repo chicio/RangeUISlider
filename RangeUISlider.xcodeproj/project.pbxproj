@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		455BF11C259B43170026BE56 /* RightToLeftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BF11B259B43170026BE56 /* RightToLeftTests.swift */; };
+		455BF125259B44F80026BE56 /* InsideTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BF124259B44F80026BE56 /* InsideTableViewTests.swift */; };
+		455BF12E259B4B2D0026BE56 /* ProgrammaticKnobChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BF12D259B4B2D0026BE56 /* ProgrammaticKnobChangeTests.swift */; };
+		459CBEB7259B638300FCA5AB /* ProgrammaticScaleChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBEB6259B638200FCA5AB /* ProgrammaticScaleChangeTests.swift */; };
 		45AA09FC225547CE005CE6EE /* RangeSelectedCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA09FB225547CE005CE6EE /* RangeSelectedCalculator.swift */; };
 		45E215291E8E812E00F0B8B9 /* RangeUISlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E215271E8E812E00F0B8B9 /* RangeUISlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45E215351E8E86BD00F0B8B9 /* RangeUISlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E215341E8E86BD00F0B8B9 /* RangeUISlider.swift */; };
-		45F064862599E3CC007B25A7 /* RangeUISliderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F064852599E3CC007B25A7 /* RangeUISliderUITests.swift */; };
+		45F064862599E3CC007B25A7 /* MixedFeaturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F064852599E3CC007B25A7 /* MixedFeaturesTests.swift */; };
 		45F064982599E511007B25A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F064972599E511007B25A7 /* AppDelegate.swift */; };
 		45F0649A2599E511007B25A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F064992599E511007B25A7 /* SceneDelegate.swift */; };
 		45F0649F2599E511007B25A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F0649D2599E511007B25A7 /* Main.storyboard */; };
@@ -66,7 +70,14 @@
 /* Begin PBXFileReference section */
 		4548B54B252DD68F0068E389 /* build-ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "build-ios.yml"; sourceTree = "<group>"; };
 		4548B54D252DE5720068E389 /* generate_docs */ = {isa = PBXFileReference; lastKnownFileType = text; path = generate_docs; sourceTree = "<group>"; };
+		455BF11B259B43170026BE56 /* RightToLeftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightToLeftTests.swift; sourceTree = "<group>"; };
+		455BF121259B43EA0026BE56 /* RightToLeftTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = RightToLeftTestPlan.xctestplan; sourceTree = "<group>"; };
+		455BF124259B44F80026BE56 /* InsideTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideTableViewTests.swift; sourceTree = "<group>"; };
+		455BF12D259B4B2D0026BE56 /* ProgrammaticKnobChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticKnobChangeTests.swift; sourceTree = "<group>"; };
+		455BF135259B4BCC0026BE56 /* ProgrammaticChangesTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProgrammaticChangesTestPlan.xctestplan; sourceTree = "<group>"; };
+		455FCF01259B3F2000FCA71E /* BehaviourTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BehaviourTestPlan.xctestplan; sourceTree = "<group>"; };
 		458E1B90257A9CC800165AA7 /* RangeUISlider.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RangeUISlider.podspec; sourceTree = "<group>"; };
+		459CBEB6259B638200FCA5AB /* ProgrammaticScaleChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticScaleChangeTests.swift; sourceTree = "<group>"; };
 		45AA09FB225547CE005CE6EE /* RangeSelectedCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSelectedCalculator.swift; sourceTree = "<group>"; };
 		45BD66D1209B60D900A19D22 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		45BD66D2209B60DA00A19D22 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -78,7 +89,7 @@
 		45E215341E8E86BD00F0B8B9 /* RangeUISlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeUISlider.swift; sourceTree = "<group>"; };
 		45E603C4233A432C00E7465D /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		45F064832599E3CC007B25A7 /* RangeUISliderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RangeUISliderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		45F064852599E3CC007B25A7 /* RangeUISliderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeUISliderUITests.swift; sourceTree = "<group>"; };
+		45F064852599E3CC007B25A7 /* MixedFeaturesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedFeaturesTests.swift; sourceTree = "<group>"; };
 		45F064872599E3CC007B25A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45F064952599E511007B25A7 /* RangeUISliderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RangeUISliderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45F064972599E511007B25A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +147,16 @@
 			path = .github/workflows;
 			sourceTree = "<group>";
 		};
+		455FCF00259B3EFA00FCA71E /* TestPlans */ = {
+			isa = PBXGroup;
+			children = (
+				455BF121259B43EA0026BE56 /* RightToLeftTestPlan.xctestplan */,
+				455FCF01259B3F2000FCA71E /* BehaviourTestPlan.xctestplan */,
+				455BF135259B4BCC0026BE56 /* ProgrammaticChangesTestPlan.xctestplan */,
+			);
+			path = TestPlans;
+			sourceTree = "<group>";
+		};
 		45E2151A1E8E812E00F0B8B9 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +167,7 @@
 				4548B54D252DE5720068E389 /* generate_docs */,
 				458E1B90257A9CC800165AA7 /* RangeUISlider.podspec */,
 				45E603C4233A432C00E7465D /* Package.swift */,
+				455FCF00259B3EFA00FCA71E /* TestPlans */,
 				4548B54A252DD6770068E389 /* workflows */,
 				45E215261E8E812E00F0B8B9 /* Source */,
 				45F064842599E3CC007B25A7 /* RangeUISliderUITests */,
@@ -184,7 +206,11 @@
 		45F064842599E3CC007B25A7 /* RangeUISliderUITests */ = {
 			isa = PBXGroup;
 			children = (
-				45F064852599E3CC007B25A7 /* RangeUISliderUITests.swift */,
+				45F064852599E3CC007B25A7 /* MixedFeaturesTests.swift */,
+				455BF124259B44F80026BE56 /* InsideTableViewTests.swift */,
+				455BF11B259B43170026BE56 /* RightToLeftTests.swift */,
+				455BF12D259B4B2D0026BE56 /* ProgrammaticKnobChangeTests.swift */,
+				459CBEB6259B638200FCA5AB /* ProgrammaticScaleChangeTests.swift */,
 				45F064872599E3CC007B25A7 /* Info.plist */,
 			);
 			path = RangeUISliderUITests;
@@ -380,7 +406,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45F064862599E3CC007B25A7 /* RangeUISliderUITests.swift in Sources */,
+				455BF11C259B43170026BE56 /* RightToLeftTests.swift in Sources */,
+				455BF12E259B4B2D0026BE56 /* ProgrammaticKnobChangeTests.swift in Sources */,
+				455BF125259B44F80026BE56 /* InsideTableViewTests.swift in Sources */,
+				45F064862599E3CC007B25A7 /* MixedFeaturesTests.swift in Sources */,
+				459CBEB7259B638300FCA5AB /* ProgrammaticScaleChangeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

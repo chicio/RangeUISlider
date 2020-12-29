@@ -11,10 +11,13 @@ import RangeUISlider
 
 class ChangeKnobsProgrammaticViewController: UIViewController, RangeUISliderDelegate {
     private var rangeSlider: RangeUISlider!
+    private var minValueSelectedLabel: UILabel!
+    private var maxValueSelectedLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         rangeSlider = RangeUISlider(frame: CGRect(origin: CGPoint(x: 20, y: 20), size: CGSize(width: 100, height: 50)))
+        rangeSlider.accessibilityIdentifier = "RangeUISliderProgrammaticKnobChange"
         rangeSlider.translatesAutoresizingMaskIntoConstraints = false
         rangeSlider.delegate = self
         rangeSlider.scaleMinValue = 0 //If you don't set any value the default is 0
@@ -41,6 +44,18 @@ class ChangeKnobsProgrammaticViewController: UIViewController, RangeUISliderDele
         rangeSlider.rightKnobCorners = 20
         self.view.addSubview(rangeSlider)
         
+        minValueSelectedLabel = UILabel()
+        minValueSelectedLabel.translatesAutoresizingMaskIntoConstraints = false
+        minValueSelectedLabel.accessibilityIdentifier = "minValueSelected"
+        minValueSelectedLabel.text = "0.0"
+        self.view.addSubview(minValueSelectedLabel)
+
+        maxValueSelectedLabel = UILabel()
+        maxValueSelectedLabel.translatesAutoresizingMaskIntoConstraints = false
+        maxValueSelectedLabel.accessibilityIdentifier = "maxValueSelected"
+        maxValueSelectedLabel.text = "0.0"
+        self.view.addSubview(maxValueSelectedLabel)
+
         //Setup slide with programmatic autolayout.
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: rangeSlider!,
@@ -70,41 +85,75 @@ class ChangeKnobsProgrammaticViewController: UIViewController, RangeUISliderDele
                                toItem: nil,
                                attribute: .notAnAttribute,
                                multiplier: 1.0,
-                               constant: 50)
+                               constant: 50),
+            NSLayoutConstraint(item: minValueSelectedLabel!,
+                               attribute: .top,
+                               relatedBy: .equal,
+                               toItem: rangeSlider,
+                               attribute: .bottom,
+                               multiplier: 1.0,
+                               constant: 20),
+            NSLayoutConstraint(item: minValueSelectedLabel!,
+                               attribute: .leading,
+                               relatedBy: .equal,
+                               toItem: self.view,
+                               attribute: .leading,
+                               multiplier: 1.0,
+                               constant: 20),
+            NSLayoutConstraint(item: minValueSelectedLabel!,
+                               attribute: .trailing,
+                               relatedBy: .equal,
+                               toItem: self.view,
+                               attribute: .trailing,
+                               multiplier: 1.0,
+                               constant: -20),
+            NSLayoutConstraint(item: minValueSelectedLabel!,
+                               attribute: .height,
+                               relatedBy: .equal,
+                               toItem: nil,
+                               attribute: .notAnAttribute,
+                               multiplier: 1.0,
+                               constant: 30),
+            NSLayoutConstraint(item: maxValueSelectedLabel!,
+                               attribute: .top,
+                               relatedBy: .equal,
+                               toItem: minValueSelectedLabel,
+                               attribute: .bottom,
+                               multiplier: 1.0,
+                               constant: 20),
+            NSLayoutConstraint(item: maxValueSelectedLabel!,
+                               attribute: .leading,
+                               relatedBy: .equal,
+                               toItem: self.view,
+                               attribute: .leading,
+                               multiplier: 1.0,
+                               constant: 20),
+            NSLayoutConstraint(item: maxValueSelectedLabel!,
+                               attribute: .trailing,
+                               relatedBy: .equal,
+                               toItem: self.view,
+                               attribute: .trailing,
+                               multiplier: 1.0,
+                               constant: -20),
+            NSLayoutConstraint(item: maxValueSelectedLabel!,
+                               attribute: .height,
+                               relatedBy: .equal,
+                               toItem: nil,
+                               attribute: .notAnAttribute,
+                               multiplier: 1.0,
+                               constant: 30)
         ])
-        
-        self.rangeSlider.changeLeftKnob(value: 35.0)
-        self.rangeSlider.changeRightKnob(value: 75.0)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.rangeSlider.changeLeftKnob(value: 45.0)
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            //Invalid left values
-            self.rangeSlider.changeLeftKnob(value: -45.0)
-            self.rangeSlider.changeLeftKnob(value: 78.0)
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             self.rangeSlider.changeRightKnob(value: 90.0)
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
-            //Invalid right values
-            self.rangeSlider.changeRightKnob(value: 10.0)
-            self.rangeSlider.changeRightKnob(value: 190.0)
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
-            //set all together
-            self.rangeSlider.changeLeftKnob(value: 15.0)
-            self.rangeSlider.changeRightKnob(value: 85.0)
         }
     }
     
     func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
         print("FINISH min: \(minValueSelected) -  max: \(maxValueSelected) - identifier: \(slider.identifier)")
+        minValueSelectedLabel.text = minValueSelected.description
+        maxValueSelectedLabel.text = maxValueSelected.description
     }
     
     func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {

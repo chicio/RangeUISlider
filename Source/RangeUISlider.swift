@@ -542,6 +542,7 @@ import UIKit
                 rightKnobPosition: rightKnob.xPositionConstraint.constant,
                 barWidth: bar.frame.width
             )
+            rangeSelectionFinished()
         }
     }
     
@@ -558,6 +559,7 @@ import UIKit
                 rightKnobPosition: rightKnob.xPositionConstraint.constant,
                 barWidth: bar.frame.width
             )
+            rangeSelectionFinished()
         }
     }
     
@@ -787,8 +789,11 @@ import UIKit
             rightKnobPosition: rightKnob.xPositionConstraint.constant,
             barWidth: bar.frame.width
         )
-        delegate?.rangeChangeFinished(minValueSelected: rangeSelected.minValue,
-                                      maxValueSelected: rangeSelected.maxValue,
-                                      slider: self)
+        
+        if(!rangeSelected.maxValue.isNaN && !rangeSelected.maxValue.isNaN) {
+            delegate?.rangeChangeFinished(minValueSelected: rangeSelected.minValue,
+                                          maxValueSelected: rangeSelected.maxValue,
+                                          slider: self)
+        }
     }
 }

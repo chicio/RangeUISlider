@@ -21,17 +21,14 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Mr-cc-gmO" userLabel="End Marker">
                                 <rect key="frame" x="309" y="20" width="6" height="627"/>
-                                <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <accessibility key="accessibilityConfiguration" identifier="endMarker"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hrj-qG-B2M" userLabel="Start Marker">
                                 <rect key="frame" x="60" y="20" width="6" height="627"/>
-                                <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <accessibility key="accessibilityConfiguration" identifier="startMarker"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qlf-kb-ke1" userLabel="Middle Marker">
                                 <rect key="frame" x="184.5" y="24.5" width="6" height="618"/>
-                                <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <accessibility key="accessibilityConfiguration" identifier="middleMarker"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="6" id="JuD-Jk-Wra"/>
@@ -179,6 +176,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPQ-Vh-eUa" customClass="RangeUISlider" customModule="RangeUISlider">
                                 <rect key="frame" x="20" y="308.5" width="335" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="RangeUISliderStepIncrement"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="NpT-2b-hwo"/>
                                 </constraints>
@@ -476,6 +474,7 @@
                         <outlet property="maxValueSelectedLabel" destination="EpL-Zo-8qW" id="BAq-Hi-Tf0"/>
                         <outlet property="minValueSelectedLabel" destination="z5i-lw-uPj" id="0ig-Fh-nwU"/>
                         <outlet property="rangeSliderCustomScale" destination="u4Y-av-gwa" id="9td-zf-N4p"/>
+                        <outlet property="rangeSliderStepIncrement" destination="jPQ-Vh-eUa" id="Rev-1n-uIp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -801,15 +800,24 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CellWithSlider" id="ewv-mI-oXT" customClass="CellWithSlider" customModule="RangeUISliderDemo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ewv-mI-oXT" id="k2a-7i-CaJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-LP-sky" userLabel="Middle Marker">
+                                            <rect key="frame" x="184.5" y="-3.5" width="6" height="51"/>
+                                            <color key="backgroundColor" systemColor="systemTealColor"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="middleMarker"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="6" id="vbN-3m-cvl"/>
+                                            </constraints>
+                                        </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgB-Wb-TOH" customClass="RangeUISlider" customModule="RangeUISlider">
-                                            <rect key="frame" x="67" y="0.0" width="240" height="43.5"/>
+                                            <rect key="frame" x="67" y="0.0" width="240" height="44"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="RangeUISliderInsideTableView"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="leftKnobWidth">
                                                     <real key="value" value="30"/>
@@ -855,15 +863,47 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYs-aK-7r9">
+                                            <rect key="frame" x="323" y="11" width="42" height="21.5"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="minValueSelected"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="42" id="9A6-Rd-Eun"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Zf-Vh-GOf">
+                                            <rect key="frame" x="16" y="11" width="42" height="21"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="maxValueSelected"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="42" id="BMW-EV-2kP"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="4Zf-Vh-GOf" firstAttribute="top" secondItem="k2a-7i-CaJ" secondAttribute="top" constant="11" id="8gu-nd-Cjc"/>
+                                        <constraint firstItem="aHV-LP-sky" firstAttribute="centerY" secondItem="k2a-7i-CaJ" secondAttribute="centerY" id="Cmc-Nw-YGe"/>
                                         <constraint firstItem="pgB-Wb-TOH" firstAttribute="centerY" secondItem="k2a-7i-CaJ" secondAttribute="centerY" id="ERx-nM-TIJ"/>
+                                        <constraint firstItem="rYs-aK-7r9" firstAttribute="top" secondItem="k2a-7i-CaJ" secondAttribute="top" constant="11" id="K0v-E0-uI4"/>
+                                        <constraint firstItem="4Zf-Vh-GOf" firstAttribute="leading" secondItem="k2a-7i-CaJ" secondAttribute="leading" constant="16" id="L7k-MY-Lhz"/>
+                                        <constraint firstItem="aHV-LP-sky" firstAttribute="height" secondItem="k2a-7i-CaJ" secondAttribute="height" multiplier="1.14943" id="NFs-eb-Dfw"/>
+                                        <constraint firstAttribute="trailing" secondItem="4Zf-Vh-GOf" secondAttribute="trailing" constant="317" id="Uk6-Mj-2fE"/>
+                                        <constraint firstAttribute="bottom" secondItem="4Zf-Vh-GOf" secondAttribute="bottom" constant="12" id="a1W-m5-wIM"/>
                                         <constraint firstItem="pgB-Wb-TOH" firstAttribute="leading" secondItem="k2a-7i-CaJ" secondAttribute="leading" constant="67" id="a29-1c-smh"/>
                                         <constraint firstAttribute="trailing" secondItem="pgB-Wb-TOH" secondAttribute="trailing" constant="68" id="exw-dT-wad"/>
                                         <constraint firstItem="pgB-Wb-TOH" firstAttribute="height" secondItem="k2a-7i-CaJ" secondAttribute="height" id="kbV-Jk-fpn"/>
+                                        <constraint firstItem="aHV-LP-sky" firstAttribute="centerX" secondItem="k2a-7i-CaJ" secondAttribute="centerX" id="liB-cv-8cv"/>
+                                        <constraint firstAttribute="trailing" secondItem="rYs-aK-7r9" secondAttribute="trailing" constant="10" id="q4o-bO-IkC"/>
+                                        <constraint firstAttribute="bottom" secondItem="rYs-aK-7r9" secondAttribute="bottom" constant="11.5" id="uYg-uR-XJX"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="maxValueSelectedLabel" destination="rYs-aK-7r9" id="fJm-ZO-MCk"/>
+                                    <outlet property="minValueSelectedLabel" destination="4Zf-Vh-GOf" id="Ruv-Fk-6jO"/>
                                     <outlet property="rangeUISlider" destination="pgB-Wb-TOH" id="0Mv-ia-JyL"/>
                                 </connections>
                             </tableViewCell>

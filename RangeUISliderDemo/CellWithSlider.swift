@@ -12,4 +12,6 @@ import RangeUISlider
 
 class CellWithSlider: UITableViewCell {
     @IBOutlet weak var rangeUISlider: RangeUISlider!
+    @IBOutlet weak var minValueSelectedLabel: UILabel!
+    @IBOutlet weak var maxValueSelectedLabel: UILabel!
 }

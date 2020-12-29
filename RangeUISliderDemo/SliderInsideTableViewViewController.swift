@@ -11,7 +11,9 @@ import UIKit
 import RangeUISlider
 
 class SliderInsideTableViewViewController: UITableViewController, RangeUISliderDelegate {
-
+    private weak var minValueSelectedLabel: UILabel?
+    private weak var maxValueSelectedLabel: UILabel?
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -23,6 +25,8 @@ class SliderInsideTableViewViewController: UITableViewController, RangeUISliderD
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellWithSlider = tableView.dequeueReusableCell(withIdentifier: "CellWithSlider", for: indexPath) as! CellWithSlider
         cellWithSlider.rangeUISlider.delegate = self
+        minValueSelectedLabel = cellWithSlider.minValueSelectedLabel
+        maxValueSelectedLabel = cellWithSlider.maxValueSelectedLabel
         return cellWithSlider
     }
     
@@ -36,5 +40,7 @@ class SliderInsideTableViewViewController: UITableViewController, RangeUISliderD
 
     func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
         tableView.isScrollEnabled = true
+        minValueSelectedLabel?.text = minValueSelected.description
+        maxValueSelectedLabel?.text = maxValueSelected.description
     }
 }

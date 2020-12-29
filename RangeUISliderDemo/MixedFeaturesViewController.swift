@@ -11,11 +11,13 @@ import RangeUISlider
 
 class MixedFeaturesViewController: UIViewController, RangeUISliderDelegate {
     @IBOutlet weak var rangeSliderCustomScale: RangeUISlider!
+    @IBOutlet weak var rangeSliderStepIncrement: RangeUISlider!
     @IBOutlet weak var minValueSelectedLabel: UILabel!
     @IBOutlet weak var maxValueSelectedLabel: UILabel!
     
     override func viewDidLoad() {
         self.rangeSliderCustomScale.delegate = self
+        self.rangeSliderStepIncrement.delegate = self
     }
     
     func rangeChangeStarted() {
