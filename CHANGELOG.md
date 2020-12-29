@@ -1,6 +1,12 @@
 # Change Log
 All changes to RangeUISlider will be documented in this file.
 
+## [1.13.0](https://github.com/chicio/RangeUISlider/releases/tag/1.13.0)
+Release date: 2021-XX-XX.
+
+#### Added
+- New UI Test target to check custom behaviour of RangeUISlider
+
 ## [1.12.1](https://github.com/chicio/RangeUISlider/releases/tag/1.12.1)
 Release date: 2020-12-04.
 
