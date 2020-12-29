@@ -2,9 +2,16 @@
   "configurations" : [
     {
       "id" : "BA2D7520-BE7E-4061-AF25-41DA08A16EEF",
-      "name" : "Configuration 1",
+      "name" : "Left to right language",
       "options" : {
 
+      }
+    },
+    {
+      "id" : "B3B0DB81-1DC2-40B7-9406-344B34775D96",
+      "name" : "Right to left language",
+      "options" : {
+        "language" : "IDELaunchSchemeLanguageRLO"
       }
     }
   ],

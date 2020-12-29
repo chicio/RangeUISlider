@@ -39,6 +39,8 @@ class GroupedFeaturesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupedFeaturesCell", for: indexPath)
+        cell.accessibilityIdentifier = data[indexPath.row].description.replacingOccurrences(of: " ", with: "")
+        cell.textLabel?.accessibilityIdentifier = data[indexPath.row].description.trimmingCharacters(in: .whitespaces)
         cell.textLabel?.text = data[indexPath.row].description
         return cell
     }

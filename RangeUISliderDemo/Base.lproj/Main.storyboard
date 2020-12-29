@@ -489,6 +489,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="TabBar"/>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="LoW-mo-ca1"/>
@@ -800,14 +803,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CellWithSlider" id="ewv-mI-oXT" customClass="CellWithSlider" customModule="RangeUISliderDemo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ewv-mI-oXT" id="k2a-7i-CaJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-LP-sky" userLabel="Middle Marker">
-                                            <rect key="frame" x="184.5" y="-3.5" width="6" height="51"/>
+                                            <rect key="frame" x="184.5" y="-3.5" width="6" height="51.5"/>
                                             <color key="backgroundColor" systemColor="systemTealColor"/>
                                             <accessibility key="accessibilityConfiguration" identifier="middleMarker"/>
                                             <constraints>
@@ -815,7 +818,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgB-Wb-TOH" customClass="RangeUISlider" customModule="RangeUISlider">
-                                            <rect key="frame" x="67" y="0.0" width="240" height="44"/>
+                                            <rect key="frame" x="67" y="0.0" width="240" height="44.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <accessibility key="accessibilityConfiguration" identifier="RangeUISliderInsideTableView"/>
                                             <userDefinedRuntimeAttributes>
@@ -864,7 +867,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYs-aK-7r9">
-                                            <rect key="frame" x="323" y="11" width="42" height="21.5"/>
+                                            <rect key="frame" x="323" y="11" width="42" height="22"/>
                                             <accessibility key="accessibilityConfiguration" identifier="minValueSelected"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="42" id="9A6-Rd-Eun"/>
@@ -874,7 +877,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Zf-Vh-GOf">
-                                            <rect key="frame" x="16" y="11" width="42" height="21"/>
+                                            <rect key="frame" x="16" y="11" width="42" height="21.5"/>
                                             <accessibility key="accessibilityConfiguration" identifier="maxValueSelected"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="42" id="BMW-EV-2kP"/>
@@ -1133,7 +1136,11 @@
         <scene sceneID="HXG-yE-aj3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="J0W-p3-jl5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Grouped features" image="tabbarIcon" selectedImage="tabbarIcon" id="NRU-vO-tMe"/>
+                    <tabBarItem key="tabBarItem" title="Grouped features" image="tabbarIcon" selectedImage="tabbarIcon" id="NRU-vO-tMe">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="GroupedFeatures"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JGV-6H-Ukh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

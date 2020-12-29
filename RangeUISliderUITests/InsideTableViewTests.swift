@@ -18,10 +18,9 @@ class InsideTableViewTests: XCTestCase {
     func testInsideTableView() throws {
         let app = XCUIApplication()
         app.launch()
-        app.tabBars["Tab Bar"].buttons["Grouped features"].tap()
+        app.tabBars["TabBar"].buttons["GroupedFeatures"].tap()
+        app.tables.cells["InsideUITableView"].tap()
         let tablesQuery = app.tables
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Inside UITableView"]/*[[".cells.staticTexts[\"Inside UITableView\"]",".staticTexts[\"Inside UITableView\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
         let leftKnob = tablesQuery/*@START_MENU_TOKEN@*/.otherElements["LeftKnob"]/*[[".cells",".otherElements[\"RangeUISliderInsideTableView\"]",".otherElements[\"Bar\"].otherElements[\"LeftKnob\"]",".otherElements[\"LeftKnob\"]"],[[[-1,3],[-1,2],[-1,1,2],[-1,0,1]],[[-1,3],[-1,2],[-1,1,2]],[[-1,3],[-1,2]]],[0]]@END_MENU_TOKEN@*/.children(matching: .other).element
         let rightKnob = tablesQuery/*@START_MENU_TOKEN@*/.otherElements["RightKnob"]/*[[".cells",".otherElements[\"RangeUISliderInsideTableView\"]",".otherElements[\"Bar\"].otherElements[\"RightKnob\"]",".otherElements[\"RightKnob\"]"],[[[-1,3],[-1,2],[-1,1,2],[-1,0,1]],[[-1,3],[-1,2],[-1,1,2]],[[-1,3],[-1,2]]],[0]]@END_MENU_TOKEN@*/.children(matching: .other).element
         let middleMarker = app.tables/*@START_MENU_TOKEN@*/.otherElements["middleMarker"]/*[[".cells.otherElements[\"middleMarker\"]",".otherElements[\"middleMarker\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
@@ -38,6 +37,5 @@ class InsideTableViewTests: XCTestCase {
             evaluatedWith: (tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["maxValueSelected"]/*[[".cells",".staticTexts[\"0.0\"]",".staticTexts[\"maxValueSelected\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.label as NSString).floatValue
         )
         waitForExpectations(timeout: 5)
-        
     }
 }
