@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "BA2D7520-BE7E-4061-AF25-41DA08A16EEF",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "selectedTests" : [
+        "InsideTableViewTests\/testInsideTableView()",
+        "MixedFeaturesTests\/testCustomScale()",
+        "MixedFeaturesTests\/testStepIncrement()"
+      ],
+      "target" : {
+        "containerPath" : "container:RangeUISlider.xcodeproj",
+        "identifier" : "45F064822599E3CC007B25A7",
+        "name" : "RangeUISliderUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
