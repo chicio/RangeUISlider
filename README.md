@@ -7,7 +7,7 @@
 [![CocoaPods Doc Coverage Percentage](https://img.shields.io/cocoapods/metrics/doc-percent/RangeUISlider.svg)](https://cocoapods.org/pods/RangeUISlider)
 
 <p align="center">
-  <img width="400" height="400" src="aaaa">
+  <img width="400" height="400" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/range-ui-slider.png">
 </p>
 
 A iOS range selection slider, developed using autolayout and highly customizable using IBDesignabled and IBInspectable or programmatically.
