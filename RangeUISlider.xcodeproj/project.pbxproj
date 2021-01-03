@@ -78,11 +78,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4548B54D252DE5720068E389 /* generate_docs */ = {isa = PBXFileReference; lastKnownFileType = text; path = generate_docs; sourceTree = "<group>"; };
 		455BF124259B44F80026BE56 /* InsideTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideTableViewTests.swift; sourceTree = "<group>"; };
 		455BF12D259B4B2D0026BE56 /* ProgrammaticKnobChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticKnobChangeTests.swift; sourceTree = "<group>"; };
 		455BF135259B4BCC0026BE56 /* ProgrammaticChangesTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProgrammaticChangesTestPlan.xctestplan; sourceTree = "<group>"; };
 		455FCF01259B3F2000FCA71E /* BehaviourTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BehaviourTestPlan.xctestplan; sourceTree = "<group>"; };
+		458CD4EA25A1E2760065FDEF /* generate_docs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = generate_docs.sh; sourceTree = "<group>"; };
 		458E1B90257A9CC800165AA7 /* RangeUISlider.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RangeUISlider.podspec; sourceTree = "<group>"; };
 		459CBEB6259B638200FCA5AB /* ProgrammaticScaleChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticScaleChangeTests.swift; sourceTree = "<group>"; };
 		459CBEC4259B6A6F00FCA5AB /* build-ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "build-ios.yml"; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 				45BD66D2209B60DA00A19D22 /* CHANGELOG.md */,
 				45BD66D3209B60DA00A19D22 /* LICENSE.md */,
 				45BD66D1209B60D900A19D22 /* README.md */,
-				4548B54D252DE5720068E389 /* generate_docs.sh */,
+				458CD4EA25A1E2760065FDEF /* generate_docs.sh */,
 				458E1B90257A9CC800165AA7 /* RangeUISlider.podspec */,
 				45E603C4233A432C00E7465D /* Package.swift */,
 				459CBEC2259B6A6F00FCA5AB /* workflows */,
