@@ -33,9 +33,6 @@
             default = "YES">
          </TestPlanReference>
          <TestPlanReference
-            reference = "container:TestPlans/RightToLeftTestPlan.xctestplan">
-         </TestPlanReference>
-         <TestPlanReference
             reference = "container:TestPlans/ProgrammaticChangesTestPlan.xctestplan">
          </TestPlanReference>
          <TestPlanReference

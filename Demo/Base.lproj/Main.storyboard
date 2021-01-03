@@ -462,6 +462,7 @@
                         <segue destination="RLA-sf-Itw" kind="show" identifier="showTableViewSetupSegue" id="T5P-TY-50T"/>
                         <segue destination="HX8-Hb-IrR" kind="show" identifier="showChangeKnobProgrammaticSegue" id="l5L-tk-hZo"/>
                         <segue destination="IzU-JN-Igw" kind="show" identifier="showChangeScaleProgrammaticSegue" id="rdG-zv-TLf"/>
+                        <segue destination="Fhx-Fb-TbS" kind="show" identifier="showRightToLeftSegue" id="4Ud-Uk-2dJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z9F-n4-isO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1048,6 +1049,141 @@
             </objects>
             <point key="canvasLocation" x="3697" y="1397"/>
         </scene>
+        <!--Right To Left View Controller-->
+        <scene sceneID="j0M-lb-41K">
+            <objects>
+                <viewController id="Fhx-Fb-TbS" customClass="RightToLeftViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="soj-sJ-hNT"/>
+                        <viewControllerLayoutGuide type="bottom" id="RcT-kd-NNs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0j8-lu-CC0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbi-dp-hef" customClass="RangeUISlider" customModule="RangeUISlider">
+                                <rect key="frame" x="40" y="75" width="295" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="8cM-5f-EEt"/>
+                                    <constraint firstAttribute="width" constant="295" id="zR5-2b-1wX"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeSelectedColor">
+                                        <color key="value" systemColor="systemPinkColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rangeNotSelectedColor">
+                                        <color key="value" red="0.28101084180000002" green="0.21829825680000001" blue="0.74614689629999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobWidth">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobHeight">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftKnobCorners">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftKnobColor">
+                                        <color key="value" red="0.0" green="0.29295443329999998" blue="0.61750000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftShadowColor">
+                                        <color key="value" systemColor="darkTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="leftShadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftShadowRadius">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftShadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightKnobColor">
+                                        <color key="value" red="0.0" green="0.29295443329999998" blue="0.61750000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobWidth">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobHeight">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightKnobCorners">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightShadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="rightShadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightShadowRadius">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barHeight">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barLeading">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barTrailing">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barCorners">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barShadowOpacity">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="barShadowColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="barShadowOffset">
+                                        <size key="value" width="0.0" height="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="scaleMaxValue">
+                                        <real key="value" value="150"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="scaleMinValue">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="defaultValueLeftKnob">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="defaultValueRightKnob">
+                                        <real key="value" value="150"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdN-An-0Mu">
+                                <rect key="frame" x="40" y="163" width="295" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="cXO-do-wYy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HdN-An-0Mu" firstAttribute="trailing" secondItem="jbi-dp-hef" secondAttribute="trailing" id="OBG-t7-7qs"/>
+                            <constraint firstItem="jbi-dp-hef" firstAttribute="top" secondItem="soj-sJ-hNT" secondAttribute="bottom" constant="31" id="SYa-3u-8d2"/>
+                            <constraint firstItem="jbi-dp-hef" firstAttribute="centerX" secondItem="0j8-lu-CC0" secondAttribute="centerX" id="WXw-9Y-mcy"/>
+                            <constraint firstItem="HdN-An-0Mu" firstAttribute="leading" secondItem="jbi-dp-hef" secondAttribute="leading" id="gVV-oJ-LQ7"/>
+                            <constraint firstItem="HdN-An-0Mu" firstAttribute="top" secondItem="jbi-dp-hef" secondAttribute="bottom" constant="8" symbolic="YES" id="jzc-8M-wfX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gTe-Vm-YRF"/>
+                    <connections>
+                        <outlet property="rangeSlider" destination="jbi-dp-hef" id="WgZ-oq-FYi"/>
+                        <outlet property="selectedValuesLabel" destination="HdN-An-0Mu" id="ZMd-Lz-HVQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ES-9H-Mtg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4040.8000000000002" y="515.8920539730135"/>
+        </scene>
     </scenes>
     <resources>
         <image name="knob" width="87" height="87"/>
@@ -1060,6 +1196,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

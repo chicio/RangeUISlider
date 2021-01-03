@@ -6,11 +6,14 @@
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/RangeUISlider.svg)](https://cocoapods.org/pods/RangeUISlider)
 [![CocoaPods Doc Coverage Percentage](https://img.shields.io/cocoapods/metrics/doc-percent/RangeUISlider.svg)](https://cocoapods.org/pods/RangeUISlider)
 
+A iOS range selection slider, developed using autolayout and highly customizable using IBDesignabled and IBInspectable or programmatically. It support also RTL (right to left) languages automatically out of the box.
+
 <p align="center">
   <img width="400" height="400" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/range-ui-slider.png">
 </p>
 
 A iOS range selection slider, developed using autolayout and highly customizable using IBDesignabled and IBInspectable or programmatically.
+
 ***
 
 ### Installation

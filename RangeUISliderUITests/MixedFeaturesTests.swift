@@ -55,11 +55,11 @@ class MixedFeaturesTests: XCTestCase {
         rightKnob.press(forDuration: 0.1, thenDragTo: middleMarker)
         
         expectation(
-            for: NSPredicate(format: "self = 0"),
+            for: NSPredicate(format: "self = 0 OR self = 2.0"),
             evaluatedWith: (minValueSelectedLabel.label as NSString).floatValue
         )
         expectation(
-            for: NSPredicate(format: "self = 10"),
+            for: NSPredicate(format: "self = 10.0 OR self = 12.0"),
             evaluatedWith: (maxValueSelectedLabel.label as NSString).floatValue
         )
         waitForExpectations(timeout: 5)

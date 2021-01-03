@@ -21,8 +21,8 @@ class RangeSelectedCalculator {
     }
     
     func calculateRangeSelected(leftKnobPosition: CGFloat, rightKnobPosition: CGFloat, barWidth: CGFloat) -> RangeSelected {
-        let minValue = leftKnobPosition / barWidth
-        let maxValue = 1.0  + rightKnobPosition / barWidth
+        let minValue: CGFloat = leftKnobPosition / barWidth
+        let maxValue: CGFloat = 1.0 + rightKnobPosition / barWidth
         let scaledMinValue = linearMapping(value: minValue)
         let scaledMaxValue = linearMapping(value: maxValue)
         return (minValue: scaledMinValue, maxValue: scaledMaxValue)

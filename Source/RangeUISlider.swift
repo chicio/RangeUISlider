@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 
 /**
- A custom slider with double knob that allow the user to select a range.
- Created using autolayout and IBDesignabled/IBInspectable.
+ A custom slider with two knobs that allow the user to select a range.
+ RangeUISlider has been created using Autolayout. It is an IBDesignable UIVIew and all its properties are IBInspectable.
+ RangeUISlider support RTL (right to left) languages automatically out of the box.
  */
 @IBDesignable
 @objc open class RangeUISlider: UIView {    
@@ -723,18 +724,34 @@ import UIKit
     }
     
     private func updateLeftKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        let positionForKnob = positionForKnobGiven(xLocationInBar: gestureRecognizer.location(in: bar).x)
-        let positionRightKnob = bar.frame.width + rightKnob.xPositionConstraint.constant
-        if positionForKnob >= 0 && positionForKnob <= positionRightKnob {
-            leftKnob.xPositionConstraint.constant = positionForKnob
+        if UIView.userInterfaceLayoutDirection(for: self.semanticContentAttribute) == UIUserInterfaceLayoutDirection.rightToLeft {
+            let positionForKnob = bar.frame.width - positionForKnobGiven(xLocationInBar: gestureRecognizer.location(in: bar).x)
+            let positionRightKnob = -1 * rightKnob.xPositionConstraint.constant
+            if positionForKnob >= 0 && (bar.frame.width - positionForKnob) >= positionRightKnob {
+                leftKnob.xPositionConstraint.constant = positionForKnob
+            }
+        } else {
+            let positionForKnob = positionForKnobGiven(xLocationInBar: gestureRecognizer.location(in: bar).x)
+            let positionRightKnob = bar.frame.width + rightKnob.xPositionConstraint.constant
+            if positionForKnob >= 0 && positionForKnob <= positionRightKnob {
+                leftKnob.xPositionConstraint.constant = positionForKnob
+            }
         }
     }
     
     private func updateRightKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        let xLocationInBar = gestureRecognizer.location(in: bar).x
-        let positionForKnob = positionForKnobGiven(xLocationInBar: xLocationInBar - bar.frame.width)
-        if positionForKnob <= 0 && xLocationInBar >= leftKnob.xPositionConstraint.constant {
-            rightKnob.xPositionConstraint.constant = positionForKnob
+        if UIView.userInterfaceLayoutDirection(for: self.semanticContentAttribute) == UIUserInterfaceLayoutDirection.rightToLeft {
+            let xLocationInBar = gestureRecognizer.location(in: bar).x
+            let positionForKnob = -1 * positionForKnobGiven(xLocationInBar: xLocationInBar)
+            if positionForKnob <= 0 && xLocationInBar <= (bar.frame.width - leftKnob.xPositionConstraint.constant) {
+                rightKnob.xPositionConstraint.constant = positionForKnob
+            }
+        } else {
+            let xLocationInBar = gestureRecognizer.location(in: bar).x
+            let positionForKnob = positionForKnobGiven(xLocationInBar: xLocationInBar - bar.frame.width)
+            if positionForKnob <= 0 && xLocationInBar >= leftKnob.xPositionConstraint.constant {
+                rightKnob.xPositionConstraint.constant = positionForKnob
+            }
         }
     }
     
