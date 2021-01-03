@@ -12,7 +12,7 @@ A iOS range selection slider, developed using autolayout and highly customizable
   <img width="400" height="400" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/range-ui-slider.png">
 </p>
 
-A iOS range selection slider, developed using autolayout and highly customizable using IBDesignabled and IBInspectable or programmatically.
+A iOS range selection slider, developed using autolayout and highly customizable using IBDesignabled/IBInspectable or programmatically.
 
 ***
 
