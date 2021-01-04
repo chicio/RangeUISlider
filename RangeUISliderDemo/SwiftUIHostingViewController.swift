@@ -9,14 +9,38 @@
 import SwiftUI
 import RangeUISlider
 
+class Coordinator: RangeUISliderDelegate {
+    private let rangeSlider: RangeUISliderSwiftUI
+    
+    init(rangeSlider: RangeUISliderSwiftUI) {
+        self.rangeSlider = rangeSlider
+    }
+    
+    func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
+        self.rangeSlider.minValueSelected = minValueSelected
+        self.rangeSlider.maxValueSelected = maxValueSelected
+    }
+}
+
+class RangeSliderSwiftUIViewSettings {
+    public var scaleMinValue: CGFloat = 0.0
+    public var scaleMaxValue: CGFloat = 1.0
+    public var defaultValueLeftKnob: CGFloat = 0.0
+    public var defaultValueRightKnob: CGFloat = 1.0
+}
+
 struct RangeUISliderSwiftUI: UIViewRepresentable {
+    @Binding var minValueSelected: CGFloat
+    @Binding var maxValueSelected: CGFloat
+    private let settings = RangeSliderSwiftUIViewSettings()
+    
     func makeUIView(context: Context) -> RangeUISlider {
-        let rangeSlider = RangeUISlider(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 100, height: 50)))
-        //rangeSlider.delegate = self
-        rangeSlider.scaleMinValue = 0 //If you don't set any value the default is 0
-        rangeSlider.scaleMaxValue = 100 //If you don't set any value the default is 1
-        rangeSlider.defaultValueLeftKnob = 25 //If the scale is the default one insert a value between 0 and 1
-        rangeSlider.defaultValueRightKnob = 75 //If the scale is the default one insert a value between 0 and 1
+        let rangeSlider = RangeUISlider(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 20)))
+        rangeSlider.delegate = context.coordinator
+        rangeSlider.scaleMinValue = settings.scaleMinValue
+        rangeSlider.scaleMaxValue = settings.scaleMaxValue
+        rangeSlider.defaultValueLeftKnob = settings.defaultValueLeftKnob
+        rangeSlider.defaultValueRightKnob = settings.defaultValueRightKnob
         rangeSlider.rangeSelectedGradientColor1 = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         rangeSlider.rangeSelectedGradientColor2 = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         rangeSlider.rangeSelectedGradientStartPoint = CGPoint(x: 0, y: 0.5)
@@ -39,15 +63,56 @@ struct RangeUISliderSwiftUI: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: RangeUISlider, context: Context) {
+        
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(rangeSlider: self)
+    }
+    
+    //MARK: modifiers
+    
+    func scaleMinValue(_ value: CGFloat) -> RangeUISliderSwiftUI {
+        settings.scaleMinValue = value
+        return self
+    }
+    
+    func scaleMaxValue(_ value: CGFloat) -> RangeUISliderSwiftUI {
+        settings.scaleMaxValue = value
+        return self
+    }
+    
+    func defaultValueLeftKnob(_ value: CGFloat) -> RangeUISliderSwiftUI {
+        settings.defaultValueLeftKnob = value
+        return self
+    }
+    
+    func defaultValueRightKnob(_ value: CGFloat) -> RangeUISliderSwiftUI {
+        settings.defaultValueRightKnob = value
+        return self
     }
 }
 
-
 struct SwiftUIHostingView: View {
+    @State private var minValueSelected: CGFloat = 10
+    @State private var maxValueSelected: CGFloat = 40
+    
     var body: some View {
          VStack {
-             Text("RangeUISlider SwiftUI").font(.system(size: 36))
-             RangeUISliderSwiftUI()
+            Text("RangeUISlider SwiftUI").font(.system(size: 36))
+            HStack {
+                Text("Min value:")
+                Text(self.minValueSelected.description)
+            }
+            HStack {
+                Text("Max value:")
+                Text(self.maxValueSelected.description)
+            }
+            RangeUISliderSwiftUI(minValueSelected: self.$minValueSelected, maxValueSelected: self.$maxValueSelected)
+                .scaleMinValue(5)
+                .scaleMaxValue(80)
+                .defaultValueLeftKnob(10)
+                .defaultValueRightKnob(40)
          }
      }
 }
