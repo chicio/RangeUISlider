@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4520C27125A349F00018042D /* SwiftUIHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4520C27025A349F00018042D /* SwiftUIHostingViewController.swift */; };
 		455BF125259B44F80026BE56 /* InsideTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BF124259B44F80026BE56 /* InsideTableViewTests.swift */; };
 		455BF12E259B4B2D0026BE56 /* ProgrammaticKnobChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BF12D259B4B2D0026BE56 /* ProgrammaticKnobChangeTests.swift */; };
 		459CBEB7259B638300FCA5AB /* ProgrammaticScaleChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBEB6259B638200FCA5AB /* ProgrammaticScaleChangeTests.swift */; };
@@ -78,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4520C27025A349F00018042D /* SwiftUIHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIHostingViewController.swift; sourceTree = "<group>"; };
 		455BF124259B44F80026BE56 /* InsideTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideTableViewTests.swift; sourceTree = "<group>"; };
 		455BF12D259B4B2D0026BE56 /* ProgrammaticKnobChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticKnobChangeTests.swift; sourceTree = "<group>"; };
 		455BF135259B4BCC0026BE56 /* ProgrammaticChangesTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProgrammaticChangesTestPlan.xctestplan; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				45F064B02599E6EE007B25A7 /* SliderInsideTableViewViewController.swift */,
 				45F064972599E511007B25A7 /* AppDelegate.swift */,
 				45F064992599E511007B25A7 /* SceneDelegate.swift */,
+				4520C27025A349F00018042D /* SwiftUIHostingViewController.swift */,
 				45F0649D2599E511007B25A7 /* Main.storyboard */,
 				45F064A02599E511007B25A7 /* Assets.xcassets */,
 				45F064A22599E511007B25A7 /* LaunchScreen.storyboard */,
@@ -491,6 +494,7 @@
 				45F064CE2599E941007B25A7 /* MixedFeaturesViewController.swift in Sources */,
 				45F064B92599E6EE007B25A7 /* SetupProgrammaticViewController.swift in Sources */,
 				45F064B62599E6EE007B25A7 /* SliderInsideTableViewViewController.swift in Sources */,
+				4520C27125A349F00018042D /* SwiftUIHostingViewController.swift in Sources */,
 				45F064982599E511007B25A7 /* AppDelegate.swift in Sources */,
 				45F0649A2599E511007B25A7 /* SceneDelegate.swift in Sources */,
 				45F064B72599E6EE007B25A7 /* ChangeKnobsProgrammaticViewController.swift in Sources */,
