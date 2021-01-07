@@ -8,12 +8,23 @@
 
 import SwiftUI
 
+/**
+ RangeUISlider SwiftUI implementation using UIViewRepresentable. It exposes all the RangeUIslider properties.
+ */
 @available(iOS 14.0, *)
 public struct RangeSlider: UIViewRepresentable {
+    /// Min value selected binding value. In this property the min value selected will be exposed. It will be updated during dragging.
     @Binding public var minValueSelected: CGFloat
+    /// Max value selected binding value. In this property the max value selected will be exposed. It will be updated during dragging.
     @Binding public var maxValueSelected: CGFloat
     private let settings = RangeSliderSettings()
     
+    /**
+     Init RangeSlider.
+     
+     - parameter minValueSelected: the binding value to get the min value selected.
+     - parameter maxValueSelected: the binding value to get the max value selected.
+     */
     public init(minValueSelected: Binding<CGFloat>, maxValueSelected: Binding<CGFloat>) {
         self._minValueSelected = minValueSelected
         self._maxValueSelected = maxValueSelected
@@ -21,12 +32,13 @@ public struct RangeSlider: UIViewRepresentable {
     
     //MARK: lifecycle
     
-    private func assignValueTo(rangeSlider: RangeUISlider, property: String) {
-        if let value = settings.values[property] {
-            rangeSlider.setValue(value, forKey: property)
-        }
-    }
-    
+    /**
+     Implementation of `UIViewRepresentable.makeUIView(context: Context)` method.
+     
+     - parameter content: the SwiftUI context.
+     
+     - returns: an instance of RangeUISlider
+     */
     public func makeUIView(context: Context) -> RangeUISlider {
         let rangeSlider = RangeUISlider(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 20)))
         rangeSlider.delegate = context.coordinator
@@ -100,64 +112,136 @@ public struct RangeSlider: UIViewRepresentable {
         return rangeSlider
     }
 
+    /**
+     Implementation of `UIViewRepresentable.updateUIView(_ uiView: RangeUISlider, context: Context)` method.
+     
+     - parameter uiView: the `RangeUISlider` instance.
+     - parameter content: the SwiftUI context.
+     */
     public func updateUIView(_ uiView: RangeUISlider, context: Context) { }
         
+    /**
+     Implementation of  `UIViewRepresentable.makeCoordinator()` method.
+     
+     - returns: an instance of `RangeSliderCoordinator`
+     */
     public func makeCoordinator() -> RangeSliderCoordinator {
         return RangeSliderCoordinator(rangeSlider: self)
     }
     
+    private func assignValueTo(rangeSlider: RangeUISlider, property: String) {
+        if let value = settings.values[property] {
+            rangeSlider.setValue(value, forKey: property)
+        }
+    }
+    
     //MARK: modifiers
     
+    /**
+     Set step increment value. If different from 0 RangeUISlider will let the user drag by step increment.
+     
+     - parameter value: the value to be used as step increment.
+     */
     public func stepIncrement(_ value: CGFloat) -> RangeSlider {
         settings.values["stepIncrement"] = value
         return self
     }
-    
+
+    /**
+     Set default left knob starting value.
+     
+     - parameter value: the value to be used as default left knob start.
+     */
     public func defaultValueLeftKnob(_ value: CGFloat) -> RangeSlider {
         settings.values["defaultValueLeftKnob"] = value
         return self
     }
-    
+
+    /**
+     Set default right knob starting value.
+     
+     - parameter value: the value to be used as default right knob start.
+     */
     public func defaultValueRightKnob(_ value: CGFloat) -> RangeSlider {
         settings.values["defaultValueRightKnob"] = value
         return self
     }
     
+    /**
+     Set scale minimum value.
+     
+     - parameter value: the value to be used as scale minimum value.
+     */
     public func scaleMinValue(_ value: CGFloat) -> RangeSlider {
         settings.values["scaleMinValue"] = value
         return self
     }
-    
+
+    /**
+     Set scale maximum value.
+     
+     - parameter value: the value to be used as scale maximum value.
+     */
     public func scaleMaxValue(_ value: CGFloat) -> RangeSlider {
         settings.values["scaleMaxValue"] = value
         return self
     }
     
+    /**
+     Set selected range color.
+     
+     - parameter value: the value to be used as selected range color.
+     */
     public func rangeSelectedColor(_ value: Color) -> RangeSlider {
         settings.values["rangeSelectedColor"] = UIColor(value)
         return self
     }
 
+    /**
+     Set background range selected strechable image. The string will be used to search an image with that name in the current Bundle.
+     
+     - parameter value: the value to be used as background range selected strechable image.
+     */
     public func rangeSelectedBackgroundImage(_ value: String) -> RangeSlider {
         settings.values["rangeSelectedBackgroundImage"] = UIImage(named: value)
         return self
     }
 
+    /**
+     Set background range selected top edge insect for background image.
+     
+     - parameter value: the value to be used as background range selected top edge insect for background image.
+     */
     public func rangeSelectedBackgroundEdgeInsetTop(_ value: CGFloat) -> RangeSlider {
         settings.values["rangeSelectedBackgroundEdgeInsetTop"] = value
         return self
     }
 
+    /**
+     Set background range selected left edge insect for background image.
+     
+     - parameter value: the value to be used as background range selected left edge insect for background image.
+     */
     public func rangeSelectedBackgroundEdgeInsetLeft(_ value: CGFloat) -> RangeSlider {
         settings.values["rangeSelectedBackgroundEdgeInsetLeft"] = value
         return self
     }
 
+    /**
+     Set background range selected bottom edge insect for background image.
+     
+     - parameter value: the value to be used as background range selected bottom edge insect for background image.
+     */
     public func rangeSelectedBackgroundEdgeInsetBottom(_ value: CGFloat) -> RangeSlider {
         settings.values["rangeSelectedBackgroundEdgeInsetBottom"] = value
         return self
     }
 
+    /**
+     Set background range selected right edge insect for background image.
+     
+     - parameter value: the value to be used as background range selected right edge insect for background image.
+     */
     public func rangeSelectedBackgroundEdgeInsetRight(_ value: CGFloat) -> RangeSlider {
         settings.values["rangeSelectedBackgroundEdgeInsetRight"] = value
         return self

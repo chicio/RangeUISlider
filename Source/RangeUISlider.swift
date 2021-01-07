@@ -13,7 +13,6 @@ import UIKit
  RangeUISlider has been created using Autolayout. It is an IBDesignable UIVIew and all its properties are IBInspectable.
  RangeUISlider support RTL (right to left) languages automatically out of the box.
  */
-
 @IBDesignable
 @objc open class RangeUISlider: UIView {    
     /// Slider identifier.
