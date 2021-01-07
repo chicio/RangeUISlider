@@ -16,6 +16,11 @@ public class RangeSliderCoordinator: RangeUISliderDelegate {
         self.rangeSlider = rangeSlider
     }
     
+    public func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
+        self.rangeSlider.minValueSelected = minValueSelected
+        self.rangeSlider.maxValueSelected = maxValueSelected
+    }
+    
     public func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
         self.rangeSlider.minValueSelected = minValueSelected
         self.rangeSlider.maxValueSelected = maxValueSelected
