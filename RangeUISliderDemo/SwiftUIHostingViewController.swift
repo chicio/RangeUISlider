@@ -27,6 +27,7 @@ struct SwiftUIHostingView: View {
             RangeSlider(minValueSelected: self.$minValueSelected, maxValueSelected: self.$maxValueSelected)
                 .scaleMinValue(5)
                 .scaleMaxValue(80)
+                .stepIncrement(5)
                 .defaultValueLeftKnob(10)
                 .defaultValueRightKnob(40)
                 .rangeSelectedGradientColor1(Color(#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)))

@@ -19,10 +19,19 @@ public struct RangeSlider: UIViewRepresentable {
         self._maxValueSelected = maxValueSelected
     }
     
+    //MARK: lifecycle
+    
+    private func assignValueTo(rangeSlider: RangeUISlider, property: String) {
+        if let value = settings.values[property] {
+            rangeSlider.setValue(value, forKey: property)
+        }
+    }
+    
     public func makeUIView(context: Context) -> RangeUISlider {
         let rangeSlider = RangeUISlider(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 20)))
         rangeSlider.delegate = context.coordinator
-        rangeSlider.stepIncrement = settings.stepIncrement
+        assignValueTo(rangeSlider: rangeSlider, property: "stepIncrement")
+        
         rangeSlider.defaultValueLeftKnob = settings.defaultValueLeftKnob
         rangeSlider.defaultValueRightKnob = settings.defaultValueRightKnob
         rangeSlider.scaleMinValue = settings.scaleMinValue
@@ -172,7 +181,7 @@ public struct RangeSlider: UIViewRepresentable {
     public func updateUIView(_ uiView: RangeUISlider, context: Context) {
         
     }
-    
+        
     public func makeCoordinator() -> RangeSliderCoordinator {
         return Coordinator(rangeSlider: self)
     }
@@ -180,6 +189,7 @@ public struct RangeSlider: UIViewRepresentable {
     //MARK: modifiers
     
     public func stepIncrement(_ value: CGFloat) -> RangeSlider {
+        settings.values["stepIncrement"] = value
         settings.stepIncrement = value
         return self
     }

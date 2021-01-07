@@ -10,7 +10,9 @@ import SwiftUI
 
 @available(iOS 14.0, *)
 class RangeSliderSettings {
-    var stepIncrement: CGFloat = 0.0
+    var values: [String: Any] = [:]
+    
+    var stepIncrement: CGFloat?
     var defaultValueLeftKnob: CGFloat = 0.0
     var defaultValueRightKnob: CGFloat = 1.0
     var scaleMinValue: CGFloat = 0.0
