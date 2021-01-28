@@ -49,6 +49,7 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
     private func setupBackground() -> [NSLayoutConstraint] {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(backgroundView)
+        self.bringSubviewToFront(backgroundView)
         let knobBackgroundViewConstraints: [NSLayoutConstraint] = [
             NSLayoutConstraint(item: backgroundView,
                                attribute: .leading,

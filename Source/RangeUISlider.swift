@@ -71,7 +71,7 @@ import UIKit
             addBackgroundToRangeSelected()
         }
     }
-    /// Gradient color 1 for range not selected.
+    /// Gradient color 1 for range selected.
     @IBInspectable public var rangeSelectedGradientColor1: UIColor? {
         didSet {
             selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
@@ -81,7 +81,7 @@ import UIKit
                                              cornerRadius: 0.0)
         }
     }
-    /// Gradient color 2 for range not selected.
+    /// Gradient color 2 for range selected.
     @IBInspectable public var rangeSelectedGradientColor2: UIColor? {
         didSet {
             selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
@@ -91,7 +91,7 @@ import UIKit
                                              cornerRadius: 0.0)
         }
     }
-    /// Gradient start point for not selected range.
+    /// Gradient start point for selected range.
     @IBInspectable public var rangeSelectedGradientStartPoint: CGPoint = CGPoint() {
         didSet {
             selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
@@ -101,7 +101,7 @@ import UIKit
                                              cornerRadius: 0.0)
         }
     }
-    /// Gradient end point for not selected range.
+    /// Gradient end point for selected range.
     @IBInspectable public var rangeSelectedGradientEndPoint: CGPoint = CGPoint() {
         didSet {
             selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,

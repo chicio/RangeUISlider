@@ -543,6 +543,7 @@
                         <segue destination="RLA-sf-Itw" kind="show" identifier="showTableViewSetupSegue" id="T5P-TY-50T"/>
                         <segue destination="HX8-Hb-IrR" kind="show" identifier="showChangeKnobProgrammaticSegue" id="l5L-tk-hZo"/>
                         <segue destination="IzU-JN-Igw" kind="show" identifier="showChangeScaleProgrammaticSegue" id="rdG-zv-TLf"/>
+                        <segue destination="0PT-Zl-Erc" kind="show" identifier="swiftUISegue" id="tfM-gV-cAe"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z9F-n4-isO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1173,6 +1174,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTR-oG-1dO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3697" y="1397"/>
+        </scene>
+        <!--SwiftUI Hosting View Controller-->
+        <scene sceneID="Qmo-vY-g5A">
+            <objects>
+                <hostingController id="0PT-Zl-Erc" customClass="SwiftUIHostingViewController" customModule="RangeUISliderDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="wX0-2M-cNb"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ElY-kc-aj6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3551" y="624"/>
         </scene>
     </scenes>
     <resources>
