@@ -1,10 +1,12 @@
 # RangeUISlider
 
 ![Build iOS](https://github.com/chicio/RangeUISlider/workflows/Build%20iOS/badge.svg)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/chicio/RangeUISlider/master/LICENSE.md)
+![SwiftLint](https://github.com/chicio/RangeUISlider/workflows/SwiftLint/badge.svg)
 [![Supported platform](https://img.shields.io/badge/platforms-iOS-orange.svg)](https://img.shields.io/badge/platforms-iOS-orange.svg)
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/RangeUISlider.svg)](https://cocoapods.org/pods/RangeUISlider)
 [![CocoaPods Doc Coverage Percentage](https://img.shields.io/cocoapods/metrics/doc-percent/RangeUISlider.svg)](https://cocoapods.org/pods/RangeUISlider)
+![SwiftLint](https://github.com/chicio/RangeUISlider/workflows/SwiftLint/badge.svg)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/chicio/RangeUISlider/master/LICENSE.md)
 
 A iOS range selection slider, developed using autolayout and highly customizable using IBDesignabled and IBInspectable or programmatically. It support also RTL (right to left) languages automatically out of the box.
 
