@@ -6,6 +6,9 @@
 //  2021 Fabrizio Duroni.
 //
 
+// swiftlint:disable file_length
+// swiftlint:disable type_body_length
+
 import SwiftUI
 
 /**
@@ -13,9 +16,11 @@ import SwiftUI
  */
 @available(iOS 14.0, *)
 public struct RangeSlider: UIViewRepresentable {
-    /// Min value selected binding value. In this property the min value selected will be exposed. It will be updated during dragging.
+    /// Min value selected binding value.
+    /// In this property the min value selected will be exposed. It will be updated during dragging.
     @Binding public var minValueSelected: CGFloat
-    /// Max value selected binding value. In this property the max value selected will be exposed. It will be updated during dragging.
+    /// Max value selected binding value.
+    /// In this property the max value selected will be exposed. It will be updated during dragging.
     @Binding public var maxValueSelected: CGFloat
     private let settings = RangeSliderSettings()
 

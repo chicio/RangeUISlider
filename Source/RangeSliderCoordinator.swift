@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 /**
  RangeUISlider SwiftUI coordinator.

@@ -6,6 +6,8 @@
 //  2017 Fabrizio Duroni.
 //
 
+// swiftlint:disable function_parameter_count
+
 import Foundation
 import UIKit
 
