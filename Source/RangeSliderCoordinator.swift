@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 /**
  RangeUISlider SwiftUI coordinator. The coordinator is the delegate of the `RangeUISlider` instance wrapped by `RangeSlider`.
