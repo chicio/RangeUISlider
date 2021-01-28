@@ -788,14 +788,4 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["barBorderColor"] = value
         return self
     }
-
-    /**
-     Set container corners.
-     
-     - parameter value: the value to be used as container corners.
-     */
-    public func containerCorners(_ value: CGFloat) -> RangeSlider {
-        settings.values["containerCorners"] = value
-        return self
-    }
 }

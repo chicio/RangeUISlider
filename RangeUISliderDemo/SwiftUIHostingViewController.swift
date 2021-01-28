@@ -69,7 +69,6 @@ struct SwiftUIHostingView: View {
                 .barHeight(10)
                 .barShadowOffset(CGSize(width: 0, height: 2))
                 .barShadowOpacity(1)
-                .containerCorners(20)
             RangeSlider(minValueSelected: self.$minValueSelected, maxValueSelected: self.$maxValueSelected)
                 .rangeSelectedColor(Color(#colorLiteral(red: 1, green: 1, blue: 0.07611685739, alpha: 1)))
                 .defaultValueLeftKnob(0.2)
