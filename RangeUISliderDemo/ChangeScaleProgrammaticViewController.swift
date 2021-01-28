@@ -21,10 +21,10 @@ class ChangeScaleProgrammaticViewController: UIViewController, RangeUISliderDele
         rangeSlider = RangeUISlider(frame: CGRect(origin: CGPoint(x: 20, y: 20), size: CGSize(width: 100, height: 50)))
         rangeSlider.translatesAutoresizingMaskIntoConstraints = false
         rangeSlider.delegate = self
-        rangeSlider.scaleMinValue = 0 //If you don't set any value the default is 0
-        rangeSlider.scaleMaxValue = 100 //If you don't set any value the default is 1
-        rangeSlider.defaultValueLeftKnob = 10 //If the scale is the default one insert a value between 0 and 1
-        rangeSlider.defaultValueRightKnob = 75 //If the scale is the default one insert a value between 0 and 1
+        rangeSlider.scaleMinValue = 0 // If you don't set any value the default is 0
+        rangeSlider.scaleMaxValue = 100 // If you don't set any value the default is 1
+        rangeSlider.defaultValueLeftKnob = 10 // If the scale is the default one insert a value between 0 and 1
+        rangeSlider.defaultValueRightKnob = 75 // If the scale is the default one insert a value between 0 and 1
         rangeSlider.rangeSelectedGradientColor1 = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         rangeSlider.rangeSelectedGradientColor2 = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         rangeSlider.rangeSelectedGradientStartPoint = CGPoint(x: 0, y: 0.5)
@@ -57,7 +57,7 @@ class ChangeScaleProgrammaticViewController: UIViewController, RangeUISliderDele
         maxValueSelectedLabel.text = "0.0"
         self.view.addSubview(maxValueSelectedLabel)
 
-        //Setup slide with programmatic autolayout.
+        // Setup slide with programmatic autolayout.
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: rangeSlider!,
                                attribute: .leading,

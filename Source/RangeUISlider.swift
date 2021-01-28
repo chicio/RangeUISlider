@@ -521,8 +521,8 @@ open class RangeUISlider: UIView {
      Prepare RangeUISlider to be drawn in Interface Builder.
      */
     open override func prepareForInterfaceBuilder() {
-        //Fake values for interface builder.
-        //Used to make visible the progress views.
+        // Fake values for interface builder.
+        // Used to make visible the progress views.
         leftKnob.xPositionConstraint.constant = 40
         rightKnob.xPositionConstraint.constant = -40
     }
