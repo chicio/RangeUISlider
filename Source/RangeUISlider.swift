@@ -5,6 +5,8 @@
 //  2017 Fabrizio Duroni.
 //
 
+// swiftlint:disable type_body_length
+
 import Foundation
 import UIKit
 

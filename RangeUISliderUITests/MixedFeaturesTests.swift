@@ -22,8 +22,8 @@ class MixedFeaturesTests: XCTestCase {
         let maxValueSelectedLabel = app.staticTexts["maxValueSelectedLabel"]
         let middleMarker = app.otherElements["middleMarker"]
         let endMarker = app.otherElements["endMarker"]
-        let rightKnob = rangeUISliderCustomScaleElement/*@START_MENU_TOKEN@*/.otherElements["RightKnob"]/*[[".otherElements[\"Bar\"].otherElements[\"RightKnob\"]",".otherElements[\"RightKnob\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.children(matching: .other).element
-        let leftKnob = rangeUISliderCustomScaleElement/*@START_MENU_TOKEN@*/.otherElements["LeftKnob"]/*[[".otherElements[\"Bar\"].otherElements[\"LeftKnob\"]",".otherElements[\"LeftKnob\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.children(matching: .other).element
+        let rightKnob = rangeUISliderCustomScaleElement.otherElements["RightKnob"].children(matching: .other).element
+        let leftKnob = rangeUISliderCustomScaleElement.otherElements["LeftKnob"].children(matching: .other).element
         
         leftKnob.press(forDuration: 0.1, thenDragTo: middleMarker)
         rightKnob.press(forDuration: 0.1, thenDragTo: endMarker)
@@ -38,7 +38,7 @@ class MixedFeaturesTests: XCTestCase {
         )
         waitForExpectations(timeout: 5)
     }
-    
+
     func testStepIncrement() throws {
         let app = XCUIApplication()
         app.launch()
@@ -48,12 +48,12 @@ class MixedFeaturesTests: XCTestCase {
         let maxValueSelectedLabel = app.staticTexts["maxValueSelectedLabel"]
         let startMarker = app.otherElements["startMarker"]
         let middleMarker = app.otherElements["middleMarker"]
-        let leftKnob = rangeuisliderstepincrementElement/*@START_MENU_TOKEN@*/.otherElements["LeftKnob"]/*[[".otherElements[\"Bar\"].otherElements[\"LeftKnob\"]",".otherElements[\"LeftKnob\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.children(matching: .other).element
-        let rightKnob = rangeuisliderstepincrementElement/*@START_MENU_TOKEN@*/.otherElements["RightKnob"]/*[[".otherElements[\"Bar\"].otherElements[\"RightKnob\"]",".otherElements[\"RightKnob\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.children(matching: .other).element
-        
+        let leftKnob = rangeuisliderstepincrementElement.otherElements["LeftKnob"].children(matching: .other).element
+        let rightKnob = rangeuisliderstepincrementElement.otherElements["RightKnob"].children(matching: .other).element
+
         leftKnob.press(forDuration: 0.1, thenDragTo: startMarker)
         rightKnob.press(forDuration: 0.1, thenDragTo: middleMarker)
-        
+
         expectation(
             for: NSPredicate(format: "self = 0 OR self = 2.0"),
             evaluatedWith: (minValueSelectedLabel.label as NSString).floatValue

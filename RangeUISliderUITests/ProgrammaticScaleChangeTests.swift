@@ -30,7 +30,7 @@ class ProgrammaticScaleChangeTests: XCTestCase {
         )
         expectation(
             for: NSPredicate(format: "self > 188.0 AND self < 192.0"),
-            evaluatedWith: (app/*@START_MENU_TOKEN@*/.staticTexts["maxValueSelected"]/*[[".staticTexts[\"85.0\"]",".staticTexts[\"maxValueSelected\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.label as NSString).floatValue
+            evaluatedWith: (app.staticTexts["maxValueSelected"].label as NSString).floatValue
         )
         waitForExpectations(timeout: 10)
     }
