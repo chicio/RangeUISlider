@@ -18,8 +18,8 @@ import UIKit
     /**
      Calls the delegate when the user has started the change of the range.
      */
-    @objc optional func rangeChangeStarted() 
-    
+    @objc optional func rangeChangeStarted()
+
     /**
      Calls the delegate when the user is changing the range by moving the knobs.
      
@@ -28,7 +28,7 @@ import UIKit
      - parameter slider: the slider on which the range has been modified.
      */
     @objc optional func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
-    
+
     /**
      Calls the delegate when the user has finished the change of the range.
      

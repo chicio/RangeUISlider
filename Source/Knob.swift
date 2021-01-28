@@ -6,6 +6,8 @@
 //  2017 Fabrizio Duroni.
 //
 
+// swiftlint:disable function_parameter_count
+
 import Foundation
 import UIKit
 
@@ -22,7 +24,7 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
     private(set) var heightConstraint: NSLayoutConstraint!
     private(set) var position: KnobPosition!
     private(set) var gestureRecognizerTarget: Any?
-    
+
     func setup(accessibilityIdentifier anAccessibilityIdentifier: String,
                position aPosition: KnobPosition,
                width: CGFloat,
@@ -42,10 +44,10 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
             widthConstraint,
             heightConstraint
         ]
-        
+
         return knobConstraints + knobBackgroundConstraints
     }
-    
+
     private func setupBackground() -> [NSLayoutConstraint] {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(backgroundView)
@@ -82,7 +84,7 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
         ]
         return knobBackgroundViewConstraints
     }
-    
+
     private func setXPositionConstraint() {
         xPositionConstraint = NSLayoutConstraint(item: self,
                                                  attribute: .centerX,
@@ -92,7 +94,7 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
                                                  multiplier: 1.0,
                                                  constant: 0.0)
     }
-    
+
     private func setDimensionConstraints(usingWidth width: CGFloat, andHeight height: CGFloat) {
         widthConstraint = NSLayoutConstraint(item: self,
                                              attribute: .width,
@@ -109,7 +111,7 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
                                               multiplier: 1.0,
                                               constant: height)
     }
-    
+
     private func centerVerticallyConstraint() -> NSLayoutConstraint {
         return NSLayoutConstraint(item: self,
                                   attribute: .centerY,
@@ -119,27 +121,27 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
                                   multiplier: 1.0,
                                   constant: 1.0)
     }
-    
+
     private func setGestureRecognizer(withTarget target: Any?, usingSelector selector: Selector) {
         let gesture = UIPanGestureRecognizer(target: target, action: selector)
         gesture.delegate = self
         addGestureRecognizer(gesture)
     }
-    
+
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
                            shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
-    
+
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
                            shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return false
     }
-    
+
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         return true
     }
-    
+
     func add(image anImage: UIImage?) {
         if let image = anImage {
             imageView.image = image
@@ -178,7 +180,7 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
                 ])
         }
     }
-    
+
     func addBorders(usingColor color: UIColor, andWidth width: CGFloat, andCorners corners: CGFloat) {
         if imageView.image != nil {
             addBorders(toView: imageView, usingColor: color, andWidth: width)
@@ -187,7 +189,7 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
             addBorders(toView: backgroundView, usingColor: color, andWidth: width)
         }
     }
-    
+
     private func addBorders(toView view: UIView,
                             usingColor color: UIColor,
                             andWidth width: CGFloat) {

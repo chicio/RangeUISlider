@@ -51,7 +51,7 @@ class Progress: Gradient {
                                constant: 0.0)
             ])
     }
-    
+
     func setup(leftAnchorView: UIView,
                leftAnchorConstraintAttribute: NSLayoutConstraint.Attribute,
                rightAnchorView: UIView,
@@ -90,7 +90,7 @@ class Progress: Gradient {
                                multiplier: 1.0,
                                constant: 0.0)
         ]
-        
+
         return progressViewConstraints
     }
 }

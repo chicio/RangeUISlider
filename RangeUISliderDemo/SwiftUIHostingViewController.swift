@@ -12,7 +12,7 @@ import RangeUISlider
 struct SwiftUIHostingView: View {
     @State private var minValueSelected: CGFloat = 10
     @State private var maxValueSelected: CGFloat = 40
-    
+
     var body: some View {
          VStack {
             Text("RangeUISlider SwiftUI").font(.system(size: 36))
@@ -96,7 +96,7 @@ struct SwiftUIHostingView: View {
      }
 }
 
-class SwiftUIHostingViewController: UIHostingController<SwiftUIHostingView> {    
+class SwiftUIHostingViewController: UIHostingController<SwiftUIHostingView> {
     @objc required dynamic init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder, rootView: SwiftUIHostingView())
     }

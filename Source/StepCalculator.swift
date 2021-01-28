@@ -20,16 +20,16 @@ class StepCalculator {
 
     func calculateStepWidth(barWidth: CGFloat, numberOfSteps: CGFloat) -> CGFloat {
         var stepWidthCalculated: CGFloat = 1.0
-        if(stepIncrementIsNeeded(numberOfSteps: numberOfSteps)) {
+        if stepIncrementIsNeeded(numberOfSteps: numberOfSteps) {
             stepWidthCalculated = barWidth / numberOfSteps
         }
         return stepWidthCalculated
     }
-    
+
     private func isAValidStepIncrement(scale: CGFloat, stepIncrement: CGFloat) -> Bool {
         return stepIncrement > 0 && stepIncrement <= scale
     }
-    
+
     private func stepIncrementIsNeeded(numberOfSteps: CGFloat) -> Bool {
         return numberOfSteps > 0
     }
