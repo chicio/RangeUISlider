@@ -11,7 +11,7 @@ import UIKit
 
 class Gradient: UIView {
     lazy private(set) var gradient: CAGradientLayer = CAGradientLayer()
-    
+
     override func layoutSubviews() {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
@@ -19,7 +19,7 @@ class Gradient: UIView {
         CATransaction.commit()
         CATransaction.setDisableActions(false)
     }
-    
+
     func addGradient(firstColor: UIColor?,
                      secondColor: UIColor?,
                      startPoint: CGPoint?,

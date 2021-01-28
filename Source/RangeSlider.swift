@@ -18,7 +18,7 @@ public struct RangeSlider: UIViewRepresentable {
     /// Max value selected binding value. In this property the max value selected will be exposed. It will be updated during dragging.
     @Binding public var maxValueSelected: CGFloat
     private let settings = RangeSliderSettings()
-    
+
     /**
      Init RangeSlider.
      
@@ -29,9 +29,9 @@ public struct RangeSlider: UIViewRepresentable {
         self._minValueSelected = minValueSelected
         self._maxValueSelected = maxValueSelected
     }
-    
-    //MARK: lifecycle
-    
+
+    // MARK: lifecycle
+
     /**
      Implementation of `UIViewRepresentable.makeUIView(context: Context)` method.
      
@@ -108,7 +108,7 @@ public struct RangeSlider: UIViewRepresentable {
         assignValueTo(rangeSlider: rangeSlider, property: "barBorderWidth")
         assignValueTo(rangeSlider: rangeSlider, property: "barBorderColor")
         assignValueTo(rangeSlider: rangeSlider, property: "containerCorners")
-        
+
         return rangeSlider
     }
 
@@ -119,7 +119,7 @@ public struct RangeSlider: UIViewRepresentable {
      - parameter content: the SwiftUI context.
      */
     public func updateUIView(_ uiView: RangeUISlider, context: Context) { }
-        
+
     /**
      Implementation of  `UIViewRepresentable.makeCoordinator()` method.
      
@@ -128,15 +128,15 @@ public struct RangeSlider: UIViewRepresentable {
     public func makeCoordinator() -> RangeSliderCoordinator {
         return RangeSliderCoordinator(rangeSlider: self)
     }
-    
+
     private func assignValueTo(rangeSlider: RangeUISlider, property: String) {
         if let value = settings.values[property] {
             rangeSlider.setValue(value, forKey: property)
         }
     }
-    
-    //MARK: modifiers
-    
+
+    // MARK: modifiers
+
     /**
      Set step increment value. If different from 0 RangeUISlider will let the user drag by step increment.
      
@@ -166,7 +166,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["defaultValueRightKnob"] = value
         return self
     }
-    
+
     /**
      Set scale minimum value.
      
@@ -186,7 +186,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["scaleMaxValue"] = value
         return self
     }
-    
+
     /**
      Set selected range color.
      
@@ -246,7 +246,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["rangeSelectedBackgroundEdgeInsetRight"] = value
         return self
     }
-    
+
     /**
      Set  gradient color 1 for range selected. The value received is converted to a `UIColor`.
      
@@ -256,7 +256,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["rangeSelectedGradientColor1"] = UIColor(value)
         return self
     }
-    
+
     /**
      Set  gradient color 2 for range selected. The value received is converted to a `UIColor`.
      
@@ -326,7 +326,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["rangeNotSelectedBackgroundEdgeInsetLeft"] = value
         return self
     }
-    
+
     /**
      Set background range not selected bottom edge insect for background image.
      
@@ -336,7 +336,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["rangeNotSelectedBackgroundEdgeInsetBottom"] = value
         return self
     }
-    
+
     /**
      Set background range not selected right edge insect for background image.
      
@@ -346,7 +346,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["rangeNotSelectedBackgroundEdgeInsetRight"] = value
         return self
     }
-    
+
     /**
      Set  gradient color 1 for range not selected. The value received is converted to a `UIColor`.
      
@@ -407,7 +407,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["leftKnobHeight"] = value
         return self
     }
-    
+
     /**
      Set left knob corners.
      
@@ -427,7 +427,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["leftKnobImage"] = UIImage(named: value)
         return self
     }
-    
+
     /**
      Set left knob color.  The value received is converted to a `UIColor`.
      
@@ -517,7 +517,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["leftKnobGradientEndPoint"] = value
         return self
     }
-    
+
     /**
      Set left knob border width.
      
@@ -527,7 +527,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["leftKnobBorderWidth"] = value
         return self
     }
-    
+
     /**
      Set left knob border color.  The value received is converted to a `UIColor`.
      
@@ -538,7 +538,6 @@ public struct RangeSlider: UIViewRepresentable {
         return self
     }
 
-    
     /**
      Set right knob width.
      
@@ -558,7 +557,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["rightKnobHeight"] = value
         return self
     }
-    
+
     /**
      Set right knob corners.
      
@@ -578,7 +577,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["rightKnobImage"] = UIImage(named: value)
         return self
     }
-    
+
     /**
      Set right knob color.  The value received is converted to a `UIColor`.
      
@@ -668,7 +667,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["rightKnobGradientEndPoint"] = value
         return self
     }
-    
+
     /**
      Set right knob border width.
      
@@ -678,7 +677,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["rightKnobBorderWidth"] = value
         return self
     }
-    
+
     /**
      Set right knob border color.  The value received is converted to a `UIColor`.
      
@@ -688,7 +687,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["rightKnobBorderColor"] = UIColor(value)
         return self
     }
-    
+
     /**
      Set bar height.
      
@@ -708,7 +707,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["barLeading"] = value
         return self
     }
-    
+
     /**
      Set bar trailing.
      
@@ -748,7 +747,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["barShadowColor"] = value
         return self
     }
-    
+
     /**
      Set bar shadow offset.
      
@@ -768,7 +767,7 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["barShadowRadius"] = value
         return self
     }
-    
+
     /**
      Set bar border width.
      

@@ -11,7 +11,7 @@ import UIKit
 struct GroupedFeaturesViewControllerData {
     let description: String
     let segueIdentifier: String
-    
+
     init(description aDescription: String, segueIdentifier aSegueIdentifier: String) {
         description = aDescription
         segueIdentifier = aSegueIdentifier
@@ -45,7 +45,7 @@ class GroupedFeaturesTableViewController: UITableViewController {
         cell.textLabel?.text = data[indexPath.row].description
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: data[indexPath.row].segueIdentifier, sender: self)
     }

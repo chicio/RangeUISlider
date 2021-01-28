@@ -24,7 +24,7 @@ class MixedFeaturesTests: XCTestCase {
         let endMarker = app.otherElements["endMarker"]
         let rightKnob = rangeUISliderCustomScaleElement.otherElements["RightKnob"].children(matching: .other).element
         let leftKnob = rangeUISliderCustomScaleElement.otherElements["LeftKnob"].children(matching: .other).element
-        
+
         leftKnob.press(forDuration: 0.1, thenDragTo: middleMarker)
         rightKnob.press(forDuration: 0.1, thenDragTo: endMarker)
 

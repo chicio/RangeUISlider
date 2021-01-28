@@ -12,7 +12,7 @@ class ProgrammaticKnobChangeTests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
     }
-    
+
     func testProgrammaticKnobChange() {
         let app = XCUIApplication()
         app.launch()
@@ -21,10 +21,10 @@ class ProgrammaticKnobChangeTests: XCTestCase {
             .tables
             .staticTexts["Programmatic knob change"]
             .tap()
-        
+
         _ = app.staticTexts["minValueSelected"].waitForExistence(timeout: 5)
         _ = app.staticTexts["maxValueSelected"].waitForExistence(timeout: 5)
-        
+
         sleep(5)
 
         expectation(

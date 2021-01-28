@@ -15,7 +15,7 @@ class ChangeKnobsProgrammaticViewController: UIViewController, RangeUISliderDele
     private var rangeSlider: RangeUISlider!
     private var minValueSelectedLabel: UILabel!
     private var maxValueSelectedLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         rangeSlider = RangeUISlider(frame: CGRect(origin: CGPoint(x: 20, y: 20), size: CGSize(width: 100, height: 50)))
@@ -45,7 +45,7 @@ class ChangeKnobsProgrammaticViewController: UIViewController, RangeUISliderDele
         rangeSlider.rightKnobHeight = 40
         rangeSlider.rightKnobCorners = 20
         self.view.addSubview(rangeSlider)
-        
+
         minValueSelectedLabel = UILabel()
         minValueSelectedLabel.translatesAutoresizingMaskIntoConstraints = false
         minValueSelectedLabel.accessibilityIdentifier = "minValueSelected"
@@ -145,19 +145,19 @@ class ChangeKnobsProgrammaticViewController: UIViewController, RangeUISliderDele
                                multiplier: 1.0,
                                constant: 30)
         ])
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.rangeSlider.changeLeftKnob(value: 45.0)
             self.rangeSlider.changeRightKnob(value: 90.0)
         }
     }
-    
+
     func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
         print("FINISH min: \(minValueSelected) -  max: \(maxValueSelected) - identifier: \(slider.identifier)")
         minValueSelectedLabel.text = minValueSelected.description
         maxValueSelectedLabel.text = maxValueSelected.description
     }
-    
+
     func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
         print("min: \(minValueSelected) -  max: \(maxValueSelected) - identifier: \(slider.identifier)")
     }

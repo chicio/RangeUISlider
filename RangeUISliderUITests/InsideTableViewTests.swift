@@ -24,7 +24,7 @@ class InsideTableViewTests: XCTestCase {
         let leftKnob = tablesQuery.otherElements["LeftKnob"].children(matching: .other).element
         let rightKnob = tablesQuery.otherElements["RightKnob"].children(matching: .other).element
         let middleMarker = app.tables.otherElements["middleMarker"]
-                
+
         leftKnob.press(forDuration: 0.1, thenDragTo: middleMarker)
         rightKnob.press(forDuration: 0.1, thenDragTo: middleMarker)
 

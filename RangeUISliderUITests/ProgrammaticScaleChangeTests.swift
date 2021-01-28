@@ -12,7 +12,7 @@ class ProgrammaticScaleChangeTests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
     }
-    
+
     func testProgrammaticScaleChange() {
         let app = XCUIApplication()
         app.launch()
@@ -21,9 +21,9 @@ class ProgrammaticScaleChangeTests: XCTestCase {
 
         _ = app.staticTexts["minValueSelected"].waitForExistence(timeout: 10)
         _ = app.staticTexts["maxValueSelected"].waitForExistence(timeout: 10)
-        
+
         sleep(5)
-        
+
         expectation(
             for: NSPredicate(format: "self > 58.0 AND self < 62.0"),
             evaluatedWith: (app.staticTexts["minValueSelected"].label as NSString).floatValue

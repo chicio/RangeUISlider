@@ -40,7 +40,7 @@ class ViewController: UIViewController, RangeUISliderDelegate {
         rangeSlider.rightKnobHeight = 40
         rangeSlider.rightKnobCorners = 20
         self.view.addSubview(rangeSlider)
-        
+
         //Setup slide with programmatic autolayout.
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: rangeSlider!,
@@ -74,13 +74,11 @@ class ViewController: UIViewController, RangeUISliderDelegate {
         ])
     }
 
-    
     func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
         print("FINISH min: \(minValueSelected) -  max: \(maxValueSelected) - identifier: \(slider.identifier)")
     }
-    
+
     func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
         print("min: \(minValueSelected) -  max: \(maxValueSelected) - identifier: \(slider.identifier)")
     }
 }
-

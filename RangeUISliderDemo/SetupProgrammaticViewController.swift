@@ -11,7 +11,7 @@ import RangeUISlider
 
 class SetupProgrammaticViewController: UIViewController, RangeUISliderDelegate {
     private var rangeSlider: RangeUISlider!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         rangeSlider = RangeUISlider(frame: CGRect(origin: CGPoint(x: 20, y: 20), size: CGSize(width: 100, height: 50)))
@@ -40,7 +40,7 @@ class SetupProgrammaticViewController: UIViewController, RangeUISliderDelegate {
         rangeSlider.rightKnobHeight = 40
         rangeSlider.rightKnobCorners = 20
         self.view.addSubview(rangeSlider)
-        
+
         //Setup slide with programmatic autolayout.
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: rangeSlider!,
@@ -72,13 +72,13 @@ class SetupProgrammaticViewController: UIViewController, RangeUISliderDelegate {
                                multiplier: 1.0,
                                constant: 50)
         ])
-        
+
     }
-    
+
     func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
         print("FINISH min: \(minValueSelected) -  max: \(maxValueSelected) - identifier: \(slider.identifier)")
     }
-    
+
     func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
         print("min: \(minValueSelected) -  max: \(maxValueSelected) - identifier: \(slider.identifier)")
     }

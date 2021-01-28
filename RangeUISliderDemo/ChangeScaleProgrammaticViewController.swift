@@ -44,7 +44,7 @@ class ChangeScaleProgrammaticViewController: UIViewController, RangeUISliderDele
         rangeSlider.rightKnobHeight = 40
         rangeSlider.rightKnobCorners = 20
         self.view.addSubview(rangeSlider)
-        
+
         minValueSelectedLabel = UILabel()
         minValueSelectedLabel.translatesAutoresizingMaskIntoConstraints = false
         minValueSelectedLabel.accessibilityIdentifier = "minValueSelected"
@@ -56,7 +56,7 @@ class ChangeScaleProgrammaticViewController: UIViewController, RangeUISliderDele
         maxValueSelectedLabel.accessibilityIdentifier = "maxValueSelected"
         maxValueSelectedLabel.text = "0.0"
         self.view.addSubview(maxValueSelectedLabel)
-        
+
         //Setup slide with programmatic autolayout.
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: rangeSlider!,
@@ -144,24 +144,24 @@ class ChangeScaleProgrammaticViewController: UIViewController, RangeUISliderDele
                         multiplier: 1.0,
                         constant: 30)
         ])
-                        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.rangeSlider.scaleMinValue = 50
             self.rangeSlider.scaleMaxValue = 200
         }
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.rangeSlider.changeLeftKnob(value: 60)
             self.rangeSlider.changeRightKnob(value: 190)
         }
     }
-    
+
     func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
         print("FINISH min: \(minValueSelected) -  max: \(maxValueSelected) - identifier: \(slider.identifier)")
         minValueSelectedLabel.text = minValueSelected.description
         maxValueSelectedLabel.text = maxValueSelected.description
     }
-    
+
     func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
         print("min: \(minValueSelected) -  max: \(maxValueSelected) - identifier: \(slider.identifier)")
     }
