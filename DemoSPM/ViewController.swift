@@ -6,6 +6,8 @@
 //  2019 Fabrizio Duroni.
 //
 
+// swiftlint:disable function_body_length
+
 import UIKit
 import RangeUISlider
 

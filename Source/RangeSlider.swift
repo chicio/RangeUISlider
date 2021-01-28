@@ -8,6 +8,7 @@
 
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
+// swiftlint:disable function_body_length
 
 import SwiftUI
 
@@ -203,7 +204,8 @@ public struct RangeSlider: UIViewRepresentable {
     }
 
     /**
-     Set background range selected strechable image. The string will be used to search an image with that name in the current Bundle.
+     Set background range selected strechable image.
+     The string will be used to search an image with that name in the current Bundle.
      
      - parameter value: the value to be used as background range selected strechable image.
      */
@@ -303,7 +305,8 @@ public struct RangeSlider: UIViewRepresentable {
     }
 
     /**
-     Set background range not selected strechable image. The string will be used to search an image with that name in the current Bundle.
+     Set background range not selected strechable image.
+     The string will be used to search an image with that name in the current Bundle.
      
      - parameter value: the value to be used as background range not selected strechable image.
      */

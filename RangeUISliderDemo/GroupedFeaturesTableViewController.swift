@@ -23,10 +23,21 @@ class GroupedFeaturesTableViewController: UITableViewController {
         GroupedFeaturesViewControllerData(description: "Only colors", segueIdentifier: "showOnlyColorsSegue"),
         GroupedFeaturesViewControllerData(description: "Only images", segueIdentifier: "showOnlyImagesSegue"),
         GroupedFeaturesViewControllerData(description: "Only gradients", segueIdentifier: "showOnlyGradientsSegue"),
-        GroupedFeaturesViewControllerData(description: "Programmatic setup", segueIdentifier: "showProgrammaticSetupSegue"),
-        GroupedFeaturesViewControllerData(description: "Inside UITableView", segueIdentifier: "showTableViewSetupSegue"),
-        GroupedFeaturesViewControllerData(description: "Programmatic knob change", segueIdentifier: "showChangeKnobProgrammaticSegue"),
-        GroupedFeaturesViewControllerData(description: "Programmatic scale change", segueIdentifier: "showChangeScaleProgrammaticSegue"),
+        GroupedFeaturesViewControllerData(
+            description: "Programmatic setup",
+            segueIdentifier: "showProgrammaticSetupSegue"
+        ),
+        GroupedFeaturesViewControllerData(
+            description: "Inside UITableView",
+            segueIdentifier: "showTableViewSetupSegue"
+        ),
+        GroupedFeaturesViewControllerData(
+            description: "Programmatic knob change",
+            segueIdentifier: "showChangeKnobProgrammaticSegue"),
+        GroupedFeaturesViewControllerData(
+            description: "Programmatic scale change",
+            segueIdentifier: "showChangeScaleProgrammaticSegue"
+        ),
         GroupedFeaturesViewControllerData(description: "SwiftUI", segueIdentifier: "swiftUISegue")
     ]
 
