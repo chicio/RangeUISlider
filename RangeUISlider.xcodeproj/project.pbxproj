@@ -13,6 +13,7 @@
 		4571867E25A5B8C000541D67 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4571867D25A5B8C000541D67 /* RangeSlider.swift */; };
 		4571869425A5CFE300541D67 /* RangeSliderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4571869325A5CFE300541D67 /* RangeSliderCoordinator.swift */; };
 		4571869925A5D01500541D67 /* RangeSliderSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4571869825A5D01500541D67 /* RangeSliderSettings.swift */; };
+		4587606825C342150067CFBE /* MarginConstraintFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4587606725C342150067CFBE /* MarginConstraintFactory.swift */; };
 		459CBEB7259B638300FCA5AB /* ProgrammaticScaleChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBEB6259B638200FCA5AB /* ProgrammaticScaleChangeTests.swift */; };
 		459CBEF7259B79D000FCA5AB /* RangeSelectedCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBEF6259B79D000FCA5AB /* RangeSelectedCalculatorTest.swift */; };
 		459CBEF9259B79D000FCA5AB /* RangeUISlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E215241E8E812E00F0B8B9 /* RangeUISlider.framework */; platformFilter = ios; };
@@ -92,6 +93,7 @@
 		4571869825A5D01500541D67 /* RangeSliderSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSliderSettings.swift; sourceTree = "<group>"; };
 		4587606125C33F140067CFBE /* .codebeatignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .codebeatignore; sourceTree = "<group>"; };
 		4587606225C33F1B0067CFBE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		4587606725C342150067CFBE /* MarginConstraintFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarginConstraintFactory.swift; sourceTree = "<group>"; };
 		458CD4EA25A1E2760065FDEF /* generate_docs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = generate_docs.sh; sourceTree = "<group>"; };
 		458E1B90257A9CC800165AA7 /* RangeUISlider.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RangeUISlider.podspec; sourceTree = "<group>"; };
 		459CBEB6259B638200FCA5AB /* ProgrammaticScaleChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticScaleChangeTests.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				4571869825A5D01500541D67 /* RangeSliderSettings.swift */,
 				45E215271E8E812E00F0B8B9 /* RangeUISlider.h */,
 				45E215281E8E812E00F0B8B9 /* Info.plist */,
+				4587606725C342150067CFBE /* MarginConstraintFactory.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				4571867E25A5B8C000541D67 /* RangeSlider.swift in Sources */,
 				5F7B1B731F7EEE7E00D19E23 /* RangeUISliderDelegate.swift in Sources */,
 				459CBF13259B7DDD00FCA5AB /* StepCalculator.swift in Sources */,
+				4587606825C342150067CFBE /* MarginConstraintFactory.swift in Sources */,
 				4571869425A5CFE300541D67 /* RangeSliderCoordinator.swift in Sources */,
 				4571869925A5D01500541D67 /* RangeSliderSettings.swift in Sources */,
 				45AA09FC225547CE005CE6EE /* RangeSelectedCalculator.swift in Sources */,

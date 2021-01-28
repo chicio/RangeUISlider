@@ -8,6 +8,7 @@ Release date: 2021-XX-XX.
 - SwiftUI support: new `RangeSlider` SwiftUI component
 - Unit test + Test plans + UI Tests
 - SwiftLint
+- Codebeat
 
 ## [1.13.0](https://github.com/chicio/RangeUISlider/releases/tag/1.13.0)
 Release date: 2021-01-03.

@@ -31,21 +31,19 @@ class Bar: UIView {
         return barContraints
     }
 
-    func createConstraintsUsing(leading: CGFloat, trailing: CGFloat, height: CGFloat) -> [NSLayoutConstraint] {
-        leadingConstraint = NSLayoutConstraint(item: self,
-                                               attribute: .leading,
-                                               relatedBy: .equal,
-                                               toItem: superview,
-                                               attribute: .leading,
-                                               multiplier: 1.0,
-                                               constant: leading)
-        trailingConstraint = NSLayoutConstraint(item: self,
-                                                attribute: .trailing,
-                                                relatedBy: .equal,
-                                                toItem: superview,
-                                                attribute: .trailing,
-                                                multiplier: 1.0,
-                                                constant: -1.0 * trailing)
+    private func createConstraintsUsing(leading: CGFloat, trailing: CGFloat, height: CGFloat) -> [NSLayoutConstraint] {
+        leadingConstraint = MarginConstraintFactory.make(
+            target: self,
+            parent: superview,
+            margin: .leading,
+            value: leading
+        )
+        trailingConstraint = MarginConstraintFactory.make(
+            target: self,
+            parent: superview,
+            margin: .trailing,
+            value: -1.0 * trailing
+        )
         heightConstraint = NSLayoutConstraint(item: self,
                                               attribute: .height,
                                               relatedBy: .equal,
