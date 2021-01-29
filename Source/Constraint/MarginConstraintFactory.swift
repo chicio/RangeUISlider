@@ -10,52 +10,47 @@ import Foundation
 import UIKit
 
 class MarginConstraintFactory {
-    static func leadingConstraint(target: Any, parent: Any?, value: CGFloat) -> NSLayoutConstraint {
+    static func leadingConstraint(target: UIView, parent: UIView?, value: CGFloat) -> NSLayoutConstraint {
         return MarginConstraintFactory.make(
-            target: target,
-            parent: parent,
+            views: ContraintViews(target: target, parent: parent),
             margin: .leading,
             value: value
         )
     }
 
-    static func trailingConstraint(target: Any, parent: Any?, value: CGFloat) -> NSLayoutConstraint {
+    static func trailingConstraint(target: UIView, parent: UIView?, value: CGFloat) -> NSLayoutConstraint {
         return MarginConstraintFactory.make(
-            target: target,
-            parent: parent,
+            views: ContraintViews(target: target, parent: parent),
             margin: .trailing,
             value: value
         )
     }
 
-    static func topConstraint(target: Any, parent: Any?, value: CGFloat) -> NSLayoutConstraint {
+    static func topConstraint(target: UIView, parent: UIView?, value: CGFloat) -> NSLayoutConstraint {
         return MarginConstraintFactory.make(
-            target: target,
-            parent: parent,
+            views: ContraintViews(target: target, parent: parent),
             margin: .top,
             value: value
         )
     }
 
-    static func bottomConstraint(target: Any, parent: Any?, value: CGFloat) -> NSLayoutConstraint {
+    static func bottomConstraint(target: UIView, parent: UIView?, value: CGFloat) -> NSLayoutConstraint {
         return MarginConstraintFactory.make(
-            target: target,
-            parent: parent,
+            views: ContraintViews(target: target, parent: parent),
             margin: .bottom,
             value: value
         )
     }
 
     private static func make(
-        target: Any,
-        parent: Any?,
+        views: ContraintViews,
         margin: NSLayoutConstraint.Attribute,
         value: CGFloat
     ) -> NSLayoutConstraint {
-        return NSLayoutConstraint(item: target,
+        return NSLayoutConstraint(item: views.target,
                                   attribute: margin,
                                   relatedBy: .equal,
-                                  toItem: parent,
+                                  toItem: views.parent,
                                   attribute: margin,
                                   multiplier: 1.0,
                                   constant: value)
