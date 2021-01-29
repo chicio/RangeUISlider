@@ -10,48 +10,6 @@ import Foundation
 import UIKit
 
 class Progress: Gradient {
-    func addBackground(usingImage image: UIImage,
-                       andEdgeInset edgeInset: UIEdgeInsets,
-                       andCorners corners: CGFloat) {
-        let backgroundResizableImage = image.resizableImage(withCapInsets: edgeInset)
-        let backgroundImageView = UIImageView(image: backgroundResizableImage)
-        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundImageView.layer.masksToBounds = corners > 0
-        backgroundImageView.layer.cornerRadius = corners
-        backgroundImageView.accessibilityIdentifier = "ProgressBackground"
-        addSubview(backgroundImageView)
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: backgroundImageView,
-                               attribute: .leading,
-                               relatedBy: .equal,
-                               toItem: self,
-                               attribute: .leading,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: backgroundImageView,
-                               attribute: .trailing,
-                               relatedBy: .equal,
-                               toItem: self,
-                               attribute: .trailing,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: backgroundImageView,
-                               attribute: .top,
-                               relatedBy: .equal,
-                               toItem: self,
-                               attribute: .top,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: backgroundImageView,
-                               attribute: .bottom,
-                               relatedBy: .equal,
-                               toItem: self,
-                               attribute: .bottom,
-                               multiplier: 1.0,
-                               constant: 0.0)
-            ])
-    }
-
     func setup(leftAnchorView: UIView,
                leftAnchorConstraintAttribute: NSLayoutConstraint.Attribute,
                rightAnchorView: UIView,
@@ -92,5 +50,28 @@ class Progress: Gradient {
         ]
 
         return progressViewConstraints
+    }
+    
+    func addBackground(usingImage image: UIImage,
+                       andEdgeInset edgeInset: UIEdgeInsets,
+                       andCorners corners: CGFloat) {
+        let backgroundImageView = createBackgroundUsing(image: image, edgeInset: edgeInset, corners: corners)
+        addSubview(backgroundImageView)
+        NSLayoutConstraint.activate([
+            MarginConstraintFactory.leadingConstraint(target: backgroundImageView, parent: self, value: 0.0),
+            MarginConstraintFactory.trailingConstraint(target: backgroundImageView, parent: self, value: 0.0),
+            MarginConstraintFactory.topConstraint(target: backgroundImageView, parent: self, value: 0.0),
+            MarginConstraintFactory.bottomConstraint(target: backgroundImageView, parent: self, value: 0.0)
+        ])
+    }
+
+    private func createBackgroundUsing(image: UIImage, edgeInset: UIEdgeInsets, corners: CGFloat) -> UIView {
+        let backgroundResizableImage = image.resizableImage(withCapInsets: edgeInset)
+        let backgroundImageView = UIImageView(image: backgroundResizableImage)
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImageView.layer.masksToBounds = corners > 0
+        backgroundImageView.layer.cornerRadius = corners
+        backgroundImageView.accessibilityIdentifier = "ProgressBackground"
+        return backgroundImageView
     }
 }

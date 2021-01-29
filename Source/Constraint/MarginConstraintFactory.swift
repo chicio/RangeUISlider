@@ -28,6 +28,24 @@ class MarginConstraintFactory {
         )
     }
 
+    static func topConstraint(target: Any, parent: Any?, value: CGFloat) -> NSLayoutConstraint {
+        return MarginConstraintFactory.make(
+            target: target,
+            parent: parent,
+            margin: .top,
+            value: value
+        )
+    }
+
+    static func bottomConstraint(target: Any, parent: Any?, value: CGFloat) -> NSLayoutConstraint {
+        return MarginConstraintFactory.make(
+            target: target,
+            parent: parent,
+            margin: .bottom,
+            value: value
+        )
+    }
+
     private static func make(
         target: Any,
         parent: Any?,
