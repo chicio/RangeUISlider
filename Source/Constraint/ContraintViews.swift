@@ -6,7 +6,7 @@
 //  Copyright © 2021 Fabrizio Duroni. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ContraintViews {
     unowned let target: UIView
