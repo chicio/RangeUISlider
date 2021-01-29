@@ -10,33 +10,33 @@ import Foundation
 import UIKit
 
 class MarginConstraintFactory {
-    static func leadingConstraint(target: UIView, parent: UIView?, value: CGFloat) -> NSLayoutConstraint {
+    static func leadingConstraint(views: ContraintViews, value: CGFloat) -> NSLayoutConstraint {
         return MarginConstraintFactory.make(
-            views: ContraintViews(target: target, parent: parent),
+            views: views,
             margin: .leading,
             value: value
         )
     }
 
-    static func trailingConstraint(target: UIView, parent: UIView?, value: CGFloat) -> NSLayoutConstraint {
+    static func trailingConstraint(views: ContraintViews, value: CGFloat) -> NSLayoutConstraint {
         return MarginConstraintFactory.make(
-            views: ContraintViews(target: target, parent: parent),
+            views: views,
             margin: .trailing,
             value: value
         )
     }
 
-    static func topConstraint(target: UIView, parent: UIView?, value: CGFloat) -> NSLayoutConstraint {
+    static func topConstraint(views: ContraintViews, value: CGFloat) -> NSLayoutConstraint {
         return MarginConstraintFactory.make(
-            views: ContraintViews(target: target, parent: parent),
+            views: views,
             margin: .top,
             value: value
         )
     }
 
-    static func bottomConstraint(target: UIView, parent: UIView?, value: CGFloat) -> NSLayoutConstraint {
+    static func bottomConstraint(views: ContraintViews, value: CGFloat) -> NSLayoutConstraint {
         return MarginConstraintFactory.make(
-            views: ContraintViews(target: target, parent: parent),
+            views: views,
             margin: .bottom,
             value: value
         )
