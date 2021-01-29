@@ -25,7 +25,7 @@ class KnobsHitTest {
             rightKnobHit: hitTestInBarCoordinateSpaceFor(view: rightKnob, contains: point, with: event)
         )
     }
-    
+
     private func hitTestInBarCoordinateSpaceFor(view: UIView, contains point: CGPoint, with event: UIEvent?) -> Bool {
         return hasBeenHitted(view: view, in: view.convert(point, from: parentView), with: event)
     }
