@@ -10,13 +10,10 @@ import Foundation
 import UIKit
 
 class Bar: UIView {
-    private(set) var leadingConstraint: NSLayoutConstraint = NSLayoutConstraint()
-    private(set) var trailingConstraint: NSLayoutConstraint = NSLayoutConstraint()
-    private(set) var heightConstraint: NSLayoutConstraint = NSLayoutConstraint()
-    private weak var leftKnob: Knob!
-    private weak var rightKnob: Knob!
-    private var leftKnobHitted: Bool = false
-    private var rightKnobHitted: Bool = false
+    private(set) var leadingConstraint: NSLayoutConstraint!
+    private(set) var trailingConstraint: NSLayoutConstraint!
+    private(set) var heightConstraint: NSLayoutConstraint!
+    private var knobsHitTest: KnobsHitTest!
 
     func setup(leftKnob aLeftKnob: Knob,
                rightKnob aRightKnob: Knob,
@@ -25,118 +22,32 @@ class Bar: UIView {
                height: CGFloat) -> [NSLayoutConstraint] {
         accessibilityIdentifier = "Bar"
         translatesAutoresizingMaskIntoConstraints = false
-        leftKnob = aLeftKnob
-        rightKnob = aRightKnob
-        let barContraints = createConstraintsUsing(leading: leading, trailing: trailing, height: height)
-        return barContraints
+        self.knobsHitTest = KnobsHitTest(leftKnob: aLeftKnob, rightKnob: aRightKnob, parentView: self)
+        return createConstraintsUsing(leading: leading, trailing: trailing, height: height)
     }
 
     private func createConstraintsUsing(leading: CGFloat, trailing: CGFloat, height: CGFloat) -> [NSLayoutConstraint] {
-        leadingConstraint = MarginConstraintFactory.make(
+        leadingConstraint = MarginConstraintFactory.leadingConstraint(target: self, parent: superview, value: leading)
+        trailingConstraint = MarginConstraintFactory.trailingConstraint(
             target: self,
             parent: superview,
-            margin: .leading,
-            value: leading
-        )
-        trailingConstraint = MarginConstraintFactory.make(
-            target: self,
-            parent: superview,
-            margin: .trailing,
             value: -1.0 * trailing
         )
-        heightConstraint = NSLayoutConstraint(item: self,
-                                              attribute: .height,
-                                              relatedBy: .equal,
-                                              toItem: nil,
-                                              attribute: .notAnAttribute,
-                                              multiplier: 1.0,
-                                              constant: height)
+        heightConstraint = DimensionConstraintFactory.makeHeightConstraint(target: self, value: height)
         let barConstraints: [NSLayoutConstraint] = [
             leadingConstraint,
             trailingConstraint,
             heightConstraint,
-            NSLayoutConstraint(item: self,
-                               attribute: .centerX,
-                               relatedBy: .equal,
-                               toItem: superview,
-                               attribute: .centerX,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: self,
-                               attribute: .centerY,
-                               relatedBy: .equal,
-                               toItem: superview,
-                               attribute: .centerY,
-                               multiplier: 1.0,
-                               constant: 0.0)
+            CenterConstraintFactory.centerX(target: self, parent: superview),
+            CenterConstraintFactory.centerY(target: self, parent: superview)
         ]
         return barConstraints
     }
 
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        leftKnobHitted = hitTestInBarCoordinateSpaceFor(view: leftKnob, contains: point, with: event)
-        rightKnobHitted = hitTestInBarCoordinateSpaceFor(view: rightKnob, contains: point, with: event)
-        if let knobHitted = aKnobHasBeenHitted() {
+        if let knobHitted = knobsHitTest.test(point: point, event: event) {
             return knobHitted
         }
         return self
-    }
-
-    private func hitTestInBarCoordinateSpaceFor(view: UIView, contains point: CGPoint, with event: UIEvent?) -> Bool {
-        let pointInViewCoordinateSpace = view.convert(point, from: self)
-        return hasBeenHitted(view: view, in: pointInViewCoordinateSpace, with: event)
-    }
-
-    func aKnobHasBeenHitted() -> Knob? {
-        if let knobChoosed = getKnobIfNecessaryWhenTheyHaveBeenBothHitted() {
-            return knobChoosed
-        }
-        if rightKnobHitted {
-            return rightKnob
-        }
-        if leftKnobHitted {
-            return leftKnob
-        }
-        return nil
-    }
-
-    private func getKnobIfNecessaryWhenTheyHaveBeenBothHitted() -> Knob? {
-        if bothKnobHaveBeenHitted(), let knobChoosenToBeReturned = chooseIfKnobHaveToBeReturnedIfBothHaveBeenHitted() {
-            return knobChoosenToBeReturned
-        }
-        return nil
-    }
-
-    private func bothKnobHaveBeenHitted() -> Bool {
-        return leftKnobHitted && rightKnobHitted
-    }
-
-    private func chooseIfKnobHaveToBeReturnedIfBothHaveBeenHitted() -> Knob? {
-        if leftKnobIsAtTheLeftMarginOfTheBar() {
-            return rightKnob
-        }
-        if rightKnobIsAtTheRightMarginOfTheBar() {
-            return leftKnob
-        }
-        return nil
-    }
-
-    private func leftKnobIsAtTheLeftMarginOfTheBar() -> Bool {
-        return leftKnob.xPositionConstraint.constant < leftKnob.widthConstraint.constant
-    }
-
-    private func rightKnobIsAtTheRightMarginOfTheBar() -> Bool {
-        return rightKnob.xPositionConstraint.constant * -1 <= rightKnob.widthConstraint.constant
-    }
-
-    private func hasBeenHitted(view: UIView, in point: CGPoint, with event: UIEvent?) -> Bool {
-        if wasHitTestSuccessfulFor(view: view, in: point, with: event) {
-            return true
-        }
-        return false
-    }
-
-    private func wasHitTestSuccessfulFor(view: UIView, in point: CGPoint, with event: UIEvent?) -> Bool {
-        return view.hitTest(point, with: event) != nil
     }
 }

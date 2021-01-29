@@ -1,0 +1,32 @@
+{
+  "configurations" : [
+    {
+      "id" : "B5176032-3277-4BC6-AB73-0B6279685E6A",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:RangeUISlider.xcodeproj",
+        "identifier" : "459CBEF3259B79D000FCA5AB",
+        "name" : "RangeUISliderTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:RangeUISlider.xcodeproj",
+        "identifier" : "45F064822599E3CC007B25A7",
+        "name" : "RangeUISliderUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

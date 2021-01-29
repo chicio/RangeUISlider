@@ -29,14 +29,17 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:TestPlans/BehaviourTestPlan.xctestplan"
-            default = "YES">
+            reference = "container:TestPlans/BehaviourTestPlan.xctestplan">
          </TestPlanReference>
          <TestPlanReference
             reference = "container:TestPlans/ProgrammaticChangesTestPlan.xctestplan">
          </TestPlanReference>
          <TestPlanReference
             reference = "container:TestPlans/UnitTestPlan.xctestplan">
+         </TestPlanReference>
+         <TestPlanReference
+            reference = "container:TestPlans/AllTestPlan.xctestplan"
+            default = "YES">
          </TestPlanReference>
       </TestPlans>
    </TestAction>
