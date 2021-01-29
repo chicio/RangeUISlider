@@ -6,7 +6,7 @@
 //  2021 Fabrizio Duroni. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class KnobsHitTest {
     private unowned let leftKnob: Knob
