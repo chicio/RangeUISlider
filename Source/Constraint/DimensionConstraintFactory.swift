@@ -9,7 +9,7 @@
 import UIKit
 
 class DimensionConstraintFactory {
-    static func makeHeightConstraint(target: Any, value: CGFloat) -> NSLayoutConstraint {
+    static func heightConstraint(target: Any, value: CGFloat) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: target,
                                   attribute: .height,
                                   relatedBy: .equal,
@@ -17,5 +17,15 @@ class DimensionConstraintFactory {
                                   attribute: .notAnAttribute,
                                   multiplier: 1.0,
                                   constant: value)
+    }
+
+    static func equalHeightConstraint(target: Any, parent: Any?) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: target,
+                                  attribute: .height,
+                                  relatedBy: .equal,
+                                  toItem: parent,
+                                  attribute: .height,
+                                  multiplier: 1.0,
+                                  constant: 0.0)
     }
 }

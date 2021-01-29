@@ -14,25 +14,14 @@ class Progress: Gradient {
                leftAnchorConstraintAttribute: NSLayoutConstraint.Attribute,
                rightAnchorView: UIView,
                rightAnchorConstraintAttribute: NSLayoutConstraint.Attribute,
-               color: UIColor) -> [NSLayoutConstraint] {
+               color: UIColor
+    ) -> [NSLayoutConstraint] {
         accessibilityIdentifier = "Progress"
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = color
         let progressViewConstraints: [NSLayoutConstraint] = [
-            NSLayoutConstraint(item: self,
-                               attribute: .height,
-                               relatedBy: .equal,
-                               toItem: superview,
-                               attribute: .height,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: self,
-                               attribute: .centerY,
-                               relatedBy: .equal,
-                               toItem: superview,
-                               attribute: .centerY,
-                               multiplier: 1.0,
-                               constant: 0.0),
+            DimensionConstraintFactory.equalHeightConstraint(target: self, parent: superview),
+            CenterConstraintFactory.centerY(target: self, parent: superview),
             NSLayoutConstraint(item: self,
                                attribute: .leading,
                                relatedBy: .equal,
@@ -51,10 +40,8 @@ class Progress: Gradient {
 
         return progressViewConstraints
     }
-    
-    func addBackground(usingImage image: UIImage,
-                       andEdgeInset edgeInset: UIEdgeInsets,
-                       andCorners corners: CGFloat) {
+
+    func addBackground(image: UIImage, edgeInset: UIEdgeInsets, corners: CGFloat) {
         let backgroundImageView = createBackgroundUsing(image: image, edgeInset: edgeInset, corners: corners)
         addSubview(backgroundImageView)
         NSLayoutConstraint.activate([

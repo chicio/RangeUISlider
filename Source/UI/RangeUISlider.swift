@@ -670,12 +670,8 @@ open class RangeUISlider: UIView {
                                          left: rangeNotSelectedBackgroundEdgeInsetLeft,
                                          bottom: rangeNotSelectedBackgroundEdgeInsetBottom,
                                          right: rangeNotSelectedBackgroundEdgeInsetRight)
-            leftProgressView.addBackground(usingImage: backgroundImage,
-                                           andEdgeInset: edgeInset,
-                                           andCorners: barCorners)
-            rightProgressView.addBackground(usingImage: backgroundImage,
-                                            andEdgeInset: edgeInset,
-                                            andCorners: barCorners)
+            leftProgressView.addBackground(image: backgroundImage, edgeInset: edgeInset, corners: barCorners)
+            rightProgressView.addBackground(image: backgroundImage, edgeInset: edgeInset, corners: barCorners)
         }
     }
 
@@ -685,9 +681,7 @@ open class RangeUISlider: UIView {
                                          left: rangeSelectedBackgroundEdgeInsetLeft,
                                          bottom: rangeSelectedBackgroundEdgeInsetBottom,
                                          right: rangeSelectedBackgroundEdgeInsetRight)
-            selectedProgressView.addBackground(usingImage: backgroundImage,
-                                               andEdgeInset: edgeInset,
-                                               andCorners: barCorners)
+            selectedProgressView.addBackground(image: backgroundImage, edgeInset: edgeInset, corners: barCorners)
         }
     }
 

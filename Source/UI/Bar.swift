@@ -33,7 +33,7 @@ class Bar: UIView {
             parent: superview,
             value: -1.0 * trailing
         )
-        heightConstraint = DimensionConstraintFactory.makeHeightConstraint(target: self, value: height)
+        heightConstraint = DimensionConstraintFactory.heightConstraint(target: self, value: height)
         let barConstraints: [NSLayoutConstraint] = [
             leadingConstraint,
             trailingConstraint,
