@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CoreGraphics
+import UIKit
 
 class MarginConstraintFactory {
     static func leadingConstraint(target: Any, parent: Any?, value: CGFloat) -> NSLayoutConstraint {
