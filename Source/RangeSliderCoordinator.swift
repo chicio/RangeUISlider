@@ -31,7 +31,8 @@ public class RangeSliderCoordinator: RangeUISliderDelegate {
      - parameter slider: the slider on which the range has been modified.
      */
     public func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
-        self.rangeSlider.set(minValueSelected: minValueSelected, maxValueSelected: maxValueSelected)
+        self.rangeSlider.minValueSelected = minValueSelected
+        self.rangeSlider.maxValueSelected = maxValueSelected
     }
 
     /**
@@ -42,6 +43,7 @@ public class RangeSliderCoordinator: RangeUISliderDelegate {
      - parameter slider: the slider on which the range has been modified.
      */
     public func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
-        self.rangeSlider.set(minValueSelected: minValueSelected, maxValueSelected: maxValueSelected)
+        self.rangeSlider.minValueSelected = minValueSelected
+        self.rangeSlider.maxValueSelected = maxValueSelected
     }
 }

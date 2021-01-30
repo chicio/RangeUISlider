@@ -21,6 +21,7 @@
 		450C7B6A25C48A7500764496 /* Knob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C7B6425C48A7400764496 /* Knob.swift */; };
 		450C7B7525C490C100764496 /* ContraintViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C7B7425C490C100764496 /* ContraintViews.swift */; };
 		4520C27125A349F00018042D /* SwiftUIHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4520C27025A349F00018042D /* SwiftUIHostingViewController.swift */; };
+		4538955425C5D62700389905 /* RangeUISliderCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4538955325C5D62700389905 /* RangeUISliderCreator.swift */; };
 		455BF125259B44F80026BE56 /* InsideTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BF124259B44F80026BE56 /* InsideTableViewTests.swift */; };
 		455BF12E259B4B2D0026BE56 /* ProgrammaticKnobChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455BF12D259B4B2D0026BE56 /* ProgrammaticKnobChangeTests.swift */; };
 		4571869425A5CFE300541D67 /* RangeSliderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4571869325A5CFE300541D67 /* RangeSliderCoordinator.swift */; };
@@ -103,6 +104,7 @@
 		450C7B7425C490C100764496 /* ContraintViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContraintViews.swift; sourceTree = "<group>"; };
 		451E91D925C47B1200A2843D /* AllTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = AllTestPlan.xctestplan; sourceTree = "<group>"; };
 		4520C27025A349F00018042D /* SwiftUIHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIHostingViewController.swift; sourceTree = "<group>"; };
+		4538955325C5D62700389905 /* RangeUISliderCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeUISliderCreator.swift; sourceTree = "<group>"; };
 		455BF124259B44F80026BE56 /* InsideTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideTableViewTests.swift; sourceTree = "<group>"; };
 		455BF12D259B4B2D0026BE56 /* ProgrammaticKnobChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticKnobChangeTests.swift; sourceTree = "<group>"; };
 		455BF135259B4BCC0026BE56 /* ProgrammaticChangesTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProgrammaticChangesTestPlan.xctestplan; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				450C7B5525C48A4F00764496 /* RangeSelectedCalculator.swift */,
 				450C7B5625C48A4F00764496 /* StepCalculator.swift */,
 				450C7B5725C48A4F00764496 /* KnobsHitTest.swift */,
+				4538955325C5D62700389905 /* RangeUISliderCreator.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				4571869425A5CFE300541D67 /* RangeSliderCoordinator.swift in Sources */,
 				450C7B6A25C48A7500764496 /* Knob.swift in Sources */,
 				4571869925A5D01500541D67 /* RangeSliderSettings.swift in Sources */,
+				4538955425C5D62700389905 /* RangeUISliderCreator.swift in Sources */,
 				450C7B5925C48A4F00764496 /* StepCalculator.swift in Sources */,
 				450C7B6925C48A7500764496 /* Gradient.swift in Sources */,
 				450C7B4F25C489E200764496 /* DimensionConstraintFactory.swift in Sources */,

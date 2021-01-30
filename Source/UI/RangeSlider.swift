@@ -8,7 +8,6 @@
 
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
-// swiftlint:disable function_body_length
 
 import SwiftUI
 
@@ -23,7 +22,8 @@ public struct RangeSlider: UIViewRepresentable {
     /// Max value selected binding value.
     /// In this property the max value selected will be exposed. It will be updated during dragging.
     @Binding public var maxValueSelected: CGFloat
-    private let settings = RangeSliderSettings()
+    private let settings: RangeSliderSettings
+    private let rangeUISliderCreator: RangeUISliderCreator
 
     /**
      Init RangeSlider.
@@ -34,11 +34,8 @@ public struct RangeSlider: UIViewRepresentable {
     public init(minValueSelected: Binding<CGFloat>, maxValueSelected: Binding<CGFloat>) {
         self._minValueSelected = minValueSelected
         self._maxValueSelected = maxValueSelected
-    }
-
-    public func set(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
-        self.minValueSelected = minValueSelected
-        self.maxValueSelected = maxValueSelected
+        self.settings = RangeSliderSettings()
+        self.rangeUISliderCreator = RangeUISliderCreator()
     }
 
     // MARK: lifecycle
@@ -51,75 +48,8 @@ public struct RangeSlider: UIViewRepresentable {
      - returns: an instance of RangeUISlider
      */
     public func makeUIView(context: Context) -> RangeUISlider {
-        let rangeSlider = RangeUISlider(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 20)))
+        let rangeSlider = rangeUISliderCreator.createFrom(settings: settings)
         rangeSlider.delegate = context.coordinator
-        assignValueTo(rangeSlider: rangeSlider, property: "stepIncrement")
-        assignValueTo(rangeSlider: rangeSlider, property: "defaultValueLeftKnob")
-        assignValueTo(rangeSlider: rangeSlider, property: "defaultValueRightKnob")
-        assignValueTo(rangeSlider: rangeSlider, property: "scaleMinValue")
-        assignValueTo(rangeSlider: rangeSlider, property: "scaleMaxValue")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeSelectedColor")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeSelectedBackgroundImage")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeSelectedBackgroundEdgeInsetTop")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeSelectedBackgroundEdgeInsetLeft")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeSelectedBackgroundEdgeInsetBottom")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeSelectedBackgroundEdgeInsetRight")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeSelectedGradientColor1")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeSelectedGradientColor2")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeSelectedGradientStartPoint")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeSelectedGradientEndPoint")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeNotSelectedColor")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeNotSelectedBackgroundImage")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeNotSelectedBackgroundEdgeInsetTop")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeNotSelectedBackgroundEdgeInsetLeft")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeNotSelectedBackgroundEdgeInsetBottom")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeNotSelectedBackgroundEdgeInsetRight")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeNotSelectedGradientColor1")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeNotSelectedGradientColor2")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeNotSelectedGradientStartPoint")
-        assignValueTo(rangeSlider: rangeSlider, property: "rangeNotSelectedGradientEndPoint")
-        assignValueTo(rangeSlider: rangeSlider, property: "leftKnobWidth")
-        assignValueTo(rangeSlider: rangeSlider, property: "leftKnobHeight")
-        assignValueTo(rangeSlider: rangeSlider, property: "leftKnobCorners")
-        assignValueTo(rangeSlider: rangeSlider, property: "leftKnobImage")
-        assignValueTo(rangeSlider: rangeSlider, property: "leftKnobColor")
-        assignValueTo(rangeSlider: rangeSlider, property: "leftShadowOpacity")
-        assignValueTo(rangeSlider: rangeSlider, property: "leftShadowColor")
-        assignValueTo(rangeSlider: rangeSlider, property: "leftShadowOffset")
-        assignValueTo(rangeSlider: rangeSlider, property: "leftShadowRadius")
-        assignValueTo(rangeSlider: rangeSlider, property: "leftKnobGradientColor1")
-        assignValueTo(rangeSlider: rangeSlider, property: "leftKnobGradientColor2")
-        assignValueTo(rangeSlider: rangeSlider, property: "leftKnobGradientStartPoint")
-        assignValueTo(rangeSlider: rangeSlider, property: "leftKnobGradientEndPoint")
-        assignValueTo(rangeSlider: rangeSlider, property: "leftKnobBorderWidth")
-        assignValueTo(rangeSlider: rangeSlider, property: "leftKnobBorderColor")
-        assignValueTo(rangeSlider: rangeSlider, property: "rightKnobWidth")
-        assignValueTo(rangeSlider: rangeSlider, property: "rightKnobHeight")
-        assignValueTo(rangeSlider: rangeSlider, property: "rightKnobCorners")
-        assignValueTo(rangeSlider: rangeSlider, property: "rightKnobImage")
-        assignValueTo(rangeSlider: rangeSlider, property: "rightKnobColor")
-        assignValueTo(rangeSlider: rangeSlider, property: "rightShadowOpacity")
-        assignValueTo(rangeSlider: rangeSlider, property: "rightShadowColor")
-        assignValueTo(rangeSlider: rangeSlider, property: "rightShadowOffset")
-        assignValueTo(rangeSlider: rangeSlider, property: "rightShadowRadius")
-        assignValueTo(rangeSlider: rangeSlider, property: "rightKnobGradientColor1")
-        assignValueTo(rangeSlider: rangeSlider, property: "rightKnobGradientColor2")
-        assignValueTo(rangeSlider: rangeSlider, property: "rightKnobGradientStartPoint")
-        assignValueTo(rangeSlider: rangeSlider, property: "rightKnobGradientEndPoint")
-        assignValueTo(rangeSlider: rangeSlider, property: "rightKnobBorderWidth")
-        assignValueTo(rangeSlider: rangeSlider, property: "rightKnobBorderColor")
-        assignValueTo(rangeSlider: rangeSlider, property: "barHeight")
-        assignValueTo(rangeSlider: rangeSlider, property: "barLeading")
-        assignValueTo(rangeSlider: rangeSlider, property: "barTrailing")
-        assignValueTo(rangeSlider: rangeSlider, property: "barCorners")
-        assignValueTo(rangeSlider: rangeSlider, property: "barShadowOpacity")
-        assignValueTo(rangeSlider: rangeSlider, property: "barShadowColor")
-        assignValueTo(rangeSlider: rangeSlider, property: "barShadowOffset")
-        assignValueTo(rangeSlider: rangeSlider, property: "barShadowRadius")
-        assignValueTo(rangeSlider: rangeSlider, property: "barBorderWidth")
-        assignValueTo(rangeSlider: rangeSlider, property: "barBorderColor")
-        assignValueTo(rangeSlider: rangeSlider, property: "containerCorners")
-
         return rangeSlider
     }
 
