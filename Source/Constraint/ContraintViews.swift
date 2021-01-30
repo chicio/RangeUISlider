@@ -10,10 +10,10 @@ import UIKit
 
 class ContraintViews {
     unowned let target: UIView
-    unowned let parent: UIView?
+    unowned let relatedView: UIView?
 
-    init(target: UIView, parent: UIView? = nil) {
+    init(target: UIView, relatedView: UIView? = nil) {
         self.target = target
-        self.parent = parent
+        self.relatedView = relatedView
     }
 }

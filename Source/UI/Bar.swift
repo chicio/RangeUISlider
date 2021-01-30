@@ -28,11 +28,11 @@ class Bar: UIView {
 
     private func createConstraintsUsing(leading: CGFloat, trailing: CGFloat, height: CGFloat) -> [NSLayoutConstraint] {
         leadingConstraint = MarginConstraintFactory.leadingConstraint(
-            views: ContraintViews(target: self, parent: superview),
+            views: ContraintViews(target: self, relatedView: superview),
             value: leading
         )
         trailingConstraint = MarginConstraintFactory.trailingConstraint(
-            views: ContraintViews(target: self, parent: superview),
+            views: ContraintViews(target: self, relatedView: superview),
             value: -1.0 * trailing
         )
         heightConstraint = DimensionConstraintFactory.heightConstraint(target: self, value: height)

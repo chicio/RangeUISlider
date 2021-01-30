@@ -12,7 +12,31 @@ class MarginConstraintFactory {
     static func leadingConstraint(views: ContraintViews, value: CGFloat) -> NSLayoutConstraint {
         return MarginConstraintFactory.make(
             views: views,
-            margin: .leading,
+            attributes: ContraintAttributes(target: .leading, relatedView: .leading),
+            value: value
+        )
+    }
+
+    static func leadingTo(
+        attribute: NSLayoutConstraint.Attribute,
+        views: ContraintViews,
+        value: CGFloat
+    ) -> NSLayoutConstraint {
+        return MarginConstraintFactory.make(
+            views: views,
+            attributes: ContraintAttributes(target: .leading, relatedView: attribute),
+            value: value
+        )
+    }
+
+    static func trailingTo(
+        attribute: NSLayoutConstraint.Attribute,
+        views: ContraintViews,
+        value: CGFloat
+    ) -> NSLayoutConstraint {
+        return MarginConstraintFactory.make(
+            views: views,
+            attributes: ContraintAttributes(target: .trailing, relatedView: attribute),
             value: value
         )
     }
@@ -20,7 +44,7 @@ class MarginConstraintFactory {
     static func trailingConstraint(views: ContraintViews, value: CGFloat) -> NSLayoutConstraint {
         return MarginConstraintFactory.make(
             views: views,
-            margin: .trailing,
+            attributes: ContraintAttributes(target: .trailing, relatedView: .trailing),
             value: value
         )
     }
@@ -28,7 +52,7 @@ class MarginConstraintFactory {
     static func topConstraint(views: ContraintViews, value: CGFloat) -> NSLayoutConstraint {
         return MarginConstraintFactory.make(
             views: views,
-            margin: .top,
+            attributes: ContraintAttributes(target: .top, relatedView: .top),
             value: value
         )
     }
@@ -36,21 +60,21 @@ class MarginConstraintFactory {
     static func bottomConstraint(views: ContraintViews, value: CGFloat) -> NSLayoutConstraint {
         return MarginConstraintFactory.make(
             views: views,
-            margin: .bottom,
+            attributes: ContraintAttributes(target: .bottom, relatedView: .bottom),
             value: value
         )
     }
 
     private static func make(
         views: ContraintViews,
-        margin: NSLayoutConstraint.Attribute,
+        attributes: ContraintAttributes,
         value: CGFloat
     ) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: views.target,
-                                  attribute: margin,
+                                  attribute: attributes.target,
                                   relatedBy: .equal,
-                                  toItem: views.parent,
-                                  attribute: margin,
+                                  toItem: views.relatedView,
+                                  attribute: attributes.relatedView,
                                   multiplier: 1.0,
                                   constant: value)
     }

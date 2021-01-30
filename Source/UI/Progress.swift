@@ -19,26 +19,20 @@ class Progress: Gradient {
         accessibilityIdentifier = "Progress"
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = color
-        let progressViewConstraints: [NSLayoutConstraint] = [
+        return [
             DimensionConstraintFactory.equalHeightConstraint(target: self, parent: superview),
             CenterConstraintFactory.centerY(target: self, parent: superview),
-            NSLayoutConstraint(item: self,
-                               attribute: .leading,
-                               relatedBy: .equal,
-                               toItem: leftAnchorView,
-                               attribute: leftAnchorConstraintAttribute,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: self,
-                               attribute: .trailing,
-                               relatedBy: .equal,
-                               toItem: rightAnchorView,
-                               attribute: rightAnchorConstraintAttribute,
-                               multiplier: 1.0,
-                               constant: 0.0)
+            MarginConstraintFactory.leadingTo(
+                attribute: leftAnchorConstraintAttribute,
+                views: ContraintViews(target: self, relatedView: leftAnchorView),
+                value: 0.0
+            ),
+            MarginConstraintFactory.trailingTo(
+                attribute: rightAnchorConstraintAttribute,
+                views: ContraintViews(target: self, relatedView: rightAnchorView),
+                value: 0.0
+            )
         ]
-
-        return progressViewConstraints
     }
 
     func addBackground(image: UIImage, edgeInset: UIEdgeInsets, corners: CGFloat) {
@@ -46,19 +40,19 @@ class Progress: Gradient {
         addSubview(backgroundImageView)
         NSLayoutConstraint.activate([
             MarginConstraintFactory.leadingConstraint(
-                views: ContraintViews(target: backgroundImageView, parent: self),
+                views: ContraintViews(target: backgroundImageView, relatedView: self),
                 value: 0.0
             ),
             MarginConstraintFactory.trailingConstraint(
-                views: ContraintViews(target: backgroundImageView, parent: self),
+                views: ContraintViews(target: backgroundImageView, relatedView: self),
                 value: 0.0
             ),
             MarginConstraintFactory.topConstraint(
-                views: ContraintViews(target: backgroundImageView, parent: self),
+                views: ContraintViews(target: backgroundImageView, relatedView: self),
                 value: 0.0
             ),
             MarginConstraintFactory.bottomConstraint(
-                views: ContraintViews(target: backgroundImageView, parent: self),
+                views: ContraintViews(target: backgroundImageView, relatedView: self),
                 value: 0.0
             )
         ])
