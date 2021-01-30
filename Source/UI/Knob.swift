@@ -8,13 +8,7 @@
 
 // swiftlint:disable function_parameter_count
 
-import Foundation
 import UIKit
-
-enum KnobPosition {
-    case left
-    case right
-}
 
 class Knob: Gradient, UIGestureRecognizerDelegate {
     private(set) var backgroundView: UIView = UIView()
@@ -51,38 +45,25 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
     private func setupBackground() -> [NSLayoutConstraint] {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(backgroundView)
-        self.bringSubviewToFront(backgroundView)
-        let knobBackgroundViewConstraints: [NSLayoutConstraint] = [
-            NSLayoutConstraint(item: backgroundView,
-                               attribute: .leading,
-                               relatedBy: .equal,
-                               toItem: self,
-                               attribute: .leading,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: backgroundView,
-                               attribute: .trailing,
-                               relatedBy: .equal,
-                               toItem: self,
-                               attribute: .trailing,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: backgroundView,
-                               attribute: .top,
-                               relatedBy: .equal,
-                               toItem: self,
-                               attribute: .top,
-                               multiplier: 1.0,
-                               constant: 0.0),
-            NSLayoutConstraint(item: backgroundView,
-                               attribute: .bottom,
-                               relatedBy: .equal,
-                               toItem: self,
-                               attribute: .bottom,
-                               multiplier: 1.0,
-                               constant: 0.0)
+        bringSubviewToFront(backgroundView)
+        return [
+            MarginConstraintFactory.leadingConstraint(
+                views: ContraintViews(target: backgroundView, relatedView: self),
+                value: 0.0
+            ),
+            MarginConstraintFactory.trailingConstraint(
+                views: ContraintViews(target: backgroundView, relatedView: self),
+                value: 0.0
+            ),
+            MarginConstraintFactory.topConstraint(
+                views: ContraintViews(target: backgroundView, relatedView: self),
+                value: 0.0
+            ),
+            MarginConstraintFactory.bottomConstraint(
+                views: ContraintViews(target: backgroundView, relatedView: self),
+                value: 0.0
+            )
         ]
-        return knobBackgroundViewConstraints
     }
 
     private func setXPositionConstraint() {
