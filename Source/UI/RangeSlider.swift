@@ -36,6 +36,11 @@ public struct RangeSlider: UIViewRepresentable {
         self._maxValueSelected = maxValueSelected
     }
 
+    public func set(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
+        self.minValueSelected = minValueSelected
+        self.maxValueSelected = maxValueSelected
+    }
+
     // MARK: lifecycle
 
     /**
