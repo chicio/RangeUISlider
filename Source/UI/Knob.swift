@@ -28,10 +28,10 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
         accessibilityIdentifier = anAccessibilityIdentifier
         translatesAutoresizingMaskIntoConstraints = false
         position = aPosition
-        let knobBackgroundConstraints: [NSLayoutConstraint] = setupBackground()
         setXPositionConstraint()
         setDimensionConstraints(usingWidth: width, andHeight: height)
         setGestureRecognizer(withTarget: target, usingSelector: selector)
+        let knobBackgroundConstraints: [NSLayoutConstraint] = setupBackground()
         let knobConstraints: [NSLayoutConstraint] = [
             xPositionConstraint,
             centerVerticallyConstraint(),
