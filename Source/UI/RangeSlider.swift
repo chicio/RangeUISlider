@@ -70,12 +70,6 @@ public struct RangeSlider: UIViewRepresentable {
         return RangeSliderCoordinator(rangeSlider: self)
     }
 
-    private func assignValueTo(rangeSlider: RangeUISlider, property: String) {
-        if let value = settings.values[property] {
-            rangeSlider.setValue(value, forKey: property)
-        }
-    }
-
     // MARK: modifiers
 
     /**
