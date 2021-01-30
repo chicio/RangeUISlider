@@ -79,6 +79,157 @@ public struct RangeSlider: UIViewRepresentable {
     // MARK: modifiers
 
     /**
+     Set step increment value. If different from 0 RangeUISlider will let the user drag by step increment.
+     
+     - parameter value: the value to be used as step increment.
+     */
+    public func stepIncrement(_ value: CGFloat) -> RangeSlider {
+        settings.values["stepIncrement"] = value
+        return self
+    }
+
+    /**
+     Set default left knob starting value.
+     
+     - parameter value: the value to be used as default left knob start.
+     */
+    public func defaultValueLeftKnob(_ value: CGFloat) -> RangeSlider {
+        settings.values["defaultValueLeftKnob"] = value
+        return self
+    }
+
+    /**
+     Set default right knob starting value.
+     
+     - parameter value: the value to be used as default right knob start.
+     */
+    public func defaultValueRightKnob(_ value: CGFloat) -> RangeSlider {
+        settings.values["defaultValueRightKnob"] = value
+        return self
+    }
+
+    /**
+     Set scale minimum value.
+     
+     - parameter value: the value to be used as scale minimum value.
+     */
+    public func scaleMinValue(_ value: CGFloat) -> RangeSlider {
+        settings.values["scaleMinValue"] = value
+        return self
+    }
+
+    /**
+     Set scale maximum value.
+     
+     - parameter value: the value to be used as scale maximum value.
+     */
+    public func scaleMaxValue(_ value: CGFloat) -> RangeSlider {
+        settings.values["scaleMaxValue"] = value
+        return self
+    }
+
+    /**
+     Set selected range color.
+     
+     - parameter value: the value to be used as selected range color.
+     */
+    public func rangeSelectedColor(_ value: Color) -> RangeSlider {
+        settings.values["rangeSelectedColor"] = UIColor(value)
+        return self
+    }
+
+    /**
+     Set background range selected strechable image.
+     The string will be used to search an image with that name in the current Bundle.
+     
+     - parameter value: the value to be used as background range selected strechable image.
+     */
+    public func rangeSelectedBackgroundImage(_ value: String) -> RangeSlider {
+        settings.values["rangeSelectedBackgroundImage"] = UIImage(named: value)
+        return self
+    }
+
+    /**
+     Set background range selected top edge insect for background image.
+     
+     - parameter value: the value to be used as background range selected top edge insect for background image.
+     */
+    public func rangeSelectedBackgroundEdgeInsetTop(_ value: CGFloat) -> RangeSlider {
+        settings.values["rangeSelectedBackgroundEdgeInsetTop"] = value
+        return self
+    }
+
+    /**
+     Set background range selected left edge insect for background image.
+     
+     - parameter value: the value to be used as background range selected left edge insect for background image.
+     */
+    public func rangeSelectedBackgroundEdgeInsetLeft(_ value: CGFloat) -> RangeSlider {
+        settings.values["rangeSelectedBackgroundEdgeInsetLeft"] = value
+        return self
+    }
+
+    /**
+     Set background range selected bottom edge insect for background image.
+     
+     - parameter value: the value to be used as background range selected bottom edge insect for background image.
+     */
+    public func rangeSelectedBackgroundEdgeInsetBottom(_ value: CGFloat) -> RangeSlider {
+        settings.values["rangeSelectedBackgroundEdgeInsetBottom"] = value
+        return self
+    }
+
+    /**
+     Set background range selected right edge insect for background image.
+     
+     - parameter value: the value to be used as background range selected right edge insect for background image.
+     */
+    public func rangeSelectedBackgroundEdgeInsetRight(_ value: CGFloat) -> RangeSlider {
+        settings.values["rangeSelectedBackgroundEdgeInsetRight"] = value
+        return self
+    }
+
+    /**
+     Set  gradient color 1 for range selected. The value received is converted to a `UIColor`.
+     
+     - parameter value: the value to be used as gradient color 1 for range selected.
+     */
+    public func rangeSelectedGradientColor1(_ value: Color) -> RangeSlider {
+        settings.values["rangeSelectedGradientColor1"] = UIColor(value)
+        return self
+    }
+
+    /**
+     Set  gradient color 2 for range selected. The value received is converted to a `UIColor`.
+     
+     - parameter value: the value to be used asgradient color 2 for range selected.
+     */
+    public func rangeSelectedGradientColor2(_ value: Color) -> RangeSlider {
+        settings.values["rangeSelectedGradientColor2"] = UIColor(value)
+        return self
+    }
+
+    /**
+     Set gradient start point for selected range.
+     
+     - parameter value: the value to be used as gradient start point for selected range.
+     */
+    public func rangeSelectedGradientStartPoint(_ value: CGPoint) -> RangeSlider {
+        settings.values["rangeSelectedGradientStartPoint"] = value
+        return self
+    }
+
+    /**
+     Set gradient end point for selected range.
+     
+     - parameter value: the value to be used as gradient end point for selected range.
+     */
+    public func rangeSelectedGradientEndPoint(_ value: CGPoint) -> RangeSlider {
+        settings.values["rangeSelectedGradientEndPoint"] = value
+        return self
+    }
+
+    /**
      Set not selected range color.
      
      - parameter value: the value to be used as not selected range color.
@@ -579,162 +730,4 @@ public struct RangeSlider: UIViewRepresentable {
         settings.values["barBorderColor"] = value
         return self
     }
-}
-
-@available(iOS 14.0, *)
-extension RangeSlider {
-    /**
-     Set step increment value. If different from 0 RangeUISlider will let the user drag by step increment.
-     
-     - parameter value: the value to be used as step increment.
-     */
-    public func stepIncrement(_ value: CGFloat) -> RangeSlider {
-        settings.values["stepIncrement"] = value
-        return self
-    }
-
-    /**
-     Set default left knob starting value.
-     
-     - parameter value: the value to be used as default left knob start.
-     */
-    public func defaultValueLeftKnob(_ value: CGFloat) -> RangeSlider {
-        settings.values["defaultValueLeftKnob"] = value
-        return self
-    }
-
-    /**
-     Set default right knob starting value.
-     
-     - parameter value: the value to be used as default right knob start.
-     */
-    public func defaultValueRightKnob(_ value: CGFloat) -> RangeSlider {
-        settings.values["defaultValueRightKnob"] = value
-        return self
-    }
-
-    /**
-     Set scale minimum value.
-     
-     - parameter value: the value to be used as scale minimum value.
-     */
-    public func scaleMinValue(_ value: CGFloat) -> RangeSlider {
-        settings.values["scaleMinValue"] = value
-        return self
-    }
-
-    /**
-     Set scale maximum value.
-     
-     - parameter value: the value to be used as scale maximum value.
-     */
-    public func scaleMaxValue(_ value: CGFloat) -> RangeSlider {
-        settings.values["scaleMaxValue"] = value
-        return self
-    }
-}
-
-@available(iOS 14.0, *)
-extension RangeSlider {
-    /**
-     Set selected range color.
-     
-     - parameter value: the value to be used as selected range color.
-     */
-    public func rangeSelectedColor(_ value: Color) -> RangeSlider {
-        settings.values["rangeSelectedColor"] = UIColor(value)
-        return self
-    }
-
-    /**
-     Set background range selected strechable image.
-     The string will be used to search an image with that name in the current Bundle.
-     
-     - parameter value: the value to be used as background range selected strechable image.
-     */
-    public func rangeSelectedBackgroundImage(_ value: String) -> RangeSlider {
-        settings.values["rangeSelectedBackgroundImage"] = UIImage(named: value)
-        return self
-    }
-
-    /**
-     Set background range selected top edge insect for background image.
-     
-     - parameter value: the value to be used as background range selected top edge insect for background image.
-     */
-    public func rangeSelectedBackgroundEdgeInsetTop(_ value: CGFloat) -> RangeSlider {
-        settings.values["rangeSelectedBackgroundEdgeInsetTop"] = value
-        return self
-    }
-
-    /**
-     Set background range selected left edge insect for background image.
-     
-     - parameter value: the value to be used as background range selected left edge insect for background image.
-     */
-    public func rangeSelectedBackgroundEdgeInsetLeft(_ value: CGFloat) -> RangeSlider {
-        settings.values["rangeSelectedBackgroundEdgeInsetLeft"] = value
-        return self
-    }
-
-    /**
-     Set background range selected bottom edge insect for background image.
-     
-     - parameter value: the value to be used as background range selected bottom edge insect for background image.
-     */
-    public func rangeSelectedBackgroundEdgeInsetBottom(_ value: CGFloat) -> RangeSlider {
-        settings.values["rangeSelectedBackgroundEdgeInsetBottom"] = value
-        return self
-    }
-
-    /**
-     Set background range selected right edge insect for background image.
-     
-     - parameter value: the value to be used as background range selected right edge insect for background image.
-     */
-    public func rangeSelectedBackgroundEdgeInsetRight(_ value: CGFloat) -> RangeSlider {
-        settings.values["rangeSelectedBackgroundEdgeInsetRight"] = value
-        return self
-    }
-
-    /**
-     Set  gradient color 1 for range selected. The value received is converted to a `UIColor`.
-     
-     - parameter value: the value to be used as gradient color 1 for range selected.
-     */
-    public func rangeSelectedGradientColor1(_ value: Color) -> RangeSlider {
-        settings.values["rangeSelectedGradientColor1"] = UIColor(value)
-        return self
-    }
-
-    /**
-     Set  gradient color 2 for range selected. The value received is converted to a `UIColor`.
-     
-     - parameter value: the value to be used asgradient color 2 for range selected.
-     */
-    public func rangeSelectedGradientColor2(_ value: Color) -> RangeSlider {
-        settings.values["rangeSelectedGradientColor2"] = UIColor(value)
-        return self
-    }
-
-    /**
-     Set gradient start point for selected range.
-     
-     - parameter value: the value to be used as gradient start point for selected range.
-     */
-    public func rangeSelectedGradientStartPoint(_ value: CGPoint) -> RangeSlider {
-        settings.values["rangeSelectedGradientStartPoint"] = value
-        return self
-    }
-
-    /**
-     Set gradient end point for selected range.
-     
-     - parameter value: the value to be used as gradient end point for selected range.
-     */
-    public func rangeSelectedGradientEndPoint(_ value: CGPoint) -> RangeSlider {
-        settings.values["rangeSelectedGradientEndPoint"] = value
-        return self
-    }
-
 }
