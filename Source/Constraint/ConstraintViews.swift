@@ -3,17 +3,17 @@
 //  RangeUISlider
 //
 //  Created by Fabrizio Duroni on 29/01/21.
-//  Copyright © 2021 Fabrizio Duroni. All rights reserved.
+//  2021 Fabrizio Duroni.
 //
 
 import UIKit
 
-class ContraintViews {
+class ConstraintViews {
     unowned let target: UIView
     unowned let relatedView: UIView?
 
-    init(target: UIView, relatedView: UIView? = nil) {
+    init(target: UIView, related: UIView? = nil) {
         self.target = target
-        self.relatedView = relatedView
+        self.relatedView = related
     }
 }

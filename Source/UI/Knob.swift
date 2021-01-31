@@ -28,85 +28,55 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
         accessibilityIdentifier = anAccessibilityIdentifier
         translatesAutoresizingMaskIntoConstraints = false
         position = aPosition
-        setXPositionConstraint()
-        setDimensionConstraints(usingWidth: width, andHeight: height)
         setGestureRecognizer(withTarget: target, usingSelector: selector)
-        let knobBackgroundConstraints: [NSLayoutConstraint] = setupBackground()
-        let knobConstraints: [NSLayoutConstraint] = [
-            xPositionConstraint,
-            centerVerticallyConstraint(),
-            widthConstraint,
-            heightConstraint
-        ]
-
-        return knobConstraints + knobBackgroundConstraints
+        setupBackground()
+        return generateConstraintsFrom(width: width, height: height)
     }
 
-    private func setupBackground() -> [NSLayoutConstraint] {
+    private func setupBackground() {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(backgroundView)
         bringSubviewToFront(backgroundView)
-        return [
-            MarginConstraintFactory.leadingConstraint(
-                views: ContraintViews(target: backgroundView, relatedView: self),
-                value: 0.0
-            ),
-            MarginConstraintFactory.trailingConstraint(
-                views: ContraintViews(target: backgroundView, relatedView: self),
-                value: 0.0
-            ),
-            MarginConstraintFactory.topConstraint(
-                views: ContraintViews(target: backgroundView, relatedView: self),
-                value: 0.0
-            ),
-            MarginConstraintFactory.bottomConstraint(
-                views: ContraintViews(target: backgroundView, relatedView: self),
-                value: 0.0
-            )
-        ]
-    }
-
-    private func setXPositionConstraint() {
-        xPositionConstraint = NSLayoutConstraint(item: self,
-                                                 attribute: .centerX,
-                                                 relatedBy: .equal,
-                                                 toItem: superview,
-                                                 attribute: position == .left ? .leading : .trailing,
-                                                 multiplier: 1.0,
-                                                 constant: 0.0)
-    }
-
-    private func setDimensionConstraints(usingWidth width: CGFloat, andHeight height: CGFloat) {
-        widthConstraint = NSLayoutConstraint(item: self,
-                                             attribute: .width,
-                                             relatedBy: .equal,
-                                             toItem: nil,
-                                             attribute: .notAnAttribute,
-                                             multiplier: 1.0,
-                                             constant: width)
-        heightConstraint = NSLayoutConstraint(item: self,
-                                              attribute: .height,
-                                              relatedBy: .equal,
-                                              toItem: nil,
-                                              attribute: .notAnAttribute,
-                                              multiplier: 1.0,
-                                              constant: height)
-    }
-
-    private func centerVerticallyConstraint() -> NSLayoutConstraint {
-        return NSLayoutConstraint(item: self,
-                                  attribute: .centerY,
-                                  relatedBy: .equal,
-                                  toItem: superview,
-                                  attribute: .centerY,
-                                  multiplier: 1.0,
-                                  constant: 1.0)
     }
 
     private func setGestureRecognizer(withTarget target: Any?, usingSelector selector: Selector) {
         let gesture = UIPanGestureRecognizer(target: target, action: selector)
         gesture.delegate = self
         addGestureRecognizer(gesture)
+    }
+
+    private func generateConstraintsFrom(width: CGFloat, height: CGFloat) -> [NSLayoutConstraint] {
+        xPositionConstraint = PositionConstraintFactory.centerXTo(
+            attribute: position == .left ? .leading : .trailing,
+            views: ConstraintViews(target: self, related: superview)
+        )
+        widthConstraint = DimensionConstraintFactory.width(target: self, value: width)
+        heightConstraint = DimensionConstraintFactory.height(target: self, value: height)
+        let knobConstraints: [NSLayoutConstraint] = [
+            xPositionConstraint,
+            PositionConstraintFactory.centerY(views: ConstraintViews(target: self, related: superview)),
+            widthConstraint,
+            heightConstraint
+        ]
+
+        return knobConstraints + [
+            MarginConstraintFactory.leading(
+                views: ConstraintViews(target: backgroundView, related: self),
+                value: 0.0
+            ),
+            MarginConstraintFactory.trailing(
+                views: ConstraintViews(target: backgroundView, related: self),
+                value: 0.0
+            ),
+            MarginConstraintFactory.top(
+                views: ConstraintViews(target: backgroundView, related: self),
+                value: 0.0
+            ),
+            MarginConstraintFactory.bottom(
+                views: ConstraintViews(target: backgroundView, related: self),
+                value: 0.0
+            )
+        ]
     }
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,

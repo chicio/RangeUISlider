@@ -3,17 +3,17 @@
 //  RangeUISlider
 //
 //  Created by Fabrizio Duroni on 30/01/21.
-//  2021 Fabrizio Duroni. All rights reserved.
+//  2021 Fabrizio Duroni.
 //
 
 import UIKit
 
-class ContraintAttributes {
+class ConstraintAttributes {
     let target: NSLayoutConstraint.Attribute
     let relatedView: NSLayoutConstraint.Attribute
 
-    init(target: NSLayoutConstraint.Attribute, relatedView: NSLayoutConstraint.Attribute) {
+    init(target: NSLayoutConstraint.Attribute, related: NSLayoutConstraint.Attribute) {
         self.target = target
-        self.relatedView = relatedView
+        self.relatedView = related
     }
 }

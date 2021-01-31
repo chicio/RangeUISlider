@@ -3,79 +3,89 @@
 //  RangeUISlider
 //
 //  Created by Fabrizio Duroni on 28/01/21.
-//  2021 Fabrizio Duroni. All rights reserved.
+//  2021 Fabrizio Duroni.
 //
 
 import UIKit
 
 class MarginConstraintFactory {
-    static func leadingConstraint(views: ContraintViews, value: CGFloat) -> NSLayoutConstraint {
-        return MarginConstraintFactory.make(
+    static func leading(views: ConstraintViews, value: CGFloat) -> NSLayoutConstraint {
+        return ConstraintFactory.make(
             views: views,
-            attributes: ContraintAttributes(target: .leading, relatedView: .leading),
-            value: value
+            attributes: ConstraintAttributes(target: .leading, related: .leading),
+            additionalInformation: ConstraintAdditionalInformations(
+                relation: .equal,
+                multiplier: 1.0,
+                constant: value
+            )
         )
     }
 
     static func leadingTo(
         attribute: NSLayoutConstraint.Attribute,
-        views: ContraintViews,
+        views: ConstraintViews,
         value: CGFloat
     ) -> NSLayoutConstraint {
-        return MarginConstraintFactory.make(
+        return ConstraintFactory.make(
             views: views,
-            attributes: ContraintAttributes(target: .leading, relatedView: attribute),
-            value: value
+            attributes: ConstraintAttributes(target: .leading, related: attribute),
+            additionalInformation: ConstraintAdditionalInformations(
+                relation: .equal,
+                multiplier: 1.0,
+                constant: value
+            )
+        )
+    }
+
+    static func trailing(views: ConstraintViews, value: CGFloat) -> NSLayoutConstraint {
+        return ConstraintFactory.make(
+            views: views,
+            attributes: ConstraintAttributes(target: .trailing, related: .trailing),
+            additionalInformation: ConstraintAdditionalInformations(
+                relation: .equal,
+                multiplier: 1.0,
+                constant: value
+            )
         )
     }
 
     static func trailingTo(
         attribute: NSLayoutConstraint.Attribute,
-        views: ContraintViews,
+        views: ConstraintViews,
         value: CGFloat
     ) -> NSLayoutConstraint {
-        return MarginConstraintFactory.make(
+        return ConstraintFactory.make(
             views: views,
-            attributes: ContraintAttributes(target: .trailing, relatedView: attribute),
-            value: value
+            attributes: ConstraintAttributes(target: .trailing, related: attribute),
+            additionalInformation: ConstraintAdditionalInformations(
+                relation: .equal,
+                multiplier: 1.0,
+                constant: value
+            )
         )
     }
 
-    static func trailingConstraint(views: ContraintViews, value: CGFloat) -> NSLayoutConstraint {
-        return MarginConstraintFactory.make(
+    static func top(views: ConstraintViews, value: CGFloat) -> NSLayoutConstraint {
+        return ConstraintFactory.make(
             views: views,
-            attributes: ContraintAttributes(target: .trailing, relatedView: .trailing),
-            value: value
+            attributes: ConstraintAttributes(target: .top, related: .top),
+            additionalInformation: ConstraintAdditionalInformations(
+                relation: .equal,
+                multiplier: 1.0,
+                constant: value
+            )
         )
     }
 
-    static func topConstraint(views: ContraintViews, value: CGFloat) -> NSLayoutConstraint {
-        return MarginConstraintFactory.make(
+    static func bottom(views: ConstraintViews, value: CGFloat) -> NSLayoutConstraint {
+        return ConstraintFactory.make(
             views: views,
-            attributes: ContraintAttributes(target: .top, relatedView: .top),
-            value: value
+            attributes: ConstraintAttributes(target: .bottom, related: .bottom),
+            additionalInformation: ConstraintAdditionalInformations(
+                relation: .equal,
+                multiplier: 1.0,
+                constant: value
+            )
         )
-    }
-
-    static func bottomConstraint(views: ContraintViews, value: CGFloat) -> NSLayoutConstraint {
-        return MarginConstraintFactory.make(
-            views: views,
-            attributes: ContraintAttributes(target: .bottom, relatedView: .bottom),
-            value: value
-        )
-    }
-
-    private static func make(
-        views: ContraintViews,
-        attributes: ContraintAttributes,
-        value: CGFloat
-    ) -> NSLayoutConstraint {
-        return NSLayoutConstraint(item: views.target,
-                                  attribute: attributes.target,
-                                  relatedBy: .equal,
-                                  toItem: views.relatedView,
-                                  attribute: attributes.relatedView,
-                                  multiplier: 1.0,
-                                  constant: value)
     }
 }
