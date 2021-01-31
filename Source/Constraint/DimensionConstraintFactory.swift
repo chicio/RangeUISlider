@@ -10,50 +10,34 @@ import UIKit
 
 class DimensionConstraintFactory {
     static func height(target: UIView, value: CGFloat) -> NSLayoutConstraint {
-        return ConstraintFactory.make(
-            views: ConstraintViews(target: target),
+        return EqualRelationConstraintFactory.make(
             attributes: ConstraintAttributes(target: .height, related: .notAnAttribute),
-            additionalInformation: ConstraintAdditionalInformations(
-                relation: .equal,
-                multiplier: 1.0,
-                constant: value
-            )
+            views: ConstraintViews(target: target),
+            value: value
         )
     }
 
     static func equalHeight(views: ConstraintViews) -> NSLayoutConstraint {
-        return ConstraintFactory.make(
-            views: views,
+        return EqualRelationConstraintFactory.make(
             attributes: ConstraintAttributes(target: .height, related: .height),
-            additionalInformation: ConstraintAdditionalInformations(
-                relation: .equal,
-                multiplier: 1.0,
-                constant: 0.0
-            )
+            views: views,
+            value: 0.0
         )
     }
 
     static func width(target: UIView, value: CGFloat) -> NSLayoutConstraint {
-        return ConstraintFactory.make(
-            views: ConstraintViews(target: target),
+        return EqualRelationConstraintFactory.make(
             attributes: ConstraintAttributes(target: .width, related: .notAnAttribute),
-            additionalInformation: ConstraintAdditionalInformations(
-                relation: .equal,
-                multiplier: 1.0,
-                constant: value
-            )
+            views: ConstraintViews(target: target),
+            value: value
         )
     }
 
     static func equalWidth(views: ConstraintViews) -> NSLayoutConstraint {
-        return ConstraintFactory.make(
-            views: views,
+        return EqualRelationConstraintFactory.make(
             attributes: ConstraintAttributes(target: .width, related: .width),
-            additionalInformation: ConstraintAdditionalInformations(
-                relation: .equal,
-                multiplier: 1.0,
-                constant: 0.0
-            )
+            views: views,
+            value: 0.0
         )
     }
 }
