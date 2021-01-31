@@ -14,7 +14,7 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
     private(set) var xPositionConstraint: NSLayoutConstraint!
     private(set) var widthConstraint: NSLayoutConstraint!
     private(set) var heightConstraint: NSLayoutConstraint!
-
+    
     func setup(properties: KnobProperties, target: Any?, selector: Selector) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = properties.accessibilityIdentifier
@@ -22,67 +22,16 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
         setupBackground()
         return generateConstraintsFrom(dimensions: properties.dimensions, position: properties.position)
     }
-
-    private func setupBackground() {
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(backgroundView)
-        bringSubviewToFront(backgroundView)
+    
+    func addBorders(usingColor color: UIColor, andWidth width: CGFloat, andCorners corners: CGFloat) {
+        if imageView.image != nil {
+            addBorders(toView: imageView, usingColor: color, andWidth: width)
+            imageView.layer.cornerRadius = corners
+        } else {
+            addBorders(toView: backgroundView, usingColor: color, andWidth: width)
+        }
     }
-
-    private func setGestureRecognizer(withTarget target: Any?, usingSelector selector: Selector) {
-        let gesture = UIPanGestureRecognizer(target: target, action: selector)
-        gesture.delegate = self
-        addGestureRecognizer(gesture)
-    }
-
-    private func generateConstraintsFrom(dimensions: Dimensions, position: KnobPosition) -> [NSLayoutConstraint] {
-        xPositionConstraint = PositionConstraintFactory.centerXTo(
-            attribute: position == .left ? .leading : .trailing,
-            views: ConstraintViews(target: self, related: superview)
-        )
-        widthConstraint = DimensionConstraintFactory.width(target: self, value: dimensions.width)
-        heightConstraint = DimensionConstraintFactory.height(target: self, value: dimensions.height)
-        let knobConstraints: [NSLayoutConstraint] = [
-            xPositionConstraint,
-            PositionConstraintFactory.centerY(views: ConstraintViews(target: self, related: superview)),
-            widthConstraint,
-            heightConstraint
-        ]
-
-        return knobConstraints + [
-            MarginConstraintFactory.leading(
-                views: ConstraintViews(target: backgroundView, related: self),
-                value: 0.0
-            ),
-            MarginConstraintFactory.trailing(
-                views: ConstraintViews(target: backgroundView, related: self),
-                value: 0.0
-            ),
-            MarginConstraintFactory.top(
-                views: ConstraintViews(target: backgroundView, related: self),
-                value: 0.0
-            ),
-            MarginConstraintFactory.bottom(
-                views: ConstraintViews(target: backgroundView, related: self),
-                value: 0.0
-            )
-        ]
-    }
-
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                           shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                           shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return false
-    }
-
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        return true
-    }
-
+    
     func add(image anImage: UIImage?) {
         if let image = anImage {
             imageView.image = image
@@ -99,13 +48,43 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
         }
     }
 
-    func addBorders(usingColor color: UIColor, andWidth width: CGFloat, andCorners corners: CGFloat) {
-        if imageView.image != nil {
-            addBorders(toView: imageView, usingColor: color, andWidth: width)
-            imageView.layer.cornerRadius = corners
-        } else {
-            addBorders(toView: backgroundView, usingColor: color, andWidth: width)
-        }
+    private func setupBackground() {
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(backgroundView)
+        bringSubviewToFront(backgroundView)
+    }
+
+    private func setGestureRecognizer(withTarget target: Any?, usingSelector selector: Selector) {
+        let gesture = UIPanGestureRecognizer(target: target, action: selector)
+        gesture.delegate = self
+        addGestureRecognizer(gesture)
+    }
+
+    private func generateConstraintsFrom(dimensions: Dimensions, position: KnobPosition) -> [NSLayoutConstraint] {
+        let views = ConstraintViews(target: self, related: superview)
+        xPositionConstraint = PositionConstraintFactory.centerXTo(attribute: centerXFor(position), views: views)
+        widthConstraint = DimensionConstraintFactory.width(target: self, value: dimensions.width)
+        heightConstraint = DimensionConstraintFactory.height(target: self, value: dimensions.height)
+        return [
+            PositionConstraintFactory.centerY(views: views),
+            xPositionConstraint,
+            widthConstraint,
+            heightConstraint
+        ] + backgroundViewConstraints()
+    }
+
+    private func centerXFor(_ position: KnobPosition) -> NSLayoutConstraint.Attribute {
+        return position == .left ? .leading : .trailing
+    }
+
+    private func backgroundViewConstraints() -> [NSLayoutConstraint] {
+        let views = ConstraintViews(target: backgroundView, related: self)
+        return [
+            MarginConstraintFactory.leading(views: views, value: 0.0),
+            MarginConstraintFactory.trailing(views: views, value: 0.0),
+            MarginConstraintFactory.top(views: views, value: 0.0),
+            MarginConstraintFactory.bottom(views: views, value: 0.0)
+        ]
     }
 
     private func addBorders(toView view: UIView,
@@ -113,5 +92,19 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
                             andWidth width: CGFloat) {
         view.layer.borderWidth = width
         view.layer.borderColor = color.cgColor
+    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return true
     }
 }
