@@ -14,7 +14,7 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
     private(set) var xPositionConstraint: NSLayoutConstraint!
     private(set) var widthConstraint: NSLayoutConstraint!
     private(set) var heightConstraint: NSLayoutConstraint!
-    
+
     func setup(properties: KnobProperties, target: Any?, selector: Selector) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = properties.accessibilityIdentifier
@@ -22,7 +22,7 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
         setupBackground()
         return generateConstraintsFrom(dimensions: properties.dimensions, position: properties.position)
     }
-    
+
     func addBorders(usingColor color: UIColor, andWidth width: CGFloat, andCorners corners: CGFloat) {
         if imageView.image != nil {
             addBorders(toView: imageView, usingColor: color, andWidth: width)
@@ -31,7 +31,7 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
             addBorders(toView: backgroundView, usingColor: color, andWidth: width)
         }
     }
-    
+
     func add(image anImage: UIImage?) {
         if let image = anImage {
             imageView.image = image

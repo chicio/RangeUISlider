@@ -44,7 +44,7 @@ class DimensionConstraintFactory {
             )
         )
     }
-    
+
     static func equalWidth(views: ConstraintViews) -> NSLayoutConstraint {
         return ConstraintFactory.make(
             views: views,
