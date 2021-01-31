@@ -475,7 +475,7 @@ open class RangeUISlider: UIView {
     }
     /// Slider delegate.
     public weak var delegate: RangeUISliderDelegate?
-    
+
     private let bar: Bar = Bar()
     private let leftKnob: Knob = Knob()
     private let rightKnob: Knob = Knob()
@@ -497,7 +497,7 @@ open class RangeUISlider: UIView {
         scale: scale,
         scaleMinValue: scaleMinValue
     )
-    
+
     /**
      Standard init using coder.
      
@@ -507,7 +507,7 @@ open class RangeUISlider: UIView {
         super.init(coder: aDecoder)
         setup()
     }
-    
+
     /**
      Standard init using a CGRect.
      
@@ -517,7 +517,7 @@ open class RangeUISlider: UIView {
         super.init(frame: frame)
         setup()
     }
-    
+
     /**
      Prepare RangeUISlider to be drawn in Interface Builder.
      */
@@ -527,7 +527,7 @@ open class RangeUISlider: UIView {
         leftKnob.xPositionConstraint.constant = 40
         rightKnob.xPositionConstraint.constant = -40
     }
-    
+
     /**
      Custom layout subviews to set the default values for the know of RangeUISlider
      */
@@ -541,7 +541,7 @@ open class RangeUISlider: UIView {
             barWidth: bar.frame.width
         )
     }
-    
+
     /**
      Change the value of the left knob programmatically.
      
@@ -558,7 +558,7 @@ open class RangeUISlider: UIView {
             rangeSelectionFinished()
         }
     }
-    
+
     /**
      Change the value of the right knob programmatically.
      
@@ -575,31 +575,31 @@ open class RangeUISlider: UIView {
             rangeSelectionFinished()
         }
     }
-    
+
     private func calculateLeftKnobPositionFrom(value: CGFloat) -> CGFloat {
         return bar.frame.width * getMinFrom(value: value)
     }
-    
+
     private func calculateRightKnobPoitionFrom(value: CGFloat) -> CGFloat {
         return (bar.frame.width * getMaxFrom(value: value)) - bar.frame.width
     }
-    
+
     private func getMinFrom(value: CGFloat) -> CGFloat {
         return (value - scaleMinValue) / scale
     }
-    
+
     private func getMaxFrom(value: CGFloat) -> CGFloat {
         return (value - scaleMinValue) / scale
     }
-    
+
     private func isValidForLeftKnob(value: CGFloat) -> Bool {
         return value > scaleMinValue && value < previousRangeSelectedValues.maxValue
     }
-    
+
     private func isValidforRightKnob(value: CGFloat) -> Bool {
         return value <= scaleMaxValue && value > previousRangeSelectedValues.minValue
     }
-    
+
     private func setup() {
         addSubview(bar)
         bar.addSubview(selectedProgressView)
@@ -607,9 +607,9 @@ open class RangeUISlider: UIView {
         bar.addSubview(rightProgressView)
         bar.addSubview(leftKnob)
         bar.addSubview(rightKnob)
-        
+
         var constraints: [NSLayoutConstraint] = []
-        
+
         constraints.append(contentsOf: bar.setup(
             properties: BarProperties(
                 height: barHeight,
@@ -619,7 +619,7 @@ open class RangeUISlider: UIView {
             leftKnob: leftKnob,
             rightKnob: rightKnob
         ))
-        
+
         constraints.append(contentsOf: rightKnob.setup(
             properties: KnobProperties(
                 accessibilityIdentifier: "RightKnob",
@@ -629,7 +629,7 @@ open class RangeUISlider: UIView {
             target: self,
             selector: #selector(moveRightKnob)
         ))
-        
+
         constraints.append(contentsOf: leftKnob.setup(
             properties: KnobProperties(
                 accessibilityIdentifier: "LeftKnob",
@@ -639,7 +639,7 @@ open class RangeUISlider: UIView {
             target: self,
             selector: #selector(moveLeftKnob)
         ))
-        
+
         constraints.append(contentsOf: selectedProgressView.setup(
                             leftAnchorView: leftKnob,
                             rightAnchorView: rightKnob,
@@ -649,7 +649,7 @@ open class RangeUISlider: UIView {
                                 color: rangeSelectedColor
                             )
         ))
-        
+
         constraints.append(contentsOf: leftProgressView.setup(
                             leftAnchorView: bar,
                             rightAnchorView: leftKnob,
@@ -659,7 +659,7 @@ open class RangeUISlider: UIView {
                                 color: rangeNotSelectedColor
                             )
         ))
-        
+
         constraints.append(contentsOf: rightProgressView.setup(
                             leftAnchorView: rightKnob,
                             rightAnchorView: bar,
@@ -672,7 +672,7 @@ open class RangeUISlider: UIView {
 
         NSLayoutConstraint.activate(constraints)
     }
-    
+
     private func addGradientToNotSelectedRangeIfNeeded() {
         leftProgressView.addGradient(firstColor: rangeNotSelectedGradientColor1,
                                      secondColor: rangeNotSelectedGradientColor2,
@@ -685,7 +685,7 @@ open class RangeUISlider: UIView {
                                       endPoint: rangeNotSelectedGradientEndPoint,
                                       cornerRadius: barCorners)
     }
-    
+
     private func addBackgroundToRangeNotSelectedIfNeeded() {
         if let backgroundImage = rangeNotSelectedBackgroundImage {
             let edgeInset = UIEdgeInsets(top: rangeNotSelectedBackgroundEdgeInsetTop,
@@ -696,7 +696,7 @@ open class RangeUISlider: UIView {
             rightProgressView.addBackground(image: backgroundImage, edgeInset: edgeInset, corners: barCorners)
         }
     }
-    
+
     private func addBackgroundToRangeSelected() {
         if let backgroundImage = rangeSelectedBackgroundImage {
             let edgeInset = UIEdgeInsets(top: rangeSelectedBackgroundEdgeInsetTop,
@@ -706,7 +706,7 @@ open class RangeUISlider: UIView {
             selectedProgressView.addBackground(image: backgroundImage, edgeInset: edgeInset, corners: barCorners)
         }
     }
-    
+
     private func calculateScale() {
         scale = scaleMaxValue - scaleMinValue
         rangeSelectedCalculator = RangeSelectedCalculator(
@@ -714,15 +714,15 @@ open class RangeUISlider: UIView {
             scaleMinValue: scaleMinValue
         )
     }
-    
+
     @objc final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
         recognize(gestureRecognizer: gestureRecognizer, updateKnob: updateLeftKnobPositionUsing)
     }
-    
+
     @objc final func moveRightKnob(gestureRecognizer: UIPanGestureRecognizer) {
         recognize(gestureRecognizer: gestureRecognizer, updateKnob: updateRightKnobPositionUsing)
     }
-    
+
     private func recognize(gestureRecognizer: UIPanGestureRecognizer, updateKnob: (UIPanGestureRecognizer) -> Void) {
         if gestureRecognizer.state == .began {
             rangeSelectionStartedForKnobUsing(gestureRecognizer: gestureRecognizer, updateKnob: updateKnob)
@@ -734,19 +734,19 @@ open class RangeUISlider: UIView {
             rangeSelectionFinished()
         }
     }
-    
+
     private func rangeSelectionStartedForKnobUsing(gestureRecognizer: UIPanGestureRecognizer,
                                                    updateKnob: (UIPanGestureRecognizer) -> Void) {
         updateKnob(gestureRecognizer)
         delegate?.rangeChangeStarted?()
     }
-    
+
     private func updateKnobAndRangeUsing(gestureRecognizer: UIPanGestureRecognizer,
                                          updateKnob: (UIPanGestureRecognizer) -> Void) {
         updateKnob(gestureRecognizer)
         rangeSelectionUpdate()
     }
-    
+
     private func updateLeftKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
         let userInterfaceDirection = UIView.userInterfaceLayoutDirection(for: self.semanticContentAttribute)
         if userInterfaceDirection == UIUserInterfaceLayoutDirection.rightToLeft {
@@ -765,7 +765,7 @@ open class RangeUISlider: UIView {
             }
         }
     }
-    
+
     private func updateRightKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
         let userInterfaceDirection = UIView.userInterfaceLayoutDirection(for: self.semanticContentAttribute)
         if userInterfaceDirection == UIUserInterfaceLayoutDirection.rightToLeft {
@@ -782,11 +782,11 @@ open class RangeUISlider: UIView {
             }
         }
     }
-    
+
     private func positionForKnobGiven(xLocationInBar: CGFloat) -> CGFloat {
         return (xLocationInBar / stepWidth).rounded(FloatingPointRoundingRule.down) * stepWidth
     }
-    
+
     private func rangeSelectionUpdate() {
         let rangeSelected = rangeSelectedCalculator.calculateRangeSelected(
             leftKnobPosition: leftKnob.xPositionConstraint.constant,
@@ -800,18 +800,18 @@ open class RangeUISlider: UIView {
             previousRangeSelectedValues = rangeSelected
         }
     }
-    
+
     private func isDifferentFromPreviousRangeSelected(rangeSelected: RangeSelected) -> Bool {
         return rangeSelected != previousRangeSelectedValues
     }
-    
+
     private func rangeSelectionFinished() {
         let rangeSelected = rangeSelectedCalculator.calculateRangeSelected(
             leftKnobPosition: leftKnob.xPositionConstraint.constant,
             rightKnobPosition: rightKnob.xPositionConstraint.constant,
             barWidth: bar.frame.width
         )
-        
+
         if !rangeSelected.maxValue.isNaN && !rangeSelected.maxValue.isNaN {
             delegate?.rangeChangeFinished(minValueSelected: rangeSelected.minValue,
                                           maxValueSelected: rangeSelected.maxValue,
