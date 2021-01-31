@@ -8,6 +8,7 @@
 // swiftlint:disable type_body_length
 // swiftlint:disable identifier_name
 // swiftlint:disable file_length
+// swiftlint:disable function_body_length
 
 import Foundation
 import UIKit
@@ -615,19 +616,25 @@ open class RangeUISlider: UIView {
                                                  trailing: barTrailing,
                                                  height: barHeight))
 
-        constraints.append(contentsOf: rightKnob.setup(accessibilityIdentifier: "RightKnob",
-                                                       position: .right,
-                                                       width: rightKnobWidth,
-                                                       height: rightKnobHeight,
-                                                       target: self,
-                                                       selector: #selector(moveRightKnob)))
+        constraints.append(contentsOf: rightKnob.setup(
+            properties: KnobProperties(
+                accessibilityIdentifier: "RightKnob",
+                position: .right,
+                dimensions: Dimensions(width: rightKnobWidth, height: rightKnobHeight)
+            ),
+            target: self,
+            selector: #selector(moveRightKnob)
+        ))
 
-        constraints.append(contentsOf: leftKnob.setup(accessibilityIdentifier: "LeftKnob",
-                                                      position: .left,
-                                                      width: leftKnobWidth,
-                                                      height: leftKnobHeight,
-                                                      target: self,
-                                                      selector: #selector(moveLeftKnob)))
+        constraints.append(contentsOf: leftKnob.setup(
+            properties: KnobProperties(
+                accessibilityIdentifier: "LeftKnob",
+                position: .left,
+                dimensions: Dimensions(width: leftKnobWidth, height: leftKnobHeight)
+            ),
+            target: self,
+            selector: #selector(moveLeftKnob)
+        ))
 
         constraints.append(contentsOf: selectedProgressView.setup(leftAnchorView: leftKnob,
                                                                   leftAnchorConstraintAttribute: .centerX,

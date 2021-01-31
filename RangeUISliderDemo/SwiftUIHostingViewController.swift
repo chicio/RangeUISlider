@@ -92,7 +92,7 @@ struct SwiftUIHostingView: View {
                 .rightKnobHeight(56)
                 .rightKnobCorners(28)
             Spacer()
-         }
+         }.padding(30)
      }
 }
 

@@ -6,31 +6,21 @@
 //  2017 Fabrizio Duroni.
 //
 
-// swiftlint:disable function_parameter_count
-
 import UIKit
 
 class Knob: Gradient, UIGestureRecognizerDelegate {
-    private(set) var backgroundView: UIView = UIView()
-    lazy private(set) var imageView: UIImageView = UIImageView()
+    public let backgroundView: UIView = UIView()
+    private(set) lazy var imageView: UIImageView = UIImageView()
     private(set) var xPositionConstraint: NSLayoutConstraint!
     private(set) var widthConstraint: NSLayoutConstraint!
     private(set) var heightConstraint: NSLayoutConstraint!
-    private(set) var position: KnobPosition!
-    private(set) var gestureRecognizerTarget: Any?
 
-    func setup(accessibilityIdentifier anAccessibilityIdentifier: String,
-               position aPosition: KnobPosition,
-               width: CGFloat,
-               height: CGFloat,
-               target: Any?,
-               selector: Selector) -> [NSLayoutConstraint] {
-        accessibilityIdentifier = anAccessibilityIdentifier
+    func setup(properties: KnobProperties, target: Any?, selector: Selector) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
-        position = aPosition
+        accessibilityIdentifier = properties.accessibilityIdentifier
         setGestureRecognizer(withTarget: target, usingSelector: selector)
         setupBackground()
-        return generateConstraintsFrom(width: width, height: height)
+        return generateConstraintsFrom(dimensions: properties.dimensions, position: properties.position)
     }
 
     private func setupBackground() {
@@ -45,13 +35,13 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
         addGestureRecognizer(gesture)
     }
 
-    private func generateConstraintsFrom(width: CGFloat, height: CGFloat) -> [NSLayoutConstraint] {
+    private func generateConstraintsFrom(dimensions: Dimensions, position: KnobPosition) -> [NSLayoutConstraint] {
         xPositionConstraint = PositionConstraintFactory.centerXTo(
             attribute: position == .left ? .leading : .trailing,
             views: ConstraintViews(target: self, related: superview)
         )
-        widthConstraint = DimensionConstraintFactory.width(target: self, value: width)
-        heightConstraint = DimensionConstraintFactory.height(target: self, value: height)
+        widthConstraint = DimensionConstraintFactory.width(target: self, value: dimensions.width)
+        heightConstraint = DimensionConstraintFactory.height(target: self, value: dimensions.height)
         let knobConstraints: [NSLayoutConstraint] = [
             xPositionConstraint,
             PositionConstraintFactory.centerY(views: ConstraintViews(target: self, related: superview)),

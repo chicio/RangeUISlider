@@ -21,6 +21,8 @@
 		450C7B6A25C48A7500764496 /* Knob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C7B6425C48A7400764496 /* Knob.swift */; };
 		450C7B7525C490C100764496 /* ConstraintViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450C7B7425C490C100764496 /* ConstraintViews.swift */; };
 		451AF80325C6E0A900DD37CE /* RangeSlider+Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451AF80225C6E0A900DD37CE /* RangeSlider+Modifiers.swift */; };
+		451AF80C25C6E32F00DD37CE /* KnobProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451AF80B25C6E32F00DD37CE /* KnobProperties.swift */; };
+		451AF81125C6E36F00DD37CE /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451AF81025C6E36F00DD37CE /* Dimensions.swift */; };
 		4520C27125A349F00018042D /* SwiftUIHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4520C27025A349F00018042D /* SwiftUIHostingViewController.swift */; };
 		4538955425C5D62700389905 /* RangeUISliderCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4538955325C5D62700389905 /* RangeUISliderCreator.swift */; };
 		4538956F25C5DF8700389905 /* KnobPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4538956E25C5DF8700389905 /* KnobPosition.swift */; };
@@ -107,6 +109,8 @@
 		450C7B6425C48A7400764496 /* Knob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Knob.swift; sourceTree = "<group>"; };
 		450C7B7425C490C100764496 /* ConstraintViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintViews.swift; sourceTree = "<group>"; };
 		451AF80225C6E0A900DD37CE /* RangeSlider+Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RangeSlider+Modifiers.swift"; sourceTree = "<group>"; };
+		451AF80B25C6E32F00DD37CE /* KnobProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobProperties.swift; sourceTree = "<group>"; };
+		451AF81025C6E36F00DD37CE /* Dimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
 		451E91D925C47B1200A2843D /* AllTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = AllTestPlan.xctestplan; sourceTree = "<group>"; };
 		4520C27025A349F00018042D /* SwiftUIHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIHostingViewController.swift; sourceTree = "<group>"; };
 		4538955325C5D62700389905 /* RangeUISliderCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeUISliderCreator.swift; sourceTree = "<group>"; };
@@ -215,6 +219,8 @@
 				450C7B5725C48A4F00764496 /* KnobsHitTest.swift */,
 				4538955325C5D62700389905 /* RangeUISliderCreator.swift */,
 				4538956E25C5DF8700389905 /* KnobPosition.swift */,
+				451AF80B25C6E32F00DD37CE /* KnobProperties.swift */,
+				451AF81025C6E36F00DD37CE /* Dimensions.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -588,6 +594,7 @@
 				450C7B6625C48A7500764496 /* RangeUISlider.swift in Sources */,
 				450C7B5825C48A4F00764496 /* RangeSelectedCalculator.swift in Sources */,
 				451AF80325C6E0A900DD37CE /* RangeSlider+Modifiers.swift in Sources */,
+				451AF80C25C6E32F00DD37CE /* KnobProperties.swift in Sources */,
 				4571869425A5CFE300541D67 /* RangeSliderCoordinator.swift in Sources */,
 				450C7B6A25C48A7500764496 /* Knob.swift in Sources */,
 				4571869925A5D01500541D67 /* RangeSliderSettings.swift in Sources */,
@@ -597,6 +604,7 @@
 				450C7B4F25C489E200764496 /* DimensionConstraintFactory.swift in Sources */,
 				450C7B6525C48A7500764496 /* Progress.swift in Sources */,
 				4538956F25C5DF8700389905 /* KnobPosition.swift in Sources */,
+				451AF81125C6E36F00DD37CE /* Dimensions.swift in Sources */,
 				450C7B6825C48A7500764496 /* RangeSlider.swift in Sources */,
 				450C7B7525C490C100764496 /* ConstraintViews.swift in Sources */,
 				45949DBC25C6CB5300F09F3B /* ConstraintFactory.swift in Sources */,
