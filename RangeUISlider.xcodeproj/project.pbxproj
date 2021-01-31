@@ -38,6 +38,7 @@
 		459CBF1C259B7FD700FCA5AB /* StepCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBF1B259B7FD700FCA5AB /* StepCalculatorTest.swift */; };
 		45D2B83725C5CBD500DFD838 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D2B83625C5CBD500DFD838 /* ConstraintAttributes.swift */; };
 		45E215291E8E812E00F0B8B9 /* RangeUISlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E215271E8E812E00F0B8B9 /* RangeUISlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45E9D58E25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9D58D25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift */; };
 		45F064862599E3CC007B25A7 /* MixedFeaturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F064852599E3CC007B25A7 /* MixedFeaturesTests.swift */; };
 		45F064982599E511007B25A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F064972599E511007B25A7 /* AppDelegate.swift */; };
 		45F0649A2599E511007B25A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F064992599E511007B25A7 /* SceneDelegate.swift */; };
@@ -143,6 +144,7 @@
 		45E215271E8E812E00F0B8B9 /* RangeUISlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RangeUISlider.h; sourceTree = "<group>"; };
 		45E215281E8E812E00F0B8B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45E603C4233A432C00E7465D /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		45E9D58D25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualRelationConstraintFactory.swift; sourceTree = "<group>"; };
 		45F064832599E3CC007B25A7 /* RangeUISliderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RangeUISliderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45F064852599E3CC007B25A7 /* MixedFeaturesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedFeaturesTests.swift; sourceTree = "<group>"; };
 		45F064872599E3CC007B25A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				45D2B83625C5CBD500DFD838 /* ConstraintAttributes.swift */,
 				45949DC025C6CBA700F09F3B /* ConstraintAdditionalInformations.swift */,
 				45949DBB25C6CB5300F09F3B /* ConstraintFactory.swift */,
+				45E9D58D25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift */,
 			);
 			path = Constraint;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 				450C7B4E25C489E200764496 /* PositionConstraintFactory.swift in Sources */,
 				450C7B6725C48A7500764496 /* Bar.swift in Sources */,
 				45949DC125C6CBA700F09F3B /* ConstraintAdditionalInformations.swift in Sources */,
+				45E9D58E25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift in Sources */,
 				450C7B5025C489E200764496 /* MarginConstraintFactory.swift in Sources */,
 				5F7B1B731F7EEE7E00D19E23 /* RangeUISliderDelegate.swift in Sources */,
 				450C7B6625C48A7500764496 /* RangeUISlider.swift in Sources */,
