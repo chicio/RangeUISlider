@@ -39,12 +39,7 @@ class Progress: Gradient {
         let backgroundImageView = createBackgroundUsing(image: image, edgeInset: edgeInset, corners: corners)
         let views = ConstraintViews(target: backgroundImageView, related: self)
         addSubview(backgroundImageView)
-        NSLayoutConstraint.activate([
-            MarginConstraintFactory.leading(views: views, value: 0.0),
-            MarginConstraintFactory.trailing(views: views, value: 0.0),
-            MarginConstraintFactory.top(views: views, value: 0.0),
-            MarginConstraintFactory.bottom(views: views, value: 0.0)
-        ])
+        NSLayoutConstraint.activate(MatchingMarginConstraintFactory.make(views: views))
     }
 
     private func createBackgroundUsing(image: UIImage, edgeInset: UIEdgeInsets, corners: CGFloat) -> UIView {

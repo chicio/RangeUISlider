@@ -78,13 +78,9 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
     }
 
     private func backgroundViewConstraints() -> [NSLayoutConstraint] {
-        let views = ConstraintViews(target: backgroundView, related: self)
-        return [
-            MarginConstraintFactory.leading(views: views, value: 0.0),
-            MarginConstraintFactory.trailing(views: views, value: 0.0),
-            MarginConstraintFactory.top(views: views, value: 0.0),
-            MarginConstraintFactory.bottom(views: views, value: 0.0)
-        ]
+        return MatchingMarginConstraintFactory.make(
+            views: ConstraintViews(target: backgroundView, related: self)
+        )
     }
 
     private func addBorders(toView view: UIView,
