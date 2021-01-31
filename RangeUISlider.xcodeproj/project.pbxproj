@@ -42,6 +42,7 @@
 		45E9D59725C6F94200FE6E3F /* BarProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9D59625C6F94200FE6E3F /* BarProperties.swift */; };
 		45E9D59F25C6FADC00FE6E3F /* ProgressProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9D59E25C6FADC00FE6E3F /* ProgressProperties.swift */; };
 		45E9D5A425C6FD9A00FE6E3F /* MatchingMarginsConstraintFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9D5A325C6FD9A00FE6E3F /* MatchingMarginsConstraintFactory.swift */; };
+		45E9D5B125C7028C00FE6E3F /* Knobs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9D5B025C7028C00FE6E3F /* Knobs.swift */; };
 		45F064862599E3CC007B25A7 /* MixedFeaturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F064852599E3CC007B25A7 /* MixedFeaturesTests.swift */; };
 		45F064982599E511007B25A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F064972599E511007B25A7 /* AppDelegate.swift */; };
 		45F0649A2599E511007B25A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F064992599E511007B25A7 /* SceneDelegate.swift */; };
@@ -151,6 +152,7 @@
 		45E9D59625C6F94200FE6E3F /* BarProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarProperties.swift; sourceTree = "<group>"; };
 		45E9D59E25C6FADC00FE6E3F /* ProgressProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressProperties.swift; sourceTree = "<group>"; };
 		45E9D5A325C6FD9A00FE6E3F /* MatchingMarginsConstraintFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingMarginsConstraintFactory.swift; sourceTree = "<group>"; };
+		45E9D5B025C7028C00FE6E3F /* Knobs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knobs.swift; sourceTree = "<group>"; };
 		45F064832599E3CC007B25A7 /* RangeUISliderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RangeUISliderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45F064852599E3CC007B25A7 /* MixedFeaturesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedFeaturesTests.swift; sourceTree = "<group>"; };
 		45F064872599E3CC007B25A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				451AF80225C6E0A900DD37CE /* RangeSlider+Modifiers.swift */,
 				450C7B6325C48A7400764496 /* Gradient.swift */,
 				450C7B6425C48A7400764496 /* Knob.swift */,
+				45E9D5B025C7028C00FE6E3F /* Knobs.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				45949DC125C6CBA700F09F3B /* ConstraintAdditionalInformations.swift in Sources */,
 				45E9D58E25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift in Sources */,
 				450C7B5025C489E200764496 /* MarginConstraintFactory.swift in Sources */,
+				45E9D5B125C7028C00FE6E3F /* Knobs.swift in Sources */,
 				45E9D59F25C6FADC00FE6E3F /* ProgressProperties.swift in Sources */,
 				5F7B1B731F7EEE7E00D19E23 /* RangeUISliderDelegate.swift in Sources */,
 				450C7B6625C48A7500764496 /* RangeUISlider.swift in Sources */,

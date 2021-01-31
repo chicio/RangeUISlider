@@ -180,62 +180,62 @@ open class RangeUISlider: UIView {
     /// Left knob width.
     @IBInspectable public var leftKnobWidth: CGFloat = 30.0 {
         didSet {
-            leftKnob.widthConstraint.constant = leftKnobWidth
+            knobs.leftKnob.widthConstraint.constant = leftKnobWidth
         }
     }
     /// Left knob height.
     @IBInspectable public var leftKnobHeight: CGFloat = 30.0 {
         didSet {
-            leftKnob.heightConstraint.constant = leftKnobHeight
+            knobs.leftKnob.heightConstraint.constant = leftKnobHeight
         }
     }
     /// Left knob corners.
     @IBInspectable public var leftKnobCorners: CGFloat = 15.0 {
         didSet {
-            leftKnob.backgroundView.layer.cornerRadius = leftKnobCorners
-            leftKnob.backgroundView.layer.masksToBounds = leftKnobCorners > 0.0
+            knobs.leftKnob.backgroundView.layer.cornerRadius = leftKnobCorners
+            knobs.leftKnob.backgroundView.layer.masksToBounds = leftKnobCorners > 0.0
         }
     }
     /// Left knob image.
     @IBInspectable public var leftKnobImage: UIImage? {
         didSet {
-            leftKnob.add(image: leftKnobImage)
+            knobs.leftKnob.add(image: leftKnobImage)
         }
     }
     /// Left knob color.
     @IBInspectable public var leftKnobColor: UIColor = UIColor.gray {
         didSet {
-            leftKnob.backgroundView.backgroundColor = leftKnobColor
+            knobs.leftKnob.backgroundView.backgroundColor = leftKnobColor
         }
     }
     /// Left knob shadow opacity.
     @IBInspectable public var leftShadowOpacity: Float = 0.0 {
         didSet {
-            leftKnob.layer.shadowOpacity = leftShadowOpacity
+            knobs.leftKnob.layer.shadowOpacity = leftShadowOpacity
         }
     }
     /// Left knob shadow color.
     @IBInspectable public var leftShadowColor: UIColor = UIColor.clear {
         didSet {
-            leftKnob.layer.shadowColor = leftShadowColor.cgColor
+            knobs.leftKnob.layer.shadowColor = leftShadowColor.cgColor
         }
     }
     /// Left knob shadow offset.
     @IBInspectable public var leftShadowOffset: CGSize = CGSize() {
         didSet {
-            leftKnob.layer.shadowOffset = leftShadowOffset
+            knobs.leftKnob.layer.shadowOffset = leftShadowOffset
         }
     }
     /// Left knob shadow radius.
     @IBInspectable public var leftShadowRadius: CGFloat = 0 {
         didSet {
-            leftKnob.layer.shadowRadius = leftShadowRadius
+            knobs.leftKnob.layer.shadowRadius = leftShadowRadius
         }
     }
     /// Gradient color 1 for range not selected.
     @IBInspectable public var leftKnobGradientColor1: UIColor? {
         didSet {
-            leftKnob.addGradient(firstColor: leftKnobGradientColor1,
+            knobs.leftKnob.addGradient(firstColor: leftKnobGradientColor1,
                                  secondColor: leftKnobGradientColor2,
                                  startPoint: leftKnobGradientStartPoint,
                                  endPoint: leftKnobGradientEndPoint,
@@ -245,7 +245,7 @@ open class RangeUISlider: UIView {
     /// Gradient color 2 for range not selected.
     @IBInspectable public var leftKnobGradientColor2: UIColor? {
         didSet {
-            leftKnob.addGradient(firstColor: leftKnobGradientColor1,
+            knobs.leftKnob.addGradient(firstColor: leftKnobGradientColor1,
                                  secondColor: leftKnobGradientColor2,
                                  startPoint: leftKnobGradientStartPoint,
                                  endPoint: leftKnobGradientEndPoint,
@@ -255,7 +255,7 @@ open class RangeUISlider: UIView {
     /// Gradient start point for not selected range.
     @IBInspectable public var leftKnobGradientStartPoint: CGPoint = CGPoint() {
         didSet {
-            leftKnob.addGradient(firstColor: leftKnobGradientColor1,
+            knobs.leftKnob.addGradient(firstColor: leftKnobGradientColor1,
                                  secondColor: leftKnobGradientColor2,
                                  startPoint: leftKnobGradientStartPoint,
                                  endPoint: leftKnobGradientEndPoint,
@@ -265,7 +265,7 @@ open class RangeUISlider: UIView {
     /// Gradient end point for not selected range.
     @IBInspectable public var leftKnobGradientEndPoint: CGPoint = CGPoint() {
         didSet {
-            leftKnob.addGradient(firstColor: leftKnobGradientColor1,
+            knobs.leftKnob.addGradient(firstColor: leftKnobGradientColor1,
                                  secondColor: leftKnobGradientColor2,
                                  startPoint: leftKnobGradientStartPoint,
                                  endPoint: leftKnobGradientEndPoint,
@@ -275,7 +275,7 @@ open class RangeUISlider: UIView {
     /// Left knob border width.
     @IBInspectable public var leftKnobBorderWidth: CGFloat = 0.0 {
         didSet {
-            leftKnob.addBorders(usingColor: leftKnobBorderColor,
+            knobs.leftKnob.addBorders(usingColor: leftKnobBorderColor,
                                 andWidth: leftKnobBorderWidth,
                                 andCorners: leftKnobCorners)
         }
@@ -283,7 +283,7 @@ open class RangeUISlider: UIView {
     /// Left knob border color.
     @IBInspectable public var leftKnobBorderColor: UIColor = UIColor.clear {
         didSet {
-            leftKnob.addBorders(usingColor: leftKnobBorderColor,
+            knobs.leftKnob.addBorders(usingColor: leftKnobBorderColor,
                                 andWidth: leftKnobBorderWidth,
                                 andCorners: leftKnobCorners)
         }
@@ -291,62 +291,62 @@ open class RangeUISlider: UIView {
     /// Right knob width.
     @IBInspectable public var rightKnobWidth: CGFloat = 30.0 {
         didSet {
-            rightKnob.widthConstraint.constant = rightKnobWidth
+            knobs.rightKnob.widthConstraint.constant = rightKnobWidth
         }
     }
     /// Right knob height.
     @IBInspectable public var rightKnobHeight: CGFloat = 30.0 {
         didSet {
-            rightKnob.heightConstraint.constant = rightKnobHeight
+            knobs.rightKnob.heightConstraint.constant = rightKnobHeight
         }
     }
     /// Right knob corners.
     @IBInspectable public var rightKnobCorners: CGFloat = 15.0 {
         didSet {
-            rightKnob.backgroundView.layer.cornerRadius = rightKnobCorners
-            rightKnob.backgroundView.layer.masksToBounds = rightKnobCorners > 0.0
+            knobs.rightKnob.backgroundView.layer.cornerRadius = rightKnobCorners
+            knobs.rightKnob.backgroundView.layer.masksToBounds = rightKnobCorners > 0.0
         }
     }
     /// Right knob image.
     @IBInspectable public var rightKnobImage: UIImage? {
         didSet {
-            rightKnob.add(image: rightKnobImage)
+            knobs.rightKnob.add(image: rightKnobImage)
         }
     }
     /// Right knob color.
     @IBInspectable public var rightKnobColor: UIColor = UIColor.gray {
         didSet {
-            rightKnob.backgroundView.backgroundColor = rightKnobColor
+            knobs.rightKnob.backgroundView.backgroundColor = rightKnobColor
         }
     }
     /// Right knob shadow opacity.
     @IBInspectable public var rightShadowOpacity: Float = 0.0 {
         didSet {
-            rightKnob.layer.shadowOpacity = rightShadowOpacity
+            knobs.rightKnob.layer.shadowOpacity = rightShadowOpacity
         }
     }
     /// Right knob shadow color.
     @IBInspectable public var rightShadowColor: UIColor = UIColor.clear {
         didSet {
-            rightKnob.layer.shadowColor = rightShadowColor.cgColor
+            knobs.rightKnob.layer.shadowColor = rightShadowColor.cgColor
         }
     }
     /// Right knob shadow offset.
     @IBInspectable public var rightShadowOffset: CGSize = CGSize() {
         didSet {
-            rightKnob.layer.shadowOffset = rightShadowOffset
+            knobs.rightKnob.layer.shadowOffset = rightShadowOffset
         }
     }
     /// Right knob shadow radius.
     @IBInspectable public var rightShadowRadius: CGFloat = 0 {
         didSet {
-            rightKnob.layer.shadowRadius = rightShadowRadius
+            knobs.rightKnob.layer.shadowRadius = rightShadowRadius
         }
     }
     /// Gradient color 1 for range not selected.
     @IBInspectable public var rightKnobGradientColor1: UIColor? {
         didSet {
-            rightKnob.addGradient(firstColor: rightKnobGradientColor1,
+            knobs.rightKnob.addGradient(firstColor: rightKnobGradientColor1,
                                   secondColor: rightKnobGradientColor2,
                                   startPoint: rightKnobGradientStartPoint,
                                   endPoint: rightKnobGradientEndPoint,
@@ -356,7 +356,7 @@ open class RangeUISlider: UIView {
     /// Gradient color 2 for range not selected.
     @IBInspectable public var rightKnobGradientColor2: UIColor? {
         didSet {
-            rightKnob.addGradient(firstColor: rightKnobGradientColor1,
+            knobs.rightKnob.addGradient(firstColor: rightKnobGradientColor1,
                                   secondColor: rightKnobGradientColor2,
                                   startPoint: rightKnobGradientStartPoint,
                                   endPoint: rightKnobGradientEndPoint,
@@ -366,7 +366,7 @@ open class RangeUISlider: UIView {
     /// Gradient start point for not selected range.
     @IBInspectable public var rightKnobGradientStartPoint: CGPoint = CGPoint() {
         didSet {
-            rightKnob.addGradient(firstColor: rightKnobGradientColor1,
+            knobs.rightKnob.addGradient(firstColor: rightKnobGradientColor1,
                                   secondColor: rightKnobGradientColor2,
                                   startPoint: rightKnobGradientStartPoint,
                                   endPoint: rightKnobGradientEndPoint,
@@ -376,7 +376,7 @@ open class RangeUISlider: UIView {
     /// Gradient end point for not selected range.
     @IBInspectable public var rightKnobGradientEndPoint: CGPoint = CGPoint() {
         didSet {
-            rightKnob.addGradient(firstColor: rightKnobGradientColor1,
+            knobs.rightKnob.addGradient(firstColor: rightKnobGradientColor1,
                                   secondColor: rightKnobGradientColor2,
                                   startPoint: rightKnobGradientStartPoint,
                                   endPoint: rightKnobGradientEndPoint,
@@ -386,7 +386,7 @@ open class RangeUISlider: UIView {
     /// Right knob border width.
     @IBInspectable public var rightKnobBorderWidth: CGFloat = 0.0 {
         didSet {
-            rightKnob.addBorders(usingColor: rightKnobBorderColor,
+            knobs.rightKnob.addBorders(usingColor: rightKnobBorderColor,
                                  andWidth: rightKnobBorderWidth,
                                  andCorners: rightKnobCorners)
         }
@@ -394,7 +394,7 @@ open class RangeUISlider: UIView {
     /// Right knob border color.
     @IBInspectable public var rightKnobBorderColor: UIColor = UIColor.clear {
         didSet {
-            rightKnob.addBorders(usingColor: rightKnobBorderColor,
+            knobs.rightKnob.addBorders(usingColor: rightKnobBorderColor,
                                  andWidth: rightKnobBorderWidth,
                                  andCorners: rightKnobCorners)
         }
@@ -477,11 +477,11 @@ open class RangeUISlider: UIView {
     public weak var delegate: RangeUISliderDelegate?
 
     private let bar: Bar = Bar()
-    private let leftKnob: Knob = Knob()
-    private let rightKnob: Knob = Knob()
+    private let knobs: Knobs = Knobs(leftKnob: Knob(), rightKnob: Knob())
     private let selectedProgressView: Progress = Progress()
     private let leftProgressView: Progress = Progress()
     private let rightProgressView: Progress = Progress()
+
     private var previousRangeSelectedValues: RangeSelected = (0, 0)
     private lazy var scale = scaleMaxValue - scaleMinValue
     private lazy var stepCalculator = StepCalculator()
@@ -524,8 +524,8 @@ open class RangeUISlider: UIView {
     open override func prepareForInterfaceBuilder() {
         // Fake values for interface builder.
         // Used to make visible the progress views.
-        leftKnob.xPositionConstraint.constant = 40
-        rightKnob.xPositionConstraint.constant = -40
+        knobs.leftKnob.xPositionConstraint.constant = 40
+        knobs.rightKnob.xPositionConstraint.constant = -40
     }
 
     /**
@@ -533,11 +533,11 @@ open class RangeUISlider: UIView {
      */
     public override func layoutSubviews() {
         super.layoutSubviews()
-        leftKnob.xPositionConstraint.constant = calculateLeftKnobPositionFrom(value: defaultValueLeftKnob)
-        rightKnob.xPositionConstraint.constant = calculateRightKnobPoitionFrom(value: defaultValueRightKnob)
+        knobs.leftKnob.xPositionConstraint.constant = calculateLeftKnobPositionFrom(value: defaultValueLeftKnob)
+        knobs.rightKnob.xPositionConstraint.constant = calculateRightKnobPoitionFrom(value: defaultValueRightKnob)
         previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
-            leftKnobPosition: leftKnob.xPositionConstraint.constant,
-            rightKnobPosition: rightKnob.xPositionConstraint.constant,
+            leftKnobPosition: knobs.leftKnob.xPositionConstraint.constant,
+            rightKnobPosition: knobs.rightKnob.xPositionConstraint.constant,
             barWidth: bar.frame.width
         )
     }
@@ -549,10 +549,10 @@ open class RangeUISlider: UIView {
      */
     public func changeLeftKnob(value: CGFloat) {
         if isValidForLeftKnob(value: value) {
-            leftKnob.xPositionConstraint.constant = calculateLeftKnobPositionFrom(value: value)
+            knobs.leftKnob.xPositionConstraint.constant = calculateLeftKnobPositionFrom(value: value)
             previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
-                leftKnobPosition: leftKnob.xPositionConstraint.constant,
-                rightKnobPosition: rightKnob.xPositionConstraint.constant,
+                leftKnobPosition: knobs.leftKnob.xPositionConstraint.constant,
+                rightKnobPosition: knobs.rightKnob.xPositionConstraint.constant,
                 barWidth: bar.frame.width
             )
             rangeSelectionFinished()
@@ -566,10 +566,10 @@ open class RangeUISlider: UIView {
      */
     public func changeRightKnob(value: CGFloat) {
         if isValidforRightKnob(value: value) {
-            rightKnob.xPositionConstraint.constant = calculateRightKnobPoitionFrom(value: value)
+            knobs.rightKnob.xPositionConstraint.constant = calculateRightKnobPoitionFrom(value: value)
             previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
-                leftKnobPosition: leftKnob.xPositionConstraint.constant,
-                rightKnobPosition: rightKnob.xPositionConstraint.constant,
+                leftKnobPosition: knobs.leftKnob.xPositionConstraint.constant,
+                rightKnobPosition: knobs.rightKnob.xPositionConstraint.constant,
                 barWidth: bar.frame.width
             )
             rangeSelectionFinished()
@@ -605,8 +605,8 @@ open class RangeUISlider: UIView {
         bar.addSubview(selectedProgressView)
         bar.addSubview(leftProgressView)
         bar.addSubview(rightProgressView)
-        bar.addSubview(leftKnob)
-        bar.addSubview(rightKnob)
+        bar.addSubview(knobs.leftKnob)
+        bar.addSubview(knobs.rightKnob)
 
         var constraints: [NSLayoutConstraint] = []
 
@@ -616,11 +616,11 @@ open class RangeUISlider: UIView {
                 leading: barLeading,
                 trailing: barTrailing
             ),
-            leftKnob: leftKnob,
-            rightKnob: rightKnob
+            leftKnob: knobs.leftKnob,
+            rightKnob: knobs.rightKnob
         ))
 
-        constraints.append(contentsOf: rightKnob.setup(
+        constraints.append(contentsOf: knobs.rightKnob.setup(
             properties: KnobProperties(
                 accessibilityIdentifier: "RightKnob",
                 position: .right,
@@ -630,7 +630,7 @@ open class RangeUISlider: UIView {
             selector: #selector(moveRightKnob)
         ))
 
-        constraints.append(contentsOf: leftKnob.setup(
+        constraints.append(contentsOf: knobs.leftKnob.setup(
             properties: KnobProperties(
                 accessibilityIdentifier: "LeftKnob",
                 position: .left,
@@ -641,8 +641,8 @@ open class RangeUISlider: UIView {
         ))
 
         constraints.append(contentsOf: selectedProgressView.setup(
-                            leftAnchorView: leftKnob,
-                            rightAnchorView: rightKnob,
+                            leftAnchorView: knobs.leftKnob,
+                            rightAnchorView: knobs.rightKnob,
                             properties: ProgressProperties(
                                 leftAnchorConstraintAttribute: .centerX,
                                 rightAnchorConstraintAttribute: .centerX,
@@ -652,7 +652,7 @@ open class RangeUISlider: UIView {
 
         constraints.append(contentsOf: leftProgressView.setup(
                             leftAnchorView: bar,
-                            rightAnchorView: leftKnob,
+                            rightAnchorView: knobs.leftKnob,
                             properties: ProgressProperties(
                                 leftAnchorConstraintAttribute: .leading,
                                 rightAnchorConstraintAttribute: .centerX,
@@ -661,7 +661,7 @@ open class RangeUISlider: UIView {
         ))
 
         constraints.append(contentsOf: rightProgressView.setup(
-                            leftAnchorView: rightKnob,
+                            leftAnchorView: knobs.rightKnob,
                             rightAnchorView: bar,
                             properties: ProgressProperties(
                                 leftAnchorConstraintAttribute: .centerX,
@@ -753,15 +753,15 @@ open class RangeUISlider: UIView {
             let positionForKnob = bar.frame.width - positionForKnobGiven(
                 xLocationInBar: gestureRecognizer.location(in: bar).x
             )
-            let positionRightKnob = -1 * rightKnob.xPositionConstraint.constant
+            let positionRightKnob = -1 * knobs.rightKnob.xPositionConstraint.constant
             if positionForKnob >= 0 && (bar.frame.width - positionForKnob) >= positionRightKnob {
-                leftKnob.xPositionConstraint.constant = positionForKnob
+                knobs.leftKnob.xPositionConstraint.constant = positionForKnob
             }
         } else {
             let positionForKnob = positionForKnobGiven(xLocationInBar: gestureRecognizer.location(in: bar).x)
-            let positionRightKnob = bar.frame.width + rightKnob.xPositionConstraint.constant
+            let positionRightKnob = bar.frame.width + knobs.rightKnob.xPositionConstraint.constant
             if positionForKnob >= 0 && positionForKnob <= positionRightKnob {
-                leftKnob.xPositionConstraint.constant = positionForKnob
+                knobs.leftKnob.xPositionConstraint.constant = positionForKnob
             }
         }
     }
@@ -771,14 +771,14 @@ open class RangeUISlider: UIView {
         if userInterfaceDirection == UIUserInterfaceLayoutDirection.rightToLeft {
             let xLocationInBar = gestureRecognizer.location(in: bar).x
             let positionForKnob = -1 * positionForKnobGiven(xLocationInBar: xLocationInBar)
-            if positionForKnob <= 0 && xLocationInBar <= (bar.frame.width - leftKnob.xPositionConstraint.constant) {
-                rightKnob.xPositionConstraint.constant = positionForKnob
+            if positionForKnob <= 0 && xLocationInBar <= (bar.frame.width - knobs.leftKnob.xPositionConstraint.constant) {
+                knobs.rightKnob.xPositionConstraint.constant = positionForKnob
             }
         } else {
             let xLocationInBar = gestureRecognizer.location(in: bar).x
             let positionForKnob = positionForKnobGiven(xLocationInBar: xLocationInBar - bar.frame.width)
-            if positionForKnob <= 0 && xLocationInBar >= leftKnob.xPositionConstraint.constant {
-                rightKnob.xPositionConstraint.constant = positionForKnob
+            if positionForKnob <= 0 && xLocationInBar >= knobs.leftKnob.xPositionConstraint.constant {
+                knobs.rightKnob.xPositionConstraint.constant = positionForKnob
             }
         }
     }
@@ -789,8 +789,8 @@ open class RangeUISlider: UIView {
 
     private func rangeSelectionUpdate() {
         let rangeSelected = rangeSelectedCalculator.calculateRangeSelected(
-            leftKnobPosition: leftKnob.xPositionConstraint.constant,
-            rightKnobPosition: rightKnob.xPositionConstraint.constant,
+            leftKnobPosition: knobs.leftKnob.xPositionConstraint.constant,
+            rightKnobPosition: knobs.rightKnob.xPositionConstraint.constant,
             barWidth: bar.frame.width
         )
         if isDifferentFromPreviousRangeSelected(rangeSelected: rangeSelected) {
@@ -807,8 +807,8 @@ open class RangeUISlider: UIView {
 
     private func rangeSelectionFinished() {
         let rangeSelected = rangeSelectedCalculator.calculateRangeSelected(
-            leftKnobPosition: leftKnob.xPositionConstraint.constant,
-            rightKnobPosition: rightKnob.xPositionConstraint.constant,
+            leftKnobPosition: knobs.leftKnob.xPositionConstraint.constant,
+            rightKnobPosition: knobs.rightKnob.xPositionConstraint.constant,
             barWidth: bar.frame.width
         )
 
