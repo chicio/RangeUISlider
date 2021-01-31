@@ -205,11 +205,11 @@
 				450C7B4B25C489E200764496 /* PositionConstraintFactory.swift */,
 				450C7B4C25C489E200764496 /* DimensionConstraintFactory.swift */,
 				450C7B4D25C489E200764496 /* MarginConstraintFactory.swift */,
+				45E9D58D25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift */,
+				45949DBB25C6CB5300F09F3B /* ConstraintFactory.swift */,
 				450C7B7425C490C100764496 /* ConstraintViews.swift */,
 				45D2B83625C5CBD500DFD838 /* ConstraintAttributes.swift */,
 				45949DC025C6CBA700F09F3B /* ConstraintAdditionalInformations.swift */,
-				45949DBB25C6CB5300F09F3B /* ConstraintFactory.swift */,
-				45E9D58D25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift */,
 			);
 			path = Constraint;
 			sourceTree = "<group>";
