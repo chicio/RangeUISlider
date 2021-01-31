@@ -6,7 +6,7 @@
 //  2021 Fabrizio Duroni.
 //
 
-import Foundation
+import UIKit
 
 struct Dimensions {
     let width: CGFloat

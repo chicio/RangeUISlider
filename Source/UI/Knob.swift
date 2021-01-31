@@ -10,7 +10,7 @@ import UIKit
 
 class Knob: Gradient, UIGestureRecognizerDelegate {
     public let backgroundView: UIView = UIView()
-    private(set) lazy var imageView: UIImageView = UIImageView()
+    private lazy var imageView: UIImageView = UIImageView()
     private(set) var xPositionConstraint: NSLayoutConstraint!
     private(set) var widthConstraint: NSLayoutConstraint!
     private(set) var heightConstraint: NSLayoutConstraint!
@@ -89,36 +89,13 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.contentMode = .scaleToFill
             addSubview(imageView)
+            let views = ConstraintViews(target: imageView, related: self)
             NSLayoutConstraint.activate([
-                NSLayoutConstraint(item: imageView,
-                                   attribute: .centerX,
-                                   relatedBy: .equal,
-                                   toItem: self,
-                                   attribute: .centerX,
-                                   multiplier: 1.0,
-                                   constant: 0.0),
-                NSLayoutConstraint(item: imageView,
-                                   attribute: .centerY,
-                                   relatedBy: .equal,
-                                   toItem: self,
-                                   attribute: .centerY,
-                                   multiplier: 1.0,
-                                   constant: 0.0),
-                NSLayoutConstraint(item: imageView,
-                                   attribute: .width,
-                                   relatedBy: .equal,
-                                   toItem: self,
-                                   attribute: .width,
-                                   multiplier: 1.0,
-                                   constant: 0.0),
-                NSLayoutConstraint(item: imageView,
-                                   attribute: .height,
-                                   relatedBy: .equal,
-                                   toItem: self,
-                                   attribute: .height,
-                                   multiplier: 1.0,
-                                   constant: 0.0)
-                ])
+                PositionConstraintFactory.centerX(views: views),
+                PositionConstraintFactory.centerY(views: views),
+                DimensionConstraintFactory.equalWidth(views: views),
+                DimensionConstraintFactory.equalHeight(views: views)
+            ])
         }
     }
 

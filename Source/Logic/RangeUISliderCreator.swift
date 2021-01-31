@@ -10,7 +10,6 @@ import UIKit
 
 @available(iOS 14.0, *)
 class RangeUISliderCreator {
-
     func createFrom(settings: RangeSliderSettings) -> RangeUISlider {
         let rangeSlider = RangeUISlider(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 20)))
         let mirror = Mirror(reflecting: rangeSlider)
