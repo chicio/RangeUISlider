@@ -771,7 +771,8 @@ open class RangeUISlider: UIView {
         if userInterfaceDirection == UIUserInterfaceLayoutDirection.rightToLeft {
             let xLocationInBar = gestureRecognizer.location(in: bar).x
             let positionForKnob = -1 * positionForKnobGiven(xLocationInBar: xLocationInBar)
-            if positionForKnob <= 0 && xLocationInBar <= (bar.frame.width - knobs.leftKnob.xPositionConstraint.constant) {
+            if positionForKnob <= 0 &&
+                xLocationInBar <= (bar.frame.width - knobs.leftKnob.xPositionConstraint.constant) {
                 knobs.rightKnob.xPositionConstraint.constant = positionForKnob
             }
         } else {
