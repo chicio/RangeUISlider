@@ -10,14 +10,10 @@ import UIKit
 
 class PositionConstraintFactory {
     static func centerX(views: ConstraintViews) -> NSLayoutConstraint {
-        return ConstraintFactory.make(
-            views: views,
+        return EqualRelationConstraintFactory.make(
             attributes: ConstraintAttributes(target: .centerX, related: .centerX),
-            additionalInformation: ConstraintAdditionalInformations(
-                relation: .equal,
-                multiplier: 1.0,
-                constant: 0.0
-            )
+            views: views,
+            value: 0.0
         )
     }
 
@@ -25,40 +21,18 @@ class PositionConstraintFactory {
         attribute: NSLayoutConstraint.Attribute,
         views: ConstraintViews
     ) -> NSLayoutConstraint {
-        return ConstraintFactory.make(
-            views: views,
+        return EqualRelationConstraintFactory.make(
             attributes: ConstraintAttributes(target: .centerX, related: attribute),
-            additionalInformation: ConstraintAdditionalInformations(
-                relation: .equal,
-                multiplier: 1.0,
-                constant: 0.0
-            )
+            views: views,
+            value: 0.0
         )
     }
 
     static func centerY(views: ConstraintViews) -> NSLayoutConstraint {
-        return ConstraintFactory.make(
-            views: views,
+        return EqualRelationConstraintFactory.make(
             attributes: ConstraintAttributes(target: .centerY, related: .centerY),
-            additionalInformation: ConstraintAdditionalInformations(
-                relation: .equal,
-                multiplier: 1.0,
-                constant: 0.0
-            )
+            views: views,
+            value: 0.0
         )
-    }
-
-    private static func center(
-        target: Any,
-        parent: Any?,
-        centerDirection: NSLayoutConstraint.Attribute
-    ) -> NSLayoutConstraint {
-        return NSLayoutConstraint(item: target,
-                                  attribute: centerDirection,
-                                  relatedBy: .equal,
-                                  toItem: parent,
-                                  attribute: centerDirection,
-                                  multiplier: 1.0,
-                                  constant: 0.0)
     }
 }
