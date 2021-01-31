@@ -10,7 +10,11 @@ import Foundation
 import UIKit
 
 class Progress: Gradient {
-    func setup(leftAnchorView: UIView, rightAnchorView: UIView, properties: ProgressProperties) -> [NSLayoutConstraint] {
+    func setup(
+        leftAnchorView: UIView,
+        rightAnchorView: UIView,
+        properties: ProgressProperties
+    ) -> [NSLayoutConstraint] {
         accessibilityIdentifier = "Progress"
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = properties.color
