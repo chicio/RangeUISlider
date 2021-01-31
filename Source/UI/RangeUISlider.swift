@@ -610,11 +610,15 @@ open class RangeUISlider: UIView {
 
         var constraints: [NSLayoutConstraint] = []
 
-        constraints.append(contentsOf: bar.setup(leftKnob: leftKnob,
-                                                 rightKnob: rightKnob,
-                                                 leading: barLeading,
-                                                 trailing: barTrailing,
-                                                 height: barHeight))
+        constraints.append(contentsOf: bar.setup(
+            barProperties: BarProperties(
+                height: barHeight,
+                leading: barLeading,
+                trailing: barTrailing
+            ),
+            leftKnob: leftKnob,
+            rightKnob: rightKnob
+        ))
 
         constraints.append(contentsOf: rightKnob.setup(
             properties: KnobProperties(
