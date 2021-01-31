@@ -10,14 +10,10 @@ import UIKit
 
 class MarginConstraintFactory {
     static func leading(views: ConstraintViews, value: CGFloat) -> NSLayoutConstraint {
-        return ConstraintFactory.make(
-            views: views,
+        return MarginConstraintFactory.make(
             attributes: ConstraintAttributes(target: .leading, related: .leading),
-            additionalInformation: ConstraintAdditionalInformations(
-                relation: .equal,
-                multiplier: 1.0,
-                constant: value
-            )
+            views: views,
+            value: value
         )
     }
 
@@ -26,26 +22,18 @@ class MarginConstraintFactory {
         views: ConstraintViews,
         value: CGFloat
     ) -> NSLayoutConstraint {
-        return ConstraintFactory.make(
-            views: views,
+        return MarginConstraintFactory.make(
             attributes: ConstraintAttributes(target: .leading, related: attribute),
-            additionalInformation: ConstraintAdditionalInformations(
-                relation: .equal,
-                multiplier: 1.0,
-                constant: value
-            )
+            views: views,
+            value: value
         )
     }
 
     static func trailing(views: ConstraintViews, value: CGFloat) -> NSLayoutConstraint {
-        return ConstraintFactory.make(
-            views: views,
+        return MarginConstraintFactory.make(
             attributes: ConstraintAttributes(target: .trailing, related: .trailing),
-            additionalInformation: ConstraintAdditionalInformations(
-                relation: .equal,
-                multiplier: 1.0,
-                constant: value
-            )
+            views: views,
+            value: value
         )
     }
 
@@ -54,33 +42,37 @@ class MarginConstraintFactory {
         views: ConstraintViews,
         value: CGFloat
     ) -> NSLayoutConstraint {
-        return ConstraintFactory.make(
-            views: views,
+        return MarginConstraintFactory.make(
             attributes: ConstraintAttributes(target: .trailing, related: attribute),
-            additionalInformation: ConstraintAdditionalInformations(
-                relation: .equal,
-                multiplier: 1.0,
-                constant: value
-            )
+            views: views,
+            value: value
         )
     }
 
     static func top(views: ConstraintViews, value: CGFloat) -> NSLayoutConstraint {
-        return ConstraintFactory.make(
-            views: views,
+        return MarginConstraintFactory.make(
             attributes: ConstraintAttributes(target: .top, related: .top),
-            additionalInformation: ConstraintAdditionalInformations(
-                relation: .equal,
-                multiplier: 1.0,
-                constant: value
-            )
+            views: views,
+            value: value
         )
     }
 
     static func bottom(views: ConstraintViews, value: CGFloat) -> NSLayoutConstraint {
+        return MarginConstraintFactory.make(
+            attributes: ConstraintAttributes(target: .bottom, related: .bottom),
+            views: views,
+            value: value
+        )
+    }
+
+    private static func make(
+        attributes: ConstraintAttributes,
+        views: ConstraintViews,
+        value: CGFloat
+    ) -> NSLayoutConstraint {
         return ConstraintFactory.make(
             views: views,
-            attributes: ConstraintAttributes(target: .bottom, related: .bottom),
+            attributes: attributes,
             additionalInformation: ConstraintAdditionalInformations(
                 relation: .equal,
                 multiplier: 1.0,
