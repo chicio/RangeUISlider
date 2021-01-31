@@ -15,14 +15,14 @@ class Bar: UIView {
     private(set) var heightConstraint: NSLayoutConstraint!
     private var knobsHitTest: KnobsHitTest!
 
-    func setup(barProperties: BarProperties, leftKnob: Knob, rightKnob: Knob) -> [NSLayoutConstraint] {
+    func setup(properties: BarProperties, leftKnob: Knob, rightKnob: Knob) -> [NSLayoutConstraint] {
         accessibilityIdentifier = "Bar"
         translatesAutoresizingMaskIntoConstraints = false
         knobsHitTest = KnobsHitTest(leftKnob: leftKnob, rightKnob: rightKnob, parentView: self)
         return createConstraintsUsing(
-            leading: barProperties.leading,
-            trailing: barProperties.trailing,
-            height: barProperties.height
+            leading: properties.leading,
+            trailing: properties.trailing,
+            height: properties.height
         )
     }
 

@@ -40,6 +40,7 @@
 		45E215291E8E812E00F0B8B9 /* RangeUISlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E215271E8E812E00F0B8B9 /* RangeUISlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45E9D58E25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9D58D25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift */; };
 		45E9D59725C6F94200FE6E3F /* BarProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9D59625C6F94200FE6E3F /* BarProperties.swift */; };
+		45E9D59F25C6FADC00FE6E3F /* ProgressProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9D59E25C6FADC00FE6E3F /* ProgressProperties.swift */; };
 		45F064862599E3CC007B25A7 /* MixedFeaturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F064852599E3CC007B25A7 /* MixedFeaturesTests.swift */; };
 		45F064982599E511007B25A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F064972599E511007B25A7 /* AppDelegate.swift */; };
 		45F0649A2599E511007B25A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F064992599E511007B25A7 /* SceneDelegate.swift */; };
@@ -147,6 +148,7 @@
 		45E603C4233A432C00E7465D /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		45E9D58D25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualRelationConstraintFactory.swift; sourceTree = "<group>"; };
 		45E9D59625C6F94200FE6E3F /* BarProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarProperties.swift; sourceTree = "<group>"; };
+		45E9D59E25C6FADC00FE6E3F /* ProgressProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressProperties.swift; sourceTree = "<group>"; };
 		45F064832599E3CC007B25A7 /* RangeUISliderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RangeUISliderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45F064852599E3CC007B25A7 /* MixedFeaturesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedFeaturesTests.swift; sourceTree = "<group>"; };
 		45F064872599E3CC007B25A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				451AF80B25C6E32F00DD37CE /* KnobProperties.swift */,
 				45E9D59625C6F94200FE6E3F /* BarProperties.swift */,
 				451AF81025C6E36F00DD37CE /* Dimensions.swift */,
+				45E9D59E25C6FADC00FE6E3F /* ProgressProperties.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				45949DC125C6CBA700F09F3B /* ConstraintAdditionalInformations.swift in Sources */,
 				45E9D58E25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift in Sources */,
 				450C7B5025C489E200764496 /* MarginConstraintFactory.swift in Sources */,
+				45E9D59F25C6FADC00FE6E3F /* ProgressProperties.swift in Sources */,
 				5F7B1B731F7EEE7E00D19E23 /* RangeUISliderDelegate.swift in Sources */,
 				450C7B6625C48A7500764496 /* RangeUISlider.swift in Sources */,
 				450C7B5825C48A4F00764496 /* RangeSelectedCalculator.swift in Sources */,
