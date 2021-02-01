@@ -34,6 +34,9 @@
 		45949DC125C6CBA700F09F3B /* ConstraintAdditionalInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45949DC025C6CBA700F09F3B /* ConstraintAdditionalInformations.swift */; };
 		4596308525C7ECE500FCCCE7 /* ProgressViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4596308425C7ECE500FCCCE7 /* ProgressViews.swift */; };
 		459630AA25C87EE400FCCCE7 /* KnobGesturesProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459630A925C87EE400FCCCE7 /* KnobGesturesProperties.swift */; };
+		459630B825C8841B00FCCCE7 /* RangeUISliderSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459630B725C8841B00FCCCE7 /* RangeUISliderSetup.swift */; };
+		459630BD25C884B000FCCCE7 /* KnobsProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459630BC25C884B000FCCCE7 /* KnobsProperties.swift */; };
+		459630C525C8854D00FCCCE7 /* ProgressViewsProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459630C425C8854D00FCCCE7 /* ProgressViewsProperties.swift */; };
 		459CBEB7259B638300FCA5AB /* ProgrammaticScaleChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBEB6259B638200FCA5AB /* ProgrammaticScaleChangeTests.swift */; };
 		459CBEF7259B79D000FCA5AB /* RangeSelectedCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBEF6259B79D000FCA5AB /* RangeSelectedCalculatorTest.swift */; };
 		459CBEF9259B79D000FCA5AB /* RangeUISlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E215241E8E812E00F0B8B9 /* RangeUISlider.framework */; platformFilter = ios; };
@@ -136,6 +139,9 @@
 		45949DC025C6CBA700F09F3B /* ConstraintAdditionalInformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintAdditionalInformations.swift; sourceTree = "<group>"; };
 		4596308425C7ECE500FCCCE7 /* ProgressViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViews.swift; sourceTree = "<group>"; };
 		459630A925C87EE400FCCCE7 /* KnobGesturesProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobGesturesProperties.swift; sourceTree = "<group>"; };
+		459630B725C8841B00FCCCE7 /* RangeUISliderSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeUISliderSetup.swift; sourceTree = "<group>"; };
+		459630BC25C884B000FCCCE7 /* KnobsProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobsProperties.swift; sourceTree = "<group>"; };
+		459630C425C8854D00FCCCE7 /* ProgressViewsProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewsProperties.swift; sourceTree = "<group>"; };
 		459CBEB6259B638200FCA5AB /* ProgrammaticScaleChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticScaleChangeTests.swift; sourceTree = "<group>"; };
 		459CBEC4259B6A6F00FCA5AB /* build-ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "build-ios.yml"; sourceTree = "<group>"; };
 		459CBEF4259B79D000FCA5AB /* RangeUISliderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RangeUISliderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,10 +242,13 @@
 				4538955325C5D62700389905 /* RangeUISliderCreator.swift */,
 				4538956E25C5DF8700389905 /* KnobPosition.swift */,
 				451AF80B25C6E32F00DD37CE /* KnobProperties.swift */,
+				459630BC25C884B000FCCCE7 /* KnobsProperties.swift */,
 				459630A925C87EE400FCCCE7 /* KnobGesturesProperties.swift */,
 				45E9D59625C6F94200FE6E3F /* BarProperties.swift */,
 				451AF81025C6E36F00DD37CE /* Dimensions.swift */,
 				45E9D59E25C6FADC00FE6E3F /* ProgressProperties.swift */,
+				459630C425C8854D00FCCCE7 /* ProgressViewsProperties.swift */,
+				459630B725C8841B00FCCCE7 /* RangeUISliderSetup.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -613,6 +622,7 @@
 				45E9D59725C6F94200FE6E3F /* BarProperties.swift in Sources */,
 				450C7B4E25C489E200764496 /* PositionConstraintFactory.swift in Sources */,
 				450C7B6725C48A7500764496 /* Bar.swift in Sources */,
+				459630C525C8854D00FCCCE7 /* ProgressViewsProperties.swift in Sources */,
 				45949DC125C6CBA700F09F3B /* ConstraintAdditionalInformations.swift in Sources */,
 				45E9D58E25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift in Sources */,
 				450C7B5025C489E200764496 /* MarginConstraintFactory.swift in Sources */,
@@ -620,9 +630,11 @@
 				45E9D59F25C6FADC00FE6E3F /* ProgressProperties.swift in Sources */,
 				5F7B1B731F7EEE7E00D19E23 /* RangeUISliderDelegate.swift in Sources */,
 				450C7B6625C48A7500764496 /* RangeUISlider.swift in Sources */,
+				459630BD25C884B000FCCCE7 /* KnobsProperties.swift in Sources */,
 				450C7B5825C48A4F00764496 /* RangeSelectedCalculator.swift in Sources */,
 				451AF80325C6E0A900DD37CE /* RangeSlider+Modifiers.swift in Sources */,
 				451AF80C25C6E32F00DD37CE /* KnobProperties.swift in Sources */,
+				459630B825C8841B00FCCCE7 /* RangeUISliderSetup.swift in Sources */,
 				4571869425A5CFE300541D67 /* RangeSliderCoordinator.swift in Sources */,
 				450C7B6A25C48A7500764496 /* Knob.swift in Sources */,
 				4571869925A5D01500541D67 /* RangeSliderSettings.swift in Sources */,
