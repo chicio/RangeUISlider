@@ -43,7 +43,7 @@ open class RangeUISlider: UIView {
     /// Selected range color.
     @IBInspectable public var rangeSelectedColor: UIColor = UIColor.blue {
         didSet {
-            selectedProgressView.backgroundColor = rangeSelectedColor
+            progressViews.selectedProgressView.backgroundColor = rangeSelectedColor
         }
     }
     /// Background range selected strechable image.
@@ -79,7 +79,7 @@ open class RangeUISlider: UIView {
     /// Gradient color 1 for range selected.
     @IBInspectable public var rangeSelectedGradientColor1: UIColor? {
         didSet {
-            selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
+            progressViews.selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
                                              secondColor: rangeSelectedGradientColor2,
                                              startPoint: rangeSelectedGradientStartPoint,
                                              endPoint: rangeSelectedGradientEndPoint,
@@ -89,7 +89,7 @@ open class RangeUISlider: UIView {
     /// Gradient color 2 for range selected.
     @IBInspectable public var rangeSelectedGradientColor2: UIColor? {
         didSet {
-            selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
+            progressViews.selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
                                              secondColor: rangeSelectedGradientColor2,
                                              startPoint: rangeSelectedGradientStartPoint,
                                              endPoint: rangeSelectedGradientEndPoint,
@@ -99,7 +99,7 @@ open class RangeUISlider: UIView {
     /// Gradient start point for selected range.
     @IBInspectable public var rangeSelectedGradientStartPoint: CGPoint = CGPoint() {
         didSet {
-            selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
+            progressViews.selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
                                              secondColor: rangeSelectedGradientColor2,
                                              startPoint: rangeSelectedGradientStartPoint,
                                              endPoint: rangeSelectedGradientEndPoint,
@@ -109,7 +109,7 @@ open class RangeUISlider: UIView {
     /// Gradient end point for selected range.
     @IBInspectable public var rangeSelectedGradientEndPoint: CGPoint = CGPoint() {
         didSet {
-            selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
+            progressViews.selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
                                              secondColor: rangeSelectedGradientColor2,
                                              startPoint: rangeSelectedGradientStartPoint,
                                              endPoint: rangeSelectedGradientEndPoint,
@@ -119,8 +119,8 @@ open class RangeUISlider: UIView {
     /// Not selected range color.
     @IBInspectable public var rangeNotSelectedColor: UIColor = UIColor.lightGray {
         didSet {
-            leftProgressView.backgroundColor = rangeNotSelectedColor
-            rightProgressView.backgroundColor = rangeNotSelectedColor
+            progressViews.leftProgressView.backgroundColor = rangeNotSelectedColor
+            progressViews.rightProgressView.backgroundColor = rangeNotSelectedColor
         }
     }
     /// Background range selected strechable image.
@@ -420,8 +420,8 @@ open class RangeUISlider: UIView {
     /// Bar corners.
     @IBInspectable public var barCorners: CGFloat = 0.0 {
         didSet {
-            leftProgressView.layer.cornerRadius = barCorners
-            rightProgressView.layer.cornerRadius = barCorners
+            progressViews.leftProgressView.layer.cornerRadius = barCorners
+            progressViews.rightProgressView.layer.cornerRadius = barCorners
             addGradientToNotSelectedRangeIfNeeded()
             addBackgroundToRangeNotSelectedIfNeeded()
         }
@@ -453,17 +453,17 @@ open class RangeUISlider: UIView {
     /// Bar border color.
     @IBInspectable public var barBorderWidth: CGFloat = 0.0 {
         didSet {
-            leftProgressView.layer.borderWidth = barBorderWidth
-            rightProgressView.layer.borderWidth = barBorderWidth
-            selectedProgressView.layer.borderWidth = barBorderWidth
+            progressViews.leftProgressView.layer.borderWidth = barBorderWidth
+            progressViews.rightProgressView.layer.borderWidth = barBorderWidth
+            progressViews.selectedProgressView.layer.borderWidth = barBorderWidth
         }
     }
     /// Bar border color.
     @IBInspectable public var barBorderColor: UIColor = UIColor.clear {
         didSet {
-            leftProgressView.layer.borderColor = barBorderColor.cgColor
-            rightProgressView.layer.borderColor = barBorderColor.cgColor
-            selectedProgressView.layer.borderColor = barBorderColor.cgColor
+            progressViews.leftProgressView.layer.borderColor = barBorderColor.cgColor
+            progressViews.rightProgressView.layer.borderColor = barBorderColor.cgColor
+            progressViews.selectedProgressView.layer.borderColor = barBorderColor.cgColor
         }
     }
     /// Container corners.
@@ -478,9 +478,11 @@ open class RangeUISlider: UIView {
 
     private let bar: Bar = Bar()
     private let knobs: Knobs = Knobs(leftKnob: Knob(), rightKnob: Knob())
-    private let selectedProgressView: Progress = Progress()
-    private let leftProgressView: Progress = Progress()
-    private let rightProgressView: Progress = Progress()
+    private let progressViews: ProgressViews = ProgressViews(
+        selectedProgressView: Progress(),
+        leftProgressView: Progress(),
+        rightProgressView: Progress()
+    )
 
     private var previousRangeSelectedValues: RangeSelected = (0, 0)
     private lazy var scale = scaleMaxValue - scaleMinValue
@@ -602,9 +604,9 @@ open class RangeUISlider: UIView {
 
     private func setup() {
         addSubview(bar)
-        bar.addSubview(selectedProgressView)
-        bar.addSubview(leftProgressView)
-        bar.addSubview(rightProgressView)
+        bar.addSubview(progressViews.selectedProgressView)
+        bar.addSubview(progressViews.leftProgressView)
+        bar.addSubview(progressViews.rightProgressView)
         bar.addSubview(knobs.leftKnob)
         bar.addSubview(knobs.rightKnob)
 
@@ -640,7 +642,7 @@ open class RangeUISlider: UIView {
             selector: #selector(moveLeftKnob)
         ))
 
-        constraints.append(contentsOf: selectedProgressView.setup(
+        constraints.append(contentsOf: progressViews.selectedProgressView.setup(
                             leftAnchorView: knobs.leftKnob,
                             rightAnchorView: knobs.rightKnob,
                             properties: ProgressProperties(
@@ -650,7 +652,7 @@ open class RangeUISlider: UIView {
                             )
         ))
 
-        constraints.append(contentsOf: leftProgressView.setup(
+        constraints.append(contentsOf: progressViews.leftProgressView.setup(
                             leftAnchorView: bar,
                             rightAnchorView: knobs.leftKnob,
                             properties: ProgressProperties(
@@ -660,7 +662,7 @@ open class RangeUISlider: UIView {
                             )
         ))
 
-        constraints.append(contentsOf: rightProgressView.setup(
+        constraints.append(contentsOf: progressViews.rightProgressView.setup(
                             leftAnchorView: knobs.rightKnob,
                             rightAnchorView: bar,
                             properties: ProgressProperties(
@@ -674,12 +676,12 @@ open class RangeUISlider: UIView {
     }
 
     private func addGradientToNotSelectedRangeIfNeeded() {
-        leftProgressView.addGradient(firstColor: rangeNotSelectedGradientColor1,
+        progressViews.leftProgressView.addGradient(firstColor: rangeNotSelectedGradientColor1,
                                      secondColor: rangeNotSelectedGradientColor2,
                                      startPoint: rangeNotSelectedGradientStartPoint,
                                      endPoint: rangeNotSelectedGradientEndPoint,
                                      cornerRadius: barCorners)
-        rightProgressView.addGradient(firstColor: rangeNotSelectedGradientColor1,
+        progressViews.rightProgressView.addGradient(firstColor: rangeNotSelectedGradientColor1,
                                       secondColor: rangeNotSelectedGradientColor2,
                                       startPoint: rangeNotSelectedGradientStartPoint,
                                       endPoint: rangeNotSelectedGradientEndPoint,
@@ -692,8 +694,16 @@ open class RangeUISlider: UIView {
                                          left: rangeNotSelectedBackgroundEdgeInsetLeft,
                                          bottom: rangeNotSelectedBackgroundEdgeInsetBottom,
                                          right: rangeNotSelectedBackgroundEdgeInsetRight)
-            leftProgressView.addBackground(image: backgroundImage, edgeInset: edgeInset, corners: barCorners)
-            rightProgressView.addBackground(image: backgroundImage, edgeInset: edgeInset, corners: barCorners)
+            progressViews.leftProgressView.addBackground(
+                image: backgroundImage,
+                edgeInset: edgeInset,
+                corners: barCorners
+            )
+            progressViews.rightProgressView.addBackground(
+                image: backgroundImage,
+                edgeInset: edgeInset,
+                corners: barCorners
+            )
         }
     }
 
@@ -703,7 +713,11 @@ open class RangeUISlider: UIView {
                                          left: rangeSelectedBackgroundEdgeInsetLeft,
                                          bottom: rangeSelectedBackgroundEdgeInsetBottom,
                                          right: rangeSelectedBackgroundEdgeInsetRight)
-            selectedProgressView.addBackground(image: backgroundImage, edgeInset: edgeInset, corners: barCorners)
+            progressViews.selectedProgressView.addBackground(
+                image: backgroundImage,
+                edgeInset: edgeInset,
+                corners: barCorners
+            )
         }
     }
 

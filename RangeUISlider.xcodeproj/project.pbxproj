@@ -32,6 +32,7 @@
 		4571869925A5D01500541D67 /* RangeSliderSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4571869825A5D01500541D67 /* RangeSliderSettings.swift */; };
 		45949DBC25C6CB5300F09F3B /* ConstraintFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45949DBB25C6CB5300F09F3B /* ConstraintFactory.swift */; };
 		45949DC125C6CBA700F09F3B /* ConstraintAdditionalInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45949DC025C6CBA700F09F3B /* ConstraintAdditionalInformations.swift */; };
+		4596308525C7ECE500FCCCE7 /* ProgressViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4596308425C7ECE500FCCCE7 /* ProgressViews.swift */; };
 		459CBEB7259B638300FCA5AB /* ProgrammaticScaleChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBEB6259B638200FCA5AB /* ProgrammaticScaleChangeTests.swift */; };
 		459CBEF7259B79D000FCA5AB /* RangeSelectedCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBEF6259B79D000FCA5AB /* RangeSelectedCalculatorTest.swift */; };
 		459CBEF9259B79D000FCA5AB /* RangeUISlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E215241E8E812E00F0B8B9 /* RangeUISlider.framework */; platformFilter = ios; };
@@ -132,6 +133,7 @@
 		458E1B90257A9CC800165AA7 /* RangeUISlider.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RangeUISlider.podspec; sourceTree = "<group>"; };
 		45949DBB25C6CB5300F09F3B /* ConstraintFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintFactory.swift; sourceTree = "<group>"; };
 		45949DC025C6CBA700F09F3B /* ConstraintAdditionalInformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintAdditionalInformations.swift; sourceTree = "<group>"; };
+		4596308425C7ECE500FCCCE7 /* ProgressViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViews.swift; sourceTree = "<group>"; };
 		459CBEB6259B638200FCA5AB /* ProgrammaticScaleChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticScaleChangeTests.swift; sourceTree = "<group>"; };
 		459CBEC4259B6A6F00FCA5AB /* build-ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "build-ios.yml"; sourceTree = "<group>"; };
 		459CBEF4259B79D000FCA5AB /* RangeUISliderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RangeUISliderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -250,6 +252,7 @@
 				450C7B6325C48A7400764496 /* Gradient.swift */,
 				450C7B6425C48A7400764496 /* Knob.swift */,
 				45E9D5B025C7028C00FE6E3F /* Knobs.swift */,
+				4596308425C7ECE500FCCCE7 /* ProgressViews.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				450C7B5A25C48A4F00764496 /* KnobsHitTest.swift in Sources */,
+				4596308525C7ECE500FCCCE7 /* ProgressViews.swift in Sources */,
 				45D2B83725C5CBD500DFD838 /* ConstraintAttributes.swift in Sources */,
 				45E9D5A425C6FD9A00FE6E3F /* MatchingMarginsConstraintFactory.swift in Sources */,
 				45E9D59725C6F94200FE6E3F /* BarProperties.swift in Sources */,
