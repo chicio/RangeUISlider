@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 
 class Gradient: UIView {
-    private let defaultFirstColor = UIColor(red: 140.0/255.0, green: 140.0/255.0, blue: 140.0/255.0, alpha: 1.0)
-    private let defaultSecondColor = UIColor(red: 140.0/255.0, green: 140.0/255.0, blue: 140.0/255.0, alpha: 1.0)
+    private let defaultColor = UIColor(red: 140.0/255.0, green: 140.0/255.0, blue: 140.0/255.0, alpha: 1.0)
     lazy private(set) var gradient: CAGradientLayer = CAGradientLayer()
 
     override func layoutSubviews() {
@@ -24,8 +23,8 @@ class Gradient: UIView {
 
     func addGradient(properties: GradientProperties) {
         gradient.colors = [
-            (properties.colors.firstColor ?? defaultFirstColor).cgColor,
-            (properties.colors.secondColor ?? defaultSecondColor).cgColor
+            (properties.colors.firstColor ?? defaultColor).cgColor,
+            (properties.colors.secondColor ?? defaultColor).cgColor
         ]
         gradient.startPoint = properties.points.startPoint ?? CGPoint(x: 0.0, y: 0.5)
         gradient.endPoint = properties.points.endPoint ?? CGPoint(x: 0.0, y: 1.0)

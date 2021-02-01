@@ -487,7 +487,7 @@ open class RangeUISlider: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         knobs.leftKnob.xPositionConstraint.constant = calculateLeftKnobPositionFrom(value: defaultValueLeftKnob)
-        knobs.rightKnob.xPositionConstraint.constant = calculateRightKnobPoitionFrom(value: defaultValueRightKnob)
+        knobs.rightKnob.xPositionConstraint.constant = calculateRightKnobPositionFrom(value: defaultValueRightKnob)
         previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
             leftKnobPosition: knobs.leftKnob.xPositionConstraint.constant,
             rightKnobPosition: knobs.rightKnob.xPositionConstraint.constant,
@@ -519,7 +519,7 @@ open class RangeUISlider: UIView {
      */
     public func changeRightKnob(value: CGFloat) {
         if isValidforRightKnob(value: value) {
-            knobs.rightKnob.xPositionConstraint.constant = calculateRightKnobPoitionFrom(value: value)
+            knobs.rightKnob.xPositionConstraint.constant = calculateRightKnobPositionFrom(value: value)
             previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
                 leftKnobPosition: knobs.leftKnob.xPositionConstraint.constant,
                 rightKnobPosition: knobs.rightKnob.xPositionConstraint.constant,
@@ -533,7 +533,7 @@ open class RangeUISlider: UIView {
         return bar.frame.width * getMinFrom(value: value)
     }
 
-    private func calculateRightKnobPoitionFrom(value: CGFloat) -> CGFloat {
+    private func calculateRightKnobPositionFrom(value: CGFloat) -> CGFloat {
         return (bar.frame.width * getMaxFrom(value: value)) - bar.frame.width
     }
 
