@@ -553,36 +553,53 @@ open class RangeUISlider: UIView {
         return value <= scaleMaxValue && value > previousRangeSelectedValues.minValue
     }
 
+    // MARK: setup
+
     private func setup() {
+        addViews()
+        RangeUISliderSetup(bar: bar, knobs: knobs, progressViews: progressViews)
+            .execute(
+                barProperties: barProperties(),
+                knobsProperties: knobsProperties(),
+                progressViewsProperties: progressViewsProperties()
+            )
+    }
+
+    private func addViews() {
         addSubview(bar)
         bar.addSubview(progressViews.selectedProgressView)
         bar.addSubview(progressViews.leftProgressView)
         bar.addSubview(progressViews.rightProgressView)
         bar.addSubview(knobs.leftKnob)
         bar.addSubview(knobs.rightKnob)
+    }
 
-        RangeUISliderSetup(bar: bar, knobs: knobs, progressViews: progressViews)
-            .execute(
-                barProperties: BarProperties(
-                    height: barHeight,
-                    leading: barLeading,
-                    trailing: barTrailing
-                ),
-                knobsProperties: KnobsPropertiesBuilder(
-                    target: self,
-                    leftKnobSelector: #selector(moveLeftKnob),
-                    rightKnobSelector: #selector(moveRightKnob)
-                )
-                .leftKnobHeight(leftKnobHeight)
-                .leftKnobWidth(leftKnobWidth)
-                .rightKnobHeight(rightKnobHeight)
-                .rightKnobWidth(rightKnobWidth)
-                .build(),
-                progressViewsProperties: ProgressViewsPropertiesFactory.make(
-                    rangeSelectedColor: rangeSelectedColor,
-                    rangeNotSelectedColor: rangeNotSelectedColor
-                )
-            )
+    private func barProperties() -> BarProperties {
+        return BarProperties(
+            height: barHeight,
+            leading: barLeading,
+            trailing: barTrailing
+        )
+    }
+
+    private func knobsProperties() -> KnobsProperties {
+        return KnobsPropertiesBuilder(
+            target: self,
+            leftKnobSelector: #selector(moveLeftKnob),
+            rightKnobSelector: #selector(moveRightKnob)
+        )
+        .leftKnobHeight(leftKnobHeight)
+        .leftKnobWidth(leftKnobWidth)
+        .rightKnobHeight(rightKnobHeight)
+        .rightKnobWidth(rightKnobWidth)
+        .build()
+    }
+
+    private func progressViewsProperties() -> ProgressViewsProperties {
+        return ProgressViewsPropertiesFactory.make(
+            rangeSelectedColor: rangeSelectedColor,
+            rangeNotSelectedColor: rangeNotSelectedColor
+        )
     }
 
     // MARK: Gradient
