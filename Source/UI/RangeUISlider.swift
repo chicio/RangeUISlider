@@ -8,7 +8,6 @@
 // swiftlint:disable type_body_length
 // swiftlint:disable identifier_name
 // swiftlint:disable file_length
-// swiftlint:disable function_body_length
 
 import Foundation
 import UIKit
@@ -79,41 +78,25 @@ open class RangeUISlider: UIView {
     /// Gradient color 1 for range selected.
     @IBInspectable public var rangeSelectedGradientColor1: UIColor? {
         didSet {
-            progressViews.selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
-                                             secondColor: rangeSelectedGradientColor2,
-                                             startPoint: rangeSelectedGradientStartPoint,
-                                             endPoint: rangeSelectedGradientEndPoint,
-                                             cornerRadius: 0.0)
+            progressViews.selectedProgressView.addGradient(properties: selectedRangeGradientProperties())
         }
     }
     /// Gradient color 2 for range selected.
     @IBInspectable public var rangeSelectedGradientColor2: UIColor? {
         didSet {
-            progressViews.selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
-                                             secondColor: rangeSelectedGradientColor2,
-                                             startPoint: rangeSelectedGradientStartPoint,
-                                             endPoint: rangeSelectedGradientEndPoint,
-                                             cornerRadius: 0.0)
+            progressViews.selectedProgressView.addGradient(properties: selectedRangeGradientProperties())
         }
     }
     /// Gradient start point for selected range.
     @IBInspectable public var rangeSelectedGradientStartPoint: CGPoint = CGPoint() {
         didSet {
-            progressViews.selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
-                                             secondColor: rangeSelectedGradientColor2,
-                                             startPoint: rangeSelectedGradientStartPoint,
-                                             endPoint: rangeSelectedGradientEndPoint,
-                                             cornerRadius: 0.0)
+            progressViews.selectedProgressView.addGradient(properties: selectedRangeGradientProperties())
         }
     }
     /// Gradient end point for selected range.
     @IBInspectable public var rangeSelectedGradientEndPoint: CGPoint = CGPoint() {
         didSet {
-            progressViews.selectedProgressView.addGradient(firstColor: rangeSelectedGradientColor1,
-                                             secondColor: rangeSelectedGradientColor2,
-                                             startPoint: rangeSelectedGradientStartPoint,
-                                             endPoint: rangeSelectedGradientEndPoint,
-                                             cornerRadius: 0.0)
+            progressViews.selectedProgressView.addGradient(properties: selectedRangeGradientProperties())
         }
     }
     /// Not selected range color.
@@ -156,25 +139,25 @@ open class RangeUISlider: UIView {
     /// Gradient color 1 for range not selected.
     @IBInspectable public var rangeNotSelectedGradientColor1: UIColor? {
         didSet {
-            addGradientToNotSelectedRangeIfNeeded()
+            addGradientToNotSelectedRange()
         }
     }
     /// Gradient color 2 for range not selected.
     @IBInspectable public var rangeNotSelectedGradientColor2: UIColor? {
         didSet {
-            addGradientToNotSelectedRangeIfNeeded()
+            addGradientToNotSelectedRange()
         }
     }
     /// Gradient start point for not selected range.
     @IBInspectable public var rangeNotSelectedGradientStartPoint: CGPoint = CGPoint() {
         didSet {
-            addGradientToNotSelectedRangeIfNeeded()
+            addGradientToNotSelectedRange()
         }
     }
     /// Gradient end point for not selected range.
     @IBInspectable public var rangeNotSelectedGradientEndPoint: CGPoint = CGPoint() {
         didSet {
-            addGradientToNotSelectedRangeIfNeeded()
+            addGradientToNotSelectedRange()
         }
     }
     /// Left knob width.
@@ -235,41 +218,25 @@ open class RangeUISlider: UIView {
     /// Gradient color 1 for range not selected.
     @IBInspectable public var leftKnobGradientColor1: UIColor? {
         didSet {
-            knobs.leftKnob.addGradient(firstColor: leftKnobGradientColor1,
-                                 secondColor: leftKnobGradientColor2,
-                                 startPoint: leftKnobGradientStartPoint,
-                                 endPoint: leftKnobGradientEndPoint,
-                                 cornerRadius: leftKnobCorners)
+            knobs.leftKnob.addGradient(properties: leftKnobGradientProperties())
         }
     }
     /// Gradient color 2 for range not selected.
     @IBInspectable public var leftKnobGradientColor2: UIColor? {
         didSet {
-            knobs.leftKnob.addGradient(firstColor: leftKnobGradientColor1,
-                                 secondColor: leftKnobGradientColor2,
-                                 startPoint: leftKnobGradientStartPoint,
-                                 endPoint: leftKnobGradientEndPoint,
-                                 cornerRadius: leftKnobCorners)
+            knobs.leftKnob.addGradient(properties: leftKnobGradientProperties())
         }
     }
     /// Gradient start point for not selected range.
     @IBInspectable public var leftKnobGradientStartPoint: CGPoint = CGPoint() {
         didSet {
-            knobs.leftKnob.addGradient(firstColor: leftKnobGradientColor1,
-                                 secondColor: leftKnobGradientColor2,
-                                 startPoint: leftKnobGradientStartPoint,
-                                 endPoint: leftKnobGradientEndPoint,
-                                 cornerRadius: leftKnobCorners)
+            knobs.leftKnob.addGradient(properties: leftKnobGradientProperties())
         }
     }
     /// Gradient end point for not selected range.
     @IBInspectable public var leftKnobGradientEndPoint: CGPoint = CGPoint() {
         didSet {
-            knobs.leftKnob.addGradient(firstColor: leftKnobGradientColor1,
-                                 secondColor: leftKnobGradientColor2,
-                                 startPoint: leftKnobGradientStartPoint,
-                                 endPoint: leftKnobGradientEndPoint,
-                                 cornerRadius: leftKnobCorners)
+            knobs.leftKnob.addGradient(properties: leftKnobGradientProperties())
         }
     }
     /// Left knob border width.
@@ -346,41 +313,25 @@ open class RangeUISlider: UIView {
     /// Gradient color 1 for range not selected.
     @IBInspectable public var rightKnobGradientColor1: UIColor? {
         didSet {
-            knobs.rightKnob.addGradient(firstColor: rightKnobGradientColor1,
-                                  secondColor: rightKnobGradientColor2,
-                                  startPoint: rightKnobGradientStartPoint,
-                                  endPoint: rightKnobGradientEndPoint,
-                                  cornerRadius: rightKnobCorners)
+            knobs.rightKnob.addGradient(properties: rightKnobGradientProperties())
         }
     }
     /// Gradient color 2 for range not selected.
     @IBInspectable public var rightKnobGradientColor2: UIColor? {
         didSet {
-            knobs.rightKnob.addGradient(firstColor: rightKnobGradientColor1,
-                                  secondColor: rightKnobGradientColor2,
-                                  startPoint: rightKnobGradientStartPoint,
-                                  endPoint: rightKnobGradientEndPoint,
-                                  cornerRadius: rightKnobCorners)
+            knobs.rightKnob.addGradient(properties: rightKnobGradientProperties())
         }
     }
     /// Gradient start point for not selected range.
     @IBInspectable public var rightKnobGradientStartPoint: CGPoint = CGPoint() {
         didSet {
-            knobs.rightKnob.addGradient(firstColor: rightKnobGradientColor1,
-                                  secondColor: rightKnobGradientColor2,
-                                  startPoint: rightKnobGradientStartPoint,
-                                  endPoint: rightKnobGradientEndPoint,
-                                  cornerRadius: rightKnobCorners)
+            knobs.rightKnob.addGradient(properties: rightKnobGradientProperties())
         }
     }
     /// Gradient end point for not selected range.
     @IBInspectable public var rightKnobGradientEndPoint: CGPoint = CGPoint() {
         didSet {
-            knobs.rightKnob.addGradient(firstColor: rightKnobGradientColor1,
-                                  secondColor: rightKnobGradientColor2,
-                                  startPoint: rightKnobGradientStartPoint,
-                                  endPoint: rightKnobGradientEndPoint,
-                                  cornerRadius: rightKnobCorners)
+            knobs.rightKnob.addGradient(properties: rightKnobGradientProperties())
         }
     }
     /// Right knob border width.
@@ -422,7 +373,7 @@ open class RangeUISlider: UIView {
         didSet {
             progressViews.leftProgressView.layer.cornerRadius = barCorners
             progressViews.rightProgressView.layer.cornerRadius = barCorners
-            addGradientToNotSelectedRangeIfNeeded()
+            addGradientToNotSelectedRange()
             addBackgroundToRangeNotSelectedIfNeeded()
         }
     }
@@ -634,18 +585,66 @@ open class RangeUISlider: UIView {
             )
     }
 
-    private func addGradientToNotSelectedRangeIfNeeded() {
-        progressViews.leftProgressView.addGradient(firstColor: rangeNotSelectedGradientColor1,
-                                     secondColor: rangeNotSelectedGradientColor2,
-                                     startPoint: rangeNotSelectedGradientStartPoint,
-                                     endPoint: rangeNotSelectedGradientEndPoint,
-                                     cornerRadius: barCorners)
-        progressViews.rightProgressView.addGradient(firstColor: rangeNotSelectedGradientColor1,
-                                      secondColor: rangeNotSelectedGradientColor2,
-                                      startPoint: rangeNotSelectedGradientStartPoint,
-                                      endPoint: rangeNotSelectedGradientEndPoint,
-                                      cornerRadius: barCorners)
+    // MARK: Gradient
+
+    private func addGradientToNotSelectedRange() {
+        let properties = GradientProperties(
+            colors: GradientColors(
+                firstColor: rangeNotSelectedGradientColor1,
+                secondColor: rangeNotSelectedGradientColor2
+            ),
+            points: GradientPoints(
+                startPoint: rangeNotSelectedGradientStartPoint,
+                endPoint: rangeNotSelectedGradientEndPoint
+            ),
+            cornerRadius: barCorners
+        )
+        progressViews.addGradientToNotSelectedProgressView(properties: properties)
     }
+
+    private func selectedRangeGradientProperties() -> GradientProperties {
+        return GradientProperties(
+            colors: GradientColors(
+                firstColor: rangeSelectedGradientColor1,
+                secondColor: rangeSelectedGradientColor2
+            ),
+            points: GradientPoints(
+                startPoint: rangeSelectedGradientStartPoint,
+                endPoint: rangeSelectedGradientEndPoint
+            ),
+            cornerRadius: 0.0
+        )
+    }
+
+    private func leftKnobGradientProperties() -> GradientProperties {
+        return GradientProperties(
+            colors: GradientColors(
+                firstColor: leftKnobGradientColor1,
+                secondColor: leftKnobGradientColor2
+            ),
+            points: GradientPoints(
+                startPoint: leftKnobGradientStartPoint,
+                endPoint: leftKnobGradientEndPoint
+            ),
+            cornerRadius: leftKnobCorners
+        )
+    }
+
+    private func rightKnobGradientProperties() -> GradientProperties {
+        return GradientProperties(
+            colors: GradientColors(
+                firstColor: rightKnobGradientColor1,
+                secondColor: rightKnobGradientColor2
+            ),
+            points: GradientPoints(
+                startPoint: rightKnobGradientStartPoint,
+                endPoint: rightKnobGradientEndPoint
+            ),
+            cornerRadius: rightKnobCorners
+        )
+    }
+
+    // MARK: background
 
     private func addBackgroundToRangeNotSelectedIfNeeded() {
         if let backgroundImage = rangeNotSelectedBackgroundImage {

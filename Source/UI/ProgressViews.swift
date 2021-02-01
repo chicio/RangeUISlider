@@ -18,4 +18,9 @@ class ProgressViews {
         self.leftProgressView = leftProgressView
         self.rightProgressView = rightProgressView
     }
+
+    func addGradientToNotSelectedProgressView(properties: GradientProperties) {
+        leftProgressView.addGradient(properties: properties)
+        rightProgressView.addGradient(properties: properties)
+    }
 }

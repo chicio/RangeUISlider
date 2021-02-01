@@ -11,5 +11,5 @@ import UIKit
 struct ProgressProperties {
     let leftAnchorConstraintAttribute: NSLayoutConstraint.Attribute
     let rightAnchorConstraintAttribute: NSLayoutConstraint.Attribute
-    let color: UIColor
+    unowned let color: UIColor
 }
