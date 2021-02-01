@@ -610,68 +610,28 @@ open class RangeUISlider: UIView {
         bar.addSubview(knobs.leftKnob)
         bar.addSubview(knobs.rightKnob)
 
-        var constraints: [NSLayoutConstraint] = []
-
-        constraints.append(contentsOf: bar.setup(
-            properties: BarProperties(
-                height: barHeight,
-                leading: barLeading,
-                trailing: barTrailing
-            ),
-            leftKnob: knobs.leftKnob,
-            rightKnob: knobs.rightKnob
-        ))
-
-        constraints.append(contentsOf: knobs.rightKnob.setup(
-            properties: KnobProperties(
-                accessibilityIdentifier: "RightKnob",
-                position: .right,
-                dimensions: Dimensions(width: rightKnobWidth, height: rightKnobHeight),
-                gesture: KnobGesturesProperties(target: self, selector: #selector(moveRightKnob))
+        RangeUISliderSetup(bar: bar, knobs: knobs, progressViews: progressViews)
+            .execute(
+                barProperties: BarProperties(
+                    height: barHeight,
+                    leading: barLeading,
+                    trailing: barTrailing
+                ),
+                knobsProperties: KnobsPropertiesBuilder(
+                    target: self,
+                    leftKnobSelector: #selector(moveLeftKnob),
+                    rightKnobSelector: #selector(moveRightKnob)
+                )
+                .leftKnobHeight(leftKnobHeight)
+                .leftKnobWidth(leftKnobWidth)
+                .rightKnobHeight(rightKnobHeight)
+                .rightKnobWidth(rightKnobWidth)
+                .build(),
+                progressViewsProperties: ProgressViewsPropertiesFactory.make(
+                    rangeSelectedColor: rangeSelectedColor,
+                    rangeNotSelectedColor: rangeNotSelectedColor
+                )
             )
-        ))
-
-        constraints.append(contentsOf: knobs.leftKnob.setup(
-            properties: KnobProperties(
-                accessibilityIdentifier: "LeftKnob",
-                position: .left,
-                dimensions: Dimensions(width: leftKnobWidth, height: leftKnobHeight),
-                gesture: KnobGesturesProperties(target: self, selector: #selector(moveLeftKnob))
-
-            )
-        ))
-
-        constraints.append(contentsOf: progressViews.selectedProgressView.setup(
-                            leftAnchorView: knobs.leftKnob,
-                            rightAnchorView: knobs.rightKnob,
-                            properties: ProgressProperties(
-                                leftAnchorConstraintAttribute: .centerX,
-                                rightAnchorConstraintAttribute: .centerX,
-                                color: rangeSelectedColor
-                            )
-        ))
-
-        constraints.append(contentsOf: progressViews.leftProgressView.setup(
-                            leftAnchorView: bar,
-                            rightAnchorView: knobs.leftKnob,
-                            properties: ProgressProperties(
-                                leftAnchorConstraintAttribute: .leading,
-                                rightAnchorConstraintAttribute: .centerX,
-                                color: rangeNotSelectedColor
-                            )
-        ))
-
-        constraints.append(contentsOf: progressViews.rightProgressView.setup(
-                            leftAnchorView: knobs.rightKnob,
-                            rightAnchorView: bar,
-                            properties: ProgressProperties(
-                                leftAnchorConstraintAttribute: .centerX,
-                                rightAnchorConstraintAttribute: .trailing,
-                                color: rangeNotSelectedColor
-                            )
-        ))
-
-        NSLayoutConstraint.activate(constraints)
     }
 
     private func addGradientToNotSelectedRangeIfNeeded() {

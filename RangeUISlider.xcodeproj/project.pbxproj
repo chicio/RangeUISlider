@@ -37,6 +37,8 @@
 		459630B825C8841B00FCCCE7 /* RangeUISliderSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459630B725C8841B00FCCCE7 /* RangeUISliderSetup.swift */; };
 		459630BD25C884B000FCCCE7 /* KnobsProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459630BC25C884B000FCCCE7 /* KnobsProperties.swift */; };
 		459630C525C8854D00FCCCE7 /* ProgressViewsProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459630C425C8854D00FCCCE7 /* ProgressViewsProperties.swift */; };
+		459630CD25C89C0E00FCCCE7 /* ProgressViewsPropertiesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459630CC25C89C0E00FCCCE7 /* ProgressViewsPropertiesFactory.swift */; };
+		459630D525C89CC500FCCCE7 /* KnobsPropertiesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459630D425C89CC500FCCCE7 /* KnobsPropertiesFactory.swift */; };
 		459CBEB7259B638300FCA5AB /* ProgrammaticScaleChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBEB6259B638200FCA5AB /* ProgrammaticScaleChangeTests.swift */; };
 		459CBEF7259B79D000FCA5AB /* RangeSelectedCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBEF6259B79D000FCA5AB /* RangeSelectedCalculatorTest.swift */; };
 		459CBEF9259B79D000FCA5AB /* RangeUISlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E215241E8E812E00F0B8B9 /* RangeUISlider.framework */; platformFilter = ios; };
@@ -142,6 +144,8 @@
 		459630B725C8841B00FCCCE7 /* RangeUISliderSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeUISliderSetup.swift; sourceTree = "<group>"; };
 		459630BC25C884B000FCCCE7 /* KnobsProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobsProperties.swift; sourceTree = "<group>"; };
 		459630C425C8854D00FCCCE7 /* ProgressViewsProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewsProperties.swift; sourceTree = "<group>"; };
+		459630CC25C89C0E00FCCCE7 /* ProgressViewsPropertiesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewsPropertiesFactory.swift; sourceTree = "<group>"; };
+		459630D425C89CC500FCCCE7 /* KnobsPropertiesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobsPropertiesFactory.swift; sourceTree = "<group>"; };
 		459CBEB6259B638200FCA5AB /* ProgrammaticScaleChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticScaleChangeTests.swift; sourceTree = "<group>"; };
 		459CBEC4259B6A6F00FCA5AB /* build-ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "build-ios.yml"; sourceTree = "<group>"; };
 		459CBEF4259B79D000FCA5AB /* RangeUISliderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RangeUISliderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,13 +245,15 @@
 				450C7B5725C48A4F00764496 /* KnobsHitTest.swift */,
 				4538955325C5D62700389905 /* RangeUISliderCreator.swift */,
 				4538956E25C5DF8700389905 /* KnobPosition.swift */,
+				451AF81025C6E36F00DD37CE /* Dimensions.swift */,
 				451AF80B25C6E32F00DD37CE /* KnobProperties.swift */,
 				459630BC25C884B000FCCCE7 /* KnobsProperties.swift */,
+				459630D425C89CC500FCCCE7 /* KnobsPropertiesFactory.swift */,
 				459630A925C87EE400FCCCE7 /* KnobGesturesProperties.swift */,
 				45E9D59625C6F94200FE6E3F /* BarProperties.swift */,
-				451AF81025C6E36F00DD37CE /* Dimensions.swift */,
 				45E9D59E25C6FADC00FE6E3F /* ProgressProperties.swift */,
 				459630C425C8854D00FCCCE7 /* ProgressViewsProperties.swift */,
+				459630CC25C89C0E00FCCCE7 /* ProgressViewsPropertiesFactory.swift */,
 				459630B725C8841B00FCCCE7 /* RangeUISliderSetup.swift */,
 			);
 			path = Logic;
@@ -633,6 +639,7 @@
 				459630BD25C884B000FCCCE7 /* KnobsProperties.swift in Sources */,
 				450C7B5825C48A4F00764496 /* RangeSelectedCalculator.swift in Sources */,
 				451AF80325C6E0A900DD37CE /* RangeSlider+Modifiers.swift in Sources */,
+				459630CD25C89C0E00FCCCE7 /* ProgressViewsPropertiesFactory.swift in Sources */,
 				451AF80C25C6E32F00DD37CE /* KnobProperties.swift in Sources */,
 				459630B825C8841B00FCCCE7 /* RangeUISliderSetup.swift in Sources */,
 				4571869425A5CFE300541D67 /* RangeSliderCoordinator.swift in Sources */,
@@ -642,6 +649,7 @@
 				450C7B5925C48A4F00764496 /* StepCalculator.swift in Sources */,
 				450C7B6925C48A7500764496 /* Gradient.swift in Sources */,
 				450C7B4F25C489E200764496 /* DimensionConstraintFactory.swift in Sources */,
+				459630D525C89CC500FCCCE7 /* KnobsPropertiesFactory.swift in Sources */,
 				450C7B6525C48A7500764496 /* Progress.swift in Sources */,
 				4538956F25C5DF8700389905 /* KnobPosition.swift in Sources */,
 				451AF81125C6E36F00DD37CE /* Dimensions.swift in Sources */,
