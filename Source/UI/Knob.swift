@@ -15,10 +15,10 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
     private(set) var widthConstraint: NSLayoutConstraint!
     private(set) var heightConstraint: NSLayoutConstraint!
 
-    func setup(properties: KnobProperties, target: Any?, selector: Selector) -> [NSLayoutConstraint] {
+    func setup(properties: KnobProperties) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = properties.accessibilityIdentifier
-        setGestureRecognizer(withTarget: target, usingSelector: selector)
+        setGestureRecognizer(gesture: properties.gesture)
         setupBackground()
         return generateConstraintsFrom(dimensions: properties.dimensions, position: properties.position)
     }
@@ -54,8 +54,8 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
         bringSubviewToFront(backgroundView)
     }
 
-    private func setGestureRecognizer(withTarget target: Any?, usingSelector selector: Selector) {
-        let gesture = UIPanGestureRecognizer(target: target, action: selector)
+    private func setGestureRecognizer(gesture: KnobGesturesProperties) {
+        let gesture = UIPanGestureRecognizer(target: gesture.target, action: gesture.selector)
         gesture.delegate = self
         addGestureRecognizer(gesture)
     }

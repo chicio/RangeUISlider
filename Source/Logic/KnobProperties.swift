@@ -12,4 +12,5 @@ struct KnobProperties {
     let accessibilityIdentifier: String
     let position: KnobPosition
     let dimensions: Dimensions
+    let gesture: KnobGesturesProperties
 }

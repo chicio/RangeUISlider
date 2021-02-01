@@ -626,20 +626,19 @@ open class RangeUISlider: UIView {
             properties: KnobProperties(
                 accessibilityIdentifier: "RightKnob",
                 position: .right,
-                dimensions: Dimensions(width: rightKnobWidth, height: rightKnobHeight)
-            ),
-            target: self,
-            selector: #selector(moveRightKnob)
+                dimensions: Dimensions(width: rightKnobWidth, height: rightKnobHeight),
+                gesture: KnobGesturesProperties(target: self, selector: #selector(moveRightKnob))
+            )
         ))
 
         constraints.append(contentsOf: knobs.leftKnob.setup(
             properties: KnobProperties(
                 accessibilityIdentifier: "LeftKnob",
                 position: .left,
-                dimensions: Dimensions(width: leftKnobWidth, height: leftKnobHeight)
-            ),
-            target: self,
-            selector: #selector(moveLeftKnob)
+                dimensions: Dimensions(width: leftKnobWidth, height: leftKnobHeight),
+                gesture: KnobGesturesProperties(target: self, selector: #selector(moveLeftKnob))
+
+            )
         ))
 
         constraints.append(contentsOf: progressViews.selectedProgressView.setup(
