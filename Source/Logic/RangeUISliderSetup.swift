@@ -30,23 +30,31 @@ class RangeUISliderSetup {
             leftKnob: knobs.leftKnob,
             rightKnob: knobs.rightKnob
         ))
-        constraints.append(contentsOf: knobs.rightKnob.setup(properties: knobsProperties.rightKnobProperties))
-        constraints.append(contentsOf: knobs.leftKnob.setup(properties: knobsProperties.leftKnobProperties))
-        constraints.append(contentsOf: progressViews.selectedProgressView.setup(
+        constraints.append(contentsOf: setUpKnobs(knobsProperties: knobsProperties))
+        constraints.append(contentsOf: setupProgressViews(progressViewsProperties: progressViewsProperties))
+        NSLayoutConstraint.activate(constraints)
+    }
+
+    private func setUpKnobs(knobsProperties: KnobsProperties) -> [NSLayoutConstraint] {
+        return knobs.rightKnob.setup(properties: knobsProperties.rightKnobProperties) +
+        knobs.leftKnob.setup(properties: knobsProperties.leftKnobProperties)
+    }
+
+    private func setupProgressViews(progressViewsProperties: ProgressViewsProperties) -> [NSLayoutConstraint] {
+        return progressViews.selectedProgressView.setup(
             leftAnchorView: knobs.leftKnob,
             rightAnchorView: knobs.rightKnob,
             properties: progressViewsProperties.selectedProgressViewProperties
-        ))
-        constraints.append(contentsOf: progressViews.leftProgressView.setup(
+        ) +
+        progressViews.leftProgressView.setup(
             leftAnchorView: bar,
             rightAnchorView: knobs.leftKnob,
             properties: progressViewsProperties.leftProgressViewProperties
-        ))
-        constraints.append(contentsOf: progressViews.rightProgressView.setup(
+        ) +
+        progressViews.rightProgressView.setup(
             leftAnchorView: knobs.rightKnob,
             rightAnchorView: bar,
             properties: progressViewsProperties.rightProgressViewProperties
-        ))
-        NSLayoutConstraint.activate(constraints)
+        )
     }
 }
