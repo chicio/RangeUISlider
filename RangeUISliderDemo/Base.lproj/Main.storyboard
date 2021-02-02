@@ -868,11 +868,8 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYs-aK-7r9">
-                                            <rect key="frame" x="323" y="11" width="42" height="22"/>
+                                            <rect key="frame" x="341" y="11" width="24" height="22"/>
                                             <accessibility key="accessibilityConfiguration" identifier="minValueSelected"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="42" id="9A6-Rd-Eun"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -880,9 +877,6 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Zf-Vh-GOf">
                                             <rect key="frame" x="16" y="11" width="42" height="21.5"/>
                                             <accessibility key="accessibilityConfiguration" identifier="maxValueSelected"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="42" id="BMW-EV-2kP"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -892,10 +886,11 @@
                                         <constraint firstItem="4Zf-Vh-GOf" firstAttribute="top" secondItem="k2a-7i-CaJ" secondAttribute="top" constant="11" id="8gu-nd-Cjc"/>
                                         <constraint firstItem="aHV-LP-sky" firstAttribute="centerY" secondItem="k2a-7i-CaJ" secondAttribute="centerY" id="Cmc-Nw-YGe"/>
                                         <constraint firstItem="pgB-Wb-TOH" firstAttribute="centerY" secondItem="k2a-7i-CaJ" secondAttribute="centerY" id="ERx-nM-TIJ"/>
+                                        <constraint firstItem="pgB-Wb-TOH" firstAttribute="leading" secondItem="4Zf-Vh-GOf" secondAttribute="trailing" constant="9" id="EV8-pn-7WZ"/>
                                         <constraint firstItem="rYs-aK-7r9" firstAttribute="top" secondItem="k2a-7i-CaJ" secondAttribute="top" constant="11" id="K0v-E0-uI4"/>
                                         <constraint firstItem="4Zf-Vh-GOf" firstAttribute="leading" secondItem="k2a-7i-CaJ" secondAttribute="leading" constant="16" id="L7k-MY-Lhz"/>
                                         <constraint firstItem="aHV-LP-sky" firstAttribute="height" secondItem="k2a-7i-CaJ" secondAttribute="height" multiplier="1.14943" id="NFs-eb-Dfw"/>
-                                        <constraint firstAttribute="trailing" secondItem="4Zf-Vh-GOf" secondAttribute="trailing" constant="317" id="Uk6-Mj-2fE"/>
+                                        <constraint firstItem="rYs-aK-7r9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pgB-Wb-TOH" secondAttribute="trailing" constant="8" symbolic="YES" id="TQr-RK-o4d"/>
                                         <constraint firstAttribute="bottom" secondItem="4Zf-Vh-GOf" secondAttribute="bottom" constant="12" id="a1W-m5-wIM"/>
                                         <constraint firstItem="pgB-Wb-TOH" firstAttribute="leading" secondItem="k2a-7i-CaJ" secondAttribute="leading" constant="67" id="a29-1c-smh"/>
                                         <constraint firstAttribute="trailing" secondItem="pgB-Wb-TOH" secondAttribute="trailing" constant="68" id="exw-dT-wad"/>

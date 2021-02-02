@@ -48,6 +48,8 @@
 		459CBF1C259B7FD700FCA5AB /* StepCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBF1B259B7FD700FCA5AB /* StepCalculatorTest.swift */; };
 		45D2B83725C5CBD500DFD838 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D2B83625C5CBD500DFD838 /* ConstraintAttributes.swift */; };
 		45E215291E8E812E00F0B8B9 /* RangeUISlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E215271E8E812E00F0B8B9 /* RangeUISlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45E2B6F225C987F1007CCBB5 /* ProgrammaticKnobChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2B6F125C987F1007CCBB5 /* ProgrammaticKnobChange.swift */; };
+		45E2B6F725C9B36F007CCBB5 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2B6F625C9B36F007CCBB5 /* Scale.swift */; };
 		45E9D58E25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9D58D25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift */; };
 		45E9D59725C6F94200FE6E3F /* BarProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9D59625C6F94200FE6E3F /* BarProperties.swift */; };
 		45E9D59F25C6FADC00FE6E3F /* ProgressProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9D59E25C6FADC00FE6E3F /* ProgressProperties.swift */; };
@@ -167,6 +169,8 @@
 		45E215241E8E812E00F0B8B9 /* RangeUISlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RangeUISlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E215271E8E812E00F0B8B9 /* RangeUISlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RangeUISlider.h; sourceTree = "<group>"; };
 		45E215281E8E812E00F0B8B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45E2B6F125C987F1007CCBB5 /* ProgrammaticKnobChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammaticKnobChange.swift; sourceTree = "<group>"; };
+		45E2B6F625C9B36F007CCBB5 /* Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
 		45E603C4233A432C00E7465D /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		45E9D58D25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualRelationConstraintFactory.swift; sourceTree = "<group>"; };
 		45E9D59625C6F94200FE6E3F /* BarProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarProperties.swift; sourceTree = "<group>"; };
@@ -264,6 +268,8 @@
 				459630DC25C8A26100FCCCE7 /* GradientProperties.swift */,
 				459630EC25C8A32D00FCCCE7 /* GradientPoints.swift */,
 				459630B725C8841B00FCCCE7 /* RangeUISliderSetup.swift */,
+				45E2B6F125C987F1007CCBB5 /* ProgrammaticKnobChange.swift */,
+				45E2B6F625C9B36F007CCBB5 /* Scale.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -634,6 +640,7 @@
 				4596308525C7ECE500FCCCE7 /* ProgressViews.swift in Sources */,
 				45D2B83725C5CBD500DFD838 /* ConstraintAttributes.swift in Sources */,
 				45E9D5A425C6FD9A00FE6E3F /* MatchingMarginsConstraintFactory.swift in Sources */,
+				45E2B6F225C987F1007CCBB5 /* ProgrammaticKnobChange.swift in Sources */,
 				45E9D59725C6F94200FE6E3F /* BarProperties.swift in Sources */,
 				450C7B4E25C489E200764496 /* PositionConstraintFactory.swift in Sources */,
 				450C7B6725C48A7500764496 /* Bar.swift in Sources */,
@@ -650,6 +657,7 @@
 				450C7B5825C48A4F00764496 /* RangeSelectedCalculator.swift in Sources */,
 				451AF80325C6E0A900DD37CE /* RangeSlider+Modifiers.swift in Sources */,
 				459630CD25C89C0E00FCCCE7 /* ProgressViewsPropertiesFactory.swift in Sources */,
+				45E2B6F725C9B36F007CCBB5 /* Scale.swift in Sources */,
 				451AF80C25C6E32F00DD37CE /* KnobProperties.swift in Sources */,
 				459630B825C8841B00FCCCE7 /* RangeUISliderSetup.swift in Sources */,
 				4571869425A5CFE300541D67 /* RangeSliderCoordinator.swift in Sources */,

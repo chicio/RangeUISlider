@@ -18,7 +18,7 @@ import UIKit
  RangeUISlider support RTL (right to left) languages automatically out of the box.
  */
 @IBDesignable
-open class RangeUISlider: UIView {
+open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
     /// Slider identifier.
     @IBInspectable public var identifier: Int = 0
     /// Step increment value. If different from 0 RangeUISlider will let the user drag by step increment.
@@ -435,11 +435,12 @@ open class RangeUISlider: UIView {
         rightProgressView: Progress()
     )
 
-    private var previousRangeSelectedValues: RangeSelected = (0, 0)
-    private lazy var scale = scaleMaxValue - scaleMinValue
+    private lazy var previousRangeSelectedValues: RangeSelected = (defaultValueLeftKnob, defaultValueRightKnob)
+    private lazy var programmaticKnobChange = ProgrammaticKnobChange(bar: bar, knobs: knobs, delegate: self)
+    private lazy var scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
     private lazy var stepCalculator = StepCalculator()
     private lazy var numberOfSteps: CGFloat = stepCalculator.calculateNumberOfSteps(
-        scale: scale,
+        scale: scale.scale,
         stepIncrement: stepIncrement
     )
     private lazy var stepWidth: CGFloat = stepCalculator.calculateStepWidth(
@@ -447,9 +448,11 @@ open class RangeUISlider: UIView {
         numberOfSteps: numberOfSteps
     )
     private lazy var rangeSelectedCalculator: RangeSelectedCalculator = RangeSelectedCalculator(
-        scale: scale,
+        scale: scale.scale,
         scaleMinValue: scaleMinValue
     )
+
+    // MARK: init
 
     /**
      Standard init using coder.
@@ -471,6 +474,8 @@ open class RangeUISlider: UIView {
         setup()
     }
 
+    // MARK: views lifecycle
+
     /**
      Prepare RangeUISlider to be drawn in Interface Builder.
      */
@@ -486,14 +491,11 @@ open class RangeUISlider: UIView {
      */
     public override func layoutSubviews() {
         super.layoutSubviews()
-        knobs.leftKnob.xPositionConstraint.constant = calculateLeftKnobPositionFrom(value: defaultValueLeftKnob)
-        knobs.rightKnob.xPositionConstraint.constant = calculateRightKnobPositionFrom(value: defaultValueRightKnob)
-        previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
-            leftKnobPosition: knobs.leftKnob.xPositionConstraint.constant,
-            rightKnobPosition: knobs.rightKnob.xPositionConstraint.constant,
-            barWidth: bar.frame.width
-        )
+        changeLeftKnob(value: defaultValueLeftKnob)
+        changeRightKnob(value: defaultValueRightKnob)
     }
+
+    // MARK: programmatic api
 
     /**
      Change the value of the left knob programmatically.
@@ -501,15 +503,11 @@ open class RangeUISlider: UIView {
      - parameter value: the new value to be assigned to the left knob
      */
     public func changeLeftKnob(value: CGFloat) {
-        if isValidForLeftKnob(value: value) {
-            knobs.leftKnob.xPositionConstraint.constant = calculateLeftKnobPositionFrom(value: value)
-            previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
-                leftKnobPosition: knobs.leftKnob.xPositionConstraint.constant,
-                rightKnobPosition: knobs.rightKnob.xPositionConstraint.constant,
-                barWidth: bar.frame.width
-            )
-            rangeSelectionFinished()
-        }
+        programmaticKnobChange.programmaticallyChangeLeftKnob(
+            value: value,
+            scale: scale,
+            previousRangeSelected: previousRangeSelectedValues
+        )
     }
 
     /**
@@ -518,39 +516,20 @@ open class RangeUISlider: UIView {
      - parameter value: the new value to be assigned to the right knob
      */
     public func changeRightKnob(value: CGFloat) {
-        if isValidforRightKnob(value: value) {
-            knobs.rightKnob.xPositionConstraint.constant = calculateRightKnobPositionFrom(value: value)
-            previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
-                leftKnobPosition: knobs.leftKnob.xPositionConstraint.constant,
-                rightKnobPosition: knobs.rightKnob.xPositionConstraint.constant,
-                barWidth: bar.frame.width
-            )
-            rangeSelectionFinished()
-        }
+        programmaticKnobChange.programmaticallyChangeRightKnob(
+            value: value,
+            scale: scale,
+            previousRangeSelected: previousRangeSelectedValues
+        )
     }
 
-    private func calculateLeftKnobPositionFrom(value: CGFloat) -> CGFloat {
-        return bar.frame.width * getMinFrom(value: value)
-    }
-
-    private func calculateRightKnobPositionFrom(value: CGFloat) -> CGFloat {
-        return (bar.frame.width * getMaxFrom(value: value)) - bar.frame.width
-    }
-
-    private func getMinFrom(value: CGFloat) -> CGFloat {
-        return (value - scaleMinValue) / scale
-    }
-
-    private func getMaxFrom(value: CGFloat) -> CGFloat {
-        return (value - scaleMinValue) / scale
-    }
-
-    private func isValidForLeftKnob(value: CGFloat) -> Bool {
-        return value > scaleMinValue && value < previousRangeSelectedValues.maxValue
-    }
-
-    private func isValidforRightKnob(value: CGFloat) -> Bool {
-        return value <= scaleMaxValue && value > previousRangeSelectedValues.minValue
+    internal func programmaticChangeCompleted() {
+        previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
+            leftKnobPosition: knobs.leftKnob.xPositionConstraint.constant,
+            rightKnobPosition: knobs.rightKnob.xPositionConstraint.constant,
+            barWidth: bar.frame.width
+        )
+        rangeSelectionFinished()
     }
 
     // MARK: setup
@@ -697,9 +676,9 @@ open class RangeUISlider: UIView {
     }
 
     private func calculateScale() {
-        scale = scaleMaxValue - scaleMinValue
+        scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
         rangeSelectedCalculator = RangeSelectedCalculator(
-            scale: scale,
+            scale: scale.scale,
             scaleMinValue: scaleMinValue
         )
     }
