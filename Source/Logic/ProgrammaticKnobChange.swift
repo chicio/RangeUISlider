@@ -9,6 +9,8 @@
 import UIKit
 
 protocol ProgrammaticKnobChangeDelegate: class {
+    var scale: Scale { get }
+    var previousRangeSelectedValues: RangeSelected { get }
     func programmaticChangeCompleted()
 }
 
@@ -23,83 +25,54 @@ class ProgrammaticKnobChange {
         self.delegate = delegate
     }
 
-    func programmaticallyChangeLeftKnob(
-        value: CGFloat,
-        scale: Scale,
-        previousRangeSelected: RangeSelected
-    ) {
+    func programmaticallyChangeLeftKnob(value: CGFloat) {
         programmaticallyChangeKnob(
             value: value,
             constraintUpdate: calculateLeftKnobPositionFrom,
-            isValid: isValidForLeftKnob,
-            scale: scale,
-            previousRangeSelected: previousRangeSelected
+            isValid: isValidForLeftKnob
         )
     }
 
-    func programmaticallyChangeRightKnob(
-        value: CGFloat,
-        scale: Scale,
-        previousRangeSelected: RangeSelected
-    ) {
+    func programmaticallyChangeRightKnob(value: CGFloat) {
         programmaticallyChangeKnob(
             value: value,
             constraintUpdate: calculateRightKnobPositionFrom,
-            isValid: isValidforRightKnob,
-            scale: scale,
-            previousRangeSelected: previousRangeSelected
+            isValid: isValidforRightKnob
         )
     }
 
     private func programmaticallyChangeKnob(
         value: CGFloat,
-        constraintUpdate: (CGFloat, Scale) -> Void,
-        isValid: (CGFloat, Scale, RangeSelected) -> Bool,
-        scale: Scale,
-        previousRangeSelected: RangeSelected
+        constraintUpdate: (CGFloat) -> Void,
+        isValid: (CGFloat) -> Bool
     ) {
-        if isValid(value, scale, previousRangeSelected) {
-            constraintUpdate(value, scale)
+        if isValid(value) {
+            constraintUpdate(value)
             delegate.programmaticChangeCompleted()
         }
     }
 
-    private func calculateLeftKnobPositionFrom(
-        value: CGFloat,
-        scale: Scale
-    ) {
-        knobs.leftKnob.xPositionConstraint.constant = bar.frame.width * convertToScale(
-            value: value,
-            scale: scale
-        )
+    private func calculateLeftKnobPositionFrom(value: CGFloat) {
+        let valueInScale = convertToScale(value: value, scale: delegate.scale)
+        knobs.leftKnob.xPositionConstraint.constant = bar.frame.width * valueInScale
     }
 
-    private func calculateRightKnobPositionFrom(
-        value: CGFloat,
-        scale: Scale
-    ) {
-        knobs.rightKnob.xPositionConstraint.constant = (bar.frame.width * convertToScale(value: value,
-                                                                                         scale: scale
-        )) - bar.frame.width
+    private func calculateRightKnobPositionFrom(value: CGFloat) {
+        let valueInScale = convertToScale(value: value, scale: delegate.scale)
+        knobs.rightKnob.xPositionConstraint.constant = (bar.frame.width * valueInScale) - bar.frame.width
     }
 
     private func convertToScale(value: CGFloat, scale: Scale) -> CGFloat {
         return (value - scale.scaleMinValue) / scale.scale
     }
 
-    private func isValidForLeftKnob(
-        value: CGFloat,
-        scale: Scale,
-        previousRangeSelectedValues: RangeSelected
-    ) -> Bool {
-        return value > scale.scaleMinValue && value <= previousRangeSelectedValues.maxValue
+    private func isValidForLeftKnob(value: CGFloat) -> Bool {
+        return value > delegate.scale.scaleMinValue
+            && value <= delegate.previousRangeSelectedValues.maxValue
     }
 
-    private func isValidforRightKnob(
-        value: CGFloat,
-        scale: Scale,
-        previousRangeSelectedValues: RangeSelected
-    ) -> Bool {
-        return value <= scale.scaleMaxValue && value >= previousRangeSelectedValues.minValue
+    private func isValidforRightKnob(value: CGFloat) -> Bool {
+        return value <= delegate.scale.scaleMaxValue
+            && value >= delegate.previousRangeSelectedValues.minValue
     }
 }

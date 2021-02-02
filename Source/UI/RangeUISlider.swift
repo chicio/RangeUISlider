@@ -435,9 +435,9 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
         rightProgressView: Progress()
     )
 
-    private lazy var previousRangeSelectedValues: RangeSelected = (defaultValueLeftKnob, defaultValueRightKnob)
+    internal lazy var previousRangeSelectedValues: RangeSelected = (defaultValueLeftKnob, defaultValueRightKnob)
+    internal lazy var scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
     private lazy var programmaticKnobChange = ProgrammaticKnobChange(bar: bar, knobs: knobs, delegate: self)
-    private lazy var scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
     private lazy var stepCalculator = StepCalculator()
     private lazy var numberOfSteps: CGFloat = stepCalculator.calculateNumberOfSteps(
         scale: scale.scale,
@@ -503,11 +503,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
      - parameter value: the new value to be assigned to the left knob
      */
     public func changeLeftKnob(value: CGFloat) {
-        programmaticKnobChange.programmaticallyChangeLeftKnob(
-            value: value,
-            scale: scale,
-            previousRangeSelected: previousRangeSelectedValues
-        )
+        programmaticKnobChange.programmaticallyChangeLeftKnob(value: value)
     }
 
     /**
@@ -516,11 +512,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
      - parameter value: the new value to be assigned to the right knob
      */
     public func changeRightKnob(value: CGFloat) {
-        programmaticKnobChange.programmaticallyChangeRightKnob(
-            value: value,
-            scale: scale,
-            previousRangeSelected: previousRangeSelectedValues
-        )
+        programmaticKnobChange.programmaticallyChangeRightKnob(value: value)
     }
 
     internal func programmaticChangeCompleted() {
