@@ -666,7 +666,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
             )
         }
     }
-
+    
     private func calculateScale() {
         scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
         rangeSelectedCalculator = RangeSelectedCalculator(
@@ -674,6 +674,8 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
             scaleMinValue: scaleMinValue
         )
     }
+    
+    // MARK: gesture
 
     @objc final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
         recognize(gestureRecognizer: gestureRecognizer, updateKnob: updateLeftKnobPositionUsing)
@@ -747,6 +749,8 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
     private func positionForKnobGiven(xLocationInBar: CGFloat) -> CGFloat {
         return (xLocationInBar / stepWidth).rounded(FloatingPointRoundingRule.down) * stepWidth
     }
+    
+    // MARK: Delegate
 
     private func rangeSelectionUpdate() {
         let rangeSelected = rangeSelectedCalculator.calculateRangeSelected(
