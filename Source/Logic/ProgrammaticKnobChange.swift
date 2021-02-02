@@ -62,11 +62,11 @@ class ProgrammaticKnobChange {
 
     private func isValidForLeftKnob(value: CGFloat) -> Bool {
         return value > delegate.scale.scaleMinValue
-            && value <= delegate.previousRangeSelectedValues.maxValue
+            && value <= delegate.previousRangeSelected.maxValue
     }
 
     private func isValidforRightKnob(value: CGFloat) -> Bool {
         return value <= delegate.scale.scaleMaxValue
-            && value >= delegate.previousRangeSelectedValues.minValue
+            && value >= delegate.previousRangeSelected.minValue
     }
 }

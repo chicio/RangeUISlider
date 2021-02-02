@@ -435,21 +435,17 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
         rightProgressView: Progress()
     )
 
-    internal lazy var previousRangeSelectedValues: RangeSelected = RangeSelected(
+    internal lazy var previousRangeSelected: RangeSelected = RangeSelected(
         minValue: defaultValueLeftKnob,
         maxValue: defaultValueRightKnob
     )
-    internal lazy var scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
-    private lazy var programmaticKnobChange = ProgrammaticKnobChange(bar: bar, knobs: knobs, delegate: self)
-    private lazy var stepCalculator = StepCalculator()
-    private lazy var numberOfSteps: CGFloat = stepCalculator.calculateNumberOfSteps(
-        scale: scale.scale,
-        stepIncrement: stepIncrement
+    internal lazy var scale: Scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
+    private lazy var programmaticKnobChange: ProgrammaticKnobChange = ProgrammaticKnobChange(
+        bar: bar,
+        knobs: knobs,
+        delegate: self
     )
-    private lazy var stepWidth: CGFloat = stepCalculator.calculateStepWidth(
-        barWidth: bar.frame.width,
-        numberOfSteps: numberOfSteps
-    )
+    private lazy var stepCalculator: StepCalculator = StepCalculator()
     private lazy var rangeSelectedCalculator: RangeSelectedCalculator = RangeSelectedCalculator()
 
     // MARK: init
@@ -516,7 +512,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
     }
 
     internal func programmaticChangeCompleted() {
-        previousRangeSelectedValues = rangeSelectedCalculator.calculate(
+        previousRangeSelected = rangeSelectedCalculator.calculate(
             scale: scale,
             knobPositions: knobs.horizontalPositions(),
             barWidth: bar.frame.width
@@ -659,7 +655,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
             barCorners: barCorners
         )
     }
-    
+
     // MARK: Scale
 
     private func setScale() {
@@ -738,6 +734,11 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
     }
 
     private func positionForKnobGiven(xLocationInBar: CGFloat) -> CGFloat {
+        let stepWidth = stepCalculator.calculateStepWidth(
+            stepIncrement: stepIncrement,
+            scale: scale,
+            barWidth: bar.frame.width
+        )
         return (xLocationInBar / stepWidth).rounded(FloatingPointRoundingRule.down) * stepWidth
     }
 
@@ -751,13 +752,13 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
             delegate?.rangeIsChanging?(minValueSelected: rangeSelected.minValue,
                                        maxValueSelected: rangeSelected.maxValue,
                                        slider: self)
-            previousRangeSelectedValues = rangeSelected
+            previousRangeSelected = rangeSelected
         }
     }
 
     private func isDifferentFromPreviousRangeSelected(rangeSelected: RangeSelected) -> Bool {
-        return rangeSelected.minValue != previousRangeSelectedValues.minValue
-            || rangeSelected.maxValue != previousRangeSelectedValues.maxValue
+        return rangeSelected.minValue != previousRangeSelected.minValue
+            || rangeSelected.maxValue != previousRangeSelected.maxValue
     }
 
     private func rangeSelectionFinished() {

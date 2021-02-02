@@ -10,6 +10,6 @@ import Foundation
 
 protocol ProgrammaticKnobChangeDelegate: class {
     var scale: Scale { get }
-    var previousRangeSelectedValues: RangeSelected { get }
+    var previousRangeSelected: RangeSelected { get }
     func programmaticChangeCompleted()
 }

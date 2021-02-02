@@ -10,20 +10,21 @@ import Foundation
 import UIKit
 
 class StepCalculator {
-    func calculateNumberOfSteps(scale: CGFloat, stepIncrement: CGFloat) -> CGFloat {
+    func calculateStepWidth(stepIncrement: CGFloat, scale: Scale, barWidth: CGFloat) -> CGFloat {
+        let numberOfSteps = calculateNumberOfSteps(scale: scale.scale, stepIncrement: stepIncrement)
+        if stepIncrementIsNeeded(numberOfSteps: numberOfSteps) {
+            return barWidth / numberOfSteps
+        } else {
+            return 1.0
+        }
+    }
+
+    private func calculateNumberOfSteps(scale: CGFloat, stepIncrement: CGFloat) -> CGFloat {
         var numberOfStepsCalculated: CGFloat = 0
         if isAValidStepIncrement(scale: scale, stepIncrement: stepIncrement) {
             numberOfStepsCalculated = scale / stepIncrement
         }
         return numberOfStepsCalculated
-    }
-
-    func calculateStepWidth(barWidth: CGFloat, numberOfSteps: CGFloat) -> CGFloat {
-        var stepWidthCalculated: CGFloat = 1.0
-        if stepIncrementIsNeeded(numberOfSteps: numberOfSteps) {
-            stepWidthCalculated = barWidth / numberOfSteps
-        }
-        return stepWidthCalculated
     }
 
     private func isAValidStepIncrement(scale: CGFloat, stepIncrement: CGFloat) -> Bool {
