@@ -30,13 +30,13 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
     /// Scale minimum value.
     @IBInspectable public var scaleMinValue: CGFloat = 0.0 {
         didSet {
-            calculateScale()
+            setScale()
         }
     }
     /// Scale maximum value.
     @IBInspectable public var scaleMaxValue: CGFloat = 1.0 {
         didSet {
-            calculateScale()
+            setScale()
         }
     }
     /// Selected range color.
@@ -435,7 +435,10 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
         rightProgressView: Progress()
     )
 
-    internal lazy var previousRangeSelectedValues: RangeSelected = (defaultValueLeftKnob, defaultValueRightKnob)
+    internal lazy var previousRangeSelectedValues: RangeSelected = RangeSelected(
+        minValue: defaultValueLeftKnob,
+        maxValue: defaultValueRightKnob
+    )
     internal lazy var scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
     private lazy var programmaticKnobChange = ProgrammaticKnobChange(bar: bar, knobs: knobs, delegate: self)
     private lazy var stepCalculator = StepCalculator()
@@ -447,10 +450,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
         barWidth: bar.frame.width,
         numberOfSteps: numberOfSteps
     )
-    private lazy var rangeSelectedCalculator: RangeSelectedCalculator = RangeSelectedCalculator(
-        scale: scale.scale,
-        scaleMinValue: scaleMinValue
-    )
+    private lazy var rangeSelectedCalculator: RangeSelectedCalculator = RangeSelectedCalculator()
 
     // MARK: init
 
@@ -516,9 +516,9 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
     }
 
     internal func programmaticChangeCompleted() {
-        previousRangeSelectedValues = rangeSelectedCalculator.calculateRangeSelected(
-            leftKnobPosition: knobs.leftKnob.xPositionConstraint.constant,
-            rightKnobPosition: knobs.rightKnob.xPositionConstraint.constant,
+        previousRangeSelectedValues = rangeSelectedCalculator.calculate(
+            scale: scale,
+            knobPositions: knobs.horizontalPositions(),
             barWidth: bar.frame.width
         )
         rangeSelectionFinished()
@@ -635,46 +635,37 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
     // MARK: background
 
     private func addBackgroundToRangeNotSelectedIfNeeded() {
-        if let backgroundImage = rangeNotSelectedBackgroundImage {
-            let edgeInset = UIEdgeInsets(top: rangeNotSelectedBackgroundEdgeInsetTop,
-                                         left: rangeNotSelectedBackgroundEdgeInsetLeft,
-                                         bottom: rangeNotSelectedBackgroundEdgeInsetBottom,
-                                         right: rangeNotSelectedBackgroundEdgeInsetRight)
-            progressViews.leftProgressView.addBackground(
-                image: backgroundImage,
-                edgeInset: edgeInset,
-                corners: barCorners
-            )
-            progressViews.rightProgressView.addBackground(
-                image: backgroundImage,
-                edgeInset: edgeInset,
-                corners: barCorners
-            )
-        }
+        progressViews.addBackgroundToNotSelectedProgressViews(
+            image: rangeNotSelectedBackgroundImage,
+            edgeInset: UIEdgeInsets(
+                top: rangeNotSelectedBackgroundEdgeInsetTop,
+                left: rangeNotSelectedBackgroundEdgeInsetLeft,
+                bottom: rangeNotSelectedBackgroundEdgeInsetBottom,
+                right: rangeNotSelectedBackgroundEdgeInsetRight
+            ),
+            barCorners: barCorners
+        )
     }
 
     private func addBackgroundToRangeSelected() {
-        if let backgroundImage = rangeSelectedBackgroundImage {
-            let edgeInset = UIEdgeInsets(top: rangeSelectedBackgroundEdgeInsetTop,
-                                         left: rangeSelectedBackgroundEdgeInsetLeft,
-                                         bottom: rangeSelectedBackgroundEdgeInsetBottom,
-                                         right: rangeSelectedBackgroundEdgeInsetRight)
-            progressViews.selectedProgressView.addBackground(
-                image: backgroundImage,
-                edgeInset: edgeInset,
-                corners: barCorners
-            )
-        }
-    }
-    
-    private func calculateScale() {
-        scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
-        rangeSelectedCalculator = RangeSelectedCalculator(
-            scale: scale.scale,
-            scaleMinValue: scaleMinValue
+        progressViews.addBackgroundToSelectedProgressViews(
+            image: rangeSelectedBackgroundImage,
+            edgeInset: UIEdgeInsets(
+                top: rangeSelectedBackgroundEdgeInsetTop,
+                left: rangeSelectedBackgroundEdgeInsetLeft,
+                bottom: rangeSelectedBackgroundEdgeInsetBottom,
+                right: rangeSelectedBackgroundEdgeInsetRight
+            ),
+            barCorners: barCorners
         )
     }
     
+    // MARK: Scale
+
+    private func setScale() {
+        scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
+    }
+
     // MARK: gesture
 
     @objc final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
@@ -749,13 +740,11 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
     private func positionForKnobGiven(xLocationInBar: CGFloat) -> CGFloat {
         return (xLocationInBar / stepWidth).rounded(FloatingPointRoundingRule.down) * stepWidth
     }
-    
-    // MARK: Delegate
 
     private func rangeSelectionUpdate() {
-        let rangeSelected = rangeSelectedCalculator.calculateRangeSelected(
-            leftKnobPosition: knobs.leftKnob.xPositionConstraint.constant,
-            rightKnobPosition: knobs.rightKnob.xPositionConstraint.constant,
+        let rangeSelected = rangeSelectedCalculator.calculate(
+            scale: scale,
+            knobPositions: knobs.horizontalPositions(),
             barWidth: bar.frame.width
         )
         if isDifferentFromPreviousRangeSelected(rangeSelected: rangeSelected) {
@@ -767,13 +756,14 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
     }
 
     private func isDifferentFromPreviousRangeSelected(rangeSelected: RangeSelected) -> Bool {
-        return rangeSelected != previousRangeSelectedValues
+        return rangeSelected.minValue != previousRangeSelectedValues.minValue
+            || rangeSelected.maxValue != previousRangeSelectedValues.maxValue
     }
 
     private func rangeSelectionFinished() {
-        let rangeSelected = rangeSelectedCalculator.calculateRangeSelected(
-            leftKnobPosition: knobs.leftKnob.xPositionConstraint.constant,
-            rightKnobPosition: knobs.rightKnob.xPositionConstraint.constant,
+        let rangeSelected = rangeSelectedCalculator.calculate(
+            scale: scale,
+            knobPositions: knobs.horizontalPositions(),
             barWidth: bar.frame.width
         )
 

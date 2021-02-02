@@ -16,4 +16,11 @@ class Knobs {
         self.leftKnob = leftKnob
         self.rightKnob = rightKnob
     }
+
+    func horizontalPositions() -> KnobsHorizontalPosition {
+        return KnobsHorizontalPosition(
+            leftKnobPosition: leftKnob.xPositionConstraint.constant,
+            rightKnobPosition: rightKnob.xPositionConstraint.constant
+        )
+    }
 }

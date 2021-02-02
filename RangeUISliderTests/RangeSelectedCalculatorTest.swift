@@ -11,11 +11,14 @@ import XCTest
 
 class RangeSelectedCalculatorTest: XCTestCase {
     func testDefaultScale() throws {
-        let rangeSelectedCalculator = RangeSelectedCalculator(scale: 1, scaleMinValue: 0)
+        let rangeSelectedCalculator = RangeSelectedCalculator()
 
-        let rangeSelected = rangeSelectedCalculator.calculateRangeSelected(
-            leftKnobPosition: 20,
-            rightKnobPosition: -30,
+        let rangeSelected = rangeSelectedCalculator.calculate(
+            scale: Scale(scaleMinValue: 0, scaleMaxValue: 1),
+            knobPositions: KnobsHorizontalPosition(
+                leftKnobPosition: 20,
+                rightKnobPosition: -30
+            ),
             barWidth: 100
         )
 
@@ -24,11 +27,14 @@ class RangeSelectedCalculatorTest: XCTestCase {
     }
 
     func testCustomScale() throws {
-        let rangeSelectedCalculator = RangeSelectedCalculator(scale: 20, scaleMinValue: 5)
+        let rangeSelectedCalculator = RangeSelectedCalculator()
 
-        let rangeSelected = rangeSelectedCalculator.calculateRangeSelected(
-            leftKnobPosition: 20,
-            rightKnobPosition: -30,
+        let rangeSelected = rangeSelectedCalculator.calculate(
+            scale: Scale(scaleMinValue: 5, scaleMaxValue: 25),
+            knobPositions: KnobsHorizontalPosition(
+                leftKnobPosition: 20,
+                rightKnobPosition: -30
+            ),
             barWidth: 100
         )
 

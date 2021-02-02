@@ -3,16 +3,10 @@
 //  RangeUISlider
 //
 //  Created by Fabrizio Duroni on 02/02/21.
-//  Copyright © 2021 Fabrizio Duroni. All rights reserved.
+//  2021 Fabrizio Duroni.
 //
 
 import UIKit
-
-protocol ProgrammaticKnobChangeDelegate: class {
-    var scale: Scale { get }
-    var previousRangeSelectedValues: RangeSelected { get }
-    func programmaticChangeCompleted()
-}
 
 class ProgrammaticKnobChange {
     private unowned let bar: Bar
