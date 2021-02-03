@@ -18,7 +18,7 @@ import UIKit
  RangeUISlider support RTL (right to left) languages automatically out of the box.
  */
 @IBDesignable
-open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
+open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureManagerDelegate {
     /// Slider identifier.
     @IBInspectable public var identifier: Int = 0
     /// Step increment value. If different from 0 RangeUISlider will let the user drag by step increment.
@@ -441,7 +441,11 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
         knobs: knobs,
         delegate: self
     )
-    private lazy var stepCalculator: StepCalculator = StepCalculator()
+    private lazy var knobGestureManager: KnobGestureManager = KnobGestureManager(
+        bar: bar,
+        knobs: knobs,
+        knobGestureManagerDelegate: self
+    )
     private lazy var rangeSelectedCalculator: RangeSelectedCalculator = RangeSelectedCalculator()
 
     // MARK: init
@@ -661,84 +665,32 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
     // MARK: gesture
 
     @objc final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
-        recognize(gestureRecognizer: gestureRecognizer, updateKnob: updateLeftKnobPositionUsing)
+        knobGestureManager.moveLeftKnob(
+            gesture: GestureData(
+                gestureRecognizer: gestureRecognizer,
+                scale: scale,
+                stepIncrement: stepIncrement,
+                semanticContentAttribute: self.semanticContentAttribute
+            )
+        )
     }
 
     @objc final func moveRightKnob(gestureRecognizer: UIPanGestureRecognizer) {
-        recognize(gestureRecognizer: gestureRecognizer, updateKnob: updateRightKnobPositionUsing)
+        knobGestureManager.moveRightKnob(
+            gesture: GestureData(
+                gestureRecognizer: gestureRecognizer,
+                scale: scale,
+                stepIncrement: stepIncrement,
+                semanticContentAttribute: self.semanticContentAttribute
+            )
+        )
     }
 
-    private func recognize(gestureRecognizer: UIPanGestureRecognizer, updateKnob: (UIPanGestureRecognizer) -> Void) {
-        if gestureRecognizer.state == .began {
-            rangeSelectionStartedForKnobUsing(gestureRecognizer: gestureRecognizer, updateKnob: updateKnob)
-        }
-        if gestureRecognizer.state == .changed {
-            updateKnobAndRangeUsing(gestureRecognizer: gestureRecognizer, updateKnob: updateKnob)
-        }
-        if gestureRecognizer.state == .ended {
-            rangeSelectionFinished()
-        }
-    }
-
-    private func rangeSelectionStartedForKnobUsing(gestureRecognizer: UIPanGestureRecognizer,
-                                                   updateKnob: (UIPanGestureRecognizer) -> Void) {
-        updateKnob(gestureRecognizer)
+    internal func rangeChangeStarted() {
         delegate?.rangeChangeStarted?()
     }
 
-    private func updateKnobAndRangeUsing(gestureRecognizer: UIPanGestureRecognizer,
-                                         updateKnob: (UIPanGestureRecognizer) -> Void) {
-        updateKnob(gestureRecognizer)
-        rangeSelectionUpdate()
-    }
-
-    private func updateLeftKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        let userInterfaceDirection = UIView.userInterfaceLayoutDirection(for: self.semanticContentAttribute)
-        if userInterfaceDirection == UIUserInterfaceLayoutDirection.rightToLeft {
-            let positionForKnob = bar.frame.width - positionForKnobGiven(
-                xLocationInBar: gestureRecognizer.location(in: bar).x
-            )
-            let positionRightKnob = -1 * knobs.rightKnob.xPositionConstraint.constant
-            if positionForKnob >= 0 && (bar.frame.width - positionForKnob) >= positionRightKnob {
-                knobs.leftKnob.xPositionConstraint.constant = positionForKnob
-            }
-        } else {
-            let positionForKnob = positionForKnobGiven(xLocationInBar: gestureRecognizer.location(in: bar).x)
-            let positionRightKnob = bar.frame.width + knobs.rightKnob.xPositionConstraint.constant
-            if positionForKnob >= 0 && positionForKnob <= positionRightKnob {
-                knobs.leftKnob.xPositionConstraint.constant = positionForKnob
-            }
-        }
-    }
-
-    private func updateRightKnobPositionUsing(gestureRecognizer: UIPanGestureRecognizer) {
-        let userInterfaceDirection = UIView.userInterfaceLayoutDirection(for: self.semanticContentAttribute)
-        if userInterfaceDirection == UIUserInterfaceLayoutDirection.rightToLeft {
-            let xLocationInBar = gestureRecognizer.location(in: bar).x
-            let positionForKnob = -1 * positionForKnobGiven(xLocationInBar: xLocationInBar)
-            if positionForKnob <= 0 &&
-                xLocationInBar <= (bar.frame.width - knobs.leftKnob.xPositionConstraint.constant) {
-                knobs.rightKnob.xPositionConstraint.constant = positionForKnob
-            }
-        } else {
-            let xLocationInBar = gestureRecognizer.location(in: bar).x
-            let positionForKnob = positionForKnobGiven(xLocationInBar: xLocationInBar - bar.frame.width)
-            if positionForKnob <= 0 && xLocationInBar >= knobs.leftKnob.xPositionConstraint.constant {
-                knobs.rightKnob.xPositionConstraint.constant = positionForKnob
-            }
-        }
-    }
-
-    private func positionForKnobGiven(xLocationInBar: CGFloat) -> CGFloat {
-        let stepWidth = stepCalculator.calculateStepWidth(
-            stepIncrement: stepIncrement,
-            scale: scale,
-            barWidth: bar.frame.width
-        )
-        return (xLocationInBar / stepWidth).rounded(FloatingPointRoundingRule.down) * stepWidth
-    }
-
-    private func rangeSelectionUpdate() {
+    internal func rangeSelectionUpdate() {
         let rangeSelected = rangeSelectedCalculator.calculate(
             scale: scale,
             knobPositions: knobs.horizontalPositions(),
@@ -757,7 +709,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
             || rangeSelected.maxValue != previousRangeSelected.maxValue
     }
 
-    private func rangeSelectionFinished() {
+    internal func rangeSelectionFinished() {
         let rangeSelected = rangeSelectedCalculator.calculate(
             scale: scale,
             knobPositions: knobs.horizontalPositions(),

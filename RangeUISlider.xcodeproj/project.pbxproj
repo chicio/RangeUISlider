@@ -49,6 +49,9 @@
 		459CBEF7259B79D000FCA5AB /* RangeSelectedCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBEF6259B79D000FCA5AB /* RangeSelectedCalculatorTest.swift */; };
 		459CBEF9259B79D000FCA5AB /* RangeUISlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E215241E8E812E00F0B8B9 /* RangeUISlider.framework */; platformFilter = ios; };
 		459CBF1C259B7FD700FCA5AB /* StepCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459CBF1B259B7FD700FCA5AB /* StepCalculatorTest.swift */; };
+		45CEFF7325CB198400BF628B /* GestureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CEFF7225CB198400BF628B /* GestureData.swift */; };
+		45CEFF7825CB199B00BF628B /* KnobGestureManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CEFF7725CB199B00BF628B /* KnobGestureManagerDelegate.swift */; };
+		45CEFF7D25CB19C400BF628B /* KnobGestureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CEFF7C25CB19C400BF628B /* KnobGestureManager.swift */; };
 		45D2B83725C5CBD500DFD838 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D2B83625C5CBD500DFD838 /* ConstraintAttributes.swift */; };
 		45E215291E8E812E00F0B8B9 /* RangeUISlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E215271E8E812E00F0B8B9 /* RangeUISlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45E2B6F225C987F1007CCBB5 /* ProgrammaticKnobChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2B6F125C987F1007CCBB5 /* ProgrammaticKnobChange.swift */; };
@@ -171,6 +174,9 @@
 		45BD66D2209B60DA00A19D22 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		45BD66D3209B60DA00A19D22 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		45C2278225C2E9C70068CAA5 /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
+		45CEFF7225CB198400BF628B /* GestureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureData.swift; sourceTree = "<group>"; };
+		45CEFF7725CB199B00BF628B /* KnobGestureManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobGestureManagerDelegate.swift; sourceTree = "<group>"; };
+		45CEFF7C25CB19C400BF628B /* KnobGestureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobGestureManager.swift; sourceTree = "<group>"; };
 		45D2B83625C5CBD500DFD838 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
 		45E215241E8E812E00F0B8B9 /* RangeUISlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RangeUISlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E215271E8E812E00F0B8B9 /* RangeUISlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RangeUISlider.h; sourceTree = "<group>"; };
@@ -267,6 +273,8 @@
 				459630D425C89CC500FCCCE7 /* KnobsPropertiesFactory.swift */,
 				459630A925C87EE400FCCCE7 /* KnobGesturesProperties.swift */,
 				45263E9725C9D3B2005D994A /* KnobsHorizontalPosition.swift */,
+				45CEFF7725CB199B00BF628B /* KnobGestureManagerDelegate.swift */,
+				45CEFF7C25CB19C400BF628B /* KnobGestureManager.swift */,
 				45E9D59625C6F94200FE6E3F /* BarProperties.swift */,
 				45E9D59E25C6FADC00FE6E3F /* ProgressProperties.swift */,
 				459630C425C8854D00FCCCE7 /* ProgressViewsProperties.swift */,
@@ -279,6 +287,7 @@
 				45263E8A25C9D18B005D994A /* ProgrammaticKnobChangeDelegate.swift */,
 				45E2B6F625C9B36F007CCBB5 /* Scale.swift */,
 				45263E9225C9D1FD005D994A /* RangeSelected.swift */,
+				45CEFF7225CB198400BF628B /* GestureData.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -658,6 +667,7 @@
 				45949DC125C6CBA700F09F3B /* ConstraintAdditionalInformations.swift in Sources */,
 				45263E9825C9D3B2005D994A /* KnobsHorizontalPosition.swift in Sources */,
 				45E9D58E25C6F1BF00FE6E3F /* EqualRelationConstraintFactory.swift in Sources */,
+				45CEFF7325CB198400BF628B /* GestureData.swift in Sources */,
 				450C7B5025C489E200764496 /* MarginConstraintFactory.swift in Sources */,
 				45E9D5B125C7028C00FE6E3F /* Knobs.swift in Sources */,
 				45263E9325C9D1FD005D994A /* RangeSelected.swift in Sources */,
@@ -671,6 +681,7 @@
 				45E2B6F725C9B36F007CCBB5 /* Scale.swift in Sources */,
 				451AF80C25C6E32F00DD37CE /* KnobProperties.swift in Sources */,
 				459630B825C8841B00FCCCE7 /* RangeUISliderSetup.swift in Sources */,
+				45CEFF7D25CB19C400BF628B /* KnobGestureManager.swift in Sources */,
 				4571869425A5CFE300541D67 /* RangeSliderCoordinator.swift in Sources */,
 				450C7B6A25C48A7500764496 /* Knob.swift in Sources */,
 				4571869925A5D01500541D67 /* RangeSliderSettings.swift in Sources */,
@@ -679,6 +690,7 @@
 				450C7B5925C48A4F00764496 /* StepCalculator.swift in Sources */,
 				450C7B6925C48A7500764496 /* Gradient.swift in Sources */,
 				459630DD25C8A26100FCCCE7 /* GradientProperties.swift in Sources */,
+				45CEFF7825CB199B00BF628B /* KnobGestureManagerDelegate.swift in Sources */,
 				459630ED25C8A32D00FCCCE7 /* GradientPoints.swift in Sources */,
 				450C7B4F25C489E200764496 /* DimensionConstraintFactory.swift in Sources */,
 				459630D525C89CC500FCCCE7 /* KnobsPropertiesFactory.swift in Sources */,
