@@ -6,6 +6,6 @@
 //  2021 Fabrizio Duroni.
 //
 
-import Foundation
+import UIKit
 
 typealias KnobsHorizontalPosition = (leftKnobPosition: CGFloat, rightKnobPosition: CGFloat)
