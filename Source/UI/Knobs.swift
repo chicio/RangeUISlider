@@ -23,4 +23,17 @@ class Knobs {
             rightKnobPosition: rightKnob.xPositionConstraint.constant
         )
     }
+
+    func addCornersToLeftKnob(leftKnobCorners: CGFloat) {
+        addCornersTo(knob: leftKnob, corners: leftKnobCorners)
+    }
+
+    func addCornersToRightKnob(rightKnobCorners: CGFloat) {
+        addCornersTo(knob: rightKnob, corners: rightKnobCorners)
+    }
+
+    private func addCornersTo(knob: Knob, corners: CGFloat) {
+        knob.backgroundView.layer.cornerRadius = corners
+        knob.backgroundView.layer.masksToBounds = corners > 0.0
+    }
 }

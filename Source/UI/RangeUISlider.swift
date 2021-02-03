@@ -102,8 +102,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
     /// Not selected range color.
     @IBInspectable public var rangeNotSelectedColor: UIColor = UIColor.lightGray {
         didSet {
-            progressViews.leftProgressView.backgroundColor = rangeNotSelectedColor
-            progressViews.rightProgressView.backgroundColor = rangeNotSelectedColor
+            progressViews.addBackgroundColorToNotSelectedProgressView(rangeNotSelectedColor: rangeNotSelectedColor)
         }
     }
     /// Background range selected strechable image.
@@ -175,8 +174,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
     /// Left knob corners.
     @IBInspectable public var leftKnobCorners: CGFloat = 15.0 {
         didSet {
-            knobs.leftKnob.backgroundView.layer.cornerRadius = leftKnobCorners
-            knobs.leftKnob.backgroundView.layer.masksToBounds = leftKnobCorners > 0.0
+            knobs.addCornersToLeftKnob(leftKnobCorners: leftKnobCorners)
         }
     }
     /// Left knob image.
@@ -270,8 +268,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
     /// Right knob corners.
     @IBInspectable public var rightKnobCorners: CGFloat = 15.0 {
         didSet {
-            knobs.rightKnob.backgroundView.layer.cornerRadius = rightKnobCorners
-            knobs.rightKnob.backgroundView.layer.masksToBounds = rightKnobCorners > 0.0
+            knobs.addCornersToRightKnob(rightKnobCorners: rightKnobCorners)
         }
     }
     /// Right knob image.
@@ -337,17 +334,21 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
     /// Right knob border width.
     @IBInspectable public var rightKnobBorderWidth: CGFloat = 0.0 {
         didSet {
-            knobs.rightKnob.addBorders(usingColor: rightKnobBorderColor,
-                                 andWidth: rightKnobBorderWidth,
-                                 andCorners: rightKnobCorners)
+            knobs.rightKnob.addBorders(
+                usingColor: rightKnobBorderColor,
+                andWidth: rightKnobBorderWidth,
+                andCorners: rightKnobCorners
+            )
         }
     }
     /// Right knob border color.
     @IBInspectable public var rightKnobBorderColor: UIColor = UIColor.clear {
         didSet {
-            knobs.rightKnob.addBorders(usingColor: rightKnobBorderColor,
-                                 andWidth: rightKnobBorderWidth,
-                                 andCorners: rightKnobCorners)
+            knobs.rightKnob.addBorders(
+                usingColor: rightKnobBorderColor,
+                andWidth: rightKnobBorderWidth,
+                andCorners: rightKnobCorners
+            )
         }
     }
     /// Bar height.
@@ -371,8 +372,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
     /// Bar corners.
     @IBInspectable public var barCorners: CGFloat = 0.0 {
         didSet {
-            progressViews.leftProgressView.layer.cornerRadius = barCorners
-            progressViews.rightProgressView.layer.cornerRadius = barCorners
+            progressViews.addBarCornersToNotSelectedProgressView(barCorners: barCorners)
             addGradientToNotSelectedRange()
             addBackgroundToRangeNotSelectedIfNeeded()
         }
@@ -404,17 +404,13 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate {
     /// Bar border color.
     @IBInspectable public var barBorderWidth: CGFloat = 0.0 {
         didSet {
-            progressViews.leftProgressView.layer.borderWidth = barBorderWidth
-            progressViews.rightProgressView.layer.borderWidth = barBorderWidth
-            progressViews.selectedProgressView.layer.borderWidth = barBorderWidth
+            progressViews.addBordersWidth(borderWidth: barBorderWidth)
         }
     }
     /// Bar border color.
     @IBInspectable public var barBorderColor: UIColor = UIColor.clear {
         didSet {
-            progressViews.leftProgressView.layer.borderColor = barBorderColor.cgColor
-            progressViews.rightProgressView.layer.borderColor = barBorderColor.cgColor
-            progressViews.selectedProgressView.layer.borderColor = barBorderColor.cgColor
+            progressViews.addBorderColor(borderColor: barBorderColor)
         }
     }
     /// Container corners.

@@ -48,4 +48,27 @@ class ProgressViews {
             )
         }
     }
+
+    func addBackgroundColorToNotSelectedProgressView(rangeNotSelectedColor: UIColor) {
+        leftProgressView.backgroundColor = rangeNotSelectedColor
+        rightProgressView.backgroundColor = rangeNotSelectedColor
+    }
+
+    func addBarCornersToNotSelectedProgressView(barCorners: CGFloat) {
+        leftProgressView.layer.cornerRadius = barCorners
+        rightProgressView.layer.cornerRadius = barCorners
+    }
+
+    func addBordersWidth(borderWidth: CGFloat) {
+        leftProgressView.layer.borderWidth = borderWidth
+        rightProgressView.layer.borderWidth = borderWidth
+        selectedProgressView.layer.borderWidth = borderWidth
+    }
+
+    func addBorderColor(borderColor: UIColor) {
+        let borderColorCg = borderColor.cgColor
+        leftProgressView.layer.borderColor = borderColorCg
+        rightProgressView.layer.borderColor = borderColorCg
+        selectedProgressView.layer.borderColor = borderColorCg
+    }
 }

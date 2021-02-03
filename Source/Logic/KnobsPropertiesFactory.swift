@@ -34,12 +34,12 @@ class KnobsPropertiesBuilder {
     }
 
     func rightKnobWidth(_ value: CGFloat) -> KnobsPropertiesBuilder {
-        leftKnobWidth = value
+        rightKnobWidth = value
         return self
     }
 
     func rightKnobHeight(_ value: CGFloat) -> KnobsPropertiesBuilder {
-        leftKnobHeight = value
+        rightKnobHeight = value
         return self
     }
 
