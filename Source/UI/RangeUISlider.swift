@@ -569,7 +569,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
         )
     }
 
-    // MARK: Gradient
+    // MARK: gradient
 
     private func addGradientToNotSelectedRange() {
         let properties = GradientProperties(
@@ -665,24 +665,19 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     // MARK: gesture
 
     @objc final func moveLeftKnob(gestureRecognizer: UIPanGestureRecognizer) {
-        knobGestureManager.moveLeftKnob(
-            gesture: GestureData(
-                gestureRecognizer: gestureRecognizer,
-                scale: scale,
-                stepIncrement: stepIncrement,
-                semanticContentAttribute: self.semanticContentAttribute
-            )
-        )
+        knobGestureManager.moveLeftKnob(gesture: getGestureData(gestureRecognizer: gestureRecognizer))
     }
 
     @objc final func moveRightKnob(gestureRecognizer: UIPanGestureRecognizer) {
-        knobGestureManager.moveRightKnob(
-            gesture: GestureData(
-                gestureRecognizer: gestureRecognizer,
-                scale: scale,
-                stepIncrement: stepIncrement,
-                semanticContentAttribute: self.semanticContentAttribute
-            )
+        knobGestureManager.moveRightKnob(gesture: getGestureData(gestureRecognizer: gestureRecognizer))
+    }
+
+    private func getGestureData(gestureRecognizer: UIPanGestureRecognizer) -> GestureData {
+        return GestureData(
+            gestureRecognizer: gestureRecognizer,
+            scale: scale,
+            stepIncrement: stepIncrement,
+            semanticContentAttribute: self.semanticContentAttribute
         )
     }
 
@@ -697,9 +692,11 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
             barWidth: bar.frame.width
         )
         if isDifferentFromPreviousRangeSelected(rangeSelected: rangeSelected) {
-            delegate?.rangeIsChanging?(minValueSelected: rangeSelected.minValue,
-                                       maxValueSelected: rangeSelected.maxValue,
-                                       slider: self)
+            delegate?.rangeIsChanging?(
+                minValueSelected: rangeSelected.minValue,
+                maxValueSelected: rangeSelected.maxValue,
+                slider: self
+            )
             previousRangeSelected = rangeSelected
         }
     }
@@ -717,9 +714,11 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
         )
 
         if !rangeSelected.maxValue.isNaN && !rangeSelected.maxValue.isNaN {
-            delegate?.rangeChangeFinished(minValueSelected: rangeSelected.minValue,
-                                          maxValueSelected: rangeSelected.maxValue,
-                                          slider: self)
+            delegate?.rangeChangeFinished(
+                minValueSelected: rangeSelected.minValue,
+                maxValueSelected: rangeSelected.maxValue,
+                slider: self
+            )
         }
     }
 }
