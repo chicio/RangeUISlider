@@ -6,6 +6,7 @@
 //  2021 Fabrizio Duroni.
 //
 
+#if canImport(SwiftUI)
 import Foundation
 import CoreGraphics
 
@@ -47,3 +48,4 @@ public class RangeSliderCoordinator: RangeUISliderDelegate {
         self.rangeSlider.maxValueSelected = maxValueSelected
     }
 }
+#endif
