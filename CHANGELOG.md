@@ -2,7 +2,7 @@
 All changes to RangeUISlider will be documented in this file.
 
 ## [2.0.0](https://github.com/chicio/RangeUISlider/releases/tag/2.0.0)
-Release date: 2021-XX-XX.
+Release date: 2021-02-03.
 
 #### Added
 - SwiftUI support: new `RangeSlider` SwiftUI component
@@ -10,7 +10,7 @@ Release date: 2021-XX-XX.
 - Test plans: UI test for multiple devide configuration (e.g. test RTL) 
 - Added SwiftLint: introduced code style standards.
 - Added Codebeat: start to measure code quality
-- Refactoring to improve internal structure (code quality and ability to introduct new stuff)
+- Refactoring to improve internal structure (code quality and ability to introduct new features)
 
 ## [1.13.0](https://github.com/chicio/RangeUISlider/releases/tag/1.13.0)
 Release date: 2021-01-03.
