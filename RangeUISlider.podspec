@@ -14,7 +14,7 @@ An iOS range selection slider compatible with UIKit and SwiftUI. Developed using
   s.social_media_url   = "https://github.com/chicio"
   s.platform     = :ios, "9.0"
   s.source       = { :git => "https://github.com/chicio/RangeUISlider.git", :tag => "#{s.version}" }
-  s.source_files  = "Source", "Source/**/*.{h,m}"
+  s.source_files  = "Source", "Source/**/*.{h,m}", "Source/**/*.swift"
   s.exclude_files = "Source/Exclude"
   s.swift_version = '5.0'
 
