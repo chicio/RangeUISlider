@@ -69,7 +69,7 @@ class SwiftUITests: XCTestCase {
         rightKnob.press(forDuration: 0.1, thenDragTo: endMarker)
 
         expectation(
-            for: NSPredicate(format: "self > 6.0 AND self < 10.0"),
+            for: NSPredicate(format: "self > 6.0 AND self =< 10.0"),
             evaluatedWith: (minValueSelectedLabel.label as NSString).floatValue
         )
         expectation(
