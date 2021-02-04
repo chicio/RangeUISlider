@@ -79,7 +79,7 @@
 <img src="https://github.com/chicio/RangeUISlider/workflows/SwiftLint/badge.svg" alt="SwiftLint">
 <a href="https://raw.githubusercontent.com/chicio/RangeUISlider/master/LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub license"></a></p>
 
-<p>A iOS range selection slider, developed using autolayout and highly customizable using IBDesignabled and IBInspectable or programmatically. It support also RTL (right to left) languages automatically out of the box.</p>
+<p>An iOS range selection slider compatible with <code>UIKit</code> and <code>SwiftUI</code>. Developed using autolayout and highly customizable using <code>@IBDesignabled</code> and <code>@IBInspectable</code> or programmatically. It support also RTL (right to left) languages automatically out of the box.</p>
 
 <p align="center">
   <img width="400" height="400" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/range-ui-slider.png">
@@ -90,24 +90,29 @@
 <hr>
 <h3 id='installation' class='heading'>Installation</h3>
 
-<p>There are three ways to install RangeUISlider in your project: manual installation, as a stand-alone framework or using cocoapods.</p>
+<p>There are three ways to install <code><a href="Classes/RangeUISlider.html">RangeUISlider</a></code> in your project: manual installation, as a stand-alone framework or using cocoapods.</p>
 
 <p><strong>Manual installation</strong></p>
 
-<p>To manually install RangeUISlider simply drag and drop all the file contained in the <a href="https://github.com/chicio/RangeUISlider/tree/master/Source">Source</a> folder inside your project.</p>
+<p>To manually install <code><a href="Classes/RangeUISlider.html">RangeUISlider</a></code> simply drag and drop all the file contained in the <a href="https://github.com/chicio/RangeUISlider/tree/master/Source">Source</a> folder inside your project.</p>
 
 <p><strong>Framework</strong></p>
 
-<p>RangeUISlider is available also as a framework. To install it follow the standard procedure used to install a custom cocoa touch framework
-(simply drag the RangeUISlider.xcodeproj inside your project and add it to the Embedded Binaries/Linked Frameworks and Libraries section of your 
-project. See the demo project for a complete example of the setup of the framework.</p>
+<p><code><a href="Classes/RangeUISlider.html">RangeUISlider</a></code> is available also as a framework. To install it follow the standard procedure used to install a custom cocoa touch framework:</p>
+
+<ul>
+<li>drag the RangeUISlider.xcodeproj inside your project</li>
+<li>add it to the Embedded Binaries/Linked Frameworks and Libraries section of your project.</li>
+</ul>
+
+<p>See the <code>RangeUISliderDemo</code> demo project/target for an example of the setup of the framework.</p>
 
 <p><strong>CocoaPods</strong></p>
 
 <p>RangeUISlider is also available as a pod on <a href="https://cocoapods.org/pods/RangeUISlider">CocoaPods</a>.
 Add the dependency to your Podfile similar to the following:</p>
 <pre class="highlight plaintext"><code>target 'MyApp' do
-    pod 'RangeUISlider', '~&gt; 1.5'
+    pod 'RangeUISlider', '~&gt; 2.0'
 end
 </code></pre>
 
@@ -115,8 +120,7 @@ end
 
 <p><strong>Swift Package Manager (SPM)</strong></p>
 
-<p>RangeUISlider is also available as a SPM package. Add it from the project configuration using the Github repository url. 
-Choose master or a tag. If you choose the tag it must be &gt;= 1.11.0.</p>
+<p><code><a href="Classes/RangeUISlider.html">RangeUISlider</a></code> is also available as a SPM package. Add it from the project configuration using the Github repository url. Choose master or a tag. If you choose the tag it must be &gt;= 1.11.0.</p>
 
 <p><img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/05-spm1.png" alt="spm 1">
 <img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/06-spm2.png" alt="spm 2">
@@ -125,32 +129,89 @@ Choose master or a tag. If you choose the tag it must be &gt;= 1.11.0.</p>
 <hr>
 <h3 id='usage' class='heading'>Usage</h3>
 
-<p>You can use RangeUISlider in two ways: in Interface Builder (thanks to<code>@IBDesignable</code> and <code>@IBInspectable</code>) or programmatically.
-Then you can use the <code><a href="Protocols/RangeUISliderDelegate.html">RangeUISliderDelegate</a></code> protocol to get the values of the slider.</p>
+<p>You can use RangeUISlider in three ways: </p>
+
+<ul>
+<li>in a <code>UIKit</code> project using Interface Builder (thanks to <code>@IBDesignable</code> and <code>@IBInspectable</code> )</li>
+<li>in a <code>UIKit</code> project programmatically</li>
+<li>in a <code>SwiftUI</code> project using the <code><a href="Structs/RangeSlider.html">RangeSlider</a></code> wrapper created using <code>UIViewRepresentable</code></li>
+</ul>
 <h4 id='interface-builder' class='heading'>Interface builder</h4>
+
+<p>To levearege the power  of  the <code><a href="Classes/RangeUISlider.html">RangeUISlider</a></code>  in interface builder: </p>
 
 <ul>
 <li>drag a UIView into you storyboard</li>
-<li>set RangeUISlider as custom class of that view
+<li>set <code><a href="Classes/RangeUISlider.html">RangeUISlider</a></code> as custom class of that view
 
 <ul>
 <li><strong>IMPORTANT: set also the Module to RangeUISlider if you used cocoapods or the framework version during installation</strong></li>
 </ul></li>
-<li>start editing using interface builder</li>
+<li>start editing it using interface builder (and levearage the power of <code>@IBDesignabled</code> and <code>@IBInspectable</code>)</li>
 </ul>
 
-<p><a href="https://www.youtube.com/watch?v=Lorvozz-1HU">Here</a> you can find a video tutorial for the setup with interface builder.</p>
+<p><a href="https://www.youtube.com/watch?v=Lorvozz-1HU">Here</a> you can find a video tutorial for the setup with Interface Builder.</p>
 
 <p align="center">
 <a href="https://www.youtube.com/watch?v=Lorvozz-1HU" target="_blank"><img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/tutorial.png"></a>
 </p>
 <h4 id='programmatic' class='heading'>Programmatic</h4>
 
-<p>You can also use RangeUISlider as a programmatic UI component by setting all the property you need in your code. Take a look at the <a href="https://github.com/chicio/RangeUISlider/blob/master/Demo/SetupProgrammaticViewController.swift">example in the SetupProgrammaticViewController contained in the demo project </a> to see an example of programmatic setup.  </p>
-<h4 id='rangeuisliderdelegate' class='heading'>RangeUISliderDelegate</h4>
+<p>You can also use <code><a href="Classes/RangeUISlider.html">RangeUISlider</a></code> as a programmatic UI component by setting all the property you need in your code. Take a look at the <code>RangeUISliderDemo</code> project to see multiple example (e.g. take a look at <a href="https://github.com/chicio/RangeUISlider/blob/master/Demo/SetupProgrammaticViewController.swift">this contrroller</a>. In particular, remember to set <code>translatesAutoresizingMaskIntoConstraints = false</code> for the slider to use autolayout. Below you can find a simple example.</p>
+<pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// ...other code</span>
 
-<p>To get the current values from the slider, set its delegate property.
-The delegate of the RangeUISlider must implement the <code><a href="Protocols/RangeUISliderDelegate.html">RangeUISliderDelegate</a></code> protocol, that has three methods:</p>
+    <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+    <span class="n">rangeSlider</span> <span class="o">=</span> <span class="kt">RangeUISlider</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">origin</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">20</span><span class="p">),</span> <span class="nv">size</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">50</span><span class="p">)))</span>
+    <span class="n">rangeSlider</span><span class="o">.</span><span class="n">translatesAutoresizingMaskIntoConstraints</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="n">rangeSlider</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+    <span class="n">rangeSlider</span><span class="o">.</span><span class="n">barHeight</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">rangeSlider</span><span class="o">.</span><span class="n">barCorners</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">rangeSlider</span><span class="o">.</span><span class="n">leftKnobColor</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.5725490451</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.2313725501</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">rangeSlider</span><span class="o">.</span><span class="n">leftKnobWidth</span> <span class="o">=</span> <span class="mi">40</span>
+    <span class="n">rangeSlider</span><span class="o">.</span><span class="n">leftKnobHeight</span> <span class="o">=</span> <span class="mi">40</span>
+    <span class="n">rangeSlider</span><span class="o">.</span><span class="n">leftKnobCorners</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">rangeSlider</span><span class="o">.</span><span class="n">rightKnobColor</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.5725490451</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.2313725501</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">rangeSlider</span><span class="o">.</span><span class="n">rightKnobWidth</span> <span class="o">=</span> <span class="mi">40</span>
+    <span class="n">rangeSlider</span><span class="o">.</span><span class="n">rightKnobHeight</span> <span class="o">=</span> <span class="mi">40</span>
+    <span class="n">rangeSlider</span><span class="o">.</span><span class="n">rightKnobCorners</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">rangeSlider</span><span class="p">)</span>
+
+    <span class="c1">// ...other code</span>
+<span class="p">}</span>
+</code></pre>
+<h4 id='swiftui' class='heading'>SwiftUI</h4>
+
+<p>You can use <code><a href="Classes/RangeUISlider.html">RangeUISlider</a></code> in a <code>SwiftUI</code> application/screen by leveraging the <code><a href="Structs/RangeSlider.html">RangeSlider</a></code>  wrapper created using <code>UIViewRepresentable</code>. Below you can find a small example of the usage in a simple screen. You can find more example in the <code>RangeUISliderDemo</code> demo project (look <a href="https://github.com/chicio/RangeUISlider/blob/master/RangeUISliderDemo/SwiftUIHostingViewController.swift" title="swiftui rangeslider examples">here</a>).  </p>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="c1">// ...other code</span>
+
+            <span class="kt">RangeSlider</span><span class="p">(</span><span class="nv">minValueSelected</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">binding</span> <span class="n">value</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">maxValueSelected</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">binding</span> <span class="n">value</span><span class="o">&gt;</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">leftKnobColor</span><span class="p">(</span><span class="kt">Color</span><span class="p">(</span><span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.5725490451</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.2313725501</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)))</span>
+                <span class="o">.</span><span class="nf">leftKnobWidth</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">leftKnobHeight</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">leftKnobCorners</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">rightKnobColor</span><span class="p">(</span><span class="kt">Color</span><span class="p">(</span><span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.5725490451</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.2313725501</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)))</span>
+                <span class="o">.</span><span class="nf">rightKnobWidth</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">rightKnobHeight</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">rightKnobCorners</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+             <span class="c1">// ...other code</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h3 id='access-range-values' class='heading'>Access range values</h3>
+
+<p>You can access the range values in two ways, depending on the fact that you&rsquo;re using <code><a href="Classes/RangeUISlider.html">RangeUISlider</a></code> in a <code>UIKit</code> or <code>SwiftUI</code> view:</p>
+
+<ul>
+<li>for <code>UIKit</code>, use <code><a href="Protocols/RangeUISliderDelegate.html">RangeUISliderDelegate</a></code> and the delegate property</li>
+<li>for <code>SwiftUI</code>, use the <code><a href="Structs/RangeSlider.html#/s:13RangeUISlider0A6SliderV16minValueSelected12CoreGraphics7CGFloatVvp">RangeSlider.minValueSelected</a></code> and <code><a href="Structs/RangeSlider.html#/s:13RangeUISlider0A6SliderV16maxValueSelected12CoreGraphics7CGFloatVvp">RangeSlider.maxValueSelected</a></code> binding values</li>
+</ul>
+<h4 id='uikit-rangeuisliderdelegate' class='heading'>UIKit - RangeUISliderDelegate</h4>
+
+<p>To get the current values from the slider in a <code>UIKit</code> project, set the slider delegate property. The delegate of <code><a href="Classes/RangeUISlider.html">RangeUISlider</a></code> must implement the <code><a href="Protocols/RangeUISliderDelegate.html">RangeUISliderDelegate</a></code> protocol, that has three methods:</p>
 <pre class="highlight swift"><code>
 <span class="cm">/**
  Calls the delegate when the user has started the change of the range.
@@ -176,9 +237,34 @@ The delegate of the RangeUISlider must implement the <code><a href="Protocols/Ra
  <span class="kd">@objc</span> <span class="kd">func</span> <span class="nf">rangeChangeFinished</span><span class="p">(</span><span class="nv">minValueSelected</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">maxValueSelected</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">slider</span><span class="p">:</span> <span class="kt">RangeUISlider</span><span class="p">)</span>
 
 </code></pre>
+<h4 id='swiftui-binding-values' class='heading'>SwiftUI - Binding values</h4>
+
+<p>You can access the values of the slider in a <code>SwiftUI</code> project by passing two bindings properties to the <code><a href="Structs/RangeSlider.html">RangeSlider</a></code> init. See the example below.</p>
+<pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">SwiftUIHostingView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@State</span> <span class="kd">private</span> <span class="k">var</span> <span class="nv">minValueSelected</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="kd">@State</span> <span class="kd">private</span> <span class="k">var</span> <span class="nv">maxValueSelected</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">40</span>
+
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="kt">RangeSlider</span><span class="p">(</span><span class="nv">minValueSelected</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="err">$</span><span class="n">minValueSelected</span><span class="p">,</span> <span class="nv">maxValueSelected</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="err">$</span><span class="n">maxValueSelected</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">scaleMinValue</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">scaleMaxValue</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">defaultValueLeftKnob</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">defaultValueRightKnob</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">leftKnobWidth</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">leftKnobHeight</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">leftKnobCorners</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">rightKnobColor</span><span class="p">(</span><span class="kt">Color</span><span class="p">(</span><span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.5725490451</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.2313725501</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)))</span>
+                <span class="o">.</span><span class="nf">rightKnobWidth</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">rightKnobHeight</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">rightKnobCorners</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
 <hr>
-<h4 id='set-knob-values-programmatically' class='heading'>Set knob values programmatically</h4>
+<h3 id='change-knob-current-values-programmatically-only-code-uikit-code' class='heading'>Change knob current values programmatically (only <code>UIKit</code>)</h3>
 
 <p>You can also change the values of the slider knobs by calling this two API:</p>
 
@@ -187,10 +273,10 @@ The delegate of the RangeUISlider must implement the <code><a href="Protocols/Ra
 <li><code>func changeRightKnob(value: CGFloat)</code> to change programmatically the right knob value</li>
 </ul>
 
-<p>The <code>value</code> passed to these methods should be in the slider range values (see the next section od the <a href="https://www.fabrizioduroni.it/RangeUISlider/" title="RangeUISlider doc">documentation</a> to understand how to customize the slider range). Take a look at the <a href="https://github.com/chicio/RangeUISlider/blob/master/Demo/ChangeProgrammaticViewController.swift">example in the ChangeProgrammaticViewController contained in the demo project </a> to understand how to use these API.  </p>
-<h4 id='customizable-property' class='heading'>Customizable property</h4>
+<p>The <code>value</code> passed to these methods should be in the slider range values (see the next section of the <a href="https://www.fabrizioduroni.it/RangeUISlider/" title="RangeUISlider doc">documentation</a> to understand how to customize the slider range). Take a look at the <a href="https://github.com/chicio/RangeUISlider/blob/master/Demo/ChangeProgrammaticViewController.swift">example in the ChangeProgrammaticViewController contained in the demo project </a> to understand how to use these API.  </p>
+<h3 id='customizable-properties' class='heading'>Customizable properties</h3>
 
-<p>This is the list of the <strong>current customizable property of the RangeUISlider directly from Interface Builder using IBDesignable/IBInspectable</strong>:</p>
+<p>This is the list of the <code><a href="Classes/RangeUISlider.html">RangeUISlider</a></code> customizable properties directly from Interface Builder/programmatically (<code>UIKit</code>) or by using the <code><a href="Structs/RangeSlider.html">RangeSlider</a></code> access modifiers (<code>SwiftUI</code>):</p>
 
 <ul>
 <li>identifier of the slider (Int )</li>
@@ -253,7 +339,7 @@ The delegate of the RangeUISlider must implement the <code><a href="Protocols/Ra
 <li>bar shadow radius</li>
 <li>bar border width</li>
 <li>bar border color</li>
-<li>container corners</li>
+<li>container corners (only available in the <code>UIKit</code> version)</li>
 </ul>
 
 <hr>
