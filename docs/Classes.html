@@ -17,7 +17,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">RangeUISlider 1.13.0 Docs</a> (100% documented)</p>
+        <p><a href="index.html">RangeUISlider 2.0.0 Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/chicio/ID3TagEditor"><img src="img/gh.png"/>View on GitHub</a></p>
         <p class="header-right">
           <form role="search" action="search.json">
@@ -40,6 +40,9 @@
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Classes/RangeSliderCoordinator.html">RangeSliderCoordinator</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Classes/RangeUISlider.html">RangeUISlider</a>
               </li>
             </ul>
@@ -49,6 +52,14 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Protocols/RangeUISliderDelegate.html">RangeUISliderDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/RangeSlider.html">RangeSlider</a>
               </li>
             </ul>
           </li>
@@ -64,6 +75,38 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13RangeUISlider0A17SliderCoordinatorC"></a>
+                    <a name="//apple_ref/swift/Class/RangeSliderCoordinator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13RangeUISlider0A17SliderCoordinatorC">RangeSliderCoordinator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>RangeUISlider SwiftUI coordinator.
+The coordinator is the delegate of the <code><a href="Classes/RangeUISlider.html">RangeUISlider</a></code> instance wrapped by <code><a href="Structs/RangeSlider.html">RangeSlider</a></code>.
+It implements the delegate method to update the mininimum and maximum value
+selected and set them on the <code><a href="Structs/RangeSlider.html">RangeSlider</a></code> binding values.</p>
+
+                        <a href="Classes/RangeSliderCoordinator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@available</span><span class="p">(</span><span class="n">iOS</span> <span class="mf">14.0</span><span class="p">,</span> <span class="o">*</span><span class="p">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">RangeSliderCoordinator</span> <span class="p">:</span> <span class="kt"><a href="Protocols/RangeUISliderDelegate.html">RangeUISliderDelegate</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -88,8 +131,7 @@ RangeUISlider support RTL (right to left) languages automatically out of the box
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@IBDesignable</span>
-<span class="kd">@objc</span>
-<span class="kd">open</span> <span class="kd">class</span> <span class="kt">RangeUISlider</span> <span class="p">:</span> <span class="kt">UIView</span></code></pre>
+<span class="kd">open</span> <span class="kd">class</span> <span class="kt">RangeUISlider</span> <span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="kt">ProgrammaticKnobChangeDelegate</span><span class="p">,</span> <span class="kt">KnobGestureManagerDelegate</span></code></pre>
 
                         </div>
                       </div>

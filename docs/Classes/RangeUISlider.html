@@ -17,7 +17,7 @@
     <a title="RangeUISlider Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">RangeUISlider 1.13.0 Docs</a> (100% documented)</p>
+        <p><a href="../index.html">RangeUISlider 2.0.0 Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/chicio/ID3TagEditor"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right">
           <form role="search" action="../search.json">
@@ -40,6 +40,9 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Classes/RangeSliderCoordinator.html">RangeSliderCoordinator</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/RangeUISlider.html">RangeUISlider</a>
               </li>
             </ul>
@@ -49,6 +52,14 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Protocols/RangeUISliderDelegate.html">RangeUISliderDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/RangeSlider.html">RangeSlider</a>
               </li>
             </ul>
           </li>
@@ -62,8 +73,7 @@
                 <div class="language">
                   
                   <pre class="highlight swift"><code><span class="kd">@IBDesignable</span>
-<span class="kd">@objc</span>
-<span class="kd">open</span> <span class="kd">class</span> <span class="kt">RangeUISlider</span> <span class="p">:</span> <span class="kt">UIView</span></code></pre>
+<span class="kd">open</span> <span class="kd">class</span> <span class="kt">RangeUISlider</span> <span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="kt">ProgrammaticKnobChangeDelegate</span><span class="p">,</span> <span class="kt">KnobGestureManagerDelegate</span></code></pre>
 
                 </div>
               </div>
@@ -424,7 +434,7 @@ RangeUISlider support RTL (right to left) languages automatically out of the box
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Gradient color 1 for range not selected.</p>
+                        <p>Gradient color 1 for range selected.</p>
 
                       </div>
                       <div class="declaration">
@@ -452,7 +462,7 @@ RangeUISlider support RTL (right to left) languages automatically out of the box
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Gradient color 2 for range not selected.</p>
+                        <p>Gradient color 2 for range selected.</p>
 
                       </div>
                       <div class="declaration">
@@ -480,7 +490,7 @@ RangeUISlider support RTL (right to left) languages automatically out of the box
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Gradient start point for not selected range.</p>
+                        <p>Gradient start point for selected range.</p>
 
                       </div>
                       <div class="declaration">
@@ -508,7 +518,7 @@ RangeUISlider support RTL (right to left) languages automatically out of the box
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Gradient end point for not selected range.</p>
+                        <p>Gradient end point for selected range.</p>
 
                       </div>
                       <div class="declaration">
@@ -1978,6 +1988,19 @@ RangeUISlider support RTL (right to left) languages automatically out of the box
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/init"></a>
+                <a name="//apple_ref/swift/Section/init" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/init"></a>
+                  <h3 class="section-name"><p>init</p>
+</h3>
+                </div>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2070,6 +2093,19 @@ RangeUISlider support RTL (right to left) languages automatically out of the box
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/views%20lifecycle"></a>
+                <a name="//apple_ref/swift/Section/views lifecycle" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/views%20lifecycle"></a>
+                  <h3 class="section-name"><p>views lifecycle</p>
+</h3>
+                </div>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2124,6 +2160,19 @@ RangeUISlider support RTL (right to left) languages automatically out of the box
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/programmatic%20api"></a>
+                <a name="//apple_ref/swift/Section/programmatic api" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/programmatic%20api"></a>
+                  <h3 class="section-name"><p>programmatic api</p>
+</h3>
+                </div>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>

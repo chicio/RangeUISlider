@@ -9,7 +9,8 @@
 jazzy \
   --output docs \
   --module RangeUISlider \
-  --xcodebuild-arguments -project,RangeUISlider.xcodeproj,-scheme,"RangeUISlider" \
+  --build-tool-arguments -project,RangeUISlider.xcodeproj,-scheme,RangeUISlider,-arch,arm64 \
   --author_url https://www.fabrizioduroni.it \
   --github_url https://github.com/chicio/ID3TagEditor \
+  --sdk iphoneos \
   --copyright "2020 [Fabrizio Duroni](https://www.fabrizioduroni.it)"
