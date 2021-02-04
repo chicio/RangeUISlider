@@ -17,5 +17,6 @@ An iOS range selection slider compatible with UIKit and SwiftUI. Developed using
   s.source_files  = "Source", "Source/**/*.{h,m}", "Source/**/*.swift"
   s.exclude_files = "Source/Exclude"
   s.swift_version = '5.0'
+  s.weak_frameworks = 'SwiftUI'
 
 end
