@@ -15,8 +15,6 @@ An iOS range selection slider compatible with `UIKit` and `SwiftUI`. Developed u
   <img width="400" height="400" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/range-ui-slider.png">
 </p>
 
-A iOS range selection slider, developed using autolayout and highly customizable using IBDesignabled/IBInspectable or programmatically.
-
 ***
 
 ### Installation
