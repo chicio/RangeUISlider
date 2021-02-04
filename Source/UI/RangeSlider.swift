@@ -6,6 +6,7 @@
 //  2021 Fabrizio Duroni.
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
 
 /**
@@ -67,3 +68,4 @@ public struct RangeSlider: UIViewRepresentable {
         return RangeSliderCoordinator(rangeSlider: self)
     }
 }
+#endif

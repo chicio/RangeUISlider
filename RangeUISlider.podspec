@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.version      = "2.0.0"
   s.summary      = "A highly customizable iOS range selection slider"
   s.description  = <<-DESC
-A highly customizable iOS range selection slider, developed using autolayout and completely customizable using IBDesignabled and IBInspectable.
+An iOS range selection slider compatible with UIKit and SwiftUI. Developed using autolayout and highly customizable using IBDesignabled and IBInspectable or programmatically. It support also RTL (right to left) languages automatically out of the box.
                    DESC
   s.homepage     = "https://github.com/chicio/RangeUISlider"
   s.screenshots  = "https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.png"

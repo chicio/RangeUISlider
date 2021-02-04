@@ -8,6 +8,7 @@
 
 // swiftlint:disable file_length
 
+#if canImport(SwiftUI)
 import SwiftUI
 
 @available(iOS 14.0, *)
@@ -665,3 +666,4 @@ extension RangeSlider {
         return self
     }
 }
+#endif
