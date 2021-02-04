@@ -9,7 +9,7 @@
 ![SwiftLint](https://github.com/chicio/RangeUISlider/workflows/SwiftLint/badge.svg)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/chicio/RangeUISlider/master/LICENSE.md)
 
-A iOS range selection slider, developed using autolayout and highly customizable using IBDesignabled and IBInspectable or programmatically. It support also RTL (right to left) languages automatically out of the box.
+An iOS range selection slider compatible with `UIKit` and `SwiftUI`. Developed using autolayout and highly customizable using `@IBDesignabled` and `@IBInspectable` or programmatically. It support also RTL (right to left) languages automatically out of the box.
 
 <p align="center">
   <img width="400" height="400" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/range-ui-slider.png">
@@ -21,17 +21,20 @@ A iOS range selection slider, developed using autolayout and highly customizable
 
 ### Installation
 
-There are three ways to install RangeUISlider in your project: manual installation, as a stand-alone framework or using cocoapods.
+There are three ways to install `RangeUISlider` in your project: manual installation, as a stand-alone framework or using cocoapods.
 
 **Manual installation**
 
-To manually install RangeUISlider simply drag and drop all the file contained in the <a href="https://github.com/chicio/RangeUISlider/tree/master/Source">Source</a> folder inside your project.
+To manually install `RangeUISlider` simply drag and drop all the file contained in the <a href="https://github.com/chicio/RangeUISlider/tree/master/Source">Source</a> folder inside your project.
 
 **Framework**
 
-RangeUISlider is available also as a framework. To install it follow the standard procedure used to install a custom cocoa touch framework
-(simply drag the RangeUISlider.xcodeproj inside your project and add it to the Embedded Binaries/Linked Frameworks and Libraries section of your 
-project. See the demo project for a complete example of the setup of the framework.
+`RangeUISlider` is available also as a framework. To install it follow the standard procedure used to install a custom cocoa touch framework:
+
+- drag the RangeUISlider.xcodeproj inside your project 
+- add it to the Embedded Binaries/Linked Frameworks and Libraries section of your project. 
+
+See the `RangeUISliderDemo` demo project/target for an example of the setup of the framework.
 
 **CocoaPods**
 
@@ -40,7 +43,7 @@ Add the dependency to your Podfile similar to the following:
 
 ```
 target 'MyApp' do
-    pod 'RangeUISlider', '~> 1.5'
+    pod 'RangeUISlider', '~> 2.0'
 end
 ```
 
@@ -48,8 +51,7 @@ and then run pod install (or pod update).
 
 **Swift Package Manager (SPM)**
 
-RangeUISlider is also available as a SPM package. Add it from the project configuration using the Github repository url. 
-Choose master or a tag. If you choose the tag it must be >= 1.11.0.
+`RangeUISlider` is also available as a SPM package. Add it from the project configuration using the Github repository url. Choose master or a tag. If you choose the tag it must be >= 1.11.0.
 
 ![spm 1](https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/05-spm1.png)
 ![spm 2](https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/06-spm2.png)
@@ -59,27 +61,84 @@ Choose master or a tag. If you choose the tag it must be >= 1.11.0.
 
 ### Usage
 
-You can use RangeUISlider in two ways: in Interface Builder (thanks to` @IBDesignable` and `@IBInspectable`) or programmatically.
-Then you can use the `RangeUISliderDelegate` protocol to get the values of the slider.
+You can use RangeUISlider in three ways: 
+
+- in a `UIKit` project using Interface Builder (thanks to `@IBDesignable` and `@IBInspectable` ) 
+- in a `UIKit` project programmatically
+- in a `SwiftUI` project using the `RangeSlider` wrapper created using `UIViewRepresentable`
 
 #### Interface builder
- - drag a UIView into you storyboard
- - set RangeUISlider as custom class of that view
-   - **IMPORTANT: set also the Module to RangeUISlider if you used cocoapods or the framework version during installation**
- - start editing using interface builder
+To levearege the power  of  the `RangeUISlider`  in interface builder: 
 
-[Here](https://www.youtube.com/watch?v=Lorvozz-1HU) you can find a video tutorial for the setup with interface builder.
+ - drag a UIView into you storyboard
+ - set `RangeUISlider` as custom class of that view
+   - **IMPORTANT: set also the Module to RangeUISlider if you used cocoapods or the framework version during installation**
+ - start editing it using interface builder (and levearage the power of `@IBDesignabled` and `@IBInspectable`)
+
+[Here](https://www.youtube.com/watch?v=Lorvozz-1HU) you can find a video tutorial for the setup with Interface Builder.
 
 <p align="center">
 <a href="https://www.youtube.com/watch?v=Lorvozz-1HU" target="_blank"><img src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/tutorial.png"></a>
 </p>
 
 #### Programmatic
-You can also use RangeUISlider as a programmatic UI component by setting all the property you need in your code. Take a look at the [example in the SetupProgrammaticViewController contained in the demo project ](https://github.com/chicio/RangeUISlider/blob/master/Demo/SetupProgrammaticViewController.swift) to see an example of programmatic setup.  
+You can also use `RangeUISlider` as a programmatic UI component by setting all the property you need in your code. Take a look at the `RangeUISliderDemo` project to see multiple example (e.g. take a look at [this contrroller](https://github.com/chicio/RangeUISlider/blob/master/Demo/SetupProgrammaticViewController.swift). In particular, remember to set `translatesAutoresizingMaskIntoConstraints = false` for the slider to use autolayout. Below you can find a simple example.
 
-#### RangeUISliderDelegate
-To get the current values from the slider, set its delegate property.
-The delegate of the RangeUISlider must implement the `RangeUISliderDelegate` protocol, that has three methods:
+```swift
+override func viewDidLoad() {
+    // ...other code
+
+    super.viewDidLoad()
+    rangeSlider = RangeUISlider(frame: CGRect(origin: CGPoint(x: 20, y: 20), size: CGSize(width: 100, height: 50)))
+    rangeSlider.translatesAutoresizingMaskIntoConstraints = false
+    rangeSlider.delegate = self
+    rangeSlider.barHeight = 20
+    rangeSlider.barCorners = 10
+    rangeSlider.leftKnobColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
+    rangeSlider.leftKnobWidth = 40
+    rangeSlider.leftKnobHeight = 40
+    rangeSlider.leftKnobCorners = 20
+    rangeSlider.rightKnobColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
+    rangeSlider.rightKnobWidth = 40
+    rangeSlider.rightKnobHeight = 40
+    rangeSlider.rightKnobCorners = 20
+    self.view.addSubview(rangeSlider)
+    
+    // ...other code
+}
+```
+
+#### SwiftUI
+You can use `RangeUISlider` in a `SwiftUI` application/screen by leveraging the `RangeSlider`  wrapper created using `UIViewRepresentable`. Below you can find a small example of the usage in a simple screen. You can find more example in the `RangeUISliderDemo` demo project (look [here](https://github.com/chicio/RangeUISlider/blob/master/RangeUISliderDemo/SwiftUIHostingViewController.swift "swiftui rangeslider examples")).  
+
+```swift
+var body: some View {
+        VStack {
+            // ...other code
+    
+            RangeSlider(minValueSelected: <binding value>, maxValueSelected: <binding value>)
+                .leftKnobColor(Color(#colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)))
+                .leftKnobWidth(40)
+                .leftKnobHeight(40)
+                .leftKnobCorners(20)
+                .rightKnobColor(Color(#colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)))
+                .rightKnobWidth(40)
+                .rightKnobHeight(40)
+                .rightKnobCorners(20)
+                
+             // ...other code
+        }
+}
+```
+
+### Access range values 
+You can access the range values in two ways, depending on the fact that you're using `RangeUISlider` in a `UIKit` or `SwiftUI` view:
+
+- for `UIKit`, use `RangeUISliderDelegate` and the delegate property
+- for `SwiftUI`, use the `RangeSlider.minValueSelected` and `RangeSlider.maxValueSelected` binding values
+
+#### UIKit - RangeUISliderDelegate
+To get the current values from the slider in a `UIKit` project, set the slider delegate property. The delegate of `RangeUISlider` must implement the `RangeUISliderDelegate` protocol, that has three methods:
 
 ```swift
 
@@ -107,20 +166,49 @@ The delegate of the RangeUISlider must implement the `RangeUISliderDelegate` pro
  @objc func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
 
 ```
+
+#### SwiftUI - Binding values
+You can access the values of the slider in a `SwiftUI` project by passing two bindings properties to the `RangeSlider` init. See the example below.
+
+```swift
+struct SwiftUIHostingView: View {
+    @State private var minValueSelected: CGFloat = 10
+    @State private var maxValueSelected: CGFloat = 40
+
+    var body: some View {
+        VStack {
+            RangeSlider(minValueSelected: self.$minValueSelected, maxValueSelected: self.$maxValueSelected)
+                .scaleMinValue(5)
+                .scaleMaxValue(80)
+                .defaultValueLeftKnob(10)
+                .defaultValueRightKnob(40)
+                .leftKnobWidth(40)
+                .leftKnobHeight(40)
+                .leftKnobCorners(20)
+                .rightKnobColor(Color(#colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)))
+                .rightKnobWidth(40)
+                .rightKnobHeight(40)
+                .rightKnobCorners(20)
+        }
+    }
+}
+```
+
 ***
 
-#### Set knob values programmatically
+### Change knob current values programmatically (only `UIKit`)
 
 You can also change the values of the slider knobs by calling this two API:
 
 - `func changeLeftKnob(value: CGFloat)` to change programmatically the left knob value
 - `func changeRightKnob(value: CGFloat)` to change programmatically the right knob value
 
-The `value` passed to these methods should be in the slider range values (see the next section od the [documentation](https://www.fabrizioduroni.it/RangeUISlider/ "RangeUISlider doc") to understand how to customize the slider range). Take a look at the [example in the ChangeProgrammaticViewController contained in the demo project ](https://github.com/chicio/RangeUISlider/blob/master/Demo/ChangeProgrammaticViewController.swift) to understand how to use these API.  
+The `value` passed to these methods should be in the slider range values (see the next section of the [documentation](https://www.fabrizioduroni.it/RangeUISlider/ "RangeUISlider doc") to understand how to customize the slider range). Take a look at the [example in the ChangeProgrammaticViewController contained in the demo project ](https://github.com/chicio/RangeUISlider/blob/master/Demo/ChangeProgrammaticViewController.swift) to understand how to use these API.  
 
-#### Customizable property
+### Customizable properties
 
-This is the list of the **current customizable property of the RangeUISlider directly from Interface Builder using IBDesignable/IBInspectable**:
+This is the list of the `RangeUISlider` customizable properties directly from Interface Builder/programmatically (`UIKit`) or by using the `RangeSlider` access modifiers (`SwiftUI`):
+
  - identifier of the slider (Int )
  - range minimum value (CGFloat)
  - range maximum value (CGFloat)
@@ -181,9 +269,10 @@ This is the list of the **current customizable property of the RangeUISlider dir
  - bar shadow radius
  - bar border width
  - bar border color
- - container corners
+ - container corners (only available in the `UIKit` version)
 
 ***
+
 ### Documentation
 
 You can find the complete api documentation on [fabrizioduroni.it](https://www.fabrizioduroni.it/RangeUISlider/ "RangeUISlider doc").
