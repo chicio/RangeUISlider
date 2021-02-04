@@ -52,6 +52,7 @@
 		45CEFF7325CB198400BF628B /* GestureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CEFF7225CB198400BF628B /* GestureData.swift */; };
 		45CEFF7825CB199B00BF628B /* KnobGestureManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CEFF7725CB199B00BF628B /* KnobGestureManagerDelegate.swift */; };
 		45CEFF7D25CB19C400BF628B /* KnobGestureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CEFF7C25CB19C400BF628B /* KnobGestureManager.swift */; };
+		45CEFF8525CBF51200BF628B /* SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CEFF8425CBF51200BF628B /* SwiftUITests.swift */; };
 		45D2B83725C5CBD500DFD838 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D2B83625C5CBD500DFD838 /* ConstraintAttributes.swift */; };
 		45E215291E8E812E00F0B8B9 /* RangeUISlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E215271E8E812E00F0B8B9 /* RangeUISlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45E2B6F225C987F1007CCBB5 /* ProgrammaticKnobChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2B6F125C987F1007CCBB5 /* ProgrammaticKnobChange.swift */; };
@@ -177,6 +178,7 @@
 		45CEFF7225CB198400BF628B /* GestureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureData.swift; sourceTree = "<group>"; };
 		45CEFF7725CB199B00BF628B /* KnobGestureManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobGestureManagerDelegate.swift; sourceTree = "<group>"; };
 		45CEFF7C25CB19C400BF628B /* KnobGestureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobGestureManager.swift; sourceTree = "<group>"; };
+		45CEFF8425CBF51200BF628B /* SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITests.swift; sourceTree = "<group>"; };
 		45D2B83625C5CBD500DFD838 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
 		45E215241E8E812E00F0B8B9 /* RangeUISlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RangeUISlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E215271E8E812E00F0B8B9 /* RangeUISlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RangeUISlider.h; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				45F064852599E3CC007B25A7 /* MixedFeaturesTests.swift */,
+				45CEFF8425CBF51200BF628B /* SwiftUITests.swift */,
 				455BF124259B44F80026BE56 /* InsideTableViewTests.swift */,
 				455BF12D259B4B2D0026BE56 /* ProgrammaticKnobChangeTests.swift */,
 				459CBEB6259B638200FCA5AB /* ProgrammaticScaleChangeTests.swift */,
@@ -707,6 +710,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45CEFF8525CBF51200BF628B /* SwiftUITests.swift in Sources */,
 				455BF12E259B4B2D0026BE56 /* ProgrammaticKnobChangeTests.swift in Sources */,
 				455BF125259B44F80026BE56 /* InsideTableViewTests.swift in Sources */,
 				45F064862599E3CC007B25A7 /* MixedFeaturesTests.swift in Sources */,

@@ -23,7 +23,10 @@
       "selectedTests" : [
         "InsideTableViewTests\/testInsideTableView()",
         "MixedFeaturesTests\/testCustomScale()",
-        "MixedFeaturesTests\/testStepIncrement()"
+        "MixedFeaturesTests\/testStepIncrement()",
+        "SwiftUITests\/testCustomScale()",
+        "SwiftUITests\/testStandardSlider()",
+        "SwiftUITests\/testStepIncrement()"
       ],
       "target" : {
         "containerPath" : "container:RangeUISlider.xcodeproj",
