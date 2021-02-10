@@ -1,6 +1,12 @@
 # Change Log
 All changes to RangeUISlider will be documented in this file.
 
+## [2.0.1](https://github.com/chicio/RangeUISlider/releases/tag/2.0.1)
+Release date: 2021-02-10.
+
+#### Fixed
+- `rangeNotSelectedColor` was not working. Added guard on gradient colors to avoid the creation of useless layers.
+
 ## [2.0.0](https://github.com/chicio/RangeUISlider/releases/tag/2.0.0)
 Release date: 2021-02-03.
 
