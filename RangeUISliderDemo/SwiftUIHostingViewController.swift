@@ -90,6 +90,7 @@ struct SwiftUIHostingView: View {
                     .accessibility(identifier: "RangeUISliderStep")
                 RangeSlider(minValueSelected: self.$minValueSelected, maxValueSelected: self.$maxValueSelected)
                     .rangeSelectedColor(Color(#colorLiteral(red: 1, green: 1, blue: 0.07611685739, alpha: 1)))
+                    .rangeNotSelectedColor(Color(#colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)))
                     .defaultValueLeftKnob(0.2)
                     .defaultValueRightKnob(0.7)
                     .leftKnobColor(Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)))
