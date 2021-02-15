@@ -144,8 +144,8 @@ class ChangeDefaultKnobsValuesProgrammaticViewController: UIViewController, Rang
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.rangeSlider.scaleMinValue = 50
             self.rangeSlider.scaleMaxValue = 200
-            self.rangeSlider.defaultValueLeftKnob = 60
-            self.rangeSlider.defaultValueRightKnob = 100
+            self.rangeSlider.defaultValueLeftKnob = 70
+            self.rangeSlider.defaultValueRightKnob = 110
         }
     }
 

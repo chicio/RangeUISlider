@@ -24,9 +24,17 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     /// Step increment value. If different from 0 RangeUISlider will let the user drag by step increment.
     @IBInspectable public var stepIncrement: CGFloat = 0.0
     /// Default left knob starting value.
-    @IBInspectable public var defaultValueLeftKnob: CGFloat = 0.0
+    @IBInspectable public var defaultValueLeftKnob: CGFloat = 0.0 {
+        didSet {
+            setNeedsLayout()
+        }
+    }
     /// Default right knob starting value.
-    @IBInspectable public var defaultValueRightKnob: CGFloat = 1.0
+    @IBInspectable public var defaultValueRightKnob: CGFloat = 1.0 {
+        didSet {
+            setNeedsLayout()
+        }
+    }
     /// Scale minimum value.
     @IBInspectable public var scaleMinValue: CGFloat = 0.0 {
         didSet {
