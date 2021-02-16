@@ -18,7 +18,7 @@ import UIKit
  RangeUISlider support RTL (right to left) languages automatically out of the box.
  */
 @IBDesignable
-open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureManagerDelegate {
+open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDelegate {
     /// Slider identifier.
     @IBInspectable public var identifier: Int = 0
     /// Step increment value. If different from 0 RangeUISlider will let the user drag by step increment.
@@ -447,10 +447,15 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
         knobs: components.knobs,
         delegate: self
     )
-    private lazy var knobGestureManager: KnobGestureManager = KnobGestureManager(
+    private lazy var rangeUpdater = RangeUpdater(
+        properties: properties,
+        components: components,
+        delegate: self
+    )
+    private lazy var knobGestureManager = KnobGestureManager(
         bar: components.bar,
         knobs: components.knobs,
-        knobGestureManagerDelegate: self
+        knobGestureManagerDelegate: rangeUpdater
     )
 
     // MARK: init
@@ -521,7 +526,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
             knobsHorizontalPosition: components.knobs.horizontalPositions(),
             barWidth: components.bar.frame.width
         )
-        rangeSelectionFinished()
+        rangeUpdater.rangeSelectionFinished()
     }
 
     // MARK: setup
@@ -660,7 +665,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
         )
     }
 
-    // MARK: Scale
+    // MARK: scale
 
     private func setScale() {
         properties.scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
@@ -685,44 +690,25 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
         )
     }
 
+    // MARK: delegate
+
     internal func rangeChangeStarted() {
         delegate?.rangeChangeStarted?()
     }
 
-    internal func rangeSelectionUpdate() {
-        let rangeSelected = calculateSelectedRange()
-
-        if isDifferentFromPreviousRangeSelected(rangeSelected: rangeSelected) {
-            delegate?.rangeIsChanging?(
-                minValueSelected: rangeSelected.minValue,
-                maxValueSelected: rangeSelected.maxValue,
-                slider: self
-            )
-            properties.previousRangeSelected = rangeSelected
-        }
+    func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
+        delegate?.rangeIsChanging?(
+            minValueSelected: minValueSelected,
+            maxValueSelected: maxValueSelected,
+            slider: self
+        )
     }
 
-    private func isDifferentFromPreviousRangeSelected(rangeSelected: RangeSelected) -> Bool {
-        return rangeSelected.minValue != properties.previousRangeSelected.minValue
-            || rangeSelected.maxValue != properties.previousRangeSelected.maxValue
-    }
-
-    internal func rangeSelectionFinished() {
-        let rangeSelected = calculateSelectedRange()
-
-        if !rangeSelected.maxValue.isNaN && !rangeSelected.maxValue.isNaN {
-            delegate?.rangeChangeFinished(
-                minValueSelected: rangeSelected.minValue,
-                maxValueSelected: rangeSelected.maxValue,
-                slider: self
-            )
-        }
-    }
-
-    private func calculateSelectedRange() -> RangeSelected {
-        return properties.calculateSelectedRange(
-            knobsHorizontalPosition: components.knobs.horizontalPositions(),
-            barWidth: components.bar.frame.width
+    func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
+        delegate?.rangeChangeFinished(
+            minValueSelected: minValueSelected,
+            maxValueSelected: maxValueSelected,
+            slider: self
         )
     }
 }

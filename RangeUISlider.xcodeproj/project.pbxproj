@@ -37,6 +37,8 @@
 		45876A0E25DB1A780012D213 /* ProgrammaticDefaultKnobValueChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45876A0D25DB1A780012D213 /* ProgrammaticDefaultKnobValueChangeTests.swift */; };
 		45876A2425DBB7070012D213 /* RangeUISliderComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45876A1525DBB6A20012D213 /* RangeUISliderComponents.swift */; };
 		45876A2925DBC4BD0012D213 /* RangeUISliderProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45876A2825DBC4BD0012D213 /* RangeUISliderProperties.swift */; };
+		45876A3125DC01470012D213 /* RangeUpdaterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45876A3025DC01470012D213 /* RangeUpdaterDelegate.swift */; };
+		45876A3925DC01810012D213 /* RangeUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45876A3825DC01810012D213 /* RangeUpdater.swift */; };
 		45949DBC25C6CB5300F09F3B /* ConstraintFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45949DBB25C6CB5300F09F3B /* ConstraintFactory.swift */; };
 		45949DC125C6CBA700F09F3B /* ConstraintAdditionalInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45949DC025C6CBA700F09F3B /* ConstraintAdditionalInformations.swift */; };
 		4596308525C7ECE500FCCCE7 /* ProgressViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4596308425C7ECE500FCCCE7 /* ProgressViews.swift */; };
@@ -158,6 +160,8 @@
 		45876A0D25DB1A780012D213 /* ProgrammaticDefaultKnobValueChangeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammaticDefaultKnobValueChangeTests.swift; sourceTree = "<group>"; };
 		45876A1525DBB6A20012D213 /* RangeUISliderComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeUISliderComponents.swift; sourceTree = "<group>"; };
 		45876A2825DBC4BD0012D213 /* RangeUISliderProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeUISliderProperties.swift; sourceTree = "<group>"; };
+		45876A3025DC01470012D213 /* RangeUpdaterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeUpdaterDelegate.swift; sourceTree = "<group>"; };
+		45876A3825DC01810012D213 /* RangeUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeUpdater.swift; sourceTree = "<group>"; };
 		458CD4EA25A1E2760065FDEF /* generate_docs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = generate_docs.sh; sourceTree = "<group>"; };
 		458E1B90257A9CC800165AA7 /* RangeUISlider.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RangeUISlider.podspec; sourceTree = "<group>"; };
 		45949DBB25C6CB5300F09F3B /* ConstraintFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintFactory.swift; sourceTree = "<group>"; };
@@ -276,6 +280,8 @@
 				450C7B5525C48A4F00764496 /* RangeSelectedCalculator.swift */,
 				45876A2825DBC4BD0012D213 /* RangeUISliderProperties.swift */,
 				4538955325C5D62700389905 /* RangeUISliderCreator.swift */,
+				45876A3025DC01470012D213 /* RangeUpdaterDelegate.swift */,
+				45876A3825DC01810012D213 /* RangeUpdater.swift */,
 				450C7B5625C48A4F00764496 /* StepCalculator.swift */,
 				451AF81025C6E36F00DD37CE /* Dimensions.swift */,
 				450C7B5725C48A4F00764496 /* KnobsHitTest.swift */,
@@ -676,6 +682,7 @@
 				45E2B6F225C987F1007CCBB5 /* ProgrammaticKnobChange.swift in Sources */,
 				45E9D59725C6F94200FE6E3F /* BarProperties.swift in Sources */,
 				450C7B4E25C489E200764496 /* PositionConstraintFactory.swift in Sources */,
+				45876A3925DC01810012D213 /* RangeUpdater.swift in Sources */,
 				450C7B6725C48A7500764496 /* Bar.swift in Sources */,
 				459630C525C8854D00FCCCE7 /* ProgressViewsProperties.swift in Sources */,
 				459630E525C8A2DE00FCCCE7 /* GradientColors.swift in Sources */,
@@ -714,6 +721,7 @@
 				451AF81125C6E36F00DD37CE /* Dimensions.swift in Sources */,
 				45876A2425DBB7070012D213 /* RangeUISliderComponents.swift in Sources */,
 				450C7B6825C48A7500764496 /* RangeSlider.swift in Sources */,
+				45876A3125DC01470012D213 /* RangeUpdaterDelegate.swift in Sources */,
 				45876A2925DBC4BD0012D213 /* RangeUISliderProperties.swift in Sources */,
 				450C7B7525C490C100764496 /* ConstraintViews.swift in Sources */,
 				45949DBC25C6CB5300F09F3B /* ConstraintFactory.swift in Sources */,
