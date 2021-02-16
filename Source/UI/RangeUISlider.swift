@@ -438,11 +438,10 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     public weak var delegate: RangeUISliderDelegate?
 
     private let components = RangeUISliderComponents()
-    internal lazy var previousRangeSelected: RangeSelected = RangeSelected(
-        minValue: defaultValueLeftKnob,
-        maxValue: defaultValueRightKnob
+    internal lazy var properties = RangeUISliderProperties(
+        scale: Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue),
+        previousRangeSelected: RangeSelected(minValue: defaultValueLeftKnob, maxValue: defaultValueRightKnob)
     )
-    internal lazy var scale: Scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
     private lazy var programmaticKnobChange: ProgrammaticKnobChange = ProgrammaticKnobChange(
         bar: components.bar,
         knobs: components.knobs,
@@ -453,7 +452,6 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
         knobs: components.knobs,
         knobGestureManagerDelegate: self
     )
-    private lazy var rangeSelectedCalculator: RangeSelectedCalculator = RangeSelectedCalculator()
 
     // MARK: init
 
@@ -519,9 +517,8 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     }
 
     internal func programmaticChangeCompleted() {
-        previousRangeSelected = rangeSelectedCalculator.calculate(
-            scale: scale,
-            knobPositions: components.knobs.horizontalPositions(),
+        properties.updateRangeSelectedCalculator(
+            knobsHorizontalPosition: components.knobs.horizontalPositions(),
             barWidth: components.bar.frame.width
         )
         rangeSelectionFinished()
@@ -666,7 +663,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     // MARK: Scale
 
     private func setScale() {
-        scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
+        properties.scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
     }
 
     // MARK: gesture
@@ -682,7 +679,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     private func getGestureData(gestureRecognizer: UIPanGestureRecognizer) -> GestureData {
         return GestureData(
             gestureRecognizer: gestureRecognizer,
-            scale: scale,
+            scale: properties.scale,
             stepIncrement: stepIncrement,
             semanticContentAttribute: self.semanticContentAttribute
         )
@@ -701,13 +698,13 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
                 maxValueSelected: rangeSelected.maxValue,
                 slider: self
             )
-            previousRangeSelected = rangeSelected
+            properties.previousRangeSelected = rangeSelected
         }
     }
 
     private func isDifferentFromPreviousRangeSelected(rangeSelected: RangeSelected) -> Bool {
-        return rangeSelected.minValue != previousRangeSelected.minValue
-            || rangeSelected.maxValue != previousRangeSelected.maxValue
+        return rangeSelected.minValue != properties.previousRangeSelected.minValue
+            || rangeSelected.maxValue != properties.previousRangeSelected.maxValue
     }
 
     internal func rangeSelectionFinished() {
@@ -723,9 +720,8 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     }
 
     private func calculateSelectedRange() -> RangeSelected {
-        return rangeSelectedCalculator.calculate(
-            scale: scale,
-            knobPositions: components.knobs.horizontalPositions(),
+        return properties.calculateSelectedRange(
+            knobsHorizontalPosition: components.knobs.horizontalPositions(),
             barWidth: components.bar.frame.width
         )
     }
