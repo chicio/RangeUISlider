@@ -700,7 +700,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
         delegate?.rangeChangeStarted?()
     }
 
-    func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
+    internal func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
         delegate?.rangeIsChanging?(
             minValueSelected: minValueSelected,
             maxValueSelected: maxValueSelected,
@@ -708,7 +708,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
         )
     }
 
-    func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
+    internal func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
         delegate?.rangeChangeFinished(
             minValueSelected: minValueSelected,
             maxValueSelected: maxValueSelected,
