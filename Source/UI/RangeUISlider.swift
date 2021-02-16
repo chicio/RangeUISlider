@@ -694,11 +694,8 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     }
 
     internal func rangeSelectionUpdate() {
-        let rangeSelected = rangeSelectedCalculator.calculate(
-            scale: scale,
-            knobPositions: knobs.horizontalPositions(),
-            barWidth: bar.frame.width
-        )
+        let rangeSelected = calculateSelectedRange()
+
         if isDifferentFromPreviousRangeSelected(rangeSelected: rangeSelected) {
             delegate?.rangeIsChanging?(
                 minValueSelected: rangeSelected.minValue,
@@ -715,11 +712,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     }
 
     internal func rangeSelectionFinished() {
-        let rangeSelected = rangeSelectedCalculator.calculate(
-            scale: scale,
-            knobPositions: knobs.horizontalPositions(),
-            barWidth: bar.frame.width
-        )
+        let rangeSelected = calculateSelectedRange()
 
         if !rangeSelected.maxValue.isNaN && !rangeSelected.maxValue.isNaN {
             delegate?.rangeChangeFinished(
@@ -728,5 +721,13 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
                 slider: self
             )
         }
+    }
+
+    private func calculateSelectedRange() -> RangeSelected {
+        return rangeSelectedCalculator.calculate(
+            scale: scale,
+            knobPositions: knobs.horizontalPositions(),
+            barWidth: bar.frame.width
+        )
     }
 }
