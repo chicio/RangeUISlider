@@ -509,6 +509,10 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
      - parameter value: the new value to be assigned to the left knob
      */
     public func changeLeftKnob(value: CGFloat) {
+        properties.updateRangeSelectedCalculator(
+            knobsHorizontalPosition: components.knobs.horizontalPositions(),
+            barWidth: components.bar.frame.width
+        )
         programmaticKnobChange.programmaticallyChangeLeftKnob(value: value)
     }
 
@@ -518,14 +522,14 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
      - parameter value: the new value to be assigned to the right knob
      */
     public func changeRightKnob(value: CGFloat) {
-        programmaticKnobChange.programmaticallyChangeRightKnob(value: value)
-    }
-
-    internal func programmaticChangeCompleted() {
         properties.updateRangeSelectedCalculator(
             knobsHorizontalPosition: components.knobs.horizontalPositions(),
             barWidth: components.bar.frame.width
         )
+        programmaticKnobChange.programmaticallyChangeRightKnob(value: value)
+    }
+
+    internal func programmaticChangeCompleted() {
         rangeUpdater.rangeSelectionFinished()
     }
 
