@@ -1,6 +1,12 @@
 # Change Log
 All changes to RangeUISlider will be documented in this file.
 
+## [2.0.2](https://github.com/chicio/RangeUISlider/releases/tag/2.0.2)
+Release date: 2021-02-17.
+
+#### Fixed
+- `defaultValueLeftKnob` and `defaultValueRightKnob` now are settedn when changed programmatically
+
 ## [2.0.1](https://github.com/chicio/RangeUISlider/releases/tag/2.0.1)
 Release date: 2021-02-10.
 
