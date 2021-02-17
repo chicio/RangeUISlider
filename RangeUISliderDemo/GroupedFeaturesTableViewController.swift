@@ -38,6 +38,10 @@ class GroupedFeaturesTableViewController: UITableViewController {
             description: "Programmatic scale change",
             segueIdentifier: "showChangeScaleProgrammaticSegue"
         ),
+        GroupedFeaturesViewControllerData(
+            description: "Programmatic default knob value change",
+            segueIdentifier: "showChangeDefaultKnobValueProgrammaticSegue"
+        ),
         GroupedFeaturesViewControllerData(description: "SwiftUI", segueIdentifier: "swiftUISegue")
     ]
 

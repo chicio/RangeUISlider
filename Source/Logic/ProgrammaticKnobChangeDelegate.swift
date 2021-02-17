@@ -9,7 +9,6 @@
 import Foundation
 
 protocol ProgrammaticKnobChangeDelegate: class {
-    var scale: Scale { get }
-    var previousRangeSelected: RangeSelected { get }
+    var properties: RangeUISliderProperties { get }
     func programmaticChangeCompleted()
 }

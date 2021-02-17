@@ -47,12 +47,12 @@ class ProgrammaticKnobChange {
     }
 
     private func calculateLeftKnobPositionFrom(value: CGFloat) {
-        let valueInScale = convertToScale(value: value, scale: delegate.scale)
+        let valueInScale = convertToScale(value: value, scale: delegate.properties.scale)
         knobs.leftKnob.xPositionConstraint.constant = bar.frame.width * valueInScale
     }
 
     private func calculateRightKnobPositionFrom(value: CGFloat) {
-        let valueInScale = convertToScale(value: value, scale: delegate.scale)
+        let valueInScale = convertToScale(value: value, scale: delegate.properties.scale)
         knobs.rightKnob.xPositionConstraint.constant = (bar.frame.width * valueInScale) - bar.frame.width
     }
 
@@ -61,12 +61,12 @@ class ProgrammaticKnobChange {
     }
 
     private func isValidForLeftKnob(value: CGFloat) -> Bool {
-        return value > delegate.scale.scaleMinValue
-            && value <= delegate.previousRangeSelected.maxValue
+        return value > delegate.properties.scale.scaleMinValue
+            && value <= delegate.properties.previousRangeSelected.maxValue
     }
 
     private func isValidforRightKnob(value: CGFloat) -> Bool {
-        return value <= delegate.scale.scaleMaxValue
-            && value >= delegate.previousRangeSelected.minValue
+        return value <= delegate.properties.scale.scaleMaxValue
+            && value >= delegate.properties.previousRangeSelected.minValue
     }
 }

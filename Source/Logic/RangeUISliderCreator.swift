@@ -3,7 +3,7 @@
 //  RangeUISlider
 //
 //  Created by Fabrizio Duroni on 30/01/21.
-//  Copyright © 2021 Fabrizio Duroni. All rights reserved.
+//  2021 Fabrizio Duroni.
 //
 
 import UIKit

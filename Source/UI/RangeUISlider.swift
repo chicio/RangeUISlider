@@ -18,15 +18,23 @@ import UIKit
  RangeUISlider support RTL (right to left) languages automatically out of the box.
  */
 @IBDesignable
-open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureManagerDelegate {
+open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDelegate {
     /// Slider identifier.
     @IBInspectable public var identifier: Int = 0
     /// Step increment value. If different from 0 RangeUISlider will let the user drag by step increment.
     @IBInspectable public var stepIncrement: CGFloat = 0.0
     /// Default left knob starting value.
-    @IBInspectable public var defaultValueLeftKnob: CGFloat = 0.0
+    @IBInspectable public var defaultValueLeftKnob: CGFloat = 0.0 {
+        didSet {
+            setNeedsLayout()
+        }
+    }
     /// Default right knob starting value.
-    @IBInspectable public var defaultValueRightKnob: CGFloat = 1.0
+    @IBInspectable public var defaultValueRightKnob: CGFloat = 1.0 {
+        didSet {
+            setNeedsLayout()
+        }
+    }
     /// Scale minimum value.
     @IBInspectable public var scaleMinValue: CGFloat = 0.0 {
         didSet {
@@ -42,7 +50,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     /// Selected range color.
     @IBInspectable public var rangeSelectedColor: UIColor = UIColor.blue {
         didSet {
-            progressViews.selectedProgressView.backgroundColor = rangeSelectedColor
+            components.progressViews.selectedProgressView.backgroundColor = rangeSelectedColor
         }
     }
     /// Background range selected strechable image.
@@ -78,31 +86,33 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     /// Gradient color 1 for range selected.
     @IBInspectable public var rangeSelectedGradientColor1: UIColor? {
         didSet {
-            progressViews.selectedProgressView.addGradient(properties: selectedRangeGradientProperties())
+            components.progressViews.selectedProgressView.addGradient(properties: selectedRangeGradientProperties())
         }
     }
     /// Gradient color 2 for range selected.
     @IBInspectable public var rangeSelectedGradientColor2: UIColor? {
         didSet {
-            progressViews.selectedProgressView.addGradient(properties: selectedRangeGradientProperties())
+            components.progressViews.selectedProgressView.addGradient(properties: selectedRangeGradientProperties())
         }
     }
     /// Gradient start point for selected range.
     @IBInspectable public var rangeSelectedGradientStartPoint: CGPoint = CGPoint() {
         didSet {
-            progressViews.selectedProgressView.addGradient(properties: selectedRangeGradientProperties())
+            components.progressViews.selectedProgressView.addGradient(properties: selectedRangeGradientProperties())
         }
     }
     /// Gradient end point for selected range.
     @IBInspectable public var rangeSelectedGradientEndPoint: CGPoint = CGPoint() {
         didSet {
-            progressViews.selectedProgressView.addGradient(properties: selectedRangeGradientProperties())
+            components.progressViews.selectedProgressView.addGradient(properties: selectedRangeGradientProperties())
         }
     }
     /// Not selected range color.
     @IBInspectable public var rangeNotSelectedColor: UIColor = UIColor.lightGray {
         didSet {
-            progressViews.addBackgroundColorToNotSelectedProgressView(rangeNotSelectedColor: rangeNotSelectedColor)
+            components.progressViews.addBackgroundColorToNotSelectedProgressView(
+                rangeNotSelectedColor: rangeNotSelectedColor
+            )
         }
     }
     /// Background range selected strechable image.
@@ -162,179 +172,183 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     /// Left knob width.
     @IBInspectable public var leftKnobWidth: CGFloat = 30.0 {
         didSet {
-            knobs.leftKnob.widthConstraint.constant = leftKnobWidth
+            components.knobs.leftKnob.widthConstraint.constant = leftKnobWidth
         }
     }
     /// Left knob height.
     @IBInspectable public var leftKnobHeight: CGFloat = 30.0 {
         didSet {
-            knobs.leftKnob.heightConstraint.constant = leftKnobHeight
+            components.knobs.leftKnob.heightConstraint.constant = leftKnobHeight
         }
     }
     /// Left knob corners.
     @IBInspectable public var leftKnobCorners: CGFloat = 15.0 {
         didSet {
-            knobs.addCornersToLeftKnob(leftKnobCorners: leftKnobCorners)
+            components.knobs.addCornersToLeftKnob(leftKnobCorners: leftKnobCorners)
         }
     }
     /// Left knob image.
     @IBInspectable public var leftKnobImage: UIImage? {
         didSet {
-            knobs.leftKnob.add(image: leftKnobImage)
+            components.knobs.leftKnob.add(image: leftKnobImage)
         }
     }
     /// Left knob color.
     @IBInspectable public var leftKnobColor: UIColor = UIColor.gray {
         didSet {
-            knobs.leftKnob.backgroundView.backgroundColor = leftKnobColor
+            components.knobs.leftKnob.backgroundView.backgroundColor = leftKnobColor
         }
     }
     /// Left knob shadow opacity.
     @IBInspectable public var leftShadowOpacity: Float = 0.0 {
         didSet {
-            knobs.leftKnob.layer.shadowOpacity = leftShadowOpacity
+            components.knobs.leftKnob.layer.shadowOpacity = leftShadowOpacity
         }
     }
     /// Left knob shadow color.
     @IBInspectable public var leftShadowColor: UIColor = UIColor.clear {
         didSet {
-            knobs.leftKnob.layer.shadowColor = leftShadowColor.cgColor
+            components.knobs.leftKnob.layer.shadowColor = leftShadowColor.cgColor
         }
     }
     /// Left knob shadow offset.
     @IBInspectable public var leftShadowOffset: CGSize = CGSize() {
         didSet {
-            knobs.leftKnob.layer.shadowOffset = leftShadowOffset
+            components.knobs.leftKnob.layer.shadowOffset = leftShadowOffset
         }
     }
     /// Left knob shadow radius.
     @IBInspectable public var leftShadowRadius: CGFloat = 0 {
         didSet {
-            knobs.leftKnob.layer.shadowRadius = leftShadowRadius
+            components.knobs.leftKnob.layer.shadowRadius = leftShadowRadius
         }
     }
     /// Gradient color 1 for range not selected.
     @IBInspectable public var leftKnobGradientColor1: UIColor? {
         didSet {
-            knobs.leftKnob.addGradient(properties: leftKnobGradientProperties())
+            components.knobs.leftKnob.addGradient(properties: leftKnobGradientProperties())
         }
     }
     /// Gradient color 2 for range not selected.
     @IBInspectable public var leftKnobGradientColor2: UIColor? {
         didSet {
-            knobs.leftKnob.addGradient(properties: leftKnobGradientProperties())
+            components.knobs.leftKnob.addGradient(properties: leftKnobGradientProperties())
         }
     }
     /// Gradient start point for not selected range.
     @IBInspectable public var leftKnobGradientStartPoint: CGPoint = CGPoint() {
         didSet {
-            knobs.leftKnob.addGradient(properties: leftKnobGradientProperties())
+            components.knobs.leftKnob.addGradient(properties: leftKnobGradientProperties())
         }
     }
     /// Gradient end point for not selected range.
     @IBInspectable public var leftKnobGradientEndPoint: CGPoint = CGPoint() {
         didSet {
-            knobs.leftKnob.addGradient(properties: leftKnobGradientProperties())
+            components.knobs.leftKnob.addGradient(properties: leftKnobGradientProperties())
         }
     }
     /// Left knob border width.
     @IBInspectable public var leftKnobBorderWidth: CGFloat = 0.0 {
         didSet {
-            knobs.leftKnob.addBorders(usingColor: leftKnobBorderColor,
-                                andWidth: leftKnobBorderWidth,
-                                andCorners: leftKnobCorners)
+            components.knobs.leftKnob.addBorders(
+                usingColor: leftKnobBorderColor,
+                andWidth: leftKnobBorderWidth,
+                andCorners: leftKnobCorners
+            )
         }
     }
     /// Left knob border color.
     @IBInspectable public var leftKnobBorderColor: UIColor = UIColor.clear {
         didSet {
-            knobs.leftKnob.addBorders(usingColor: leftKnobBorderColor,
-                                andWidth: leftKnobBorderWidth,
-                                andCorners: leftKnobCorners)
+            components.knobs.leftKnob.addBorders(
+                usingColor: leftKnobBorderColor,
+                andWidth: leftKnobBorderWidth,
+                andCorners: leftKnobCorners
+            )
         }
     }
     /// Right knob width.
     @IBInspectable public var rightKnobWidth: CGFloat = 30.0 {
         didSet {
-            knobs.rightKnob.widthConstraint.constant = rightKnobWidth
+            components.knobs.rightKnob.widthConstraint.constant = rightKnobWidth
         }
     }
     /// Right knob height.
     @IBInspectable public var rightKnobHeight: CGFloat = 30.0 {
         didSet {
-            knobs.rightKnob.heightConstraint.constant = rightKnobHeight
+            components.knobs.rightKnob.heightConstraint.constant = rightKnobHeight
         }
     }
     /// Right knob corners.
     @IBInspectable public var rightKnobCorners: CGFloat = 15.0 {
         didSet {
-            knobs.addCornersToRightKnob(rightKnobCorners: rightKnobCorners)
+            components.knobs.addCornersToRightKnob(rightKnobCorners: rightKnobCorners)
         }
     }
     /// Right knob image.
     @IBInspectable public var rightKnobImage: UIImage? {
         didSet {
-            knobs.rightKnob.add(image: rightKnobImage)
+            components.knobs.rightKnob.add(image: rightKnobImage)
         }
     }
     /// Right knob color.
     @IBInspectable public var rightKnobColor: UIColor = UIColor.gray {
         didSet {
-            knobs.rightKnob.backgroundView.backgroundColor = rightKnobColor
+            components.knobs.rightKnob.backgroundView.backgroundColor = rightKnobColor
         }
     }
     /// Right knob shadow opacity.
     @IBInspectable public var rightShadowOpacity: Float = 0.0 {
         didSet {
-            knobs.rightKnob.layer.shadowOpacity = rightShadowOpacity
+            components.knobs.rightKnob.layer.shadowOpacity = rightShadowOpacity
         }
     }
     /// Right knob shadow color.
     @IBInspectable public var rightShadowColor: UIColor = UIColor.clear {
         didSet {
-            knobs.rightKnob.layer.shadowColor = rightShadowColor.cgColor
+            components.knobs.rightKnob.layer.shadowColor = rightShadowColor.cgColor
         }
     }
     /// Right knob shadow offset.
     @IBInspectable public var rightShadowOffset: CGSize = CGSize() {
         didSet {
-            knobs.rightKnob.layer.shadowOffset = rightShadowOffset
+            components.knobs.rightKnob.layer.shadowOffset = rightShadowOffset
         }
     }
     /// Right knob shadow radius.
     @IBInspectable public var rightShadowRadius: CGFloat = 0 {
         didSet {
-            knobs.rightKnob.layer.shadowRadius = rightShadowRadius
+            components.knobs.rightKnob.layer.shadowRadius = rightShadowRadius
         }
     }
     /// Gradient color 1 for range not selected.
     @IBInspectable public var rightKnobGradientColor1: UIColor? {
         didSet {
-            knobs.rightKnob.addGradient(properties: rightKnobGradientProperties())
+            components.knobs.rightKnob.addGradient(properties: rightKnobGradientProperties())
         }
     }
     /// Gradient color 2 for range not selected.
     @IBInspectable public var rightKnobGradientColor2: UIColor? {
         didSet {
-            knobs.rightKnob.addGradient(properties: rightKnobGradientProperties())
+            components.knobs.rightKnob.addGradient(properties: rightKnobGradientProperties())
         }
     }
     /// Gradient start point for not selected range.
     @IBInspectable public var rightKnobGradientStartPoint: CGPoint = CGPoint() {
         didSet {
-            knobs.rightKnob.addGradient(properties: rightKnobGradientProperties())
+            components.knobs.rightKnob.addGradient(properties: rightKnobGradientProperties())
         }
     }
     /// Gradient end point for not selected range.
     @IBInspectable public var rightKnobGradientEndPoint: CGPoint = CGPoint() {
         didSet {
-            knobs.rightKnob.addGradient(properties: rightKnobGradientProperties())
+            components.knobs.rightKnob.addGradient(properties: rightKnobGradientProperties())
         }
     }
     /// Right knob border width.
     @IBInspectable public var rightKnobBorderWidth: CGFloat = 0.0 {
         didSet {
-            knobs.rightKnob.addBorders(
+            components.knobs.rightKnob.addBorders(
                 usingColor: rightKnobBorderColor,
                 andWidth: rightKnobBorderWidth,
                 andCorners: rightKnobCorners
@@ -344,7 +358,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     /// Right knob border color.
     @IBInspectable public var rightKnobBorderColor: UIColor = UIColor.clear {
         didSet {
-            knobs.rightKnob.addBorders(
+            components.knobs.rightKnob.addBorders(
                 usingColor: rightKnobBorderColor,
                 andWidth: rightKnobBorderWidth,
                 andCorners: rightKnobCorners
@@ -354,25 +368,25 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     /// Bar height.
     @IBInspectable public var barHeight: CGFloat = 15.0 {
         didSet {
-            bar.heightConstraint.constant = barHeight
+            components.bar.heightConstraint.constant = barHeight
         }
     }
     /// Bar leading offset.
     @IBInspectable public var barLeading: CGFloat = 20.0 {
         didSet {
-            bar.leadingConstraint.constant = barLeading
+            components.bar.leadingConstraint.constant = barLeading
         }
     }
     /// Bar trailing offset.
     @IBInspectable public var barTrailing: CGFloat = 20.0 {
         didSet {
-            bar.trailingConstraint.constant = -barTrailing
+            components.bar.trailingConstraint.constant = -barTrailing
         }
     }
     /// Bar corners.
     @IBInspectable public var barCorners: CGFloat = 0.0 {
         didSet {
-            progressViews.addBarCornersToNotSelectedProgressView(barCorners: barCorners)
+            components.progressViews.addBarCornersToNotSelectedProgressView(barCorners: barCorners)
             addGradientToNotSelectedRange()
             addBackgroundToRangeNotSelectedIfNeeded()
         }
@@ -380,37 +394,37 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     /// Bar shadow opacity.
     @IBInspectable public var barShadowOpacity: Float = 0.0 {
         didSet {
-            bar.layer.shadowOpacity = barShadowOpacity
+            components.bar.layer.shadowOpacity = barShadowOpacity
         }
     }
     /// Bar shadow color.
     @IBInspectable public var barShadowColor: UIColor = UIColor.clear {
         didSet {
-            bar.layer.shadowColor = barShadowColor.cgColor
+            components.bar.layer.shadowColor = barShadowColor.cgColor
         }
     }
     /// Bar shadow offset.
     @IBInspectable public var barShadowOffset: CGSize = CGSize() {
         didSet {
-            bar.layer.shadowOffset = barShadowOffset
+            components.bar.layer.shadowOffset = barShadowOffset
         }
     }
     /// Bar shadow radius.
     @IBInspectable public var barShadowRadius: CGFloat = 0.0 {
         didSet {
-            bar.layer.shadowRadius = barShadowRadius
+            components.bar.layer.shadowRadius = barShadowRadius
         }
     }
     /// Bar border color.
     @IBInspectable public var barBorderWidth: CGFloat = 0.0 {
         didSet {
-            progressViews.addBordersWidth(borderWidth: barBorderWidth)
+            components.progressViews.addBordersWidth(borderWidth: barBorderWidth)
         }
     }
     /// Bar border color.
     @IBInspectable public var barBorderColor: UIColor = UIColor.clear {
         didSet {
-            progressViews.addBorderColor(borderColor: barBorderColor)
+            components.progressViews.addBorderColor(borderColor: barBorderColor)
         }
     }
     /// Container corners.
@@ -423,30 +437,26 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     /// Slider delegate.
     public weak var delegate: RangeUISliderDelegate?
 
-    private let bar: Bar = Bar()
-    private let knobs: Knobs = Knobs(leftKnob: Knob(), rightKnob: Knob())
-    private let progressViews: ProgressViews = ProgressViews(
-        selectedProgressView: Progress(),
-        leftProgressView: Progress(),
-        rightProgressView: Progress()
+    private let components = RangeUISliderComponents()
+    internal lazy var properties = RangeUISliderProperties(
+        scale: Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue),
+        previousRangeSelected: RangeSelected(minValue: defaultValueLeftKnob, maxValue: defaultValueRightKnob)
     )
-
-    internal lazy var previousRangeSelected: RangeSelected = RangeSelected(
-        minValue: defaultValueLeftKnob,
-        maxValue: defaultValueRightKnob
-    )
-    internal lazy var scale: Scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
     private lazy var programmaticKnobChange: ProgrammaticKnobChange = ProgrammaticKnobChange(
-        bar: bar,
-        knobs: knobs,
+        bar: components.bar,
+        knobs: components.knobs,
         delegate: self
     )
-    private lazy var knobGestureManager: KnobGestureManager = KnobGestureManager(
-        bar: bar,
-        knobs: knobs,
-        knobGestureManagerDelegate: self
+    private lazy var rangeUpdater = RangeUpdater(
+        properties: properties,
+        components: components,
+        delegate: self
     )
-    private lazy var rangeSelectedCalculator: RangeSelectedCalculator = RangeSelectedCalculator()
+    private lazy var knobGestureManager = KnobGestureManager(
+        bar: components.bar,
+        knobs: components.knobs,
+        knobGestureManagerDelegate: rangeUpdater
+    )
 
     // MARK: init
 
@@ -478,8 +488,8 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     open override func prepareForInterfaceBuilder() {
         // Fake values for interface builder.
         // Used to make visible the progress views.
-        knobs.leftKnob.xPositionConstraint.constant = 40
-        knobs.rightKnob.xPositionConstraint.constant = -40
+        components.knobs.leftKnob.xPositionConstraint.constant = 40
+        components.knobs.rightKnob.xPositionConstraint.constant = -40
     }
 
     /**
@@ -499,6 +509,10 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
      - parameter value: the new value to be assigned to the left knob
      */
     public func changeLeftKnob(value: CGFloat) {
+        properties.updateRangeSelectedCalculator(
+            knobsHorizontalPosition: components.knobs.horizontalPositions(),
+            barWidth: components.bar.frame.width
+        )
         programmaticKnobChange.programmaticallyChangeLeftKnob(value: value)
     }
 
@@ -508,23 +522,22 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
      - parameter value: the new value to be assigned to the right knob
      */
     public func changeRightKnob(value: CGFloat) {
+        properties.updateRangeSelectedCalculator(
+            knobsHorizontalPosition: components.knobs.horizontalPositions(),
+            barWidth: components.bar.frame.width
+        )
         programmaticKnobChange.programmaticallyChangeRightKnob(value: value)
     }
 
     internal func programmaticChangeCompleted() {
-        previousRangeSelected = rangeSelectedCalculator.calculate(
-            scale: scale,
-            knobPositions: knobs.horizontalPositions(),
-            barWidth: bar.frame.width
-        )
-        rangeSelectionFinished()
+        rangeUpdater.rangeSelectionFinished()
     }
 
     // MARK: setup
 
     private func setup() {
         addViews()
-        RangeUISliderSetup(bar: bar, knobs: knobs, progressViews: progressViews)
+        RangeUISliderSetup(components: components)
             .execute(
                 barProperties: barProperties(),
                 knobsProperties: knobsProperties(),
@@ -533,12 +546,12 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     }
 
     private func addViews() {
-        addSubview(bar)
-        bar.addSubview(progressViews.selectedProgressView)
-        bar.addSubview(progressViews.leftProgressView)
-        bar.addSubview(progressViews.rightProgressView)
-        bar.addSubview(knobs.leftKnob)
-        bar.addSubview(knobs.rightKnob)
+        addSubview(components.bar)
+        components.bar.addSubview(components.progressViews.selectedProgressView)
+        components.bar.addSubview(components.progressViews.leftProgressView)
+        components.bar.addSubview(components.progressViews.rightProgressView)
+        components.bar.addSubview(components.knobs.leftKnob)
+        components.bar.addSubview(components.knobs.rightKnob)
     }
 
     private func barProperties() -> BarProperties {
@@ -583,7 +596,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
             ),
             cornerRadius: barCorners
         )
-        progressViews.addGradientToNotSelectedProgressView(properties: properties)
+        components.progressViews.addGradientToNotSelectedProgressView(properties: properties)
     }
 
     private func selectedRangeGradientProperties() -> GradientProperties {
@@ -631,7 +644,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     // MARK: background
 
     private func addBackgroundToRangeNotSelectedIfNeeded() {
-        progressViews.addBackgroundToNotSelectedProgressViews(
+        components.progressViews.addBackgroundToNotSelectedProgressViews(
             image: rangeNotSelectedBackgroundImage,
             edgeInset: UIEdgeInsets(
                 top: rangeNotSelectedBackgroundEdgeInsetTop,
@@ -644,7 +657,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     }
 
     private func addBackgroundToRangeSelected() {
-        progressViews.addBackgroundToSelectedProgressViews(
+        components.progressViews.addBackgroundToSelectedProgressViews(
             image: rangeSelectedBackgroundImage,
             edgeInset: UIEdgeInsets(
                 top: rangeSelectedBackgroundEdgeInsetTop,
@@ -656,10 +669,10 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
         )
     }
 
-    // MARK: Scale
+    // MARK: scale
 
     private func setScale() {
-        scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
+        properties.scale = Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue)
     }
 
     // MARK: gesture
@@ -675,50 +688,31 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, KnobGestureMan
     private func getGestureData(gestureRecognizer: UIPanGestureRecognizer) -> GestureData {
         return GestureData(
             gestureRecognizer: gestureRecognizer,
-            scale: scale,
+            scale: properties.scale,
             stepIncrement: stepIncrement,
             semanticContentAttribute: self.semanticContentAttribute
         )
     }
 
+    // MARK: delegate
+
     internal func rangeChangeStarted() {
         delegate?.rangeChangeStarted?()
     }
 
-    internal func rangeSelectionUpdate() {
-        let rangeSelected = rangeSelectedCalculator.calculate(
-            scale: scale,
-            knobPositions: knobs.horizontalPositions(),
-            barWidth: bar.frame.width
+    internal func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
+        delegate?.rangeIsChanging?(
+            minValueSelected: minValueSelected,
+            maxValueSelected: maxValueSelected,
+            slider: self
         )
-        if isDifferentFromPreviousRangeSelected(rangeSelected: rangeSelected) {
-            delegate?.rangeIsChanging?(
-                minValueSelected: rangeSelected.minValue,
-                maxValueSelected: rangeSelected.maxValue,
-                slider: self
-            )
-            previousRangeSelected = rangeSelected
-        }
     }
 
-    private func isDifferentFromPreviousRangeSelected(rangeSelected: RangeSelected) -> Bool {
-        return rangeSelected.minValue != previousRangeSelected.minValue
-            || rangeSelected.maxValue != previousRangeSelected.maxValue
-    }
-
-    internal func rangeSelectionFinished() {
-        let rangeSelected = rangeSelectedCalculator.calculate(
-            scale: scale,
-            knobPositions: knobs.horizontalPositions(),
-            barWidth: bar.frame.width
+    internal func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
+        delegate?.rangeChangeFinished(
+            minValueSelected: minValueSelected,
+            maxValueSelected: maxValueSelected,
+            slider: self
         )
-
-        if !rangeSelected.maxValue.isNaN && !rangeSelected.maxValue.isNaN {
-            delegate?.rangeChangeFinished(
-                minValueSelected: rangeSelected.minValue,
-                maxValueSelected: rangeSelected.maxValue,
-                slider: self
-            )
-        }
     }
 }

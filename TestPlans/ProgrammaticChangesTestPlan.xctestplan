@@ -15,6 +15,7 @@
     {
       "parallelizable" : true,
       "selectedTests" : [
+        "ProgrammaticDefaultKnobValueChangeTests\/testProgrammaticKnobChange()",
         "ProgrammaticKnobChangeTests\/testPrgrammaticKnobChange()",
         "ProgrammaticKnobChangeTests\/testPrgrammticKnobChange()",
         "ProgrammaticKnobChangeTests\/testProgrammaticKnobChange()",

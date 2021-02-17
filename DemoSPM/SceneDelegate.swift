@@ -3,7 +3,7 @@
 //  DemoSPM
 //
 //  Created by Fabrizio Duroni on 24.09.19.
-//  Copyright © 2019 Fabrizio Duroni. All rights reserved.
+//  2019 Fabrizio Duroni.
 //
 
 import UIKit

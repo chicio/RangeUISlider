@@ -9,14 +9,10 @@
 import UIKit
 
 class RangeUISliderSetup {
-    private unowned let bar: Bar
-    private unowned let knobs: Knobs
-    private unowned let progressViews: ProgressViews
+    private unowned let components: RangeUISliderComponents
 
-    init(bar: Bar, knobs: Knobs, progressViews: ProgressViews) {
-        self.bar = bar
-        self.knobs = knobs
-        self.progressViews = progressViews
+    init(components: RangeUISliderComponents) {
+        self.components = components
     }
 
     func execute(
@@ -25,10 +21,10 @@ class RangeUISliderSetup {
         progressViewsProperties: ProgressViewsProperties
     ) {
         var constraints: [NSLayoutConstraint] = []
-        constraints.append(contentsOf: bar.setup(
+        constraints.append(contentsOf: components.bar.setup(
             properties: barProperties,
-            leftKnob: knobs.leftKnob,
-            rightKnob: knobs.rightKnob
+            leftKnob: components.knobs.leftKnob,
+            rightKnob: components.knobs.rightKnob
         ))
         constraints.append(contentsOf: setUpKnobs(knobsProperties: knobsProperties))
         constraints.append(contentsOf: setupProgressViews(progressViewsProperties: progressViewsProperties))
@@ -36,24 +32,24 @@ class RangeUISliderSetup {
     }
 
     private func setUpKnobs(knobsProperties: KnobsProperties) -> [NSLayoutConstraint] {
-        return knobs.rightKnob.setup(properties: knobsProperties.rightKnobProperties) +
-        knobs.leftKnob.setup(properties: knobsProperties.leftKnobProperties)
+        return components.knobs.rightKnob.setup(properties: knobsProperties.rightKnobProperties) +
+            components.knobs.leftKnob.setup(properties: knobsProperties.leftKnobProperties)
     }
 
     private func setupProgressViews(progressViewsProperties: ProgressViewsProperties) -> [NSLayoutConstraint] {
-        return progressViews.selectedProgressView.setup(
-            leftAnchorView: knobs.leftKnob,
-            rightAnchorView: knobs.rightKnob,
+        return components.progressViews.selectedProgressView.setup(
+            leftAnchorView: components.knobs.leftKnob,
+            rightAnchorView: components.knobs.rightKnob,
             properties: progressViewsProperties.selectedProgressViewProperties
         ) +
-        progressViews.leftProgressView.setup(
-            leftAnchorView: bar,
-            rightAnchorView: knobs.leftKnob,
+        components.progressViews.leftProgressView.setup(
+            leftAnchorView: components.bar,
+            rightAnchorView: components.knobs.leftKnob,
             properties: progressViewsProperties.leftProgressViewProperties
         ) +
-        progressViews.rightProgressView.setup(
-            leftAnchorView: knobs.rightKnob,
-            rightAnchorView: bar,
+        components.progressViews.rightProgressView.setup(
+            leftAnchorView: components.knobs.rightKnob,
+            rightAnchorView: components.bar,
             properties: progressViewsProperties.rightProgressViewProperties
         )
     }

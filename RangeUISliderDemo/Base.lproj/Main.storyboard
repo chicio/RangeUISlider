@@ -544,6 +544,7 @@
                         <segue destination="HX8-Hb-IrR" kind="show" identifier="showChangeKnobProgrammaticSegue" id="l5L-tk-hZo"/>
                         <segue destination="IzU-JN-Igw" kind="show" identifier="showChangeScaleProgrammaticSegue" id="rdG-zv-TLf"/>
                         <segue destination="0PT-Zl-Erc" kind="show" identifier="swiftUISegue" id="tfM-gV-cAe"/>
+                        <segue destination="Rw0-FI-YTS" kind="show" identifier="showChangeDefaultKnobValueProgrammaticSegue" id="uNA-fO-pfc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z9F-n4-isO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -742,6 +743,18 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="barCorners">
                                         <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="scaleMinValue">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="scaleMaxValue">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="defaultValueLeftKnob">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="defaultValueRightKnob">
+                                        <real key="value" value="80"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
@@ -804,14 +817,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CellWithSlider" id="ewv-mI-oXT" customClass="CellWithSlider" customModule="RangeUISliderDemo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44.5"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ewv-mI-oXT" id="k2a-7i-CaJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-LP-sky" userLabel="Middle Marker">
-                                            <rect key="frame" x="184.5" y="-3.5" width="6" height="51.5"/>
+                                            <rect key="frame" x="184.5" y="-3.5" width="6" height="51"/>
                                             <color key="backgroundColor" systemColor="systemTealColor"/>
                                             <accessibility key="accessibilityConfiguration" identifier="middleMarker"/>
                                             <constraints>
@@ -819,7 +832,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgB-Wb-TOH" customClass="RangeUISlider" customModule="RangeUISlider">
-                                            <rect key="frame" x="67" y="0.0" width="240" height="44.5"/>
+                                            <rect key="frame" x="67" y="0.0" width="240" height="44"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <accessibility key="accessibilityConfiguration" identifier="RangeUISliderInsideTableView"/>
                                             <userDefinedRuntimeAttributes>
@@ -868,14 +881,14 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYs-aK-7r9">
-                                            <rect key="frame" x="341" y="11" width="24" height="22"/>
+                                            <rect key="frame" x="341" y="11" width="24" height="21.5"/>
                                             <accessibility key="accessibilityConfiguration" identifier="minValueSelected"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Zf-Vh-GOf">
-                                            <rect key="frame" x="16" y="11" width="42" height="21.5"/>
+                                            <rect key="frame" x="16" y="11" width="42" height="21"/>
                                             <accessibility key="accessibilityConfiguration" identifier="maxValueSelected"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -1179,6 +1192,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ElY-kc-aj6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3551" y="624"/>
+        </scene>
+        <!--Change Default Knobs Values Programmatic View Controller-->
+        <scene sceneID="XG0-tI-pEg">
+            <objects>
+                <viewController id="Rw0-FI-YTS" customClass="ChangeDefaultKnobsValuesProgrammaticViewController" customModule="RangeUISliderDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aHf-Tx-vkx"/>
+                        <viewControllerLayoutGuide type="bottom" id="pK4-vd-JNC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zeV-c2-2iL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="U0T-xm-mbE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bp0-T0-FtX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3407" y="2098"/>
         </scene>
     </scenes>
     <resources>
