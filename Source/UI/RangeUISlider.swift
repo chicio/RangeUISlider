@@ -694,6 +694,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     }
 
     internal func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
+        components.knobs.updateLabels(minValueSelected: minValueSelected, maxValueSelected: maxValueSelected)
         delegate?.rangeIsChanging?(
             minValueSelected: minValueSelected,
             maxValueSelected: maxValueSelected,
@@ -702,6 +703,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     }
 
     internal func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
+        components.knobs.updateLabels(minValueSelected: minValueSelected, maxValueSelected: maxValueSelected)
         delegate?.rangeChangeFinished(
             minValueSelected: minValueSelected,
             maxValueSelected: maxValueSelected,
