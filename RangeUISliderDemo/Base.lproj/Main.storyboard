@@ -36,7 +36,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4Y-av-gwa" customClass="RangeUISlider" customModule="RangeUISlider">
                                 <rect key="frame" x="20" y="142" width="335" height="50"/>
-                                <color key="backgroundColor" red="0.86325467690000002" green="0.21829825680000001" blue="0.74614689629999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration" identifier="RangeUISliderCustomScale"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ReD-5b-aP8"/>
@@ -50,9 +50,6 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="barTrailing">
                                         <real key="value" value="30"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="containerCorners">
-                                        <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rightKnobWidth">
                                         <real key="value" value="30"/>
@@ -175,7 +172,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPQ-Vh-eUa" customClass="RangeUISlider" customModule="RangeUISlider">
                                 <rect key="frame" x="20" y="308.5" width="335" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration" identifier="RangeUISliderStepIncrement"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="NpT-2b-hwo"/>
@@ -290,7 +287,6 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMX-j7-KAB" customClass="RangeUISlider" customModule="RangeUISlider">
                                 <rect key="frame" x="20" y="460.5" width="335" height="80"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Ogc-vF-Jv3"/>
                                 </constraints>
@@ -323,16 +319,10 @@
                                         <real key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="leftShadowOpacity">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="size" keyPath="leftShadowOffset">
-                                        <size key="value" width="0.0" height="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="leftShadowColor">
-                                        <color key="value" red="0.99568965519999997" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="barShadowOpacity">
-                                        <real key="value" value="0.5"/>
+                                        <size key="value" width="0.0" height="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rightKnobWidth">
                                         <real key="value" value="56"/>
@@ -346,11 +336,8 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="rightShadowOpacity">
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="rightShadowColor">
-                                        <color key="value" red="0.93725490570000003" green="0.34901961679999999" blue="0.1921568662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="size" keyPath="rightShadowOffset">
-                                        <size key="value" width="0.0" height="-4"/>
+                                        <size key="value" width="1" height="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="image" keyPath="rightKnobImage" value="knobMetallic"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="barLeading">
@@ -376,6 +363,12 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="rightKnobBorderColor">
                                         <color key="value" red="0.36402267995179111" green="0.99038617227979275" blue="0.20868902494506827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightShadowRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightShadowColor">
+                                        <color key="value" systemColor="systemRedColor"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -817,14 +810,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CellWithSlider" id="ewv-mI-oXT" customClass="CellWithSlider" customModule="RangeUISliderDemo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ewv-mI-oXT" id="k2a-7i-CaJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-LP-sky" userLabel="Middle Marker">
-                                            <rect key="frame" x="184.5" y="-3.5" width="6" height="51"/>
+                                            <rect key="frame" x="184.5" y="-3.5" width="6" height="51.5"/>
                                             <color key="backgroundColor" systemColor="systemTealColor"/>
                                             <accessibility key="accessibilityConfiguration" identifier="middleMarker"/>
                                             <constraints>
@@ -832,7 +825,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgB-Wb-TOH" customClass="RangeUISlider" customModule="RangeUISlider">
-                                            <rect key="frame" x="67" y="0.0" width="240" height="44"/>
+                                            <rect key="frame" x="67" y="0.0" width="240" height="44.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <accessibility key="accessibilityConfiguration" identifier="RangeUISliderInsideTableView"/>
                                             <userDefinedRuntimeAttributes>
@@ -881,14 +874,14 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYs-aK-7r9">
-                                            <rect key="frame" x="341" y="11" width="24" height="21.5"/>
+                                            <rect key="frame" x="341" y="11" width="24" height="22"/>
                                             <accessibility key="accessibilityConfiguration" identifier="minValueSelected"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Zf-Vh-GOf">
-                                            <rect key="frame" x="16" y="11" width="42" height="21"/>
+                                            <rect key="frame" x="16" y="11" width="42" height="21.5"/>
                                             <accessibility key="accessibilityConfiguration" identifier="maxValueSelected"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -1058,7 +1051,6 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJz-9s-q9J" customClass="RangeUISlider" customModule="RangeUISlider">
                                 <rect key="frame" x="15" y="477" width="345" height="80"/>
-                                <color key="backgroundColor" red="0.74969082850000002" green="0.77230500400000002" blue="0.79139975119999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="oqF-JR-6YZ"/>
                                 </constraints>
@@ -1224,6 +1216,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -267,7 +267,6 @@ This is the list of the `RangeUISlider` customizable properties directly from In
  - bar shadow radius
  - bar border width
  - bar border color
- - container corners (only available in the `UIKit` version)
 
 ***
 

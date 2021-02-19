@@ -34,6 +34,5 @@ class Knobs {
 
     private func addCornersTo(knob: Knob, corners: CGFloat) {
         knob.backgroundView.layer.cornerRadius = corners
-        knob.backgroundView.layer.masksToBounds = corners > 0.0
     }
 }
