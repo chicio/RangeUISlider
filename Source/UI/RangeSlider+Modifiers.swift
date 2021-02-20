@@ -24,6 +24,16 @@ extension RangeSlider {
     }
 
     /**
+    Show or hide knobs labels.
+     
+     - parameter value: the value used to decided if labels should be show or not.
+     */
+    public func showKnobsLabels(_ value: Bool) -> RangeSlider {
+        settings.values["showKnobsLabels"] = value
+        return self
+    }
+
+    /**
      Set default left knob starting value.
      
      - parameter value: the value to be used as default left knob start.
