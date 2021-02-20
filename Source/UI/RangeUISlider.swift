@@ -23,6 +23,12 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     @IBInspectable public var identifier: Int = 0
     /// Step increment value. If different from 0 RangeUISlider will let the user drag by step increment.
     @IBInspectable public var stepIncrement: CGFloat = 0.0
+    /// Show  knobs labels.
+    @IBInspectable public var showKnobsLabels: Bool = false {
+        didSet {
+            components.knobs.showLabels(shouldShow: showKnobsLabels)
+        }
+    }
     /// Default left knob starting value.
     @IBInspectable public var defaultValueLeftKnob: CGFloat = 0.0 {
         didSet {

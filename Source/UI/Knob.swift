@@ -21,8 +21,10 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
         accessibilityIdentifier = properties.accessibilityIdentifier
         setGestureRecognizer(gesture: properties.gesture)
         setupBackground()
-        setupLabel()
-        return generateConstraintsFrom(dimensions: properties.dimensions, position: properties.position)
+        return generateConstraintsFrom(
+            dimensions: properties.dimensions,
+            position: properties.position
+        )
     }
 
     func addBorders(usingColor color: UIColor, andWidth width: CGFloat, andCorners corners: CGFloat) {
@@ -50,18 +52,27 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
         }
     }
 
+    func showLabels(shouldShow: Bool) {
+        if shouldShow {
+            label.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(label)
+            bringSubviewToFront(label)
+            label.text = "1"
+            label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            let views = ConstraintViews(target: label, related: self)
+            NSLayoutConstraint.activate([
+                PositionConstraintFactory.centerX(views: views),
+                MarginConstraintFactory.bottomTo(attribute: .top, views: views, value: 0)
+            ])
+        } else {
+            label.removeFromSuperview()
+        }
+    }
+
     private func setupBackground() {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(backgroundView)
         bringSubviewToFront(backgroundView)
-    }
-
-    private func setupLabel() {
-        label.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(label)
-        bringSubviewToFront(label)
-        label.text = "1"
-        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
 
     private func setGestureRecognizer(gesture: KnobGesturesProperties) {
@@ -80,9 +91,7 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
             xPositionConstraint,
             widthConstraint,
             heightConstraint
-        ]
-        + backgroundViewConstraints()
-        + labelConstraints(dimensions: dimensions)
+        ] + backgroundViewConstraints()
     }
 
     private func centerXFor(_ position: KnobPosition) -> NSLayoutConstraint.Attribute {
@@ -93,14 +102,6 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
         return MatchingMarginConstraintFactory.make(
             views: ConstraintViews(target: backgroundView, related: self)
         )
-    }
-
-    private func labelConstraints(dimensions: Dimensions) -> [NSLayoutConstraint] {
-        let views = ConstraintViews(target: label, related: self)
-        return [
-            PositionConstraintFactory.centerX(views: views),
-            MarginConstraintFactory.bottomTo(attribute: .top, views: views, value: 0)
-        ]
     }
 
     private func addBorders(toView view: UIView,
