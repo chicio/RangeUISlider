@@ -13,6 +13,7 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
     private(set) lazy var label: UILabel = UILabel()
     private lazy var imageView: UIImageView = UIImageView()
     private(set) var xPositionConstraint: NSLayoutConstraint!
+    private(set) var xLabelPositionConstraint: NSLayoutConstraint!
     private(set) var widthConstraint: NSLayoutConstraint!
     private(set) var heightConstraint: NSLayoutConstraint!
 
@@ -59,9 +60,11 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
             bringSubviewToFront(label)
             label.text = "1"
             label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            label.numberOfLines = 1
             let views = ConstraintViews(target: label, related: self)
+            xLabelPositionConstraint = PositionConstraintFactory.centerX(views: views)
             NSLayoutConstraint.activate([
-                PositionConstraintFactory.centerX(views: views),
+                xLabelPositionConstraint,
                 MarginConstraintFactory.bottomTo(attribute: .top, views: views, value: 0)
             ])
         } else {
