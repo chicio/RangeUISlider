@@ -700,12 +700,14 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     }
 
     internal func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
-        if components.knobs.leftKnob.center.x + components.knobs.leftKnob.label.frame.width/2 >= components.knobs.rightKnob.center.x - components.knobs.rightKnob.label.frame.width/2  {
-            components.knobs.leftKnob.xLabelPositionConstraint.constant = -components.knobs.leftKnob.label.frame.width / 2
-            components.knobs.rightKnob.xLabelPositionConstraint.constant = (components.knobs.leftKnob.label.frame.width / 2) 
-        } else {
-            components.knobs.leftKnob.xLabelPositionConstraint.constant = 0
-            components.knobs.rightKnob.xLabelPositionConstraint.constant = 0
+        if showKnobsLabels {
+            if components.knobs.leftKnob.center.x + components.knobs.leftKnob.label.frame.width/2 >= components.knobs.rightKnob.center.x - components.knobs.rightKnob.label.frame.width/2  {
+                components.knobs.leftKnob.xLabelPositionConstraint.constant = -components.knobs.leftKnob.label.frame.width / 2
+                components.knobs.rightKnob.xLabelPositionConstraint.constant = (components.knobs.leftKnob.label.frame.width / 2)
+            } else {
+                components.knobs.leftKnob.xLabelPositionConstraint.constant = 0
+                components.knobs.rightKnob.xLabelPositionConstraint.constant = 0
+            }
         }
         components.knobs.updateLabels(minValueSelected: minValueSelected, maxValueSelected: maxValueSelected)
         delegate?.rangeIsChanging?(
