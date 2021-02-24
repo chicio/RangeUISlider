@@ -11,10 +11,12 @@ import UIKit
 class Knobs {
     let leftKnob: Knob
     let rightKnob: Knob
+    let knobsLabelAnimator: KnobsLabelAnimator
 
     init(leftKnob: Knob, rightKnob: Knob) {
         self.leftKnob = leftKnob
         self.rightKnob = rightKnob
+        self.knobsLabelAnimator = KnobsLabelAnimator(leftKnob: leftKnob, rightKnob: rightKnob)
     }
 
     func horizontalPositions() -> KnobsHorizontalPosition {
@@ -35,6 +37,10 @@ class Knobs {
     func showLabels(shouldShow: Bool) {
         leftKnob.showLabels(shouldShow: shouldShow)
         rightKnob.showLabels(shouldShow: shouldShow)
+    }
+
+    func animateLabels(shouldShow: Bool) {
+        knobsLabelAnimator.animate(shouldShow: shouldShow)
     }
 
     func updateLabels(minValueSelected: CGFloat, maxValueSelected: CGFloat) {

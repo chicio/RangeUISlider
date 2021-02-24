@@ -10,8 +10,8 @@ import UIKit
 
 class Knob: Gradient, UIGestureRecognizerDelegate {
     public let backgroundView: UIView = UIView()
-    private(set) lazy var knobLabel: KnobLabel = KnobLabel()
     private lazy var imageView: UIImageView = UIImageView()
+    private(set) lazy var knobLabel: KnobLabel = KnobLabel()
     private(set) var xPositionConstraint: NSLayoutConstraint!
     private(set) var xLabelPositionConstraint: NSLayoutConstraint!
     private(set) var widthConstraint: NSLayoutConstraint!
@@ -55,6 +55,7 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
 
     func showLabels(shouldShow: Bool) {
         if shouldShow {
+            knobLabel.setAccessibilityIdentifier(accessibilityIdentifier: accessibilityIdentifier)
             addSubview(knobLabel.label)
             bringSubviewToFront(knobLabel.label)
             NSLayoutConstraint.activate(knobLabel.calculateConstraintUsing(knob: self))
@@ -63,7 +64,6 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
             NSLayoutConstraint.deactivate(knobLabel.getConstrains())
         }
     }
-    
 
     private func setupBackground() {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false

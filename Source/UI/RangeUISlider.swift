@@ -699,43 +699,8 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
         delegate?.rangeChangeStarted?()
     }
 
-    private var animation: Bool = false
-    private var canAnimateMoveAway: Bool = true
-    private var canAnimateCenter: Bool = false
-
     internal func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
-        if showKnobsLabels {
-            if components.knobs.leftKnob.center.x + components.knobs.leftKnob.knobLabel.label.frame.width/2 >
-                components.knobs.rightKnob.center.x - components.knobs.rightKnob.knobLabel.label.frame.width/2
-                && canAnimateMoveAway {
-                UIView.animate(
-                    withDuration: 0.2) {
-                    self.components.knobs.leftKnob.knobLabel.setXPositionConstraint(-self.components.knobs.leftKnob.knobLabel.label.frame.width / 2)
-                    self.components.knobs.rightKnob.knobLabel.setXPositionConstraint(self.components.knobs.leftKnob.knobLabel.label.frame.width / 2)
-                    self.components.knobs.leftKnob.layoutIfNeeded()
-                    self.components.knobs.rightKnob.layoutIfNeeded()
-                    self.canAnimateMoveAway = false
-                } completion: { (_) in
-                    self.canAnimateCenter = true
-                }
-            }
-            
-            if components.knobs.leftKnob.center.x + components.knobs.leftKnob.knobLabel.label.frame.width/2 <=
-                components.knobs.rightKnob.center.x - components.knobs.rightKnob.knobLabel.label.frame.width/2
-                && canAnimateCenter {
-                UIView.animate(
-                    withDuration: 0.2) {
-                    self.components.knobs.leftKnob.knobLabel.setXPositionConstraint(0)
-                    self.components.knobs.rightKnob.knobLabel.setXPositionConstraint(0)
-                    self.components.knobs.leftKnob.layoutIfNeeded()
-                    self.components.knobs.rightKnob.layoutIfNeeded()
-                    self.canAnimateCenter = false
-                } completion: { (_) in
-                    self.canAnimateMoveAway = true
-                }
-
-            }
-        }
+        components.knobs.animateLabels(shouldShow: showKnobsLabels)
         components.knobs.updateLabels(minValueSelected: minValueSelected, maxValueSelected: maxValueSelected)
         delegate?.rangeIsChanging?(
             minValueSelected: minValueSelected,

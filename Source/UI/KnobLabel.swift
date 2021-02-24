@@ -32,8 +32,14 @@ class KnobLabel {
     func getConstrains() -> [NSLayoutConstraint] {
         return constraints.map { $1 }
     }
-    
+
     func setXPositionConstraint(_ value: CGFloat) {
         constraints["xLabelPositionConstraint"]?.constant = value
+    }
+
+    func setAccessibilityIdentifier(accessibilityIdentifier: String?) {
+        label.isAccessibilityElement = true
+        label.isUserInteractionEnabled = true
+        label.accessibilityIdentifier = "\(accessibilityIdentifier ?? "")Label"
     }
 }

@@ -34,6 +34,7 @@
 		4571869425A5CFE300541D67 /* RangeSliderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4571869325A5CFE300541D67 /* RangeSliderCoordinator.swift */; };
 		4571869925A5D01500541D67 /* RangeSliderSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4571869825A5D01500541D67 /* RangeSliderSettings.swift */; };
 		457A1DD525E6B69F00180CAD /* KnobLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A1DD425E6B69F00180CAD /* KnobLabel.swift */; };
+		457A1DDE25E6C7EF00180CAD /* KnobsLabelAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A1DDD25E6C7EF00180CAD /* KnobsLabelAnimator.swift */; };
 		45876A0925DAF8500012D213 /* ChangeDefaultKnobsValuesProgrammaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45876A0825DAF8500012D213 /* ChangeDefaultKnobsValuesProgrammaticViewController.swift */; };
 		45876A0E25DB1A780012D213 /* ProgrammaticDefaultKnobValueChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45876A0D25DB1A780012D213 /* ProgrammaticDefaultKnobValueChangeTests.swift */; };
 		45876A2425DBB7070012D213 /* RangeUISliderComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45876A1525DBB6A20012D213 /* RangeUISliderComponents.swift */; };
@@ -156,6 +157,7 @@
 		4571869325A5CFE300541D67 /* RangeSliderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSliderCoordinator.swift; sourceTree = "<group>"; };
 		4571869825A5D01500541D67 /* RangeSliderSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSliderSettings.swift; sourceTree = "<group>"; };
 		457A1DD425E6B69F00180CAD /* KnobLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobLabel.swift; sourceTree = "<group>"; };
+		457A1DDD25E6C7EF00180CAD /* KnobsLabelAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobsLabelAnimator.swift; sourceTree = "<group>"; };
 		4587606125C33F140067CFBE /* .codebeatignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .codebeatignore; sourceTree = "<group>"; };
 		4587606225C33F1B0067CFBE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		45876A0825DAF8500012D213 /* ChangeDefaultKnobsValuesProgrammaticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeDefaultKnobsValuesProgrammaticViewController.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				45263E8A25C9D18B005D994A /* ProgrammaticKnobChangeDelegate.swift */,
 				45E2B6F625C9B36F007CCBB5 /* Scale.swift */,
 				45CEFF7225CB198400BF628B /* GestureData.swift */,
+				457A1DDD25E6C7EF00180CAD /* KnobsLabelAnimator.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -727,6 +730,7 @@
 				450C7B6825C48A7500764496 /* RangeSlider.swift in Sources */,
 				45876A3125DC01470012D213 /* RangeUpdaterDelegate.swift in Sources */,
 				45876A2925DBC4BD0012D213 /* RangeUISliderProperties.swift in Sources */,
+				457A1DDE25E6C7EF00180CAD /* KnobsLabelAnimator.swift in Sources */,
 				450C7B7525C490C100764496 /* ConstraintViews.swift in Sources */,
 				45949DBC25C6CB5300F09F3B /* ConstraintFactory.swift in Sources */,
 			);
