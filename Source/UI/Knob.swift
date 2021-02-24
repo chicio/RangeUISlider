@@ -13,7 +13,6 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
     private lazy var imageView: UIImageView = UIImageView()
     private(set) lazy var knobLabel: KnobLabel = KnobLabel()
     private(set) var xPositionConstraint: NSLayoutConstraint!
-    private(set) var xLabelPositionConstraint: NSLayoutConstraint!
     private(set) var widthConstraint: NSLayoutConstraint!
     private(set) var heightConstraint: NSLayoutConstraint!
 
