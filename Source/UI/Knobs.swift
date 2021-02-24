@@ -38,8 +38,8 @@ class Knobs {
     }
 
     func updateLabels(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
-        leftKnob.label.text = String(format: "%.2f", minValueSelected)
-        rightKnob.label.text = String(format: "%.2f", maxValueSelected)
+        leftKnob.knobLabel.label.text = String(format: "%.2f", minValueSelected)
+        rightKnob.knobLabel.label.text = String(format: "%.2f", maxValueSelected)
     }
 
     private func addCornersTo(knob: Knob, corners: CGFloat) {

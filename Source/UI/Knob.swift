@@ -10,7 +10,7 @@ import UIKit
 
 class Knob: Gradient, UIGestureRecognizerDelegate {
     public let backgroundView: UIView = UIView()
-    private(set) lazy var label: UILabel = UILabel()
+    private(set) lazy var knobLabel: KnobLabel = KnobLabel()
     private lazy var imageView: UIImageView = UIImageView()
     private(set) var xPositionConstraint: NSLayoutConstraint!
     private(set) var xLabelPositionConstraint: NSLayoutConstraint!
@@ -55,22 +55,15 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
 
     func showLabels(shouldShow: Bool) {
         if shouldShow {
-            label.translatesAutoresizingMaskIntoConstraints = false
-            addSubview(label)
-            bringSubviewToFront(label)
-            label.text = "1"
-            label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-            label.numberOfLines = 1
-            let views = ConstraintViews(target: label, related: self)
-            xLabelPositionConstraint = PositionConstraintFactory.centerX(views: views)
-            NSLayoutConstraint.activate([
-                xLabelPositionConstraint,
-                MarginConstraintFactory.bottomTo(attribute: .top, views: views, value: 0)
-            ])
+            addSubview(knobLabel.label)
+            bringSubviewToFront(knobLabel.label)
+            NSLayoutConstraint.activate(knobLabel.calculateConstraintUsing(knob: self))
         } else {
-            label.removeFromSuperview()
+            knobLabel.label.removeFromSuperview()
+            NSLayoutConstraint.deactivate(knobLabel.getConstrains())
         }
     }
+    
 
     private func setupBackground() {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
