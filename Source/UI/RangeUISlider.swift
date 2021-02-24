@@ -698,15 +698,44 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     internal func rangeChangeStarted() {
         delegate?.rangeChangeStarted?()
     }
+    
+    private var animation: Bool = false
+    private var canAnimateMoveAway: Bool = true
+    private var canAnimateCenter: Bool = false
 
     internal func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
         if showKnobsLabels {
-            if components.knobs.leftKnob.center.x + components.knobs.leftKnob.label.frame.width/2 >= components.knobs.rightKnob.center.x - components.knobs.rightKnob.label.frame.width/2  {
-                components.knobs.leftKnob.xLabelPositionConstraint.constant = -components.knobs.leftKnob.label.frame.width / 2
-                components.knobs.rightKnob.xLabelPositionConstraint.constant = (components.knobs.leftKnob.label.frame.width / 2)
-            } else {
-                components.knobs.leftKnob.xLabelPositionConstraint.constant = 0
-                components.knobs.rightKnob.xLabelPositionConstraint.constant = 0
+            if components.knobs.leftKnob.center.x + components.knobs.leftKnob.label.frame.width/2 >
+                components.knobs.rightKnob.center.x - components.knobs.rightKnob.label.frame.width/2
+                && canAnimateMoveAway {
+                UIView.animate(
+                    withDuration: 0.3) {
+                    print("move away animation")
+                    self.components.knobs.leftKnob.xLabelPositionConstraint.constant = -self.components.knobs.leftKnob.label.frame.width / 2
+                    self.components.knobs.rightKnob.xLabelPositionConstraint.constant = (self.components.knobs.leftKnob.label.frame.width / 2)
+                    self.components.knobs.leftKnob.layoutIfNeeded()
+                    self.components.knobs.rightKnob.layoutIfNeeded()
+                    self.canAnimateMoveAway = false
+                } completion: { (_) in
+                    self.canAnimateCenter = true
+                }
+            }
+            
+            if components.knobs.leftKnob.center.x + components.knobs.leftKnob.label.frame.width/2 <=
+                components.knobs.rightKnob.center.x - components.knobs.rightKnob.label.frame.width/2
+                && canAnimateCenter {
+                UIView.animate(
+                    withDuration: 0.3) {
+                    print("center animation")
+                    self.components.knobs.leftKnob.xLabelPositionConstraint.constant = 0
+                    self.components.knobs.rightKnob.xLabelPositionConstraint.constant = 0
+                    self.components.knobs.leftKnob.layoutIfNeeded()
+                    self.components.knobs.rightKnob.layoutIfNeeded()
+                    self.canAnimateCenter = false
+                } completion: { (_) in
+                    self.canAnimateMoveAway = true
+                }
+
             }
         }
         components.knobs.updateLabels(minValueSelected: minValueSelected, maxValueSelected: maxValueSelected)
