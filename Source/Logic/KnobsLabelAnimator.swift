@@ -21,12 +21,16 @@ class KnobsLabelAnimator {
 
     func animate(shouldShow: Bool) {
         if shouldShow {
-            if leftKnob.center.x + leftKnob.knobLabel.label.frame.width/2 >
-                rightKnob.center.x - rightKnob.knobLabel.label.frame.width/2
+            if leftKnob.center.x + leftKnob.components.knobLabel.label.frame.width/2 >
+                rightKnob.center.x - rightKnob.components.knobLabel.label.frame.width/2
                 && canAnimateMoveAway {
                 UIView.animate(withDuration: 0.2) { [unowned self] in
-                    self.leftKnob.knobLabel.setXPositionConstraint(-self.leftKnob.knobLabel.label.frame.width / 2)
-                    self.rightKnob.knobLabel.setXPositionConstraint(self.leftKnob.knobLabel.label.frame.width / 2)
+                    self.leftKnob.components.knobLabel.setXPositionConstraint(
+                        -self.leftKnob.components.knobLabel.label.frame.width / 2
+                    )
+                    self.rightKnob.components.knobLabel.setXPositionConstraint(
+                        self.leftKnob.components.knobLabel.label.frame.width / 2
+                    )
                     self.canAnimateMoveAway = false
                     self.leftKnob.layoutIfNeeded()
                     self.rightKnob.layoutIfNeeded()
@@ -35,12 +39,12 @@ class KnobsLabelAnimator {
                 }
             }
 
-            if leftKnob.center.x + leftKnob.knobLabel.label.frame.width/2 <=
-                rightKnob.center.x - rightKnob.knobLabel.label.frame.width/2
+            if leftKnob.center.x + leftKnob.components.knobLabel.label.frame.width/2 <=
+                rightKnob.center.x - rightKnob.components.knobLabel.label.frame.width/2
                 && canAnimateCenter {
                 UIView.animate(withDuration: 0.2) { [unowned self] in
-                    self.leftKnob.knobLabel.setXPositionConstraint(0)
-                    self.rightKnob.knobLabel.setXPositionConstraint(0)
+                    self.leftKnob.components.knobLabel.setXPositionConstraint(0)
+                    self.rightKnob.components.knobLabel.setXPositionConstraint(0)
                     self.canAnimateCenter = false
                     self.leftKnob.layoutIfNeeded()
                     self.rightKnob.layoutIfNeeded()

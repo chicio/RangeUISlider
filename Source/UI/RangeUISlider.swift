@@ -202,31 +202,31 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     /// Left knob color.
     @IBInspectable public var leftKnobColor: UIColor = UIColor.gray {
         didSet {
-            components.knobs.leftKnob.backgroundView.backgroundColor = leftKnobColor
+            components.knobs.leftKnob.components.backgroundView.backgroundColor = leftKnobColor
         }
     }
     /// Left knob shadow opacity.
     @IBInspectable public var leftShadowOpacity: Float = 0.0 {
         didSet {
-            components.knobs.leftKnob.backgroundView.layer.shadowOpacity = leftShadowOpacity
+            components.knobs.leftKnob.components.backgroundView.layer.shadowOpacity = leftShadowOpacity
         }
     }
     /// Left knob shadow color.
     @IBInspectable public var leftShadowColor: UIColor = UIColor.clear {
         didSet {
-            components.knobs.leftKnob.backgroundView.layer.shadowColor = leftShadowColor.cgColor
+            components.knobs.leftKnob.components.backgroundView.layer.shadowColor = leftShadowColor.cgColor
         }
     }
     /// Left knob shadow offset.
     @IBInspectable public var leftShadowOffset: CGSize = CGSize() {
         didSet {
-            components.knobs.leftKnob.backgroundView.layer.shadowOffset = leftShadowOffset
+            components.knobs.leftKnob.components.backgroundView.layer.shadowOffset = leftShadowOffset
         }
     }
     /// Left knob shadow radius.
     @IBInspectable public var leftShadowRadius: CGFloat = 0 {
         didSet {
-            components.knobs.leftKnob.backgroundView.layer.shadowRadius = leftShadowRadius
+            components.knobs.leftKnob.components.backgroundView.layer.shadowRadius = leftShadowRadius
         }
     }
     /// Gradient color 1 for range not selected.
@@ -300,31 +300,31 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     /// Right knob color.
     @IBInspectable public var rightKnobColor: UIColor = UIColor.gray {
         didSet {
-            components.knobs.rightKnob.backgroundView.backgroundColor = rightKnobColor
+            components.knobs.rightKnob.components.backgroundView.backgroundColor = rightKnobColor
         }
     }
     /// Right knob shadow opacity.
     @IBInspectable public var rightShadowOpacity: Float = 0.0 {
         didSet {
-            components.knobs.rightKnob.backgroundView.layer.shadowOpacity = rightShadowOpacity
+            components.knobs.rightKnob.components.backgroundView.layer.shadowOpacity = rightShadowOpacity
         }
     }
     /// Right knob shadow color.
     @IBInspectable public var rightShadowColor: UIColor = UIColor.clear {
         didSet {
-            components.knobs.rightKnob.backgroundView.layer.shadowColor = rightShadowColor.cgColor
+            components.knobs.rightKnob.components.backgroundView.layer.shadowColor = rightShadowColor.cgColor
         }
     }
     /// Right knob shadow offset.
     @IBInspectable public var rightShadowOffset: CGSize = CGSize() {
         didSet {
-            components.knobs.rightKnob.backgroundView.layer.shadowOffset = rightShadowOffset
+            components.knobs.rightKnob.components.backgroundView.layer.shadowOffset = rightShadowOffset
         }
     }
     /// Right knob shadow radius.
     @IBInspectable public var rightShadowRadius: CGFloat = 0 {
         didSet {
-            components.knobs.rightKnob.backgroundView.layer.shadowRadius = rightShadowRadius
+            components.knobs.rightKnob.components.backgroundView.layer.shadowRadius = rightShadowRadius
         }
     }
     /// Gradient color 1 for range not selected.
