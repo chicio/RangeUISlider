@@ -65,6 +65,8 @@ struct SwiftUIHostingView: View {
                     .rightKnobHeight(40)
                     .rightKnobCorners(20)
                     .showKnobsLabels(true)
+                    .knobsLabelFontSize(18)
+                    .knobsLabelFontColor(Color(.red))
                     .accessibility(identifier: "RangeUISliderStandard")
                 RangeSlider(minValueSelected: self.$minValueSelected, maxValueSelected: self.$maxValueSelected)
                     .stepIncrement(2)

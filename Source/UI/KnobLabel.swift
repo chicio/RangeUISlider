@@ -17,7 +17,6 @@ class KnobLabel {
         self.label = UILabel()
         self.constraints = [:]
         self.label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.numberOfLines = 1
     }
 

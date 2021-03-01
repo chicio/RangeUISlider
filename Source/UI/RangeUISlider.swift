@@ -371,6 +371,18 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
             )
         }
     }
+    /// Knobs labels font size.
+    @IBInspectable public var knobsLabelFontSize: CGFloat = 14 {
+        didSet {
+            components.knobs.setKnobsLabelsFontSize(size: knobsLabelFontSize)
+        }
+    }
+    /// Knobs label font color.
+    @IBInspectable public var knobsLabelFontColor: UIColor = UIColor.black {
+        didSet {
+            components.knobs.setKnobsLabelsColor(color: knobsLabelFontColor)
+        }
+    }
     /// Bar height.
     @IBInspectable public var barHeight: CGFloat = 15.0 {
         didSet {

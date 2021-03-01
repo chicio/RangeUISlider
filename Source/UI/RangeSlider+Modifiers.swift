@@ -577,6 +577,26 @@ extension RangeSlider {
     }
 
     /**
+     Set knobs labels font size.
+     
+     - parameter value: the value to be used as font size for the knobs labels.
+     */
+    public func knobsLabelFontSize(_ value: CGFloat) -> RangeSlider {
+        settings.values["knobsLabelFontSize"] = value
+        return self
+    }
+
+    /**
+     Set knobs labels color.
+     
+     - parameter value: the value to be used asknobs labels color.
+     */
+    public func knobsLabelFontColor(_ value: Color) -> RangeSlider {
+        settings.values["knobsLabelFontColor"] = UIColor(value)
+        return self
+    }
+
+    /**
      Set bar height.
      
      - parameter value: the value to be used as bar height.

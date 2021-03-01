@@ -48,6 +48,16 @@ class Knobs {
         rightKnob.components.knobLabel.label.text = String(format: "%.2f", maxValueSelected)
     }
 
+    func setKnobsLabelsFontSize(size: CGFloat) {
+        leftKnob.components.knobLabel.label.font = UIFont.systemFont(ofSize: size)
+        rightKnob.components.knobLabel.label.font = UIFont.systemFont(ofSize: size)
+    }
+
+    func setKnobsLabelsColor(color: UIColor) {
+        leftKnob.components.knobLabel.label.textColor = color
+        rightKnob.components.knobLabel.label.textColor = color
+    }
+
     private func addCornersTo(knob: Knob, corners: CGFloat) {
         knob.components.backgroundView.layer.cornerRadius = corners
     }
