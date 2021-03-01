@@ -13,6 +13,7 @@ class KnobsLabelAnimator {
     private unowned let rightKnob: Knob
     private var canAnimateMoveAway: Bool = true
     private var canAnimateCenter: Bool = false
+    private let spaceBetweenLabelsPerKnob: CGFloat = 2.5
 
     init(leftKnob: Knob, rightKnob: Knob) {
         self.leftKnob = leftKnob
@@ -21,38 +22,42 @@ class KnobsLabelAnimator {
 
     func animate(shouldShow: Bool) {
         if shouldShow {
-            if leftKnob.center.x + leftKnob.components.knobLabel.label.frame.width/2 >
-                rightKnob.center.x - rightKnob.components.knobLabel.label.frame.width/2
-                && canAnimateMoveAway {
+            if leftKnobLabelRightMargin() >= rightKnobLabelLeftMargin() && canAnimateMoveAway {
                 UIView.animate(withDuration: 0.2) { [unowned self] in
                     self.leftKnob.components.knobLabel.setXPositionConstraint(
-                        -self.leftKnob.components.knobLabel.label.frame.width / 2
+                        -(self.leftKnob.components.knobLabel.label.frame.width / 2) - spaceBetweenLabelsPerKnob
                     )
                     self.rightKnob.components.knobLabel.setXPositionConstraint(
-                        self.leftKnob.components.knobLabel.label.frame.width / 2
+                        (self.rightKnob.components.knobLabel.label.frame.width) / 2 + spaceBetweenLabelsPerKnob
                     )
                     self.canAnimateMoveAway = false
                     self.leftKnob.layoutIfNeeded()
                     self.rightKnob.layoutIfNeeded()
-                } completion: { (_) in
+                } completion: { [unowned self] (_) in
                     self.canAnimateCenter = true
                 }
             }
 
-            if leftKnob.center.x + leftKnob.components.knobLabel.label.frame.width/2 <=
-                rightKnob.center.x - rightKnob.components.knobLabel.label.frame.width/2
-                && canAnimateCenter {
+            if leftKnobLabelRightMargin() < rightKnobLabelLeftMargin() && canAnimateCenter {
                 UIView.animate(withDuration: 0.2) { [unowned self] in
                     self.leftKnob.components.knobLabel.setXPositionConstraint(0)
                     self.rightKnob.components.knobLabel.setXPositionConstraint(0)
                     self.canAnimateCenter = false
                     self.leftKnob.layoutIfNeeded()
                     self.rightKnob.layoutIfNeeded()
-                } completion: { (_) in
+                } completion: { [unowned self] (_) in
                     self.canAnimateMoveAway = true
                 }
 
             }
         }
+    }
+
+    private func leftKnobLabelRightMargin() -> CGFloat {
+        return leftKnob.center.x + leftKnob.components.knobLabel.label.frame.width/2
+    }
+
+    private func rightKnobLabelLeftMargin() -> CGFloat {
+        return rightKnob.center.x - rightKnob.components.knobLabel.label.frame.width/2
     }
 }

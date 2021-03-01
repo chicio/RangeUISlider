@@ -710,6 +710,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     }
 
     internal func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
+        components.knobs.animateLabels(shouldShow: showKnobsLabels)
         components.knobs.updateLabels(minValueSelected: minValueSelected, maxValueSelected: maxValueSelected)
         delegate?.rangeChangeFinished(
             minValueSelected: minValueSelected,
