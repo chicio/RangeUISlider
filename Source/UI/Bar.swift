@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 
-class Bar: UIView {
+/**
+ The `Bar` UI components of RangeUIslider. It is a customized `UIView`.
+ All the other ui components are a subview of this  view.
+ */
+public class Bar: UIView {
     private(set) var leadingConstraint: NSLayoutConstraint!
     private(set) var trailingConstraint: NSLayoutConstraint!
     private(set) var heightConstraint: NSLayoutConstraint!
@@ -46,7 +50,11 @@ class Bar: UIView {
         return barConstraints
     }
 
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+    /**
+     Hit test overriden method. I  had to create a custom implementation of this method in order
+     to do a more accurate knob hit test.
+     */
+    override public func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         if let knobHitted = knobsHitTest.test(point: point, event: event) {
             return knobHitted
         }

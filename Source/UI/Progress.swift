@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 
-class Progress: Gradient {
+/**
+ The `Progress` UI view RangeUIslider. It is a customized `UIView`.
+ It is a subclass of `Gradient` view.
+ */
+public class Progress: Gradient {
     func setup(
         leftAnchorView: UIView,
         rightAnchorView: UIView,

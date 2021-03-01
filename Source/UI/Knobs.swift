@@ -8,9 +8,14 @@
 
 import UIKit
 
-class Knobs {
-    let leftKnob: Knob
-    let rightKnob: Knob
+/**
+ The `Knobs` UI components of RangeUIslider. It is a container of the left and right knob.
+ */
+public class Knobs {
+    /// The left Knob. See `Knob` class.
+    public let leftKnob: Knob
+    /// The right Knob. See `Knob` class.
+    public let rightKnob: Knob
 
     init(leftKnob: Knob, rightKnob: Knob) {
         self.leftKnob = leftKnob

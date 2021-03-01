@@ -8,10 +8,16 @@
 
 import UIKit
 
-class ProgressViews {
-    let selectedProgressView: Progress
-    let leftProgressView: Progress
-    let rightProgressView: Progress
+/**
+ The `ProgressViews` UI components of RangeUIslider. It is a container of all the progress views.
+ */
+public class ProgressViews {
+    /// The progress view of the selected range. See `Progress` class.
+    public let selectedProgressView: Progress
+    /// The progress view of the left not selected  range. See `Progress` class.
+    public let leftProgressView: Progress
+    /// The progress view of the right not selected  range. See `Progress` class.
+    public let rightProgressView: Progress
 
     init(selectedProgressView: Progress, leftProgressView: Progress, rightProgressView: Progress) {
         self.selectedProgressView = selectedProgressView
