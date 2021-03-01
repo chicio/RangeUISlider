@@ -11,6 +11,7 @@ import UIKit
 class KnobLabel {
     let label: UILabel
     private var constraints: [String: NSLayoutConstraint]
+    private let xLabelPositionConstraint: String = "xLabelPositionConstraint"
 
     init() {
         self.label = UILabel()
@@ -23,7 +24,7 @@ class KnobLabel {
     func calculateConstraintUsing(knob: Knob) -> [NSLayoutConstraint] {
         let views = ConstraintViews(target: label, related: knob)
         constraints = [
-            "xLabelPositionConstraint": PositionConstraintFactory.centerX(views: views),
+            xLabelPositionConstraint: PositionConstraintFactory.centerX(views: views),
             "bottomConstraint": MarginConstraintFactory.bottomTo(attribute: .top, views: views, value: 0)
         ]
         return getConstrains()
@@ -34,7 +35,7 @@ class KnobLabel {
     }
 
     func setXPositionConstraint(_ value: CGFloat) {
-        constraints["xLabelPositionConstraint"]?.constant = value
+        constraints[xLabelPositionConstraint]?.constant = value
     }
 
     func setAccessibilityIdentifier(accessibilityIdentifier: String?) {
