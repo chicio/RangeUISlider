@@ -22,21 +22,28 @@ class KnobsLabelAnimator {
 
     func animate(shouldShow: Bool) {
         if shouldShow {
-            if shouldMoveLabelAway() {
-                animation(
-                    constraintsValues: (left: moveAwayLeftKnobValue(), right: moveAwayRightKnobValue()),
-                    animationStart: { [unowned self] in self.canAnimateMoveAway = false },
-                    animationCompleted: { [unowned self] (_) in self.canAnimateCenter = true }
-                )
-            }
+            tryToAnimateMoveAway()
+            tryToAnimateMoveToCenter()
+        }
+    }
 
-            if shouldMoveToCenter() {
-                animation(
-                    constraintsValues: (left: 0, right: 0),
-                    animationStart: { [unowned self] in self.canAnimateCenter = false },
-                    animationCompleted: { [unowned self] (_) in self.canAnimateMoveAway = true }
-                )
-            }
+    private func tryToAnimateMoveAway() {
+        if shouldMoveLabelAway() {
+            animation(
+                constraintsValues: (left: moveAwayLeftKnobValue(), right: moveAwayRightKnobValue()),
+                animationStart: { [unowned self] in self.canAnimateMoveAway = false },
+                animationCompleted: { [unowned self] (_) in self.canAnimateCenter = true }
+            )
+        }
+    }
+
+    private func tryToAnimateMoveToCenter() {
+        if shouldMoveToCenter() {
+            animation(
+                constraintsValues: (left: 0, right: 0),
+                animationStart: { [unowned self] in self.canAnimateCenter = false },
+                animationCompleted: { [unowned self] (_) in self.canAnimateMoveAway = true }
+            )
         }
     }
 
