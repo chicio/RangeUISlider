@@ -24,6 +24,16 @@ extension RangeSlider {
     }
 
     /**
+    Show or hide knobs labels.
+     
+     - parameter value: the value used to decided if labels should be show or not.
+     */
+    public func showKnobsLabels(_ value: Bool) -> RangeSlider {
+        settings.values["showKnobsLabels"] = value
+        return self
+    }
+
+    /**
      Set default left knob starting value.
      
      - parameter value: the value to be used as default left knob start.
@@ -563,6 +573,36 @@ extension RangeSlider {
      */
     public func rightKnobBorderColor(_ value: Color) -> RangeSlider {
         settings.values["rightKnobBorderColor"] = UIColor(value)
+        return self
+    }
+
+    /**
+     Set knobs labels font size.
+     
+     - parameter value: the value to be used as font size for the knobs labels.
+     */
+    public func knobsLabelFontSize(_ value: CGFloat) -> RangeSlider {
+        settings.values["knobsLabelFontSize"] = value
+        return self
+    }
+
+    /**
+     Set knobs labels color.
+     
+     - parameter value: the value to be used asknobs labels color.
+     */
+    public func knobsLabelFontColor(_ value: Color) -> RangeSlider {
+        settings.values["knobsLabelFontColor"] = UIColor(value)
+        return self
+    }
+
+    /**
+     Set knobs labels number of decimal.
+     
+     - parameter value: the value to be used as number of decimal format for knobs labels.
+     */
+    public func knobsLabelNumberOfDecimal(_ value: Int) -> RangeSlider {
+        settings.values["knobsLabelNumberOfDecimal"] = value
         return self
     }
 

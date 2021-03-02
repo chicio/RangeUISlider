@@ -23,6 +23,12 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     @IBInspectable public var identifier: Int = 0
     /// Step increment value. If different from 0 RangeUISlider will let the user drag by step increment.
     @IBInspectable public var stepIncrement: CGFloat = 0.0
+    /// Show  knobs labels.
+    @IBInspectable public var showKnobsLabels: Bool = false {
+        didSet {
+            components.knobs.showLabels(shouldShow: showKnobsLabels)
+        }
+    }
     /// Default left knob starting value.
     @IBInspectable public var defaultValueLeftKnob: CGFloat = 0.0 {
         didSet {
@@ -196,31 +202,31 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     /// Left knob color.
     @IBInspectable public var leftKnobColor: UIColor = UIColor.gray {
         didSet {
-            components.knobs.leftKnob.backgroundView.backgroundColor = leftKnobColor
+            components.knobs.leftKnob.components.backgroundView.backgroundColor = leftKnobColor
         }
     }
     /// Left knob shadow opacity.
     @IBInspectable public var leftShadowOpacity: Float = 0.0 {
         didSet {
-            components.knobs.leftKnob.layer.shadowOpacity = leftShadowOpacity
+            components.knobs.leftKnob.components.backgroundView.layer.shadowOpacity = leftShadowOpacity
         }
     }
     /// Left knob shadow color.
     @IBInspectable public var leftShadowColor: UIColor = UIColor.clear {
         didSet {
-            components.knobs.leftKnob.layer.shadowColor = leftShadowColor.cgColor
+            components.knobs.leftKnob.components.backgroundView.layer.shadowColor = leftShadowColor.cgColor
         }
     }
     /// Left knob shadow offset.
     @IBInspectable public var leftShadowOffset: CGSize = CGSize() {
         didSet {
-            components.knobs.leftKnob.layer.shadowOffset = leftShadowOffset
+            components.knobs.leftKnob.components.backgroundView.layer.shadowOffset = leftShadowOffset
         }
     }
     /// Left knob shadow radius.
     @IBInspectable public var leftShadowRadius: CGFloat = 0 {
         didSet {
-            components.knobs.leftKnob.layer.shadowRadius = leftShadowRadius
+            components.knobs.leftKnob.components.backgroundView.layer.shadowRadius = leftShadowRadius
         }
     }
     /// Gradient color 1 for range not selected.
@@ -294,31 +300,31 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     /// Right knob color.
     @IBInspectable public var rightKnobColor: UIColor = UIColor.gray {
         didSet {
-            components.knobs.rightKnob.backgroundView.backgroundColor = rightKnobColor
+            components.knobs.rightKnob.components.backgroundView.backgroundColor = rightKnobColor
         }
     }
     /// Right knob shadow opacity.
     @IBInspectable public var rightShadowOpacity: Float = 0.0 {
         didSet {
-            components.knobs.rightKnob.layer.shadowOpacity = rightShadowOpacity
+            components.knobs.rightKnob.components.backgroundView.layer.shadowOpacity = rightShadowOpacity
         }
     }
     /// Right knob shadow color.
     @IBInspectable public var rightShadowColor: UIColor = UIColor.clear {
         didSet {
-            components.knobs.rightKnob.layer.shadowColor = rightShadowColor.cgColor
+            components.knobs.rightKnob.components.backgroundView.layer.shadowColor = rightShadowColor.cgColor
         }
     }
     /// Right knob shadow offset.
     @IBInspectable public var rightShadowOffset: CGSize = CGSize() {
         didSet {
-            components.knobs.rightKnob.layer.shadowOffset = rightShadowOffset
+            components.knobs.rightKnob.components.backgroundView.layer.shadowOffset = rightShadowOffset
         }
     }
     /// Right knob shadow radius.
     @IBInspectable public var rightShadowRadius: CGFloat = 0 {
         didSet {
-            components.knobs.rightKnob.layer.shadowRadius = rightShadowRadius
+            components.knobs.rightKnob.components.backgroundView.layer.shadowRadius = rightShadowRadius
         }
     }
     /// Gradient color 1 for range not selected.
@@ -365,6 +371,20 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
             )
         }
     }
+    /// Knobs labels font size.
+    @IBInspectable public var knobsLabelFontSize: CGFloat = 14 {
+        didSet {
+            components.knobs.setKnobsLabelsFontSize(size: knobsLabelFontSize)
+        }
+    }
+    /// Knobs label font color.
+    @IBInspectable public var knobsLabelFontColor: UIColor = UIColor.black {
+        didSet {
+            components.knobs.setKnobsLabelsColor(color: knobsLabelFontColor)
+        }
+    }
+    /// Knobs labels number of decimal.
+    @IBInspectable public var knobsLabelNumberOfDecimal: Int = 2
     /// Bar height.
     @IBInspectable public var barHeight: CGFloat = 15.0 {
         didSet {
@@ -425,13 +445,6 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     @IBInspectable public var barBorderColor: UIColor = UIColor.clear {
         didSet {
             components.progressViews.addBorderColor(borderColor: barBorderColor)
-        }
-    }
-    /// Container corners.
-    @IBInspectable public var containerCorners: CGFloat = 0.0 {
-        didSet {
-            layer.cornerRadius = containerCorners
-            layer.masksToBounds = containerCorners > 0.0
         }
     }
     /// Slider delegate.
@@ -703,6 +716,12 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     }
 
     internal func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
+        components.knobs.animateLabels(shouldShow: showKnobsLabels)
+        components.knobs.updateLabels(
+            minValueSelected: minValueSelected,
+            maxValueSelected: maxValueSelected,
+            knobsLabelNumberOfDecimal: knobsLabelNumberOfDecimal
+        )
         delegate?.rangeIsChanging?(
             minValueSelected: minValueSelected,
             maxValueSelected: maxValueSelected,
@@ -711,6 +730,12 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     }
 
     internal func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
+        components.knobs.animateLabels(shouldShow: showKnobsLabels)
+        components.knobs.updateLabels(
+            minValueSelected: minValueSelected,
+            maxValueSelected: maxValueSelected,
+            knobsLabelNumberOfDecimal: knobsLabelNumberOfDecimal
+        )
         delegate?.rangeChangeFinished(
             minValueSelected: minValueSelected,
             maxValueSelected: maxValueSelected,

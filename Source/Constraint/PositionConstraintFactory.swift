@@ -28,11 +28,11 @@ class PositionConstraintFactory {
         )
     }
 
-    static func centerY(views: ConstraintViews) -> NSLayoutConstraint {
+    static func centerY(views: ConstraintViews, value: CGFloat = 0.0) -> NSLayoutConstraint {
         return EqualRelationConstraintFactory.make(
             attributes: ConstraintAttributes(target: .centerY, related: .centerY),
             views: views,
-            value: 0.0
+            value: value
         )
     }
 }
