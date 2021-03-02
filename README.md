@@ -267,7 +267,6 @@ This is the list of the `RangeUISlider` customizable properties directly from In
  - bar shadow radius
  - bar border width
  - bar border color
- - container corners (only available in the `UIKit` version)
 
 ***
 
@@ -283,9 +282,13 @@ In the following screenshot you can find some examples of the level of customiza
 
 <p align="center">
 <img width="320" height="632" hspace="50" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.png">
+</p>
+<p align="center">
 <img width="320" height="632" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/02-only-colors.png">
 </p>
 <p align="center">
 <img width="320" height="632" hspace="50"src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/03-only-images.png">
+</p>
+<p align="center">
 <img width="320" height="632" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/04-only-gradients.png">
 </p>

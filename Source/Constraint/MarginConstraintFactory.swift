@@ -64,4 +64,16 @@ class MarginConstraintFactory {
             value: value
         )
     }
+
+    static func bottomTo(
+        attribute: NSLayoutConstraint.Attribute,
+        views: ConstraintViews,
+        value: CGFloat
+    ) -> NSLayoutConstraint {
+        return EqualRelationConstraintFactory.make(
+            attributes: ConstraintAttributes(target: .bottom, related: attribute),
+            views: views,
+            value: value
+        )
+    }
 }

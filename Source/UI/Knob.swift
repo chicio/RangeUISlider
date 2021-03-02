@@ -9,8 +9,7 @@
 import UIKit
 
 class Knob: Gradient, UIGestureRecognizerDelegate {
-    public let backgroundView: UIView = UIView()
-    private lazy var imageView: UIImageView = UIImageView()
+    let components: KnobComponents = KnobComponents()
     private(set) var xPositionConstraint: NSLayoutConstraint!
     private(set) var widthConstraint: NSLayoutConstraint!
     private(set) var heightConstraint: NSLayoutConstraint!
@@ -20,25 +19,28 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
         accessibilityIdentifier = properties.accessibilityIdentifier
         setGestureRecognizer(gesture: properties.gesture)
         setupBackground()
-        return generateConstraintsFrom(dimensions: properties.dimensions, position: properties.position)
+        return generateConstraintsFrom(
+            dimensions: properties.dimensions,
+            position: properties.position
+        )
     }
 
     func addBorders(usingColor color: UIColor, andWidth width: CGFloat, andCorners corners: CGFloat) {
-        if imageView.image != nil {
-            addBorders(toView: imageView, usingColor: color, andWidth: width)
-            imageView.layer.cornerRadius = corners
+        if components.imageView.image != nil {
+            addBorders(toView: components.imageView, usingColor: color, andWidth: width)
+            components.imageView.layer.cornerRadius = corners
         } else {
-            addBorders(toView: backgroundView, usingColor: color, andWidth: width)
+            addBorders(toView: components.backgroundView, usingColor: color, andWidth: width)
         }
     }
 
     func add(image anImage: UIImage?) {
         if let image = anImage {
-            imageView.image = image
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.contentMode = .scaleToFill
-            addSubview(imageView)
-            let views = ConstraintViews(target: imageView, related: self)
+            components.imageView.image = image
+            components.imageView.translatesAutoresizingMaskIntoConstraints = false
+            components.imageView.contentMode = .scaleToFill
+            components.backgroundView.addSubview(components.imageView)
+            let views = ConstraintViews(target: components.imageView, related: self)
             NSLayoutConstraint.activate([
                 PositionConstraintFactory.centerX(views: views),
                 PositionConstraintFactory.centerY(views: views),
@@ -48,10 +50,22 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
         }
     }
 
+    func showLabels(shouldShow: Bool) {
+        if shouldShow {
+            components.knobLabel.setAccessibilityIdentifier(accessibilityIdentifier: accessibilityIdentifier)
+            addSubview(components.knobLabel.label)
+            bringSubviewToFront(components.knobLabel.label)
+            NSLayoutConstraint.activate(components.knobLabel.calculateConstraintUsing(knob: self))
+        } else {
+            components.knobLabel.label.removeFromSuperview()
+            NSLayoutConstraint.deactivate(components.knobLabel.getConstrains())
+        }
+    }
+
     private func setupBackground() {
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(backgroundView)
-        bringSubviewToFront(backgroundView)
+        components.backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(components.backgroundView)
+        bringSubviewToFront(components.backgroundView)
     }
 
     private func setGestureRecognizer(gesture: KnobGesturesProperties) {
@@ -79,7 +93,7 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
 
     private func backgroundViewConstraints() -> [NSLayoutConstraint] {
         return MatchingMarginConstraintFactory.make(
-            views: ConstraintViews(target: backgroundView, related: self)
+            views: ConstraintViews(target: components.backgroundView, related: self)
         )
     }
 
