@@ -8,8 +8,14 @@
 
 import UIKit
 
-class Knob: Gradient, UIGestureRecognizerDelegate {
-    let components: KnobComponents = KnobComponents()
+/**
+ The `Knob` UI components of RangeUIslider. It is a customized `UIView`.
+ It is a subclass of `Gradient` view.
+ */
+public class Knob: Gradient, UIGestureRecognizerDelegate {
+    /// The knobs UI components. See `KnobComponents` class.
+    public let components: KnobComponents = KnobComponents()
+
     private(set) var xPositionConstraint: NSLayoutConstraint!
     private(set) var widthConstraint: NSLayoutConstraint!
     private(set) var heightConstraint: NSLayoutConstraint!
@@ -104,17 +110,30 @@ class Knob: Gradient, UIGestureRecognizerDelegate {
         view.layer.borderColor = color.cgColor
     }
 
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                           shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    /**
+     Gesture recognizer delegate method implementation for knob movement.
+     */
+    public func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
+    ) -> Bool {
         return true
     }
 
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                           shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    /**
+     Gesture recognizer delegate method implementation for knob movement.
+     */
+    public func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer
+    ) -> Bool {
         return false
     }
 
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+    /**
+     Gesture recognizer delegate method implementation for knob movement.
+     */
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         return true
     }
 }

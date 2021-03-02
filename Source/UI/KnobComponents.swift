@@ -8,8 +8,10 @@
 
 import UIKit
 
-class KnobComponents {
+public class KnobComponents {
+    /// The knob label. See `KnobLabel` class.
+    public lazy var knobLabel: KnobLabel = KnobLabel()
+
     let backgroundView: UIView = UIView()
     lazy var imageView: UIImageView = UIImageView()
-    lazy var knobLabel: KnobLabel = KnobLabel()
 }

@@ -8,7 +8,11 @@
 
 import UIKit
 
-class KnobLabel {
+/**
+  The KnobLabel class. it contains the knob label.
+ */
+public class KnobLabel {
+    /// The knob label `UILabel` component.
     let label: UILabel
     private var constraints: [String: NSLayoutConstraint]
     private let xLabelPositionConstraint: String = "xLabelPositionConstraint"

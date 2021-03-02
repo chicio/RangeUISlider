@@ -450,7 +450,9 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     /// Slider delegate.
     public weak var delegate: RangeUISliderDelegate?
 
-    private let components = RangeUISliderComponents()
+    /// The UI components of RangeUISlider: knobs, bar, and prosgress views.
+    public let components = RangeUISliderComponents()
+
     internal lazy var properties = RangeUISliderProperties(
         scale: Scale(scaleMinValue: scaleMinValue, scaleMaxValue: scaleMaxValue),
         previousRangeSelected: RangeSelected(minValue: defaultValueLeftKnob, maxValue: defaultValueRightKnob)
