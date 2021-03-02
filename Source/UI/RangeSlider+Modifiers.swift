@@ -597,6 +597,16 @@ extension RangeSlider {
     }
 
     /**
+     Set knobs labels number of decimal.
+     
+     - parameter value: the value to be used as number of decimal format for knobs labels.
+     */
+    public func knobsLabelNumberOfDecimal(_ value: Int) -> RangeSlider {
+        settings.values["knobsLabelNumberOfDecimal"] = value
+        return self
+    }
+
+    /**
      Set bar height.
      
      - parameter value: the value to be used as bar height.

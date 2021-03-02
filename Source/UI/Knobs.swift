@@ -43,9 +43,14 @@ class Knobs {
         knobsLabelAnimator.animate(shouldShow: shouldShow)
     }
 
-    func updateLabels(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
-        leftKnob.components.knobLabel.label.text = String(format: "%.2f", minValueSelected)
-        rightKnob.components.knobLabel.label.text = String(format: "%.2f", maxValueSelected)
+    func updateLabels(
+        minValueSelected: CGFloat,
+        maxValueSelected: CGFloat,
+        knobsLabelNumberOfDecimal: Int
+    ) {
+        let formatLabels = "%.\(knobsLabelNumberOfDecimal)f"
+        leftKnob.components.knobLabel.label.text = String(format: formatLabels, minValueSelected)
+        rightKnob.components.knobLabel.label.text = String(format: formatLabels, maxValueSelected)
     }
 
     func setKnobsLabelsFontSize(size: CGFloat) {

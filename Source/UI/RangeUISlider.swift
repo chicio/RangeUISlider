@@ -383,6 +383,8 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
             components.knobs.setKnobsLabelsColor(color: knobsLabelFontColor)
         }
     }
+    /// Knobs labels number of decimal.
+    @IBInspectable public var knobsLabelNumberOfDecimal: Int = 2
     /// Bar height.
     @IBInspectable public var barHeight: CGFloat = 15.0 {
         didSet {
@@ -713,7 +715,11 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
 
     internal func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
         components.knobs.animateLabels(shouldShow: showKnobsLabels)
-        components.knobs.updateLabels(minValueSelected: minValueSelected, maxValueSelected: maxValueSelected)
+        components.knobs.updateLabels(
+            minValueSelected: minValueSelected,
+            maxValueSelected: maxValueSelected,
+            knobsLabelNumberOfDecimal: knobsLabelNumberOfDecimal
+        )
         delegate?.rangeIsChanging?(
             minValueSelected: minValueSelected,
             maxValueSelected: maxValueSelected,
@@ -723,7 +729,11 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
 
     internal func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
         components.knobs.animateLabels(shouldShow: showKnobsLabels)
-        components.knobs.updateLabels(minValueSelected: minValueSelected, maxValueSelected: maxValueSelected)
+        components.knobs.updateLabels(
+            minValueSelected: minValueSelected,
+            maxValueSelected: maxValueSelected,
+            knobsLabelNumberOfDecimal: knobsLabelNumberOfDecimal
+        )
         delegate?.rangeChangeFinished(
             minValueSelected: minValueSelected,
             maxValueSelected: maxValueSelected,
