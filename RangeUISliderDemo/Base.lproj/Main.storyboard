@@ -1067,6 +1067,8 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="barCorners">
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="knobsLabelTopPosition" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showKnobsLabels" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJz-9s-q9J" customClass="RangeUISlider" customModule="RangeUISlider">

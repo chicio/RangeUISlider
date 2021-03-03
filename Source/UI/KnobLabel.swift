@@ -28,11 +28,7 @@ public class KnobLabel {
         let views = ConstraintViews(target: label, related: knob)
         constraints = [
             xLabelPositionConstraint: PositionConstraintFactory.centerX(views: views),
-            "bottomConstraint": topPosition ? MarginConstraintFactory.bottomTo(
-                attribute: .top,
-                views: views,
-                value: 0
-            ) : MarginConstraintFactory.topTo(attribute: .bottom, views: views, value: 0)
+            "bottomConstraint": getLabelPositionConstraint(topPosition: topPosition, views: views)
         ]
         return getConstraints()
     }
@@ -51,7 +47,9 @@ public class KnobLabel {
         label.accessibilityIdentifier = "\(accessibilityIdentifier ?? "")Label"
     }
 
-    private func labelPosition(topPosition: Bool) -> NSLayoutConstraint.Attribute {
-        return topPosition ? .top : .bottom
+    private func getLabelPositionConstraint(topPosition: Bool, views: ConstraintViews) -> NSLayoutConstraint {
+        return topPosition
+            ? MarginConstraintFactory.bottomTo(attribute: .top, views: views, value: 0)
+            : MarginConstraintFactory.topTo(attribute: .bottom, views: views, value: 0)
     }
 }

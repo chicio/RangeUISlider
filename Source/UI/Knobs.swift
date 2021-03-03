@@ -40,9 +40,9 @@ public class Knobs {
         addCornersTo(knob: rightKnob, corners: rightKnobCorners)
     }
 
-    func showLabels(shouldShow: Bool) {
-        leftKnob.showLabels(shouldShow: shouldShow)
-        rightKnob.showLabels(shouldShow: shouldShow)
+    func showLabels(shouldShow: Bool, topPosition: Bool) {
+        leftKnob.showLabels(shouldShow: shouldShow, topPosition: topPosition)
+        rightKnob.showLabels(shouldShow: shouldShow, topPosition: topPosition)
     }
 
     func animateLabels(shouldShow: Bool) {

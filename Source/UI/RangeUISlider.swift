@@ -26,7 +26,12 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     /// Show  knobs labels.
     @IBInspectable public var showKnobsLabels: Bool = false {
         didSet {
-            components.knobs.showLabels(shouldShow: showKnobsLabels)
+            components.knobs.showLabels(shouldShow: showKnobsLabels, topPosition: knobsLabelTopPosition)
+        }
+    }
+    @IBInspectable public var knobsLabelTopPosition: Bool = true {
+        didSet {
+            components.knobs.showLabels(shouldShow: showKnobsLabels, topPosition: knobsLabelTopPosition)
         }
     }
     /// Default left knob starting value.

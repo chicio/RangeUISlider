@@ -56,7 +56,7 @@ class MarginConstraintFactory {
             value: value
         )
     }
-    
+
     static func topTo(
         attribute: NSLayoutConstraint.Attribute,
         views: ConstraintViews,
