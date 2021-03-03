@@ -26,6 +26,9 @@ public class KnobLabel {
 
     func calculateConstraintUsing(knob: Knob, topPosition: Bool) -> [NSLayoutConstraint] {
         let views = ConstraintViews(target: label, related: knob)
+        if !constraints.isEmpty {
+            NSLayoutConstraint.deactivate(getConstraints())
+        }
         constraints = [
             xLabelPositionConstraint: PositionConstraintFactory.centerX(views: views),
             "bottomConstraint": getLabelPositionConstraint(topPosition: topPosition, views: views)

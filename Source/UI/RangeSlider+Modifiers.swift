@@ -34,6 +34,16 @@ extension RangeSlider {
     }
 
     /**
+    Show labels at the top or at the bottom of knobs.
+     
+     - parameter value: the value used to decided if labels should be show top or bottom.
+     */
+    public func knobsLabelTopPosition(_ value: Bool) -> RangeSlider {
+        settings.values["knobsLabelTopPosition"] = value
+        return self
+    }
+
+    /**
      Set default left knob starting value.
      
      - parameter value: the value to be used as default left knob start.
