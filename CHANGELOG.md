@@ -2,7 +2,7 @@
 All changes to RangeUISlider will be documented in this file.
 
 ## [3.0.0](https://github.com/chicio/RangeUISlider/releases/tag/3.0.0)
-Release date: 2021-03-19.
+Release date: 2021-03-XX.
 
 #### Added
 - new public api to read all the UI components of RangeUISlider

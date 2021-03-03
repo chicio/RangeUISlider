@@ -299,6 +299,7 @@
 				45263E9725C9D3B2005D994A /* KnobsHorizontalPosition.swift */,
 				45CEFF7725CB199B00BF628B /* KnobGestureManagerDelegate.swift */,
 				45CEFF7C25CB19C400BF628B /* KnobGestureManager.swift */,
+				457A1DDD25E6C7EF00180CAD /* KnobsLabelAnimator.swift */,
 				45E9D59625C6F94200FE6E3F /* BarProperties.swift */,
 				45E9D59E25C6FADC00FE6E3F /* ProgressProperties.swift */,
 				459630C425C8854D00FCCCE7 /* ProgressViewsProperties.swift */,
@@ -311,7 +312,6 @@
 				45263E8A25C9D18B005D994A /* ProgrammaticKnobChangeDelegate.swift */,
 				45E2B6F625C9B36F007CCBB5 /* Scale.swift */,
 				45CEFF7225CB198400BF628B /* GestureData.swift */,
-				457A1DDD25E6C7EF00180CAD /* KnobsLabelAnimator.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";

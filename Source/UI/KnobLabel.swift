@@ -24,16 +24,20 @@ public class KnobLabel {
         label.numberOfLines = 1
     }
 
-    func calculateConstraintUsing(knob: Knob) -> [NSLayoutConstraint] {
+    func calculateConstraintUsing(knob: Knob, topPosition: Bool) -> [NSLayoutConstraint] {
         let views = ConstraintViews(target: label, related: knob)
         constraints = [
             xLabelPositionConstraint: PositionConstraintFactory.centerX(views: views),
-            "bottomConstraint": MarginConstraintFactory.bottomTo(attribute: .top, views: views, value: 0)
+            "bottomConstraint": topPosition ? MarginConstraintFactory.bottomTo(
+                attribute: .top,
+                views: views,
+                value: 0
+            ) : MarginConstraintFactory.topTo(attribute: .bottom, views: views, value: 0)
         ]
-        return getConstrains()
+        return getConstraints()
     }
 
-    func getConstrains() -> [NSLayoutConstraint] {
+    func getConstraints() -> [NSLayoutConstraint] {
         return constraints.map { $1 }
     }
 
@@ -45,5 +49,9 @@ public class KnobLabel {
         label.isAccessibilityElement = true
         label.isUserInteractionEnabled = true
         label.accessibilityIdentifier = "\(accessibilityIdentifier ?? "")Label"
+    }
+
+    private func labelPosition(topPosition: Bool) -> NSLayoutConstraint.Attribute {
+        return topPosition ? .top : .bottom
     }
 }

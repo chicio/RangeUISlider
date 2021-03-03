@@ -61,10 +61,10 @@ public class Knob: Gradient, UIGestureRecognizerDelegate {
             components.knobLabel.setAccessibilityIdentifier(accessibilityIdentifier: accessibilityIdentifier)
             addSubview(components.knobLabel.label)
             bringSubviewToFront(components.knobLabel.label)
-            NSLayoutConstraint.activate(components.knobLabel.calculateConstraintUsing(knob: self))
+            NSLayoutConstraint.activate(components.knobLabel.calculateConstraintUsing(knob: self, topPosition: false))
         } else {
             components.knobLabel.label.removeFromSuperview()
-            NSLayoutConstraint.deactivate(components.knobLabel.getConstrains())
+            NSLayoutConstraint.deactivate(components.knobLabel.getConstraints())
         }
     }
 
