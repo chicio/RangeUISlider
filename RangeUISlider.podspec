@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
 An iOS range selection slider compatible with UIKit and SwiftUI. Developed using autolayout and highly customizable using IBDesignabled and IBInspectable or programmatically. It support also RTL (right to left) languages automatically out of the box.
                    DESC
   s.homepage     = "https://github.com/chicio/RangeUISlider"
-  s.screenshots  = "https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.png"
+  s.screenshots  = "https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/rangeuislider-example.png"
   s.license      = { :type => "MIT", :file => "LICENSE.md" }
   s.author             = { "chicio" => "fabrizio.duroni@gmail.com" }
   s.social_media_url   = "https://github.com/chicio"
