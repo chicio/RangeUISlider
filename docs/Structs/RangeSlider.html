@@ -17,7 +17,7 @@
     <a title="RangeSlider Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">RangeUISlider 2.0.2 Docs</a> (100% documented)</p>
+        <p><a href="../index.html">RangeUISlider 3.0.0 Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/chicio/ID3TagEditor"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right">
           <form role="search" action="../search.json">
@@ -40,10 +40,37 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Classes/Bar.html">Bar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Gradient.html">Gradient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Knob.html">Knob</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KnobComponents.html">KnobComponents</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:13RangeUISlider9KnobLabelC">KnobLabel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Knobs.html">Knobs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/c:@M@RangeUISlider@objc(cs)Progress">Progress</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ProgressViews.html">ProgressViews</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/RangeSliderCoordinator.html">RangeSliderCoordinator</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/RangeUISlider.html">RangeUISlider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RangeUISliderComponents.html">RangeUISliderComponents</a>
               </li>
             </ul>
           </li>
@@ -388,6 +415,98 @@ In this property the max value selected will be exposed. It will be updated duri
                               <td>
                                 <div>
                                   <p>the value to be used as step increment.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13RangeUISlider0A6SliderV15showKnobsLabelsyACSbF"></a>
+                    <a name="//apple_ref/swift/Method/showKnobsLabels(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13RangeUISlider0A6SliderV15showKnobsLabelsyACSbF">showKnobsLabels(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Show or hide knobs labels.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">showKnobsLabels</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">RangeSlider</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the value used to decided if labels should be show or not.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13RangeUISlider0A6SliderV21knobsLabelTopPositionyACSbF"></a>
+                    <a name="//apple_ref/swift/Method/knobsLabelTopPosition(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13RangeUISlider0A6SliderV21knobsLabelTopPositionyACSbF">knobsLabelTopPosition(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Show labels at the top or at the bottom of knobs.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">knobsLabelTopPosition</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">RangeSlider</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the value used to decided if labels should be show top or bottom.</p>
                                 </div>
                               </td>
                             </tr>
@@ -2874,6 +2993,144 @@ The string will be used to search an image with that name in the current Bundle.
                               <td>
                                 <div>
                                   <p>the value to be used as right knob border color.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13RangeUISlider0A6SliderV18knobsLabelFontSizeyAC12CoreGraphics7CGFloatVF"></a>
+                    <a name="//apple_ref/swift/Method/knobsLabelFontSize(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13RangeUISlider0A6SliderV18knobsLabelFontSizeyAC12CoreGraphics7CGFloatVF">knobsLabelFontSize(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set knobs labels font size.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">knobsLabelFontSize</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">RangeSlider</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the value to be used as font size for the knobs labels.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13RangeUISlider0A6SliderV19knobsLabelFontColoryAC7SwiftUI0G0VF"></a>
+                    <a name="//apple_ref/swift/Method/knobsLabelFontColor(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13RangeUISlider0A6SliderV19knobsLabelFontColoryAC7SwiftUI0G0VF">knobsLabelFontColor(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set knobs labels color.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">knobsLabelFontColor</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Color</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">RangeSlider</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the value to be used asknobs labels color.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13RangeUISlider0A6SliderV25knobsLabelNumberOfDecimalyACSiF"></a>
+                    <a name="//apple_ref/swift/Method/knobsLabelNumberOfDecimal(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13RangeUISlider0A6SliderV25knobsLabelNumberOfDecimalyACSiF">knobsLabelNumberOfDecimal(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set knobs labels number of decimal.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">knobsLabelNumberOfDecimal</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">RangeSlider</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the value to be used as number of decimal format for knobs labels.</p>
                                 </div>
                               </td>
                             </tr>

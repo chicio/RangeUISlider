@@ -9,7 +9,7 @@
 import UIKit
 
 /**
- A class that contains all the UI components of RangeUISlider. You can access to all the UI parts:
+ A class that contains all the UI components of `RangeUISlider`. You can access to all the UI parts:
  knos, bar and progress view. See `components` property of `RangeUISlider`.
  */
 public class RangeUISliderComponents {

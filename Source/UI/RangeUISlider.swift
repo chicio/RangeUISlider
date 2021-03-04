@@ -29,6 +29,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
             components.knobs.showLabels(shouldShow: showKnobsLabels, topPosition: knobsLabelTopPosition)
         }
     }
+    /// Show knobs labels at the top or at the bottom of knobs.
     @IBInspectable public var knobsLabelTopPosition: Bool = true {
         didSet {
             components.knobs.showLabels(shouldShow: showKnobsLabels, topPosition: knobsLabelTopPosition)

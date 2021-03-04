@@ -9,9 +9,15 @@
 import Foundation
 import UIKit
 
+/**
+ A base class of some of the `RangeUISlider` UI components. It is used to apply gradient filter.
+ */
 public class Gradient: UIView {
     lazy private(set) var gradient: CAGradientLayer = CAGradientLayer()
-
+    
+    /**
+     Custom implementation used to add gradient effects.
+     */
     override public func layoutSubviews() {
         CATransaction.begin()
         CATransaction.setDisableActions(true)

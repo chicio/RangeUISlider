@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ A class that contains all the UI components of `Knob`.
+ */
 public class KnobComponents {
     /// The knob label. See `KnobLabel` class.
     public lazy var knobLabel: KnobLabel = KnobLabel()
