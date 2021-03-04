@@ -277,7 +277,7 @@ This is the list of the `RangeUISlider` customizable properties directly from In
 
 ### Documentation
 
-You can find the complete api documentation on [fabrizioduroni.it](https://www.fabrizioduroni.it/RangeUISlider/ "RangeUISlider doc").
+You can find the complete api documentation on [fabrizioduroni.it](https://rangeuislider.fabrizioduroni.it "RangeUISlider doc").
 
 ***
 
