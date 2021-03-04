@@ -14,7 +14,7 @@ import UIKit
  */
 public class Gradient: UIView {
     lazy private(set) var gradient: CAGradientLayer = CAGradientLayer()
-    
+
     /**
      Custom implementation used to add gradient effects.
      */
