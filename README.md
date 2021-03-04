@@ -267,7 +267,12 @@ This is the list of the `RangeUISlider` customizable properties directly from In
  - bar shadow radius
  - bar border width
  - bar border color
-
+ - show knobs labels
+ - knobs label top position
+ - knobs label font size
+ - knobs label font color
+ - knobs label number of decimal
+ 
 ***
 
 ### Documentation
@@ -278,17 +283,8 @@ You can find the complete api documentation on [fabrizioduroni.it](https://www.f
 
 ### Examples
 
-In the following screenshot you can find some examples of the level of customization that it is possible to reach. You can find this examples in the demo project.
+In the following screenshot you can find some examples of the level of customization that it is possible to reach. You can find this examples in the [demo project](https://github.com/chicio/RangeUISlider/tree/master/RangeUISliderDemo).
 
 <p align="center">
-<img width="320" height="632" hspace="50" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/01-mixed.png">
-</p>
-<p align="center">
-<img width="320" height="632" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/02-only-colors.png">
-</p>
-<p align="center">
-<img width="320" height="632" hspace="50"src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/03-only-images.png">
-</p>
-<p align="center">
-<img width="320" height="632" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/04-only-gradients.png">
+<img width="320" height="632" hspace="50" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/rangeuislider-example.png">
 </p>
