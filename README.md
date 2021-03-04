@@ -23,7 +23,7 @@ There are three ways to install `RangeUISlider` in your project: manual installa
 
 **Manual installation**
 
-To manually install `RangeUISlider` simply drag and drop all the file contained in the <a href="https://github.com/chicio/RangeUISlider/tree/master/Source">Source</a> folder inside your project.
+To manually install `RangeUISlider` simply drag and drop all the file contained in the [Source](https://github.com/chicio/RangeUISlider/tree/master/Source) folder inside your project.
 
 **Framework**
 
@@ -41,7 +41,7 @@ Add the dependency to your Podfile similar to the following:
 
 ```
 target 'MyApp' do
-    pod 'RangeUISlider', '~> 2.0'
+    pod 'RangeUISlider', '~> 3.0'
 end
 ```
 
