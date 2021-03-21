@@ -193,6 +193,9 @@
 		45BD66D2209B60DA00A19D22 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		45BD66D3209B60DA00A19D22 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		45C2278225C2E9C70068CAA5 /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
+		45CA6FE3260788BE008C5CDF /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
+		45CA6FE4260788BE008C5CDF /* PULL_REQUEST_TEMPLATE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PULL_REQUEST_TEMPLATE.md; sourceTree = "<group>"; };
+		45CA6FE5260788BE008C5CDF /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
 		45CEFF7225CB198400BF628B /* GestureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureData.swift; sourceTree = "<group>"; };
 		45CEFF7725CB199B00BF628B /* KnobGestureManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobGestureManagerDelegate.swift; sourceTree = "<group>"; };
 		45CEFF7C25CB19C400BF628B /* KnobGestureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobGestureManager.swift; sourceTree = "<group>"; };
@@ -372,6 +375,9 @@
 				45BD66D2209B60DA00A19D22 /* CHANGELOG.md */,
 				45BD66D3209B60DA00A19D22 /* LICENSE.md */,
 				45BD66D1209B60D900A19D22 /* README.md */,
+				45CA6FE5260788BE008C5CDF /* CODE_OF_CONDUCT.md */,
+				45CA6FE3260788BE008C5CDF /* CONTRIBUTING.md */,
+				45CA6FE4260788BE008C5CDF /* PULL_REQUEST_TEMPLATE.md */,
 				458CD4EA25A1E2760065FDEF /* generate_docs.sh */,
 				458E1B90257A9CC800165AA7 /* RangeUISlider.podspec */,
 				45E603C4233A432C00E7465D /* Package.swift */,
