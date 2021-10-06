@@ -1,33 +1,6 @@
 {
   "warnings": [
-    {
-      "file": "/Users/fduroni/Documents/Fabrizio/Code/RangeUISlider/Source/UI/Gradient.swift",
-      "line": 12,
-      "symbol": "Gradient",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/fduroni/Documents/Fabrizio/Code/RangeUISlider/Source/UI/Gradient.swift",
-      "line": 15,
-      "symbol": "Gradient.layoutSubviews()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/fduroni/Documents/Fabrizio/Code/RangeUISlider/Source/UI/KnobComponents.swift",
-      "line": 11,
-      "symbol": "KnobComponents",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/fduroni/Documents/Fabrizio/Code/RangeUISlider/Source/UI/RangeUISlider.swift",
-      "line": 32,
-      "symbol": "RangeUISlider.knobsLabelTopPosition",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    }
+
   ],
   "source_directory": "/Users/fduroni/Documents/Fabrizio/Code/RangeUISlider"
 }
