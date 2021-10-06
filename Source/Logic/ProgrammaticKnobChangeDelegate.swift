@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ProgrammaticKnobChangeDelegate: class {
+protocol ProgrammaticKnobChangeDelegate: AnyObject {
     var properties: RangeUISliderProperties { get }
     func programmaticChangeCompleted()
 }

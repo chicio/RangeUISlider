@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol KnobGestureManagerDelegate: class {
+protocol KnobGestureManagerDelegate: AnyObject {
     func rangeChangeStarted()
     func rangeSelectionUpdate()
     func rangeSelectionFinished()

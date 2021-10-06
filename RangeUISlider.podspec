@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "RangeUISlider"
-  s.version      = "3.0.0"
+  s.version      = "3.0.1"
   s.summary      = "A highly customizable iOS range selection slider"
   s.description  = <<-DESC
 An iOS range selection slider compatible with UIKit and SwiftUI. Developed using autolayout and highly customizable using IBDesignabled and IBInspectable or programmatically. It support also RTL (right to left) languages automatically out of the box.
