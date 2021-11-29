@@ -43,7 +43,7 @@ class RangeUpdater: KnobGestureManagerDelegate {
     internal func rangeSelectionFinished() {
         let rangeSelected = calculateSelectedRange()
 
-        if !rangeSelected.maxValue.isNaN && !rangeSelected.maxValue.isNaN {
+        if !rangeSelected.minValue.isNaN && !rangeSelected.maxValue.isNaN {
             delegate.rangeChangeFinished(
                 minValueSelected: rangeSelected.minValue,
                 maxValueSelected: rangeSelected.maxValue
