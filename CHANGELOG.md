@@ -1,6 +1,12 @@
 # Change Log
 All changes to RangeUISlider will be documented in this file.
 
+## [3.0.2](https://github.com/chicio/RangeUISlider/releases/tag/3.0.2)
+Release date: 2021-11-30.
+
+#### Fixed
+- Merged fix for valid knob range 
+
 ## [3.0.1](https://github.com/chicio/RangeUISlider/releases/tag/3.0.1)
 Release date: 2021-10-06.
 
