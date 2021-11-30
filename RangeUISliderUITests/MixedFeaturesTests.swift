@@ -29,11 +29,11 @@ class MixedFeaturesTests: XCTestCase {
         rightKnob.press(forDuration: 0.1, thenDragTo: endMarker)
 
         expectation(
-            for: NSPredicate(format: "self > 143.0 AND self < 146.0"),
+            for: NSPredicate(format: "self => 143.0 AND self <= 146.0"),
             evaluatedWith: (minValueSelectedLabel.label as NSString).floatValue
         )
         expectation(
-            for: NSPredicate(format: "self > 193.0 AND self < 196.0"),
+            for: NSPredicate(format: "self => 193.0 AND self <= 196.0"),
             evaluatedWith: (maxValueSelectedLabel.label as NSString).floatValue
         )
         waitForExpectations(timeout: 5)
