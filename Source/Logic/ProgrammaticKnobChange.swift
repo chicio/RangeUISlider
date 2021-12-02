@@ -61,7 +61,7 @@ class ProgrammaticKnobChange {
     }
 
     private func isValidForLeftKnob(value: CGFloat) -> Bool {
-        return value > delegate.properties.scale.scaleMinValue
+        return value >= delegate.properties.scale.scaleMinValue
             && value <= delegate.properties.previousRangeSelected.maxValue
     }
 
