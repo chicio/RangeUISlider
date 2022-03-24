@@ -1,6 +1,12 @@
 # Change Log
 All changes to RangeUISlider will be documented in this file.
 
+## [3.1.0](https://github.com/chicio/RangeUISlider/releases/tag/3.1.0)
+Release date: 2022-03-24.
+
+#### Fixed
+Increased Package.swift supported version 
+
 ## [3.0.3](https://github.com/chicio/RangeUISlider/releases/tag/3.0.3)
 Release date: 2021-12-02.
 

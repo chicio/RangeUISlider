@@ -33,10 +33,10 @@ class MixedFeaturesTests: XCTestCase {
             evaluatedWith: (minValueSelectedLabel.label as NSString).floatValue
         )
         expectation(
-            for: NSPredicate(format: "self => 193.0 AND self <= 196.0"),
+            for: NSPredicate(format: "self => 193.0 AND self <= 199.0"),
             evaluatedWith: (maxValueSelectedLabel.label as NSString).floatValue
         )
-        waitForExpectations(timeout: 5)
+        waitForExpectations(timeout: 10)
     }
 
     func testStepIncrement() throws {
@@ -62,6 +62,6 @@ class MixedFeaturesTests: XCTestCase {
             for: NSPredicate(format: "self = 10.0 OR self = 12.0"),
             evaluatedWith: (maxValueSelectedLabel.label as NSString).floatValue
         )
-        waitForExpectations(timeout: 5)
+        waitForExpectations(timeout: 10)
     }
 }
