@@ -285,5 +285,5 @@ You can find the complete api documentation on [fabrizioduroni.it](https://range
 In the following screenshot you can find some examples of the level of customization that it is possible to reach. You can find this examples in the [demo project](https://github.com/chicio/RangeUISlider/tree/master/RangeUISliderDemo).
 
 <p align="center">
-<img width="320" height="632" hspace="50" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/rangeuislider-example.png">
+  <img width="320" height="632" src="https://raw.githubusercontent.com/chicio/RangeUISlider/master/Screenshots/rangeuislider-example.png">
 </p>
