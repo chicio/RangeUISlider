@@ -35,6 +35,12 @@ import UIKit
      - parameter minValueSelected: the minimum value selected.
      - parameter maxValueSelected: the maximum value selected.
      - parameter slider: the slider on which the range has been modified.
+     - parameter userInteraction: a boolean indicating if the interaction is from user (or a programattic change)
      */
-    @objc func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
+    @objc func rangeChangeFinished(
+        minValueSelected: CGFloat,
+        maxValueSelected: CGFloat,
+        slider: RangeUISlider,
+        userInteraction: Bool
+    )
 }

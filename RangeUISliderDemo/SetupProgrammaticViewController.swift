@@ -77,7 +77,12 @@ class SetupProgrammaticViewController: UIViewController, RangeUISliderDelegate {
 
     }
 
-    func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
+    func rangeChangeFinished(
+        minValueSelected: CGFloat,
+        maxValueSelected: CGFloat,
+        slider: RangeUISlider,
+        userInteraction: Bool
+    ) {
         print("FINISH min: \(minValueSelected) -  max: \(maxValueSelected) - identifier: \(slider.identifier)")
     }
 

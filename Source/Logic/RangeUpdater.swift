@@ -40,13 +40,14 @@ class RangeUpdater: KnobGestureManagerDelegate {
             || rangeSelected.maxValue != properties.previousRangeSelected.maxValue
     }
 
-    internal func rangeSelectionFinished() {
+    internal func rangeSelectionFinished(userInteraction: Bool) {
         let rangeSelected = calculateSelectedRange()
 
         if !rangeSelected.minValue.isNaN && !rangeSelected.maxValue.isNaN {
             delegate.rangeChangeFinished(
                 minValueSelected: rangeSelected.minValue,
-                maxValueSelected: rangeSelected.maxValue
+                maxValueSelected: rangeSelected.maxValue,
+                userInteraction: userInteraction
             )
         }
     }

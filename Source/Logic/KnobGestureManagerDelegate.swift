@@ -11,5 +11,5 @@ import Foundation
 protocol KnobGestureManagerDelegate: AnyObject {
     func rangeChangeStarted()
     func rangeSelectionUpdate()
-    func rangeSelectionFinished()
+    func rangeSelectionFinished(userInteraction: Bool)
 }

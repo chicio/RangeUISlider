@@ -42,10 +42,18 @@ public class RangeSliderCoordinator: RangeUISliderDelegate {
      - parameter minValueSelected: the minimum value selected.
      - parameter maxValueSelected: the maximum value selected.
      - parameter slider: the slider on which the range has been modified.
+     - parameter userInteraction: a boolean indicating if the change comes from user interaction
      */
-    public func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
-        self.rangeSlider.minValueSelected = minValueSelected
-        self.rangeSlider.maxValueSelected = maxValueSelected
+    public func rangeChangeFinished(
+        minValueSelected: CGFloat,
+        maxValueSelected: CGFloat,
+        slider: RangeUISlider,
+        userInteraction: Bool
+    ) {
+        if userInteraction == true {
+            self.rangeSlider.minValueSelected = minValueSelected
+            self.rangeSlider.maxValueSelected = maxValueSelected
+        }
     }
 }
 #endif

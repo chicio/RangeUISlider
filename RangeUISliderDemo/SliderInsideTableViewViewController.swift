@@ -43,7 +43,12 @@ class SliderInsideTableViewViewController: UITableViewController, RangeUISliderD
         print("values \(minValueSelected) - \(maxValueSelected)")
     }
 
-    func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
+    func rangeChangeFinished(
+        minValueSelected: CGFloat,
+        maxValueSelected: CGFloat,
+        slider: RangeUISlider,
+        userInteraction: Bool
+    ) {
         tableView.isScrollEnabled = true
         minValueSelectedLabel?.text = minValueSelected.description
         maxValueSelectedLabel?.text = maxValueSelected.description
