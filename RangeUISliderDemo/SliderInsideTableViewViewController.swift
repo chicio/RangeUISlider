@@ -46,6 +46,6 @@ class SliderInsideTableViewViewController: UITableViewController, RangeUISliderD
     }
 
     func rangeIsChanging(event: RangeUISliderChangeEvent) {
-        print("min: \(event.minValueSelected) -  max: \(event.maxValueSelected) - identifier: \(event.slider.identifier)")
+        print("min: \(event.minValueSelected) -  max: \(event.maxValueSelected)")
     }
 }

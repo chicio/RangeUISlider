@@ -153,12 +153,13 @@ class ChangeKnobsProgrammaticViewController: UIViewController, RangeUISliderDele
     }
 
     func rangeChangeFinished(event: RangeUISliderChangeFinishedEvent) {
+        print("FINISH: \(event.slider.identifier)")
         print("FINISH min: \(event.minValueSelected) - max: \(event.maxValueSelected)")
         minValueSelectedLabel.text = event.minValueSelected.description
         maxValueSelectedLabel.text = event.maxValueSelected.description
     }
 
     func rangeIsChanging(event: RangeUISliderChangeEvent) {
-        print("min: \(event.minValueSelected) -  max: \(event.maxValueSelected) - identifier: \(event.slider.identifier)")
+        print("min: \(event.minValueSelected) -  max: \(event.maxValueSelected)")
     }
 }
