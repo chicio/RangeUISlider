@@ -39,18 +39,13 @@ class SliderInsideTableViewViewController: UITableViewController, RangeUISliderD
         tableView.isScrollEnabled = false
     }
 
-    func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
-        print("values \(minValueSelected) - \(maxValueSelected)")
+    func rangeChangeFinished(event: RangeUISliderChangeFinishedEvent) {
+        tableView.isScrollEnabled = true
+        minValueSelectedLabel?.text = event.minValueSelected.description
+        maxValueSelectedLabel?.text = event.maxValueSelected.description
     }
 
-    func rangeChangeFinished(
-        minValueSelected: CGFloat,
-        maxValueSelected: CGFloat,
-        slider: RangeUISlider,
-        userInteraction: Bool
-    ) {
-        tableView.isScrollEnabled = true
-        minValueSelectedLabel?.text = minValueSelected.description
-        maxValueSelectedLabel?.text = maxValueSelected.description
+    func rangeIsChanging(event: RangeUISliderChangeEvent) {
+        print("min: \(event.minValueSelected) -  max: \(event.maxValueSelected) - identifier: \(event.slider.identifier)")
     }
 }

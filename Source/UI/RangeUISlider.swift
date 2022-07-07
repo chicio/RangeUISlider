@@ -729,9 +729,11 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
             knobsLabelNumberOfDecimal: knobsLabelNumberOfDecimal
         )
         delegate?.rangeIsChanging?(
-            minValueSelected: minValueSelected,
-            maxValueSelected: maxValueSelected,
-            slider: self
+            event: RangeUISliderChangeEvent(
+                minValueSelected: minValueSelected,
+                maxValueSelected: maxValueSelected,
+                slider: self
+            )
         )
     }
 
@@ -743,10 +745,12 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
             knobsLabelNumberOfDecimal: knobsLabelNumberOfDecimal
         )
         delegate?.rangeChangeFinished(
-            minValueSelected: minValueSelected,
-            maxValueSelected: maxValueSelected,
-            slider: self,
-            userInteraction: userInteraction
+            event: RangeUISliderChangeFinishedEvent(
+                minValueSelected: minValueSelected,
+                maxValueSelected: maxValueSelected,
+                slider: self,
+                userInteraction: userInteraction
+            )
         )
     }
 }

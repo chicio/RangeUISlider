@@ -149,18 +149,13 @@ class ChangeDefaultKnobsValuesProgrammaticViewController: UIViewController, Rang
         }
     }
 
-    func rangeChangeFinished(
-        minValueSelected: CGFloat,
-        maxValueSelected: CGFloat,
-        slider: RangeUISlider,
-        userInteraction: Bool
-    ) {
-        print("FINISH min: \(minValueSelected) -  max: \(maxValueSelected) - identifier: \(slider.identifier)")
-        minValueSelectedLabel.text = minValueSelected.description
-        maxValueSelectedLabel.text = maxValueSelected.description
+    func rangeChangeFinished(event: RangeUISliderChangeFinishedEvent) {
+        print("FINISH min: \(event.minValueSelected) - max: \(event.maxValueSelected)")
+        minValueSelectedLabel.text = event.minValueSelected.description
+        maxValueSelectedLabel.text = event.maxValueSelected.description
     }
 
-    func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
-        print("min: \(minValueSelected) -  max: \(maxValueSelected) - identifier: \(slider.identifier)")
+    func rangeIsChanging(event: RangeUISliderChangeEvent) {
+        print("min: \(event.minValueSelected) -  max: \(event.maxValueSelected) - identifier: \(event.slider.identifier)")
     }
 }
