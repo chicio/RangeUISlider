@@ -551,7 +551,7 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
     }
 
     internal func programmaticChangeCompleted() {
-        rangeUpdater.rangeSelectionFinished()
+        rangeUpdater.rangeSelectionFinished(userInteraction: false)
     }
 
     // MARK: setup
@@ -729,13 +729,15 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
             knobsLabelNumberOfDecimal: knobsLabelNumberOfDecimal
         )
         delegate?.rangeIsChanging?(
-            minValueSelected: minValueSelected,
-            maxValueSelected: maxValueSelected,
-            slider: self
+            event: RangeUISliderChangeEvent(
+                minValueSelected: minValueSelected,
+                maxValueSelected: maxValueSelected,
+                slider: self
+            )
         )
     }
 
-    internal func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat) {
+    internal func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, userInteraction: Bool) {
         components.knobs.animateLabels(shouldShow: showKnobsLabels)
         components.knobs.updateLabels(
             minValueSelected: minValueSelected,
@@ -743,9 +745,12 @@ open class RangeUISlider: UIView, ProgrammaticKnobChangeDelegate, RangeUpdaterDe
             knobsLabelNumberOfDecimal: knobsLabelNumberOfDecimal
         )
         delegate?.rangeChangeFinished(
-            minValueSelected: minValueSelected,
-            maxValueSelected: maxValueSelected,
-            slider: self
+            event: RangeUISliderChangeFinishedEvent(
+                minValueSelected: minValueSelected,
+                maxValueSelected: maxValueSelected,
+                slider: self,
+                userInteraction: userInteraction
+            )
         )
     }
 }

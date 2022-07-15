@@ -24,12 +24,15 @@ class MixedFeaturesViewController: UIViewController, RangeUISliderDelegate {
         print("range modification start")
     }
 
-    func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
-        // print("min: \(minValueSelected) -  max: \(maxValueSelected) - identifier: \(slider.identifier)")
+    func rangeChangeFinished(event: RangeUISliderChangeFinishedEvent) {
+        print("FINISH: \(event.slider.identifier)")
+        print("FINISH min: \(event.minValueSelected) - max: \(event.maxValueSelected)")
+        minValueSelectedLabel.text = event.minValueSelected.description
+        maxValueSelectedLabel.text = event.maxValueSelected.description
     }
 
-    func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider) {
-        minValueSelectedLabel.text = minValueSelected.description
-        maxValueSelectedLabel.text = maxValueSelected.description
+    func rangeIsChanging(event: RangeUISliderChangeEvent) {
+        print("min: \(event.minValueSelected) -  max: \(event.maxValueSelected)")
     }
+
 }

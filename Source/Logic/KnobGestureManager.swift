@@ -37,7 +37,7 @@ class KnobGestureManager {
             updateKnobAndRangeUsing(gesture: gesture, updateKnob: updateKnob)
         }
         if gesture.gestureRecognizer.state == .ended {
-            knobGestureManagerDelegate.rangeSelectionFinished()
+            knobGestureManagerDelegate.rangeSelectionFinished(userInteraction: true)
         }
     }
 

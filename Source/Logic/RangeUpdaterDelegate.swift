@@ -11,5 +11,5 @@ import UIKit
 protocol RangeUpdaterDelegate: AnyObject {
     func rangeChangeStarted()
     func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat)
-    func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat)
+    func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, userInteraction: Bool)
 }
