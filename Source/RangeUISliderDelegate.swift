@@ -23,19 +23,14 @@ import UIKit
     /**
      Calls the delegate when the user is changing the range by moving the knobs.
      
-     - parameter minValueSelected: the minimum value selected.
-     - parameter maxValueSelected: the maximum value selected.
-     - parameter slider: the slider on which the range has been modified.
+     - parameter event: the change event data. See `RangeUISliderChangeEvent`.
      */
     @objc optional func rangeIsChanging(event: RangeUISliderChangeEvent)
 
     /**
      Calls the delegate when the user has finished the change of the range.
      
-     - parameter minValueSelected: the minimum value selected.
-     - parameter maxValueSelected: the maximum value selected.
-     - parameter slider: the slider on which the range has been modified.
-     - parameter userInteraction: a boolean indicating if the interaction is from user (or a programattic change)
+     - parameter event: the change finish event data. See `RangeUISliderChangeFinishedEvent`.
      */
     @objc func rangeChangeFinished(event: RangeUISliderChangeFinishedEvent)
 }

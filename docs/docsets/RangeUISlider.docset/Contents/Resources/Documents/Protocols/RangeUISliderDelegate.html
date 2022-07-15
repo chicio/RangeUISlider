@@ -70,6 +70,12 @@
                 <a href="../Classes/RangeUISlider.html">RangeUISlider</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/RangeUISliderChangeEvent.html">RangeUISliderChangeEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RangeUISliderChangeFinishedEvent.html">RangeUISliderChangeFinishedEvent</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/RangeUISliderComponents.html">RangeUISliderComponents</a>
               </li>
             </ul>
@@ -143,9 +149,9 @@ delegate class).</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@RangeUISlider@objc(pl)RangeUISliderDelegate(im)rangeIsChangingWithMinValueSelected:maxValueSelected:slider:"></a>
-                    <a name="//apple_ref/swift/Method/rangeIsChanging(minValueSelected:maxValueSelected:slider:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@RangeUISlider@objc(pl)RangeUISliderDelegate(im)rangeIsChangingWithMinValueSelected:maxValueSelected:slider:">rangeIsChanging(minValueSelected:<wbr>maxValueSelected:<wbr>slider:<wbr>)</a>
+                    <a name="/c:@M@RangeUISlider@objc(pl)RangeUISliderDelegate(im)rangeIsChangingWithEvent:"></a>
+                    <a name="//apple_ref/swift/Method/rangeIsChanging(event:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RangeUISlider@objc(pl)RangeUISliderDelegate(im)rangeIsChangingWithEvent:">rangeIsChanging(event:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -161,7 +167,7 @@ delegate class).</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">optional</span> <span class="kd">func</span> <span class="nf">rangeIsChanging</span><span class="p">(</span><span class="nv">minValueSelected</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">maxValueSelected</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">slider</span><span class="p">:</span> <span class="kt"><a href="../Classes/RangeUISlider.html">RangeUISlider</a></span><span class="p">)</span></code></pre>
+<span class="kd">optional</span> <span class="kd">func</span> <span class="nf">rangeIsChanging</span><span class="p">(</span><span class="nv">event</span><span class="p">:</span> <span class="kt"><a href="../Classes/RangeUISliderChangeEvent.html">RangeUISliderChangeEvent</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -172,36 +178,12 @@ delegate class).</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>minValueSelected</em>
+                                <em>event</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>the minimum value selected.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>maxValueSelected</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>the maximum value selected.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>slider</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>the slider on which the range has been modified.</p>
+                                  <p>the change event data. See <code><a href="../Classes/RangeUISliderChangeEvent.html">RangeUISliderChangeEvent</a></code>.</p>
                                 </div>
                               </td>
                             </tr>
@@ -214,9 +196,9 @@ delegate class).</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@RangeUISlider@objc(pl)RangeUISliderDelegate(im)rangeChangeFinishedWithMinValueSelected:maxValueSelected:slider:"></a>
-                    <a name="//apple_ref/swift/Method/rangeChangeFinished(minValueSelected:maxValueSelected:slider:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@RangeUISlider@objc(pl)RangeUISliderDelegate(im)rangeChangeFinishedWithMinValueSelected:maxValueSelected:slider:">rangeChangeFinished(minValueSelected:<wbr>maxValueSelected:<wbr>slider:<wbr>)</a>
+                    <a name="/c:@M@RangeUISlider@objc(pl)RangeUISliderDelegate(im)rangeChangeFinishedWithEvent:"></a>
+                    <a name="//apple_ref/swift/Method/rangeChangeFinished(event:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@RangeUISlider@objc(pl)RangeUISliderDelegate(im)rangeChangeFinishedWithEvent:">rangeChangeFinished(event:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -232,7 +214,7 @@ delegate class).</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">func</span> <span class="nf">rangeChangeFinished</span><span class="p">(</span><span class="nv">minValueSelected</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">maxValueSelected</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">slider</span><span class="p">:</span> <span class="kt"><a href="../Classes/RangeUISlider.html">RangeUISlider</a></span><span class="p">)</span></code></pre>
+<span class="kd">func</span> <span class="nf">rangeChangeFinished</span><span class="p">(</span><span class="nv">event</span><span class="p">:</span> <span class="kt"><a href="../Classes/RangeUISliderChangeFinishedEvent.html">RangeUISliderChangeFinishedEvent</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -243,36 +225,12 @@ delegate class).</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>minValueSelected</em>
+                                <em>event</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>the minimum value selected.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>maxValueSelected</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>the maximum value selected.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>slider</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>the slider on which the range has been modified.</p>
+                                  <p>the change finish event data. See <code><a href="../Classes/RangeUISliderChangeFinishedEvent.html">RangeUISliderChangeFinishedEvent</a></code>.</p>
                                 </div>
                               </td>
                             </tr>

@@ -135,33 +135,29 @@ You can access the range values in two ways, depending on the fact that you're u
 - for `SwiftUI`, use the `RangeSlider.minValueSelected` and `RangeSlider.maxValueSelected` binding values
 
 #### UIKit - RangeUISliderDelegate
-To get the current values from the slider in a `UIKit` project, set the slider delegate property. The delegate of `RangeUISlider` must implement the `RangeUISliderDelegate` protocol, that has three methods:
+To get the current values from the slider in a `UIKit` project, set the slider delegate property. The delegate of `RangeUISlider` must implement the `RangeUISliderDelegate` protocol, that has three methods. See code below.
 
 ```swift
+@objc public protocol RangeUISliderDelegate {
+    /**
+     Calls the delegate when the user has started the change of the range.
+     */
+    @objc optional func rangeChangeStarted()
 
-/**
- Calls the delegate when the user has started the change of the range.
- */
- @objc optional func rangeChangeStarted() 
-
-/**
- Calls the delegate when the user is changing the range by moving the knobs.
+    /**
+     Calls the delegate when the user is changing the range by moving the knobs.
      
- - parameter minValueSelected: the minimum value selected.
- - parameter maxValueSelected: the maximum value selected.
- - parameter slider: the slider on which the range has been modified.
- */
- @objc optional func rangeIsChanging(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
-    
-/**
- Calls the delegate when the user has finished the change of the range.
-    
- - parameter minValueSelected: the minimum value selected.
- - parameter maxValueSelected: the maximum value selected.
- - parameter slider: the slider on which the range has been modified.
- */
- @objc func rangeChangeFinished(minValueSelected: CGFloat, maxValueSelected: CGFloat, slider: RangeUISlider)
+     - parameter event: the change event data. See `RangeUISliderChangeEvent`.
+     */
+    @objc optional func rangeIsChanging(event: RangeUISliderChangeEvent)
 
+    /**
+     Calls the delegate when the user has finished the change of the range.
+     
+     - parameter event: the change finish event data. See `RangeUISliderChangeFinishedEvent`.
+     */
+    @objc func rangeChangeFinished(event: RangeUISliderChangeFinishedEvent)
+}
 ```
 
 #### SwiftUI - Binding values

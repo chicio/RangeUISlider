@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Gradient Class Reference</title>
+    <title>RangeUISliderChangeFinishedEvent Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/Gradient" class="dashAnchor"></a>
-    <a title="Gradient Class Reference"></a>
+    <a name="//apple_ref/swift/Class/RangeUISliderChangeFinishedEvent" class="dashAnchor"></a>
+    <a title="RangeUISliderChangeFinishedEvent Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">RangeUISlider 3.1.0 Docs</a> (100% documented)</p>
@@ -30,7 +30,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">RangeUISlider Reference</a>
         <img id="carat" src="../img/carat.png" alt=""/>
-        Gradient Class Reference
+        RangeUISliderChangeFinishedEvent Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -101,15 +101,16 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Gradient</h1>
+            <h1>RangeUISliderChangeFinishedEvent</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Gradient</span> <span class="p">:</span> <span class="kt">UIView</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">RangeUISliderChangeFinishedEvent</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                 </div>
               </div>
-            <p>A base class of some of the <code><a href="../Classes/RangeUISlider.html">RangeUISlider</a></code> UI components. It is used to apply gradient filter.</p>
+            <p>A range change finished event.</p>
 
           </section>
           <section class="section task-group-section">
@@ -118,9 +119,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@RangeUISlider@objc(cs)Gradient(im)layoutSubviews"></a>
-                    <a name="//apple_ref/swift/Method/layoutSubviews()" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@RangeUISlider@objc(cs)Gradient(im)layoutSubviews">layoutSubviews()</a>
+                    <a name="/s:13RangeUISlider0aB19ChangeFinishedEventC16minValueSelected12CoreGraphics7CGFloatVvp"></a>
+                    <a name="//apple_ref/swift/Property/minValueSelected" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13RangeUISlider0aB19ChangeFinishedEventC16minValueSelected12CoreGraphics7CGFloatVvp">minValueSelected</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -128,14 +129,95 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Custom implementation used to add gradient effects.</p>
+                        <p>The minimum value selected.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">layoutSubviews</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">minValueSelected</span><span class="p">:</span> <span class="kt">CGFloat</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13RangeUISlider0aB19ChangeFinishedEventC16maxValueSelected12CoreGraphics7CGFloatVvp"></a>
+                    <a name="//apple_ref/swift/Property/maxValueSelected" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13RangeUISlider0aB19ChangeFinishedEventC16maxValueSelected12CoreGraphics7CGFloatVvp">maxValueSelected</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The max value selected.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">maxValueSelected</span><span class="p">:</span> <span class="kt">CGFloat</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13RangeUISlider0aB19ChangeFinishedEventC6sliderA2ACvp"></a>
+                    <a name="//apple_ref/swift/Property/slider" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13RangeUISlider0aB19ChangeFinishedEventC6sliderA2ACvp">slider</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The slider that generated the event.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">slider</span><span class="p">:</span> <span class="kt"><a href="../Classes/RangeUISlider.html">RangeUISlider</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13RangeUISlider0aB19ChangeFinishedEventC15userInteractionSbvp"></a>
+                    <a name="//apple_ref/swift/Property/userInteraction" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13RangeUISlider0aB19ChangeFinishedEventC15userInteractionSbvp">userInteraction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A boolean indicating if there was a user interaction.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">userInteraction</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>

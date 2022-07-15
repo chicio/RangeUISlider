@@ -26,6 +26,9 @@ import Foundation
     }
 }
 
+/**
+ A range change finished event.
+ */
 @objc public class RangeUISliderChangeFinishedEvent: NSObject {
     /// The minimum value selected.
     public let minValueSelected: CGFloat

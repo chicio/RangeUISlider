@@ -1,6 +1,12 @@
 {
   "warnings": [
-
+    {
+      "file": "/Users/fduroni/Library/Mobile Documents/com~apple~CloudDocs/Documents/Code/RangeUISlider/Source/RangeUISliderDelegateEvents.swift",
+      "line": 29,
+      "symbol": "RangeUISliderChangeFinishedEvent",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    }
   ],
   "source_directory": "/Users/fduroni/Library/Mobile Documents/com~apple~CloudDocs/Documents/Code/RangeUISlider"
 }
