@@ -77,10 +77,10 @@ class ViewController: UIViewController, RangeUISliderDelegate {
     }
 
     func rangeChangeFinished(event: RangeUISliderChangeFinishedEvent) {
-        print("FINISH min: \(event.minValueSelected) -  max: \(event.maxValueSelected) - identifier: \(event.slider.identifier)")
+        print("\(event.minValueSelected) -  \(event.maxValueSelected) - identifier: \(event.slider.identifier)")
     }
 
     func rangeIsChanging(event: RangeUISliderChangeEvent) {
-        print("min: \(event.minValueSelected) -  max: \(event.maxValueSelected) - identifier: \(event.slider.identifier)")
+        print("\(event.minValueSelected) -  \(event.maxValueSelected) - identifier: \(event.slider.identifier)")
     }
 }
