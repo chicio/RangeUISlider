@@ -148,7 +148,7 @@ struct SwiftUIHostingView: View {
                             .knobsLabelFontSize(18)
                             .knobsLabelFontColor(Color(.red))
                             .knobsLabelNumberOfDecimal(1)
-                            .accessibility(identifier: "RangeUISliderStandard")
+                            .accessibility(identifier: "RangeUISliderScrollView")
                             .frame(maxWidth: .infinity, minHeight: 100)
                     }
                 }
