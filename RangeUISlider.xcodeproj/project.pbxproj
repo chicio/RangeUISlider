@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -1012,7 +1012,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.0;
+				MARKETING_VERSION = 4.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = it.chicio.ios.RangeUISlider;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1041,7 +1041,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.0;
+				MARKETING_VERSION = 4.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = it.chicio.ios.RangeUISlider;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

@@ -1,6 +1,12 @@
 # Change Log
 All changes to RangeUISlider will be documented in this file.
 
+## [4.0.1](https://github.com/chicio/RangeUISlider/releases/tag/4.0.1)
+Release date: 2023-11-25.
+
+#### Adding
+- New example for SwiftUI
+
 ## [4.0.0](https://github.com/chicio/RangeUISlider/releases/tag/4.0.0)
 Release date: 2022-07-15.
 
